@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public abstract class AbstractStatementExecutor implements ConnectionHolder, StatementExecutor {
     protected final Connection connection;
@@ -23,6 +24,20 @@ public abstract class AbstractStatementExecutor implements ConnectionHolder, Sta
     public boolean execute(String sql) {
         try (Statement s = this.connection.createStatement()) {
             return s.execute(sql);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public <T> Optional<T> executeSingleQuery(String sql, ResultMapper<T> mapper) {
+        try (Statement s = this.connection.createStatement()) {
+            try (ResultSet resultSet = s.executeQuery(sql)) {
+                if (!resultSet.next()) {
+                    return Optional.empty();
+                }
+                return Optional.of(mapper.map(resultSet));
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
