@@ -1,0 +1,7 @@
+name: Oddeco
+version: '${version}'
+main: org.hansung.oddeco.Oddeco
+api-version: '1.20'
+prefix: Oddeco
+load: STARTUP
+authors: ['Hansung Team ODD']
