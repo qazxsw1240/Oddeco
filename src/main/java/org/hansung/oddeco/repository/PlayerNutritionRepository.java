@@ -5,7 +5,7 @@ import org.hansung.oddeco.core.entity.nutrition.Nutrition;
 import org.hansung.oddeco.core.entity.nutrition.NutritionFacts;
 import org.hansung.oddeco.core.entity.player.PlayerNutritionState;
 import org.hansung.oddeco.core.sql.AbstractStatementExecutor;
-import org.hansung.oddeco.core.sql.CrudRepository;
+import org.hansung.oddeco.core.CrudRepository;
 
 import java.sql.Connection;
 import java.util.Collection;
