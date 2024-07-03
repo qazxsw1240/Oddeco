@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractStatementExecutor implements ConnectionHolder, StatementExecutor {
+public abstract class AbstractStatementExecutor implements ConnectionHolder, StatementExecutor {
     protected final Connection connection;
 
     protected AbstractStatementExecutor(Connection connection) {
