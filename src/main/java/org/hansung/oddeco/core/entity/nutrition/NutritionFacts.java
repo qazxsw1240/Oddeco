@@ -13,6 +13,10 @@ public interface NutritionFacts extends Iterable<NutritionFacts.Info> {
         return new NutritionFactsImpl(carbohydrate, protein, fat, vitamin);
     }
 
+    public static NutritionFacts of(Info... infos) {
+        return new NutritionFactsImpl(infos);
+    }
+
     public abstract int getNutrition(Nutrition nutrition);
 
     public static interface Info {
