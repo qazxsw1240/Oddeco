@@ -1,11 +1,12 @@
 package org.hansung.oddeco.repository;
 
 import org.bukkit.entity.Player;
+import org.hansung.oddeco.core.CrudRepository;
 import org.hansung.oddeco.core.entity.nutrition.Nutrition;
 import org.hansung.oddeco.core.entity.nutrition.NutritionFacts;
 import org.hansung.oddeco.core.entity.player.PlayerNutritionState;
 import org.hansung.oddeco.core.sql.AbstractStatementExecutor;
-import org.hansung.oddeco.core.CrudRepository;
+import org.hansung.oddeco.core.sql.ResultMapper;
 
 import java.sql.Connection;
 import java.util.Collection;
@@ -46,8 +47,8 @@ public class PlayerNutritionRepository
         if (this.playerNutritionStates.containsKey(uuid)) {
             return true;
         }
-        return executeSingleQuery(createNutritionStateFindQuery(uuid), set -> set.getInt(1))
-                .filter(value -> value == 1)
+        return executeSingleQuery(createNutritionStateFindQuery(uuid), set -> set.getString(1))
+                .filter(value -> value.equals(player.getUniqueId().toString()))
                 .isPresent();
     }
 
@@ -57,9 +58,10 @@ public class PlayerNutritionRepository
         if (this.playerNutritionStates.containsKey(uuid)) {
             return Optional.of(this.playerNutritionStates.get(uuid));
         }
-        return executeSingleQuery(createNutritionStateFindQuery(uuid), set -> (PlayerNutritionState) null)
+        return executeSingleQuery(createNutritionStateFindQuery(uuid), createNutritionState(player))
                 .map(state -> {
-                    this.playerNutritionStates.put(uuid, state);
+                    PlayerNutritionState wrapper = new ConnectionWrapper(this.connection, state);
+                    this.playerNutritionStates.put(uuid, wrapper);
                     return state;
                 });
     }
@@ -94,6 +96,17 @@ public class PlayerNutritionRepository
         throw new UnsupportedOperationException();
     }
 
+    private ResultMapper<PlayerNutritionState> createNutritionState(Player player) {
+        return resultSet -> {
+            PlayerNutritionState state = PlayerNutritionState.of(player);
+            state.setAmount(Nutrition.CARBOHYDRATE, resultSet.getInt(2));
+            state.setAmount(Nutrition.PROTEIN, resultSet.getInt(3));
+            state.setAmount(Nutrition.FAT, resultSet.getInt(3));
+            state.setAmount(Nutrition.VITAMIN, resultSet.getInt(4));
+            return state;
+        };
+    }
+
     private static class ConnectionWrapper
             extends AbstractStatementExecutor
             implements PlayerNutritionState {
@@ -121,6 +134,7 @@ public class PlayerNutritionRepository
             String sql = String.format("UPDATE player_nutrition SET %s=%d WHERE uuid='%s'", nutrition
                     .name()
                     .toLowerCase(), amount, uuid);
+            System.out.println("executed sql: " + sql);
             execute(sql);
         }
 
@@ -132,6 +146,11 @@ public class PlayerNutritionRepository
         @Override
         public NutritionFacts asNutritionFacts() {
             return this.nutritionState.asNutritionFacts();
+        }
+
+        @Override
+        public String toString() {
+            return this.nutritionState.toString();
         }
     }
 }
