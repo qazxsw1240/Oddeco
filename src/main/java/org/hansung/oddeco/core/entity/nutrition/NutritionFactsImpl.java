@@ -46,7 +46,7 @@ class NutritionFactsImpl implements NutritionFacts {
     public Iterator<Info> iterator() {
         int counts = this.nutritionFacts.length;
         return new Iterator<>() {
-            private int current = 0;
+            private int current = -1;
 
             @Override
             public boolean hasNext() {
@@ -64,10 +64,9 @@ class NutritionFactsImpl implements NutritionFacts {
             }
 
             private int nextNutritionInfo() {
-                while (this.current < counts &&
+                while (++this.current < counts &&
                        NutritionFactsImpl.this.nutritionFacts[this.current] == 0) {
                     this.current++;
-                    continue;
                 }
                 return this.current;
             }
