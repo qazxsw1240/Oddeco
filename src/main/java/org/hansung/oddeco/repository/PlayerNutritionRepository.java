@@ -134,7 +134,6 @@ public class PlayerNutritionRepository
             String sql = String.format("UPDATE player_nutrition SET %s=%d WHERE uuid='%s'", nutrition
                     .name()
                     .toLowerCase(), amount, uuid);
-            System.out.println("executed sql: " + sql);
             execute(sql);
         }
 
