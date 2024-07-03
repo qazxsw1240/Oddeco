@@ -97,11 +97,33 @@ public final class Oddeco extends JavaPlugin {
                 .setMetaContainerBuilder(container -> container.set(nutritionKey, PersistentDataType.STRING, "mud_cookie"))
                 .build();
 
+        ItemStack dirtCookie = ItemStackBuilder
+                .of(Material.COARSE_DIRT, 16)
+                .setMetaBuilder(meta -> {
+                    meta.displayName(Component
+                            .text("Dirt Cookie", Style.empty()
+                                    .decoration(TextDecoration.ITALIC, TextDecoration.State.FALSE)
+                                    .decorate(TextDecoration.BOLD)));
+                    FoodComponent foodComponent = meta.getFood();
+                    foodComponent.setCanAlwaysEat(true);
+                    foodComponent.setEatSeconds(2.4f);
+                    foodComponent.setNutrition(0);
+                    foodComponent.setSaturation(0);
+                    meta.setFood(foodComponent);
+                })
+                .setMetaContainerBuilder(container -> container.set(nutritionKey, PersistentDataType.STRING, "mud_cookie"))
+                .build();
+
         ShapedRecipe mudCookieRecipe = new ShapedRecipe(new NamespacedKey(this, "MudCookie"), mudCookie)
                 .shape(" A ", "AAA", " A ")
                 .setIngredient('A', Material.DIRT);
 
+        ShapedRecipe dirtCookieRecipe = new ShapedRecipe(new NamespacedKey(this, "DirtCookie"), dirtCookie)
+                .shape(" AA", "AAA", " A ")
+                .setIngredient('A', Material.DIRT);
+
         getServer().addRecipe(mudCookieRecipe, true);
+        getServer().addRecipe(dirtCookieRecipe, true);
         getServer().updateRecipes();
     }
 }
