@@ -1,5 +1,6 @@
 package org.hansung.oddeco.service;
 
+import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -206,7 +207,6 @@ public class PlayerNutritionService implements Listener {
         for (NutritionFacts.Info info : nutritionFacts) {
             int amount = playerNutritionState.getAmount(info.getNutrition());
             playerNutritionState.setAmount(info.getNutrition(), trimRange(amount + info.getAmount()));
-            System.out.println("Find nutrition facts: " + playerNutritionState);
         }
         if (isAcquire) {
             player.sendMessage("Now your nutrition state is " + playerNutritionState);
@@ -217,6 +217,7 @@ public class PlayerNutritionService implements Listener {
             // PlayerNutritionConsumeEvent event = PlayerNutritionConsumeEvent.of(player, playerNutrition);
             // getListener(PlayerNutritionConsumeListener.class)
             //         .forEach(listener -> listener.onNutritionConsume(event));
+            player.sendMessage("Now your nutrition state is " + playerNutritionState);
         }
     }
 }
