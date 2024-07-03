@@ -1,5 +1,6 @@
 package org.hansung.oddeco.core.entity.nutrition;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -44,33 +45,9 @@ class NutritionFactsImpl implements NutritionFacts {
 
     @Override
     public Iterator<Info> iterator() {
-        int counts = this.nutritionFacts.length;
-        return new Iterator<>() {
-            private int current = -1;
-
-            @Override
-            public boolean hasNext() {
-                return nextNutritionInfo() != counts;
-            }
-
-            @Override
-            public Info next() {
-                if (this.current == counts) {
-                    throw new NoSuchElementException();
-                }
-                Nutrition nutrition = Nutrition.values()[this.current];
-                int amount = NutritionFactsImpl.this.nutritionFacts[this.current];
-                return new InfoImpl(nutrition, amount);
-            }
-
-            private int nextNutritionInfo() {
-                while (++this.current < counts &&
-                       NutritionFactsImpl.this.nutritionFacts[this.current] == 0) {
-                    this.current++;
-                }
-                return this.current;
-            }
-        };
+        return Arrays.stream(Nutrition.values())
+                .map(nutrition -> Info.of(nutrition, this.nutritionFacts[nutrition.ordinal()]))
+                .iterator();
     }
 
     @Override
