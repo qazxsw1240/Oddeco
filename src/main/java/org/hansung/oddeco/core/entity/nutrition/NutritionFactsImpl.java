@@ -73,6 +73,15 @@ class NutritionFactsImpl implements NutritionFacts {
         };
     }
 
+    @Override
+    public String toString() {
+        return String.format("NutritionFacts(carbohydrate=%d, protein=%d, fat=%d, vitamin=%d)",
+                this.nutritionFacts[0],
+                this.nutritionFacts[1],
+                this.nutritionFacts[2],
+                this.nutritionFacts[3]);
+    }
+
     static class InfoImpl implements Info {
         private final Nutrition nutrition;
         private final int amount;
