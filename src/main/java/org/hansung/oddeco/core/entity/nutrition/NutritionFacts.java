@@ -19,6 +19,10 @@ public interface NutritionFacts extends Iterable<NutritionFacts.Info> {
 
     public abstract int getNutrition(Nutrition nutrition);
 
+    public abstract NutritionFacts addNutritionFacts(NutritionFacts nutritionFacts);
+
+    public abstract NutritionFacts subtractNutritionFacts(NutritionFacts nutritionFacts);
+
     public static interface Info {
         public static Info of(Nutrition nutrition, int amount) {
             return new NutritionFactsImpl.InfoImpl(nutrition, amount);

@@ -43,6 +43,24 @@ class NutritionFactsImpl implements NutritionFacts {
     }
 
     @Override
+    public NutritionFacts addNutritionFacts(NutritionFacts nutritionFacts) {
+        int newCarbohydrate = this.nutritionFacts[0] + nutritionFacts.getNutrition(Nutrition.CARBOHYDRATE);
+        int newProtein = this.nutritionFacts[1] + nutritionFacts.getNutrition(Nutrition.PROTEIN);
+        int newFat = this.nutritionFacts[2] + nutritionFacts.getNutrition(Nutrition.FAT);
+        int newVitamin = this.nutritionFacts[3] + nutritionFacts.getNutrition(Nutrition.VITAMIN);
+        return new NutritionFactsImpl(newCarbohydrate, newProtein, newFat, newVitamin);
+    }
+
+    @Override
+    public NutritionFacts subtractNutritionFacts(NutritionFacts nutritionFacts) {
+        int newCarbohydrate = this.nutritionFacts[0] - nutritionFacts.getNutrition(Nutrition.CARBOHYDRATE);
+        int newProtein = this.nutritionFacts[1] - nutritionFacts.getNutrition(Nutrition.PROTEIN);
+        int newFat = this.nutritionFacts[2] - nutritionFacts.getNutrition(Nutrition.FAT);
+        int newVitamin = this.nutritionFacts[3] - nutritionFacts.getNutrition(Nutrition.VITAMIN);
+        return new NutritionFactsImpl(newCarbohydrate, newProtein, newFat, newVitamin);
+    }
+
+    @Override
     public Iterator<Info> iterator() {
         return Arrays.stream(Nutrition.values())
                 .map(nutrition -> Info.of(nutrition, this.nutritionFacts[nutrition.ordinal()]))
