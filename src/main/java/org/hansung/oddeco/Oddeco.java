@@ -12,7 +12,6 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.components.FoodComponent;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.hansung.oddeco.butcher.ButcherListener;
 import org.hansung.oddeco.core.Plugin;
 import org.hansung.oddeco.core.json.JsonUtil;
 import org.hansung.oddeco.core.util.entity.ItemStackBuilder;
@@ -60,7 +59,16 @@ public final class Oddeco extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        this.getServer().getLogger().info("Disabled");
+        try {
+            Connection connection = this.connection.get();
+            if (connection != null) {
+                connection.close();
+            }
+            this.logger.info("DB Connection successfully closed");
+            this.logger.info("Disabled Plugin [Oddeco]");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
