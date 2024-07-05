@@ -1,6 +1,6 @@
 package org.hansung.oddeco.service;
 
-import org.bukkit.Material;
+import net.kyori.adventure.text.Component;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,14 +20,20 @@ import org.hansung.oddeco.core.entity.player.PlayerNutritionState;
 import org.hansung.oddeco.core.util.logging.FormattedLogger;
 import org.hansung.oddeco.repository.NutritionFactRepository;
 import org.hansung.oddeco.repository.PlayerNutritionRepository;
+import org.hansung.oddeco.service.nutrition.PlayerNutritionStateListener;
+import org.hansung.oddeco.service.nutrition.PlayerNutritionStateListenerManager;
+import org.hansung.oddeco.service.nutrition.PlayerNutritionStateUpdateListener;
+import org.hansung.oddeco.service.nutrition.PlayerNutritionUpdateEvent;
 
 import java.sql.*;
 import java.time.Duration;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.*;
+import java.util.stream.Collectors;
 
-public class PlayerNutritionService implements Listener {
+public class PlayerNutritionService implements Listener, PlayerNutritionStateListenerManager {
     private static final Duration DEFAULT_EXHAUSTION_DELAY = Duration.ofSeconds(10);
     private static final int DEFAULT_EXHAUSTION_DECREMENT = 1;
 
@@ -37,6 +43,7 @@ public class PlayerNutritionService implements Listener {
     private final FormattedLogger logger;
     private final NamespacedKey nutritionKey;
     private final ConcurrentMap<UUID, ScheduledExecutorService> executorServiceMap;
+    private final Set<PlayerNutritionStateListener> listeners;
 
     private Duration exhaustionDelay;
     private int decrement;
@@ -54,22 +61,20 @@ public class PlayerNutritionService implements Listener {
         this.logger = logger;
         this.nutritionKey = new NamespacedKey(plugin, "nutrition");
         this.executorServiceMap = new ConcurrentSkipListMap<>();
+        this.listeners = new CopyOnWriteArraySet<>();
 
         this.exhaustionDelay = DEFAULT_EXHAUSTION_DELAY;
         this.decrement = DEFAULT_EXHAUSTION_DECREMENT;
         this.decrementNutritionFacts = calculateDecrementNutritionFacts();
 
         initializeSqlTable();
-        // addListener((PlayerNutritionAcquireListener) event -> {
-        //     Player player = event.getPlayer();
-        //     PlayerNutrition nutrition = playerNutritionMap.get(player.getUniqueId());
-        //     player.sendMessage(Component.text("now your nutrition status is " + nutrition));
-        // });
-        // addListener((PlayerNutritionConsumeListener) event -> {
-        //     Player player = event.getPlayer();
-        //     PlayerNutrition nutrition = playerNutritionMap.get(player.getUniqueId());
-        //     player.sendMessage(Component.text("now your nutrition status is " + nutrition));
-        // });
+        addListener((PlayerNutritionStateUpdateListener) event -> {
+            Player player = event.getPlayer();
+            PlayerNutritionState nutritionState = this.playerNutritionRepository
+                    .get(player)
+                    .orElseThrow();
+            player.sendMessage(Component.text("now your nutrition status is " + nutritionState));
+        });
     }
 
     private static int trimRange(int x) {
@@ -117,7 +122,7 @@ public class PlayerNutritionService implements Listener {
         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
         this.executorServiceMap.put(uuid, executorService);
         long delay = this.exhaustionDelay.toMillis();
-        executorService.scheduleAtFixedRate(() -> updateNutritionFacts(player, this.decrementNutritionFacts, false), delay, delay, TimeUnit.MILLISECONDS);
+        executorService.scheduleAtFixedRate(() -> updateNutritionFacts(player, this.decrementNutritionFacts), delay, delay, TimeUnit.MILLISECONDS);
     }
 
     @EventHandler
@@ -162,7 +167,22 @@ public class PlayerNutritionService implements Listener {
         if (nutritionFacts.isEmpty()) {
             throw new IllegalStateException("Cannot find nutrition fact for key " + key);
         }
-        updateNutritionFacts(player, nutritionFacts.get(), true);
+        updateNutritionFacts(player, nutritionFacts.get());
+    }
+
+    @Override
+    public void addListener(PlayerNutritionStateListener listener) {
+        this.listeners.add(listener);
+    }
+
+    @Override
+    public void removeListener(PlayerNutritionStateListener listener) {
+        this.listeners.remove(listener);
+    }
+
+    @Override
+    public void removeAllListeners() {
+        this.listeners.clear();
     }
 
     private void initializeSqlTable() {
@@ -200,24 +220,26 @@ public class PlayerNutritionService implements Listener {
         return NutritionFacts.of(-this.decrement, -this.decrement, -this.decrement, -this.decrement);
     }
 
-    private void updateNutritionFacts(Player player, NutritionFacts nutritionFacts, boolean isAcquire) {
+    private void updateNutritionFacts(Player player, NutritionFacts nutritionFacts) {
         PlayerNutritionState playerNutritionState = this.playerNutritionRepository
                 .get(player)
                 .orElseThrow();
+        NutritionFacts previousNutritionFacts = NutritionFacts.of(playerNutritionState.asNutritionFacts());
         for (NutritionFacts.Info info : nutritionFacts) {
             int amount = playerNutritionState.getAmount(info.getNutrition());
             playerNutritionState.setAmount(info.getNutrition(), trimRange(amount + info.getAmount()));
         }
-        if (isAcquire) {
-            player.sendMessage("Now your nutrition state is " + playerNutritionState);
-            // PlayerNutritionAcquireEvent event = PlayerNutritionAcquireEvent.of(player, playerNutrition);
-            // getListener(PlayerNutritionAcquireListener.class)
-            //         .forEach(listener -> listener.onNutritionAcquire(event));
-        } else {
-            // PlayerNutritionConsumeEvent event = PlayerNutritionConsumeEvent.of(player, playerNutrition);
-            // getListener(PlayerNutritionConsumeListener.class)
-            //         .forEach(listener -> listener.onNutritionConsume(event));
-            player.sendMessage("Now your nutrition state is " + playerNutritionState);
-        }
+        NutritionFacts nextNutritionFacts = NutritionFacts.of(playerNutritionState.asNutritionFacts());
+        NutritionFacts increment = nextNutritionFacts.subtractNutritionFacts(previousNutritionFacts);
+        PlayerNutritionUpdateEvent event = PlayerNutritionUpdateEvent.of(player, increment);
+        getListeners(PlayerNutritionStateUpdateListener.class)
+                .forEach(listener -> listener.onPlayerNutritionStateUpdate(event));
+    }
+
+    private <L extends PlayerNutritionStateListener> Set<L> getListeners(Class<L> listenerType) {
+        return this.listeners.stream()
+                .filter(listenerType::isInstance)
+                .map(listenerType::cast)
+                .collect(Collectors.toSet());
     }
 }
