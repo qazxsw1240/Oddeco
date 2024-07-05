@@ -2,7 +2,6 @@ package org.hansung.oddeco.core.entity.nutrition;
 
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 import java.util.Set;
 
 class NutritionFactsImpl implements NutritionFacts {
@@ -41,6 +40,24 @@ class NutritionFactsImpl implements NutritionFacts {
     @Override
     public int getNutrition(Nutrition nutrition) {
         return this.nutritionFacts[nutrition.ordinal()];
+    }
+
+    @Override
+    public NutritionFacts addNutritionFacts(NutritionFacts nutritionFacts) {
+        int newCarbohydrate = this.nutritionFacts[0] + nutritionFacts.getNutrition(Nutrition.CARBOHYDRATE);
+        int newProtein = this.nutritionFacts[1] + nutritionFacts.getNutrition(Nutrition.PROTEIN);
+        int newFat = this.nutritionFacts[2] + nutritionFacts.getNutrition(Nutrition.FAT);
+        int newVitamin = this.nutritionFacts[3] + nutritionFacts.getNutrition(Nutrition.VITAMIN);
+        return new NutritionFactsImpl(newCarbohydrate, newProtein, newFat, newVitamin);
+    }
+
+    @Override
+    public NutritionFacts subtractNutritionFacts(NutritionFacts nutritionFacts) {
+        int newCarbohydrate = this.nutritionFacts[0] - nutritionFacts.getNutrition(Nutrition.CARBOHYDRATE);
+        int newProtein = this.nutritionFacts[1] - nutritionFacts.getNutrition(Nutrition.PROTEIN);
+        int newFat = this.nutritionFacts[2] - nutritionFacts.getNutrition(Nutrition.FAT);
+        int newVitamin = this.nutritionFacts[3] - nutritionFacts.getNutrition(Nutrition.VITAMIN);
+        return new NutritionFactsImpl(newCarbohydrate, newProtein, newFat, newVitamin);
     }
 
     @Override
