@@ -60,16 +60,7 @@ public final class Oddeco extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        try {
-            Connection connection = this.connection.get();
-            if (connection != null) {
-                connection.close();
-            }
-            this.logger.info("DB Connection successfully closed");
-            this.logger.info("Disabled Plugin [Oddeco]");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        this.getServer().getLogger().info("Disabled");
     }
 
     @Override
