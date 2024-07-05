@@ -30,7 +30,7 @@ public interface ButcherReward {
                     type = Material.RABBIT;
             case Cow cow when butcher.getLevel() >= 5 -> type = Material.BEEF;
             case Sheep sheep when butcher.getLevel() >= 6 ->
-                    type = Material.MUTTON;
+                    type = Material.MUTTON; // 이 Sheep Duck 같으니라고
             case null, default -> {
                 if (entity instanceof Animals) type = null;
                 else type = randomMeat(butcher);
