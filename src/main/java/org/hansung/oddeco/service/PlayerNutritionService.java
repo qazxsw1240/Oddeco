@@ -1,6 +1,5 @@
 package org.hansung.oddeco.service;
 
-import net.kyori.adventure.text.Component;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Item;
@@ -271,18 +270,17 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
         for (NutritionFacts.Info info : nutritionFacts) {
             int amount = playerNutritionState.getAmount(info.getNutrition());
             playerNutritionState.setAmount(info.getNutrition(), trimRange(amount + info.getAmount()));
+            System.out.println("Find nutrition facts: " + playerNutritionState);
         }
-        NutritionFacts nextNutritionFacts = NutritionFacts.of(playerNutritionState.asNutritionFacts());
-        NutritionFacts increment = nextNutritionFacts.subtractNutritionFacts(previousNutritionFacts);
-        PlayerNutritionUpdateEvent event = PlayerNutritionUpdateEvent.of(player, increment);
-        getListeners(PlayerNutritionStateUpdateListener.class)
-                .forEach(listener -> listener.onPlayerNutritionStateUpdate(event));
-    }
-
-    private <L extends PlayerNutritionStateListener> Set<L> getListeners(Class<L> listenerType) {
-        return this.listeners.stream()
-                .filter(listenerType::isInstance)
-                .map(listenerType::cast)
-                .collect(Collectors.toSet());
+        if (isAcquire) {
+            player.sendMessage("Now your nutrition state is " + playerNutritionState);
+            // PlayerNutritionAcquireEvent event = PlayerNutritionAcquireEvent.of(player, playerNutrition);
+            // getListener(PlayerNutritionAcquireListener.class)
+            //         .forEach(listener -> listener.onNutritionAcquire(event));
+        } else {
+            // PlayerNutritionConsumeEvent event = PlayerNutritionConsumeEvent.of(player, playerNutrition);
+            // getListener(PlayerNutritionConsumeListener.class)
+            //         .forEach(listener -> listener.onNutritionConsume(event));
+        }
     }
 }
