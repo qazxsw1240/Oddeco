@@ -2,21 +2,32 @@ package org.hansung.oddeco.butcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonElement;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
+import net.kyori.adventure.text.Component;
+import org.bukkit.*;
+import org.bukkit.block.Block;
+import org.bukkit.block.Chest;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.loot.LootTable;
+import org.bukkit.material.MaterialData;
+import org.bukkit.metadata.MetadataValue;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.hansung.oddeco.core.json.JsonUtil;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Unmodifiable;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
@@ -32,6 +43,8 @@ public class ButcherListener implements Listener {
     public ButcherListener(JavaPlugin plugin) {
         Probability probability1;
         this.plugin = plugin;
+
+        plugin.getLogger().info("Butcher Listener Registed.");
 
         // 갓=태명님이 짜주신 /resources 폴더의 파일 읽는 개쩌는 코드 (뭔지 모름)
         try (InputStream in = getClass().getResourceAsStream("/ButcherProbability.json");
@@ -49,6 +62,7 @@ public class ButcherListener implements Listener {
         setMeatPieceRecipe();
         ConcurrentMap<Character, Object> data = new ConcurrentHashMap<>();
         data.put('1', Material.GOLD_INGOT);
+        data.put('2', Material.GLOWSTONE_DUST);
         data.put('M', Material.RED_DYE);
 
         JsonElement jsonElement = JsonUtil.of("/butcher_recipes.json");
@@ -56,14 +70,18 @@ public class ButcherListener implements Listener {
         repository.getKeys().forEach(meat -> createRecipe(meat.getIdentityText(), meat.getItem(), repository.get(meat).get(), data));
     }
 
+    // 최적화 필요
     public void createRecipe(String key, ItemStack item, String[] values, ConcurrentMap<Character, Object> ingredient) {
         NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
         ShapedRecipe recipe = new ShapedRecipe(namespacedKey, item);
         recipe.shape(values[0], values[1], values[2]); // ㅖ?
         ingredient.forEach((key1, value) -> {
-            if (value instanceof Material) recipe.setIngredient(key1, (Material)value);
-            else if (value instanceof ItemStack) recipe.setIngredient(key1, (ItemStack)value);
-            else throw new RuntimeException("레시피 아이템이 잘못됨");
+            for (String string : recipe.getShape()) {
+                if (!string.contains(key1.toString())) continue;
+                if (value instanceof Material) recipe.setIngredient(key1, (Material)value);
+                else if (value instanceof ItemStack) recipe.setIngredient(key1, (ItemStack)value);
+                else throw new RuntimeException("레시피 아이템이 잘못됨");
+            }
         });
         plugin.getServer().addRecipe(recipe);
     }
