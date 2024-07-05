@@ -1,0 +1,22 @@
+oraxen_inventory:
+  menu_layout:
+    customcrops_basics:
+      slot: 12
+      icon: dry_pot
+      title: <main_menu_title><RED><glyph:menu_items_overlay:colorable>
+    customcrops_fertilizers:
+      slot: 13
+      icon: quality_1
+      title: <main_menu_title><RED><glyph:menu_items_overlay:colorable>
+    customcrops_sprinklers:
+      slot: 14
+      icon: sprinkler_1
+      title: <main_menu_title><RED><glyph:menu_items_overlay:colorable>
+    customcrops_tomato:
+      slot: 15
+      icon: tomato_seeds
+      title: <main_menu_title><RED><glyph:menu_items_overlay:colorable>
+    customcrops_wateringcans:
+      slot: 16
+      icon: watering_can_1
+      title: <main_menu_title><RED><glyph:menu_items_overlay:colorable>

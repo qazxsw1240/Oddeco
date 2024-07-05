@@ -1,0 +1,22 @@
+config-version: 1
+
+# 자동 저장 주기 (틱 단위)
+auto-save-period: 6000
+
+giftbox:
+  # 보상을 HQGiftBox로 보낼지 (false일 시 인벤토리로 지급)
+  enabled: false
+  display-name: "&e랜덤 박스 보상"
+  lore: []
+
+message:
+  inventory-full: "&c인벤토리에 공간이 부족합니다."
+
+# 뽑았을 때
+pick-effect:
+  # %item% = 아이템 이름
+  message: "&6%item% 획득!"
+  sound:
+    name: "minecraft:entity.player.levelup"
+    volume: 1
+    pitch: 1

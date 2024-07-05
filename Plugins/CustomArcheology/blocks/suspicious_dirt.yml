@@ -1,0 +1,36 @@
+general:
+  display_name: "&fSuspicious Dirt"
+  replace_block: dirt
+  generate_biomes: all
+  distribution: 0 ~ 127
+  gaussian:
+    mean: 32.0
+    standard_deviation: 64.0
+  max_per_chunk: 16
+  loot_tables:
+    - "stone"
+
+brush_tools:
+  archaeological_shovel:
+    efficiency: 1.0
+  diamond_archaeological_shovel:
+    efficiency: 2.0
+  netherite_archaeological_shovel:
+    efficiency: 3.0
+    loot_table: netherite_tool
+
+states:
+  default:
+    texture: "suspicious_dirt_0"
+    hardness: 1.0
+  state_1:
+    texture: "suspicious_dirt_1"
+    hardness: 1.0
+  state_2:
+    texture: "suspicious_dirt_2"
+    hardness: 1.0
+  state_3:
+    texture: "suspicious_dirt_3"
+    hardness: 1.0
+  finished:
+    material: dirt

@@ -1,0 +1,169 @@
+yield_increase_1:
+  type: YIELD_INCREASE
+  icon: 뀏
+  times: 14
+  item: yield_increase_1
+  before-plant: true
+  pot-whitelist:
+  - default
+  # 10% chance to gain another 3 crops
+  # (100% - 10%) * 40% = 36% chance to gain another 2 crops
+  # (100% - (10% + 36%)) * 80% = 43.2% chance to gain another 1 crop
+  chance:
+    '3': 0.1
+    '2': 0.4
+    '1': 0.8
+  events:
+    use:
+      particle_action:
+        type: particle
+        value:
+          particle: TOTEM
+          x: 0.5
+          y: 1.3
+          z: 0.5
+          count: 5
+          offset-x: 0.3
+          offset-z: 0.3
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.hoe.till
+          volume: 1
+          pitch: 1
+    wrong_pot:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] This fertilizer can only be used in pots.
+    before_plant:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] You can only use this fertilizer before planting the
+          crop.
+yield_increase_2:
+  type: YIELD_INCREASE
+  icon: 뀐
+  times: 14
+  item: yield_increase_2
+  before-plant: true
+  pot-whitelist:
+  - default
+  # 20% chance to gain another 3 crops
+  # (100% - 20%) * 60% = 48% chance to gain another 2 crops
+  # (100% - (20% + 48%)) * 80% = 25.6% chance to gain another 1 crop
+  chance:
+    '3': 0.2
+    '2': 0.6
+    '1': 1
+  events:
+    use:
+      particle_action:
+        type: particle
+        value:
+          particle: TOTEM
+          x: 0.5
+          y: 1.3
+          z: 0.5
+          count: 5
+          offset-x: 0.3
+          offset-z: 0.3
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.hoe.till
+          volume: 1
+          pitch: 1
+    wrong_pot:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] This fertilizer can only be used in pots.
+    before_plant:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] You can only use this fertilizer before planting the
+          crop.
+yield_increase_3:
+  type: YIELD_INCREASE
+  icon: 뀑
+  times: 14
+  item: yield_increase_3
+  before-plant: true
+  pot-whitelist:
+  - default
+  # 40% chance to gain another 3 crops
+  # (100% - 40%) * 100% = 60% chance to gain another 2 crops
+  chance:
+    '3': 0.4
+    '2': 1
+  events:
+    use:
+      particle_action:
+        type: particle
+        value:
+          particle: TOTEM
+          x: 0.5
+          y: 1.3
+          z: 0.5
+          count: 5
+          offset-x: 0.3
+          offset-z: 0.3
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.hoe.till
+          volume: 1
+          pitch: 1
+    wrong_pot:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] This fertilizer can only be used in pots.
+    before_plant:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] You can only use this fertilizer before planting the
+          crop.

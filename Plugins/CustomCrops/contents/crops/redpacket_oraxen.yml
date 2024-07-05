@@ -1,0 +1,170 @@
+redpacket:
+  type: TRIPWIRE
+  pot-whitelist:
+  - default
+  seed: redpacket_seeds
+  requirements:
+    plant:
+      requirement_1:
+        type: season
+        value:
+        - Spring
+        - Winter
+        message: It's not a good season to plant redpacket tree
+      requirement_2:
+        type: permission
+        value: farmer6.redpacket
+        message: 복주머니를 심을 권한이 없습니다.
+  max-points: 5
+  points:
+    '0':
+      model: redpacket_stage_1
+      hologram-offset-correction: -0.4
+      events:
+        break:
+          action_1:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+    '1':
+      model: redpacket_stage_2
+      hologram-offset-correction: -0.3
+      events:
+        break:
+          action_1:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+    '2':
+      model: redpacket_stage_3
+      hologram-offset-correction: -0.2
+      events:
+        break:
+          action_1:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+    '3':
+      model: redpacket_stage_4
+      hologram-offset-correction: -0.1
+      events:
+        break:
+          action_1:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+    '4':
+      model: redpacket_stage_5
+      hologram-offset-correction: 0
+      events:
+        break:
+          action_1:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+    '5':
+      model: redpacket_stage_6
+      hologram-offset-correction: 0
+      events:
+        break:
+          action_1:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+          action_2:
+            type: drop-items
+            value:
+              other-items:
+                loot_1:
+                  item: redpacket
+                  min: 1
+                  max: 1
+                  chance: 1
+                loot_2:
+                  item: redpacket
+                  min: 1
+                  max: 1
+                  chance: 0.8
+                loot_3:
+                  item: redpacket
+                  min: 1
+                  max: 1
+                  chance: 0.6
+                loot_4:
+                  item: redpacket
+                  min: 1
+                  max: 1
+                  chance: 0.4
+  grow-conditions:
+    condition_1:
+      type: suitable_season
+      value:
+      - Spring
+      - Winter
+    condition_2:
+      type: water_more_than
+      value: 0
+  death-conditions:
+    unsuitable_season:
+      model: crop_stage_death
+      conditions:
+        condition_1:
+          type: unsuitable_season
+          value:
+          - Summer
+          - Autumn
+  custom-bone-meal:
+    bone_meal_1:
+      item: BONE_MEAL
+      chance:
+        '2': 0.2
+        '1': 0.6
+      actions:
+        swing_action:
+          type: swing-hand
+          value: true
+        particle_action:
+          type: particle
+          value:
+            particle: VILLAGER_HAPPY
+            count: 5
+            x: 0.5
+            y: 0.5
+            z: 0.5
+            offset-x: 0.3
+            offset-y: 0.3
+            offset-z: 0.3
+        sound_action:
+          type: sound
+          value:
+            key: minecraft:item.bone_meal.use
+            source: player
+            volume: 1
+            pitch: 1
+  events:
+    plant:
+      action_1:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.hoe.till
+          volume: 1
+          pitch: 1

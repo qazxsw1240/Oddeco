@@ -1,0 +1,6181 @@
+# << Example configuration >>
+# lastchance:    <-- Enchantment name
+#  display: "%group-color%Last Chance"    <-- Display in item lore
+#  description: "Has a chance to heal when on low hearts"    <-- Enchantment Description
+#  applies-to: "Chestplate"    <-- What applies to (display purposes)
+#  type: "DEFENSE"    <-- Enchantment type (controls when enchantment activates)
+#  group: "COMMON"    <-- Enchantment group (For enchanter and right-click random books)
+#  settings:
+#    required-enchants:
+#      - "springs:1" # Can require specific level
+#      - "gears"
+#    not-applyable-with:
+#      - "frozen"
+#  applies:    <-- List of items that it applies
+#    - ALL_CHESTPLATE    <-- Item(s) list
+#  levels:    < -- All Levels are under here
+#    1:     <-- Level indicator
+#      chance: 30    <-- Chance for enchantment to activate
+#      conditions: "%victim health% > 5 : %stop%"    <-- Condition (read more about it at Conditions)
+#      description: "Has the lowest chance to heal when on low hearts"    <-- Per level description (different description for each level - optional)
+#      effects:    <-- All enchantment effects
+#        - "ADD_HEALTH:2 %victim%"    <-- Effect(s) list
+
+#  Display (String) (No spaces or enchantment will break)
+#    Determines how will enchantment look in item lore
+
+#  Applies-to (String)
+#    Display used in Custom Enchantment books for %description% variable
+
+#  Group (Setting)
+#    INFO: Create enchantment groups in config.yml under enchanter configuration.
+#   Enchantment groups are used for enchanter, to sell specific type books. You can group them
+#   and add a group-wide color, then obtain it with variable %group-color% (shown in example enchantments below).
+
+#  Enchantment Types List: https://ae.advancedplugins.net/enchantments/creating-enchantments/type-list
+
+#  Applies (Material)
+#    Determines which items will have the effects
+#    The Latest Materials list: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+#    NOTICE: You can use "LEATHER_ARMOR, IRON_ARMOR, CHAIN_ARMOR, GOLD_ARMOR or DIAMOND_ARMOR" to
+#    instantly add availability for all specific armor type pieces.
+#    Use "ALL_ARMOR" to add all armor pieces.
+#    Use "ALL_HELMET" to add all helmets.
+#    Use "ALL_CHESTPLATE" to add all chestplates.
+#    Use "ALL_BOOTS" to add all boots.
+#    Use "ALL_SWORD" to add all swords.
+#    Use "ALL_PICKAXE" to add all pickaxes.
+#    Use "ALL_AXE" to add all axes.
+#    Use "ALL_EDIBLE" to add all foods.
+#    And so on, but make sure to use non-plural names of items!
+
+#  Levels (Numbers)
+#    Effects for each level, use as display in examples.
+
+#  Enchantment Effect List: https://ae.advancedplugins.net/enchantments/creating-enchantments/effect-list
+
+#        # You can use tags <random word>word1,word2,word3</random word>, it will get a random word from listed words.
+#        # You can use tags <random number>x-y</random number> while x < y, it will generate a random number between two given integers.
+#        # e.g.: "STEAL_MONEY:<random number>10000-50000</random number>"
+#        # Use <chance>x</chance> to set per-effect chance, x being a chance percentage.
+#        # e.g.: "POTION:SPEED:1:100 %attacker% <chance>25</chance>"
+
+#        # You also may use %victim% or %attacker% flag to give effects to different players (in ATTACK, BOW, DEATH, KILL_PLAYER and DEFENSE types).
+#        # Example usage: - "POTION:POISON:1:50 %attacker%', this will give Level 2 POISON potion effect to the player who attacked.
+#        # If none is provided, effects will be given to the player who had custom enchanted item.
+#        # You can add %combo% instead of numbers, to use number of combo's player has (eg. to limit combo number: "%combo% > 0 && %combo% < 5 : %continue%')
+#        # You can add %damage% instead of numbers, to use number of damage has been done (for ATTACK and DEFENSE)
+
+#  Area of effect: https://ae.advancedplugins.net/enchantments/radius-of-effect-enchantments
+#  Conditions:  https://ae.advancedplugins.net/enchantments/enchantment-conditions
+
+# Settings for enchantments
+# *** This is not a required configuration section and each enchantment doesn't need to have it ***
+#  settings:
+#    required-enchants:
+#      - "springs"
+#    not-applyable-with:
+#      - "frozen"
+#    removeable: false # Makes enchantment non-removeable with blackscrolls
+#    disable-in-enchanter: true # Players can no longer obtain enchantment from Enchanter
+#    disabled-worlds: # List worlds in which enchantment will not work (cAsE sEnSiTiVe)
+#      - "My_World"
+autoreel:
+  display: '%group-color%자동낚시'
+  description: "생선이 물면 자동으로 낚아줍니다."
+  applies-to: 낚시대
+  type: BITE_HOOK
+  group: ULTIMATE
+  settings:
+    showActionBar: true
+  applies:
+    - FISHING_ROD
+  levels:
+    '1':
+      chance: 25
+      effects:
+        - AUTO_REEL
+    '2':
+      chance: 50
+      effects:
+        - AUTO_REEL
+    '3':
+      chance: 75
+      effects:
+        - AUTO_REEL
+    '4':
+      effects:
+        - AUTO_REEL
+gemify:
+  display: '%group-color%정제'
+  description: 일정한 확률로 캐는 광물 광석 블럭을 5%로 순수한 광물 블럭으로 전환합니다.
+  applies-to: 곡괭이
+  type: MINING
+  group: FABLED
+  settings:
+    showActionBar: false
+  applies:
+    - ALL_PICKAXE
+  levels:
+    '1':
+      chance: 5
+      cooldown: 5
+      effects:
+        - PARTICLE:GLOW:30:0.5 @Block
+        - PLAY_SOUND:ENTITY_PLAYER_LEVELUP @Self
+        - 'SET_BLOCK:GOLD_BLOCK @Block <condition>%block type% contains GOLD_ORE : %allow%</condition>'
+        - 'SET_BLOCK:IRON_BLOCK @Block <condition>%block type% contains IRON_ORE : %allow%</condition>'
+        - 'SET_BLOCK:COAL_BLOCK @Block <condition>%block type% contains COAL_ORE : %allow%</condition>'
+        - 'SET_BLOCK:EMERALD_BLOCK @Block <condition>%block type% contains EMERALD_ORE : %allow%</condition>'
+        - 'SET_BLOCK:COPPER_BLOCK @Block <condition>%block type% contains COPPER_ORE : %allow%</condition>'
+        - 'SET_BLOCK:REDSTONE_BLOCK @Block <condition>%block type% contains REDSTONE_ORE : %allow%</condition>'
+        - 'SET_BLOCK:LAPIS_BLOCK @Block <condition>%block type% contains LAPIS_ORE : %allow%</condition>'
+        - 'SET_BLOCK:DIAMOND_BLOCK @Block <condition>%block type% contains DIAMOND_ORE : %allow%</condition>'
+planter:
+  display: '%group-color%심기'
+  description: |-
+    씨앗을 3x3 크기로 심습니다.
+    단지 쉬프트 + 우클릭만으로요.
+  applies-to: 괭이
+  type: RIGHT_CLICK
+  settings:
+    showActionBar: true
+  group: ULTIMATE
+  applies:
+    - ALL_HOE
+  levels:
+    '1':
+      conditions:
+        - '%player is sneaking% = true : %allow%'
+      cooldown: 3
+      effects:
+        - PLANT_SEEDS:1
+    '2':
+      conditions:
+        - '%player is sneaking% = true : %allow%'
+      cooldown: 2
+      effects:
+        - PLANT_SEEDS:1
+    '3':
+      conditions:
+        - '%player is sneaking% = true : %allow%'
+      effects:
+        - PLANT_SEEDS:1
+potatoplanter:
+  display: '%group-color%감자심기'
+  description: |-
+    감자를 3x3 크기로 심습니다.
+    단지 쉬프트 + 우클릭만으로요.
+  applies-to: 괭이
+  type: RIGHT_CLICK
+  settings:
+    showActionBar: true
+  group: ULTIMATE
+  applies:
+    - ALL_HOE
+  levels:
+    '1':
+      conditions:
+        - '%player is sneaking% = true : %allow%'
+      cooldown: 3
+      effects:
+        - PLANT_SEEDS:1:POTATO
+    '2':
+      conditions:
+        - '%player is sneaking% = true : %allow%'
+      cooldown: 2
+      effects:
+        - PLANT_SEEDS:1:POTATO
+    '3':
+      conditions:
+        - '%player is sneaking% = true : %allow%'
+      effects:
+        - PLANT_SEEDS:1:POTATO
+carrotplanter:
+  display: '%group-color%당근심기'
+  description: |-
+    당근을 3x3 크기로 심습니다.
+    단지 쉬프트 + 우클릭만으로요.
+  applies-to: 괭이
+  type: RIGHT_CLICK
+  group: ULTIMATE
+  settings:
+    showActionBar: true
+  applies:
+    - ALL_HOE
+  levels:
+    '1':
+      conditions:
+        - '%player is sneaking% = true : %allow%'
+      cooldown: 3
+      effects:
+        - PLANT_SEEDS:1:CARROT
+    '2':
+      conditions:
+        - '%player is sneaking% = true : %allow%'
+      cooldown: 2
+      effects:
+        - PLANT_SEEDS:1:CARROT
+    '3':
+      conditions:
+        - '%player is sneaking% = true : %allow%'
+      effects:
+        - PLANT_SEEDS:2:CARROT
+replanter:
+  display: '%group-color%다시심기'
+  description: 부순 농작물을 다시 심습니다. (커스텀 작물 제외)
+  applies-to: 괭이
+  type: MINING
+  group: UNIQUE
+  applies:
+    - ALL_HOE
+  levels:
+    '1':
+      conditions:
+        - '%is crop% = false : %stop%'
+        - '%is fully grown% = false : %stop%'
+      effects:
+        - PLANT_SEEDS:0:%block drop type%
+strike:
+  display: '%group-color%섬광'
+  description: |-
+    일정 확률로 공격한 상대방에게
+    번개를 내리 찍습니다.
+  applies-to: 검, 활, 석궁, 삼지창
+  type: ATTACK;ATTACK_MOB;SHOOT;SHOOT_MOB
+  settings:
+    showActionBar: false
+  group: SIMPLE
+  applies:
+    - SWORD
+    - BOW
+    - CROSSBOW
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 24
+      cooldown: 3
+      effects:
+        - LIGHTNING @Victim
+    '2':
+      chance: 32
+      cooldown: 3
+      effects:
+        - LIGHTNING @Victim
+    '3':
+      chance: 40
+      cooldown: 4
+      effects:
+        - LIGHTNING @Victim
+impact:
+  display: '%group-color%임팩트'
+  description: 일정 확률로 2배의 데미지를 입힙니다.
+  applies-to: 삼지창
+  type: SHOOT;SHOOT_MOB
+  settings:
+    showActionBar: true
+  group: ELITE
+  applies:
+    - TRIDENT
+  levels:
+    '1':
+      chance: 5
+      cooldown: 3
+      effects:
+        - DOUBLE_DAMAGE @Victim
+    '2':
+      chance: 10
+      cooldown: 3
+      effects:
+        - DOUBLE_DAMAGE @Victim
+    '3':
+      chance: 20
+      cooldown: 5
+      effects:
+        - DOUBLE_DAMAGE @Victim
+    '4':
+      chance: 40
+      cooldown: 6
+      effects:
+        - DOUBLE_DAMAGE @Victim
+twinge:
+  display: '%group-color%찢기'
+  description: |-
+    근접 공격을 할 경우,
+    상대방을 출혈 상태로 만듭니다.
+  applies-to: 삼지창
+  type: ATTACK
+  group: LEGENDARY
+  settings:
+    showActionBar: true
+  applies:
+    - TRIDENT
+  levels:
+    '1':
+      chance: 5
+      cooldown: 3
+      effects:
+        - POTION:SLOW:0:100 @Victim
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - MESSAGE:§4You're bleeding! @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+    '2':
+      chance: 8
+      cooldown: 3
+      effects:
+        - POTION:SLOW:0:100 @Victim
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - MESSAGE:§4You're bleeding! @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+    '3':
+      chance: 15
+      cooldown: 5
+      effects:
+        - POTION:SLOW:0:100 @Victim
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - MESSAGE:§4You're bleeding! @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+    '4':
+      chance: 30
+      cooldown: 6
+      effects:
+        - POTION:SLOW:0:100 @Victim
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - MESSAGE:§4You're bleeding! @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+jellylegs:
+  display: '%group-color%무중력'
+  description: 일정 확률로 낙뎀을 무시합니다.
+  applies-to: 신발
+  type: FALL_DAMAGE
+  settings:
+    showActionBar: true
+  group: ULTIMATE
+  applies:
+    - ALL_BOOTS
+  levels:
+    '1':
+      chance: 40
+      effects:
+        - CANCEL_EVENT
+    '2':
+      chance: 80
+      effects:
+        - CANCEL_EVENT
+    '3':
+      effects:
+        - CANCEL_EVENT
+wings:
+  display: '%group-color%날개'
+  description: 날아다닐 수 있습니다.
+  applies-to: 신발
+  type: EFFECT_STATIC
+  group: LEGENDARY
+  applies:
+    - ALL_BOOTS
+  levels:
+    '1':
+      effects:
+        - FLY
+aquatic:
+  display: '%group-color%아쿠아'
+  description: 물 아래에서 숨을 쉴 수 있습니다.
+  applies-to: 헬멧
+  type: EFFECT_STATIC
+  group: SIMPLE
+  applies:
+    - ALL_HELMET
+  levels:
+    '1':
+      effects:
+        - POTION:WATER_BREATHING:0
+smelting:
+  display: '%group-color%초고열'
+  description: 캔 블럭이 구워져서 나옵니다.
+  applies-to: 곡괭이
+  type: MINING
+  group: SIMPLE
+  applies:
+    - ALL_PICKAXE
+    - ALL_SHOVEL
+  levels:
+    '1':
+      chance: 33
+      effects:
+        - SMELT
+    '2':
+      chance: 66
+      effects:
+        - SMELT
+    '3':
+      chance: 100
+      effects:
+        - SMELT
+experience:
+  display: '%group-color%경험치'
+  description: 일정 확률로 광물에서 떨어지는 경험치 량이 증가합니다.
+  applies-to: 도구
+  type: MINING
+  group: SIMPLE
+  applies:
+    - ALL_PICKAXE
+    - ALL_SPADE
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 15
+      cooldown: 1
+      conditions:
+        - '%block type% contains ORE : %allow%'
+      effects:
+        - EXP:<random number>2-5</random number> @Block
+    '2':
+      chance: 30
+      cooldown: 2
+      conditions:
+        - '%block type% contains ORE : %allow%'
+      effects:
+        - EXP:<random number>2-5</random number>
+    '3':
+      chance: 45
+      cooldown: 3
+      conditions:
+        - '%block type% contains ORE : %allow%'
+      effects:
+        - EXP:<random number>2-5</random number> @Block
+    '4':
+      chance: 60
+      cooldown: 4
+      conditions:
+        - '%block type% contains ORE : %allow%'
+      effects:
+        - EXP:<random number>2-5</random number> @Block
+    '5':
+      chance: 75
+      cooldown: 5
+      conditions:
+        - '%block type% contains ORE : %allow%'
+      effects:
+        - EXP:<random number>2-5</random number> @Block
+hasten:
+  display: '%group-color%신속'
+  description: 광물을 캘 때 마다 일정확률로 성급함을 얻습니다.
+  applies-to: 도구
+  type: MINING
+  group: SIMPLE
+  applies:
+    - ALL_PICKAXE
+    - ALL_SPADE
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 15
+      cooldown: 3
+      effects:
+        - POTION:FAST_DIGGING:0:40
+    '2':
+      chance: 25
+      cooldown: 3
+      effects:
+        - POTION:FAST_DIGGING:1:60
+    '3':
+      chance: 45
+      cooldown: 3
+      effects:
+        - POTION:FAST_DIGGING:2:80
+haste:
+  display: '%group-color%성급'
+  description: 도구를 휘두르는 속도가 더 빨라집니다.
+  applies-to: 도구
+  type: HELD
+  group: FABLED
+  applies:
+    - ALL_PICKAXE
+    - ALL_SPADE
+    - ALL_AXE
+  levels:
+    '1':
+      effects:
+        - POTION:FAST_DIGGING:0
+    '2':
+      effects:
+        - POTION:FAST_DIGGING:1
+    '3':
+      effects:
+        - POTION:FAST_DIGGING:2
+rebreather:
+  display: '%group-color%재호흡기'
+  description: |-
+    일정 확률로 물 아래에서 캘 때 
+    산소를 제공합니다.
+  applies-to: 곡괭이
+  type: MINING
+  group: SIMPLE
+  applies:
+    - ALL_PICKAXE
+  levels:
+    '1':
+      cooldown: 3
+      chance: 30
+      effects:
+        - AIR
+    '2':
+      cooldown: 3
+      chance: 60
+      effects:
+        - AIR
+glowing:
+  display: '%group-color%발광'
+  description: 야간투시 효과를 줍니다.
+  applies-to: 헬멧
+  type: EFFECT_STATIC
+  group: SIMPLE
+  applies:
+    - ALL_HELMET
+  levels:
+    '1':
+      effects:
+        - POTION:NIGHT_VISION:0
+decapitation:
+  display: '%group-color%처형'
+  description: |-
+    일정 확률로 상대방을 죽일 경우
+    상대방의 머리를 떨굽니다.
+  applies-to: 검, 도끼
+  type: KILL_PLAYER
+  settings:
+    showActionBar: true
+  group: SIMPLE
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 5
+      cooldown: 10
+      effects:
+        - DROP_HEAD @Victim
+    '2':
+      chance: 10
+      cooldown: 10
+      effects:
+        - DROP_HEAD @Victim
+    '3':
+      chance: 15
+      cooldown: 10
+      effects:
+        - DROP_HEAD @Victim
+forcefield:
+  display: '%group-color%척력'
+  description: 일정확률로 적을 멀리 떨어뜨립니다.
+  applies-to: 검
+  type: ATTACK;ATTACK_MOB
+  settings:
+    showActionBar: true
+  group: SIMPLE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 30
+      cooldown: 12
+      effects:
+        - PULL_AWAY:1.0 @Victim
+    '2':
+      chance: 36
+      cooldown: 12
+      effects:
+        - PULL_AWAY:1.5 @Victim
+    '3':
+      chance: 42
+      cooldown: 12
+      effects:
+        - PULL_AWAY:2.0 @Victim
+    '4':
+      chance: 48
+      cooldown: 13
+      effects:
+        - PULL_AWAY:2.5 @Victim
+    '5':
+      chance: 54
+      cooldown: 13
+      effects:
+        - PULL_AWAY:3.0 @Victim
+epicness:
+  display: '%group-color%황홀경'
+  description: 파티클과 사운드 이펙트 추가. 룩은 진리죠.
+  applies-to: 검
+  type: ATTACK;ATTACK_MOB
+  group: SIMPLE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 20
+      cooldown: 3
+      effects:
+        - PARTICLE:SMOKE_LARGE:50:1 @Victim
+        - PLAY_SOUND:ENTITY_GHAST_SCREAM
+    '2':
+      chance: 40
+      cooldown: 3
+      effects:
+        - PARTICLE:SMOKE_LARGE:50:1 @Victim
+        - PLAY_SOUND:ENTITY_GHAST_SCREAM
+    '3':
+      chance: 60
+      cooldown: 3
+      effects:
+        - PARTICLE:SMOKE_LARGE:50:1 @Victim
+        - PLAY_SOUND:ENTITY_GHAST_SCREAM
+famine:
+  display: '%group-color%기근'
+  description: 일정확률로 때린 대상에게 굶주림 효과를 줍니다.
+  applies-to: 무기
+  type: ATTACK
+  group: UNIQUE
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 12
+      cooldown: 8
+      effects:
+        - POTION:HUNGER:0:80 @Victim
+    '2':
+      chance: 15
+      cooldown: 8
+      effects:
+        - POTION:HUNGER:0:120 @Victim
+    '3':
+      chance: 18
+      cooldown: 8
+      effects:
+        - POTION:HUNGER:1:80 @Victim
+    '4':
+      chance: 22
+      cooldown: 8
+      effects:
+        - POTION:HUNGER:1:120 @Victim
+berserk:
+  display: '%group-color%광기'
+  description: |-
+    일정 확률로 공격 시 힘과
+    채로 피굴이 걸립니다.
+  applies-to: 검, 도끼
+  type: ATTACK;ATTACK_MOB
+  group: UNIQUE
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 4
+      cooldown: 8
+      effects:
+        - POTION:SLOW_DIGGING:0:60 @Attacker
+        - POTION:INCREASE_DAMAGE:0:60 @Attacker
+    '2':
+      chance: 8
+      cooldown: 7
+      effects:
+        - POTION:SLOW_DIGGING:0:80 @Attacker
+        - POTION:INCREASE_DAMAGE:0:80 @Attacker
+    '3':
+      chance: 12
+      cooldown: 6
+      effects:
+        - POTION:SLOW_DIGGING:0:100 @Attacker
+        - POTION:INCREASE_DAMAGE:0:100 @Attacker
+    '4':
+      chance: 16
+      cooldown: 5
+      effects:
+        - POTION:SLOW_DIGGING:1:80 @Attacker
+        - POTION:INCREASE_DAMAGE:1:80 @Attacker
+    '5':
+      chance: 20
+      cooldown: 4
+      effects:
+        - POTION:SLOW_DIGGING:1:100 @Attacker
+        - POTION:INCREASE_DAMAGE:1:100 @Attacker
+reflect:
+  display: '%group-color%반사'
+  description: |-
+    일정 확률로 데미지를 흡수하고
+    반사해서 되돌려 줍니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB
+  group: UNIQUE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 3
+      cooldown: 5
+      effects:
+        - CANCEL_EVENT
+        - DO_HARM:%damage% @Attacker
+        - CACTUS @Victim
+    '2':
+      chance: 4
+      cooldown: 5
+      effects:
+        - CANCEL_EVENT
+        - DO_HARM:%damage% @Attacker
+        - CACTUS @Victim
+    '3':
+      chance: 5
+      cooldown: 5
+      effects:
+        - CANCEL_EVENT
+        - DO_HARM:%damage% @Attacker
+        - CACTUS @Victim
+    '4':
+      chance: 6
+      cooldown: 5
+      effects:
+        - CANCEL_EVENT
+        - DO_HARM:%damage% @Attacker
+        - CACTUS @Victim
+    '5':
+      chance: 7
+      cooldown: 5
+      effects:
+        - CANCEL_EVENT
+        - DO_HARM:%damage% @Attacker
+        - CACTUS @Victim
+ward:
+  display: '%group-color%회피'
+  description: 일정 확률로 상대방의 데미지를 흡수합니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB
+  group: UNIQUE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 3
+      cooldown: 5
+      effects:
+        - CANCEL_EVENT
+    '2':
+      chance: 7
+      cooldown: 5
+      effects:
+        - CANCEL_EVENT
+    '3':
+      chance: 11
+      cooldown: 5
+      effects:
+        - CANCEL_EVENT
+    '4':
+      chance: 15
+      cooldown: 5
+      effects:
+        - CANCEL_EVENT
+explosive:
+  display: '%group-color%폭발'
+  description: 일정 확률로 화살이 폭발합니다.
+  applies-to: 활
+  type: SHOOT;SHOOT_MOB
+  settings:
+    showActionBar: true
+  group: UNIQUE
+  applies:
+    - BOW
+  levels:
+    '1':
+      chance: 20
+      cooldown: 7
+      effects:
+        - TNT @Victim
+    '2':
+      chance: 30
+      cooldown: 8
+      effects:
+        - TNT @Victim
+    '3':
+      chance: 40
+      cooldown: 8
+      effects:
+        - TNT @Victim
+    '4':
+      chance: 50
+      cooldown: 8
+      effects:
+        - TNT @Victim
+    '5':
+      chance: 60
+      cooldown: 9
+      effects:
+        - TNT @Victim
+frenzy:
+  display: '%group-color%미사일'
+  description: 높은 확률로 쏜 화살이 폭발합니다.
+  applies-to: 석궁
+  type: SHOOT;SHOOT_MOB
+  settings:
+    showActionBar: true
+  group: UNIQUE
+  applies:
+    - CROSSBOW
+  levels:
+    '1':
+      chance: 40
+      cooldown: 7
+      effects:
+        - TNT @Victim
+    '2':
+      chance: 50
+      cooldown: 8
+      effects:
+        - TNT @Victim
+    '3':
+      chance: 75
+      cooldown: 8
+      effects:
+        - TNT @Victim
+    '4':
+      chance: 80
+      cooldown: 8
+      effects:
+        - TNT @Victim
+    '5':
+      chance: 100
+      cooldown: 9
+      effects:
+        - TNT @Victim
+featherweight:
+  display: '%group-color%가벼움'
+  description: 일정 확률로 더 빠르게 때릴 수 있게 됩니다.
+  applies-to: 검, 도끼
+  type: ATTACK;ATTACK_MOB
+  group: UNIQUE
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 35
+      cooldown: 2
+      effects:
+        - POTION:FAST_DIGGING:0:60
+    '2':
+      chance: 55
+      cooldown: 2
+      effects:
+        - POTION:FAST_DIGGING:1:80
+    '3':
+      chance: 75
+      cooldown: 2
+      effects:
+        - POTION:FAST_DIGGING:2:100
+sharpnesshook:
+  display: '%group-color%갈고리공격'
+  description: 낚시 갈고리로 데미지를 많이 입힙니다.
+  applies-to: 낚시대
+  type: HOOK_ENTITY
+  group: ULTIMATE
+  applies:
+    - FISHING_ROD
+  levels:
+    '1':
+      effects:
+        - DO_HARM:2 @Victim
+    '2':
+      effects:
+        - DO_HARM:4 @Victim
+    '3':
+      effects:
+        - DO_HARM:6 @Victim
+    '4':
+      effects:
+        - DO_HARM:9 @Victim
+    '5':
+      effects:
+        - DO_HARM:12 @Victim
+    '6':
+      effects:
+        - DO_HARM:15 @Victim
+    '7':
+      effects:
+        - DO_HARM:19 @Victim
+    '8':
+      effects:
+        - DO_HARM:23 @Victim
+    '9':
+      effects:
+        - DO_HARM:27 @Victim
+poisonedhook:
+  display: '%group-color%유독성갈고리'
+  description: 갈고리에 독을 바릅니다.
+  applies-to: 낚시대
+  type: HOOK_ENTITY
+  group: ELITE
+  applies:
+    - FISHING_ROD
+  levels:
+    '1':
+      chance: 6
+      cooldown: 2
+      effects:
+        - POTION:POISON:0:80 @Victim
+    '2':
+      chance: 22
+      cooldown: 2
+      effects:
+        - POTION:POISON:0:120 @Victim
+    '3':
+      chance: 35
+      cooldown: 2
+      effects:
+        - POTION:POISON:1:80 @Victim
+firehook:
+  display: '%group-color%고열갈고리'
+  description: 갈고리가 매우 뜨겁습니다.
+  applies-to: 낚시대
+  type: HOOK_ENTITY
+  group: ELITE
+  applies:
+    - FISHING_ROD
+  levels:
+    '1':
+      chance: 25
+      cooldown: 3
+      effects:
+        - BURN:40 @Victim
+    '2':
+      chance: 35
+      cooldown: 6
+      effects:
+        - BURN:40 @Victim
+    '3':
+      chance: 100
+      cooldown: 8
+      effects:
+        - BURN:40 @Victim
+molten:
+  display: '%group-color%녹아내림'
+  description: 일정 확률로 자신을 공격한 대상을 불태웁니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB
+  group: UNIQUE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 21
+      cooldown: 2
+      effects:
+        - BURN:2 @Attacker
+    '2':
+      chance: 32
+      cooldown: 2
+      effects:
+        - BURN:4 @Attacker
+    '3':
+      chance: 49
+      cooldown: 2
+      effects:
+        - BURN:6 @Attacker
+    '4':
+      chance: 80
+      cooldown: 2
+      effects:
+        - BURN:8 @Attacker
+ravenous:
+  display: '%group-color%식탐'
+  description: |-
+    일정 확률로 전투 중에
+    허기를 채웁니다.
+  applies-to: 검, 도끼
+  type: ATTACK;ATTACK_MOB
+  group: UNIQUE
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 14
+      cooldown: 2
+      effects:
+        - ADD_FOOD:<random number>1-4</random number> @Attacker
+    '2':
+      chance: 18
+      cooldown: 2
+      effects:
+        - ADD_FOOD:<random number>1-4</random number> @Attacker
+    '3':
+      chance: 22
+      cooldown: 2
+      effects:
+        - ADD_FOOD:<random number>2-4</random number> @Attacker
+    '4':
+      chance: 26
+      cooldown: 2
+      effects:
+        - ADD_FOOD:<random number>3-4</random number> @Attacker
+veinminer:
+  display: '%group-color%광맥탐사'
+  description: 특정 광맥 전체를 부숩니다.
+  applies-to: 곡괭이
+  group: ELITE
+  type: MINING
+  applies:
+    - ALL_PICKAXE
+  levels:
+    '1':
+      chance: 100
+      cooldown: 5
+      settings:
+        whitelist:
+          - "COAL_ORE"
+          - "COPPER_ORE"
+          - "REDSTONE_ORE"
+          - "ANCIENT_DEBRIS"
+          - "DEEPSLATE_COAL_ORE"
+          - "DEEPSLATE_COPPER_ORE"
+          - "DEEPSLATE_IRON_ORE"
+          - "DEEPSLATE_LAPIS_ORE"
+      effects:
+        - BREAK_BLOCK @Veinmine
+    '2':
+      chance: 100
+      cooldown: 3
+      settings:
+        whitelist:
+          - "COAL_ORE"
+          - "COPPER_ORE"
+          - "IRON_ORE"
+          - "GOLD_ORE"
+          - "LAPIS_ORE"
+          - "REDSTONE_ORE"
+          - "NETHER_QUARTZ_ORE"
+          - "NETHER_GOLD_ORE"
+          - "ANCIENT_DEBRIS"
+          - "DEEPSLATE_COAL_ORE"
+          - "DEEPSLATE_COPPER_ORE"
+          - "DEEPSLATE_IRON_ORE"
+          - "DEEPSLATE_GOLD_ORE"
+          - "DEEPSLATE_LAPIS_ORE"
+          - "DEEPSLATE_REDSTONE_ORE"
+      effects:
+        - BREAK_BLOCK @Veinmine
+    '3':
+      settings:
+        whitelist:
+          - "COAL_ORE"
+          - "COPPER_ORE"
+          - "IRON_ORE"
+          - "GOLD_ORE"
+          - "LAPIS_ORE"
+          - "REDSTONE_ORE"
+          - "DIAMOND_ORE"
+          - "EMERALD_ORE"
+          - "NETHER_QUARTZ_ORE"
+          - "NETHER_GOLD_ORE"
+          - "ANCIENT_DEBRIS"
+          - "DEEPSLATE_COAL_ORE"
+          - "DEEPSLATE_COPPER_ORE"
+          - "DEEPSLATE_IRON_ORE"
+          - "DEEPSLATE_GOLD_ORE"
+          - "DEEPSLATE_LAPIS_ORE"
+          - "DEEPSLATE_REDSTONE_ORE"
+          - "DEEPSLATE_DIAMOND_ORE"
+          - "DEEPSLATE_EMERALD_ORE"
+      effects:
+        - BREAK_BLOCK @Veinmine
+telepathy:
+  display: '%group-color%순간이동'
+  description: |-
+    자동적으로 본인이 부순 블럭 아이템을
+    인벤토리로 순간이동 시킵니다.
+  applies-to: 도구
+  type: MINING
+  group: UNIQUE
+  applies:
+    - ALL_TOOLS
+  levels:
+    '1':
+      chance: 40
+      effects:
+        - TP_DROPS @Block
+    '2':
+      chance: 60
+      effects:
+        - TP_DROPS @Block
+    '3':
+      chance: 80
+      effects:
+        - TP_DROPS @Block
+    '4':
+      effects:
+        - TP_DROPS @Block
+explosivedemise:
+  display: '%group-color%최후의폭발'
+  description: |-
+    죽기 전에 폭발하는 크리퍼들을
+    경호원으로 세웁니다.
+  applies-to: 바지
+  type: DEFENSE;DEFENSE_MOB
+  settings:
+    showActionBar: true
+  group: UNIQUE
+  applies:
+    - ALL_LEGGINGS
+  levels:
+    '1':
+      chance: 13
+      cooldown: 3
+      conditions:
+        - '%victim health% > 6 : %stop%'
+      effects:
+        - GUARD:CREEPER:8:1:@Victim
+        - POTION:BLINDNESS:0:40 @Attacker
+    '2':
+      chance: 17
+      cooldown: 3
+      conditions:
+        - '%victim health% > 6 : %stop%'
+      effects:
+        - GUARD:CREEPER:8:1:@Victim
+        - POTION:BLINDNESS:0:60 @Attacker
+    '3':
+      chance: 24
+      cooldown: 3
+      conditions:
+        - '%victim health% > 7 : %stop%'
+      effects:
+        - GUARD:CREEPER:8:1:@Victim
+        - POTION:BLINDNESS:0:100 @Attacker
+    '4':
+      chance: 30
+      cooldown: 3
+      conditions:
+        - '%victim health% > 7 : %stop%'
+      effects:
+        - GUARD:CREEPER:8:1:@Victim
+        - POTION:BLINDNESS:1:40 @Attacker
+    '5':
+      chance: 38
+      cooldown: 3
+      conditions:
+        - '%victim health% > 8 : %stop%'
+      effects:
+        - GUARD:CREEPER:8:2:@Victim
+        - POTION:BLINDNESS:1:80 @Attacker
+    '6':
+      chance: 46
+      cooldown: 3
+      conditions:
+        - '%victim health% > 8 : %stop%'
+      effects:
+        - GUARD:CREEPER:8:2:@Victim
+        - POTION:BLINDNESS:1:120 @Attacker
+    '7':
+      chance: 55
+      cooldown: 3
+      conditions:
+        - '%victim health% > 8 : %stop%'
+      effects:
+        - GUARD:CREEPER:8:2:@Victim
+        - POTION:BLINDNESS:2:60 @Attacker
+    '8':
+      chance: 100
+      cooldown: 3
+      conditions:
+        - '%victim health% > 8 : %stop%'
+      effects:
+        - GUARD:CREEPER:8:3:@Victim
+        - POTION:BLINDNESS:2:100 @Attacker
+enderslayer:
+  display: '%group-color%엔더슬레이어'
+  description: 일정 확률로 엔더맨과 엔더드래곤에게 주는 데미지를 증가시킵니다.
+  applies-to: 무기
+  type: ATTACK_MOB
+  group: ELITE
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 16
+      cooldown: 2
+      conditions:
+        - '%mob type% = ENDERMAN or %mob type% = ENDER_DRAGON or %mob type% = ENDERDRAGON
+        : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '2':
+      chance: 21
+      cooldown: 2
+      conditions:
+        - '%mob type% = ENDERMAN or %mob type% = ENDER_DRAGON or %mob type% = ENDERDRAGON
+        : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '3':
+      chance: 29
+      cooldown: 2
+      conditions:
+        - '%mob type% = ENDERMAN or %mob type% = ENDER_DRAGON or %mob type% = ENDERDRAGON
+        : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '4':
+      chance: 34
+      cooldown: 2
+      conditions:
+        - '%mob type% = ENDERMAN or %mob type% = ENDER_DRAGON or %mob type% = ENDERDRAGON
+        : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '5':
+      chance: 80
+      cooldown: 2
+      conditions:
+        - '%mob type% = ENDERMAN or %mob type% = ENDER_DRAGON or %mob type% = ENDERDRAGON
+        : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+deathpunch:
+  display: '%group-color%죽음의주먹'
+  description: 좀비에게 입히는 데미지를 증가합니다.
+  applies-to: 검, 도끼
+  type: ATTACK_MOB
+  group: SIMPLE
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 16
+      cooldown: 2
+      conditions:
+        - '%mob type% = ZOMBIE : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '2':
+      chance: 20
+      cooldown: 2
+      conditions:
+        - '%mob type% = ZOMBIE : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '3':
+      chance: 40
+      cooldown: 2
+      conditions:
+        - '%mob type% = ZOMBIE : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '4':
+      chance: 60
+      cooldown: 1
+      conditions:
+        - '%mob type% = ZOMBIE : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '5':
+      chance: 80
+      conditions:
+        - '%mob type% = ZOMBIE : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+bonecrusher:
+  display: '%group-color%뼈분쇄기'
+  description: 스켈레톤에게 입히는 데미지를 증가합니다.
+  applies-to: 검, 도끼
+  type: ATTACK_MOB
+  group: SIMPLE
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 25
+      cooldown: 2
+      conditions:
+        - '%mob type% = SKELETON : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '2':
+      chance: 50
+      cooldown: 2
+      conditions:
+        - '%mob type% = SKELETON : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '3':
+      chance: 75
+      cooldown: 1
+      conditions:
+        - '%mob type% = SKELETON : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+immolate:
+  display: '%group-color%제물'
+  description: 거미에게 주는 데미지가 증가합니다.
+  applies-to: 검, 도끼
+  type: ATTACK_MOB
+  group: ELITE
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 25
+      cooldown: 2
+      conditions:
+        - '%mob type% = SPIDER : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '2':
+      chance: 50
+      cooldown: 2
+      conditions:
+        - '%mob type% = SPIDER : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '3':
+      chance: 75
+      conditions:
+        - '%mob type% = SPIDER : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+slayer:
+  display: '%group-color%학살'
+  description: 적대적이지 않은 몹에게 주는 데미지가 증가합니다.
+  applies-to: 검, 도끼
+  type: ATTACK_MOB
+  group: UNIQUE
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 25
+      cooldown: 2
+      conditions:
+        - '%is hostile% = false : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '2':
+      chance: 50
+      cooldown: 2
+      conditions:
+        - '%is hostile% = false : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '3':
+      chance: 75
+      conditions:
+        - '%is hostile% = false : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '4':
+      conditions:
+        - '%is hostile% = false : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+hunter:
+  display: '%group-color%사냥'
+  description: 적대적이지 않은 몹에게 주는 데미지가 증가합니다.
+  applies-to: 활, 석궁, 삼지창
+  type: SHOOT_MOB
+  group: UNIQUE
+  applies:
+    - TRIDENT
+    - BOW
+    - CROSSBOW
+  levels:
+    '1':
+      chance: 25
+      cooldown: 2
+      conditions:
+        - '%is hostile% = false : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '2':
+      chance: 50
+      cooldown: 2
+      conditions:
+        - '%is hostile% = false : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '3':
+      chance: 75
+      conditions:
+        - '%is hostile% = false : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '4':
+      conditions:
+        - '%is hostile% = false : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+beastslayer:
+  display: '%group-color%괴물학살'
+  description: 적대적인 몬스터에게 주는 데미지가 증가합니다.
+  applies-to: 검, 도끼
+  type: ATTACK_MOB
+  group: LEGENDARY
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 25
+      cooldown: 2
+      conditions:
+        - '%is hostile% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '2':
+      chance: 50
+      cooldown: 2
+      conditions:
+        - '%is hostile% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '3':
+      chance: 75
+      conditions:
+        - '%is hostile% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '4':
+      conditions:
+        - '%is hostile% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+hook:
+  display: '%group-color%갈고리'
+  description: 낚시를 통해 얻는 경험치가 증가합니다.
+  applies-to: 낚시대
+  type: CATCH_FISH
+  group: ELITE
+  applies:
+    - FISHING_ROD
+  levels:
+    '1':
+      chance: 15
+      cooldown: 12
+      effects:
+        - EXP:%exp%
+    '2':
+      chance: 25
+      cooldown: 12
+      effects:
+        - EXP:%exp%
+    '3':
+      chance: 35
+      cooldown: 12
+      effects:
+        - EXP:%exp%
+bait:
+  display: '%group-color%낚시찌'
+  description: 일정 확률로 2마리의 생선을 낚습니다.
+  applies-to: 낚시대
+  type: CATCH_FISH
+  settings:
+    showActionBar: true
+  group: LEGENDARY
+  applies:
+    - FISHING_ROD
+  levels:
+    '1':
+      chance: 15
+      cooldown: 10
+      effects:
+        - MORE_DROPS:1
+    '2':
+      chance: 18
+      cooldown: 15
+      effects:
+        - MORE_DROPS:1
+    '3':
+      chance: 26
+      cooldown: 20
+      effects:
+        - MORE_DROPS:1
+snap:
+  display: '%group-color%낚아채기'
+  description: 고양이처럼 잡은 물고기를 낚아챕니다.
+  applies-to: 낚시대
+  type: CATCH_FISH
+  group: ELITE
+  applies:
+    - FISHING_ROD
+  levels:
+    '1':
+      chance: 15
+      cooldown: 4
+      conditions:
+        - '%caught% = PLAYER : %allow%'
+      effects:
+        - PULL_CLOSER:1 @Victim
+    '2':
+      chance: 25
+      cooldown: 6
+      conditions:
+        - '%caught% = PLAYER : %allow%'
+      effects:
+        - PULL_CLOSER:1.5 @Victim
+    '3':
+      conditions:
+        - '%caught% = PLAYER : %allow%'
+      effects:
+        - PULL_CLOSER:2 @Victim
+lucky:
+  display: '%group-color%운세'
+  description: 낚시 도중에 운이 증가합니다.
+  applies-to: 낚시대
+  type: RIGHT_CLICK
+  group: ULTIMATE
+  applies:
+    - FISHING_ROD
+  levels:
+    '1':
+      chance: 75
+      cooldown: 12
+      effects:
+        - POTION:LUCK:1:1000
+    '2':
+      chance: 85
+      cooldown: 12
+      effects:
+        - POTION:LUCK:2:1000
+    '3':
+      chance: 95
+      cooldown: 12
+      effects:
+        - POTION:LUCK:3:1000
+permafrost:
+  display: '%group-color%서리내린'
+  description: 일정 확률로 상대방을 출혈하게, 그리고 느리게 만듭니다.
+  applies-to: 검
+  type: ATTACK;ATTACK_MOB
+  group: ULTIMATE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 15
+      cooldown: 12
+      effects:
+        - DO_HARM:1 @Victim
+        - BLOOD @Victim
+        - POTION:SLOW:0:20 @Victim
+        - WAIT:20
+        - DO_HARM:1 @Victim
+        - BLOOD @Victim
+        - WAIT:20
+        - DO_HARM:1 @Victim
+        - BLOOD @Victim
+    '2':
+      chance: 18
+      cooldown: 12
+      effects:
+        - DO_HARM:2 @Victim
+        - BLOOD @Victim
+        - POTION:SLOW:0:40 @Victim
+        - WAIT:20
+        - DO_HARM:2 @Victim
+        - BLOOD @Victim
+        - WAIT:20
+        - DO_HARM:1 @Victim
+        - BLOOD @Victim
+    '3':
+      chance: 19
+      cooldown: 12
+      effects:
+        - DO_HARM:3 @Victim
+        - BLOOD @Victim
+        - POTION:SLOW:0:50 @Victim
+        - WAIT:20
+        - DO_HARM:2 @Victim
+        - BLOOD @Victim
+        - WAIT:20
+        - DO_HARM:1 @Victim
+        - BLOOD @Victim
+    '4':
+      chance: 21
+      cooldown: 13
+      effects:
+        - DO_HARM:3 @Victim
+        - BLOOD @Victim
+        - POTION:SLOW:0:60 @Victim
+        - WAIT:20
+        - DO_HARM:2 @Victim
+        - BLOOD @Victim
+        - WAIT:20
+        - DO_HARM:2 @Victim
+        - BLOOD @Victim
+    '5':
+      chance: 30
+      cooldown: 13
+      effects:
+        - DO_HARM:3 @Victim
+        - BLOOD @Victim
+        - POTION:SLOW:1:60 @Victim
+        - WAIT:20
+        - DO_HARM:3 @Victim
+        - BLOOD @Victim
+        - WAIT:20
+        - DO_HARM:2 @Victim
+        - BLOOD @Victim
+soulless:
+  display: '%group-color%영혼없는'
+  description: 적대적인 몹에게 10~40의 데미지를 추가로 줍니다.
+  applies-to: 활, 석궁, 삼지창
+  type: SHOOT_MOB
+  group: UNIQUE
+  applies:
+    - TRIDENT
+    - BOW
+    - CROSSBOW
+  levels:
+    '1':
+      chance: 25
+      cooldown: 2
+      conditions:
+        - '%is hostile% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '2':
+      chance: 50
+      cooldown: 2
+      conditions:
+        - '%is hostile% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '3':
+      chance: 75
+      conditions:
+        - '%is hostile% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '4':
+      conditions:
+        - '%is hostile% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+reaper:
+  display: '%group-color%영혼수확'
+  description: |-
+    일정 확률로 때릴 시 상대방에게
+    위더와 실명 효과를 줍니다.
+  applies-to: 도끼
+  settings:
+    showActionBar: false
+  type: ATTACK
+  group: ELITE
+  applies:
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 8
+      cooldown: 16
+      effects:
+        - POTION:WITHER:0:35 @Victim
+        - POTION:BLINDNESS:0:35 @Victim
+    '2':
+      chance: 10
+      cooldown: 14
+      effects:
+        - POTION:WITHER:0:40 @Victim
+        - POTION:BLINDNESS:0:40 @Victim
+    '3':
+      chance: 12
+      cooldown: 12
+      effects:
+        - POTION:WITHER:0:50 @Victim
+        - POTION:BLINDNESS:0:50 @Victim
+    '4':
+      chance: 14
+      cooldown: 10
+      effects:
+        - POTION:WITHER:0:60 @Victim
+        - POTION:BLINDNESS:0:60 @Victim
+netherslayer:
+  display: '%group-color%네더학살자'
+  description: 네더 몬스터에게 추가적인 데미지를 입힙니다.
+  applies-to: 무기
+  type: ATTACK_MOB
+  group: ELITE
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 16
+      cooldown: 2
+      conditions:
+        - '%mob type% = BLAZE or %mob type% = ZOMBIE_PIGMAN or %mob type% = PIG_ZOMBIE
+        or %mob type% = GHAST : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '2':
+      chance: 21
+      cooldown: 2
+      conditions:
+        - '%mob type% = BLAZE or %mob type% = ZOMBIE_PIGMAN or %mob type% = PIG_ZOMBIE
+        or %mob type% = GHAST : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '3':
+      chance: 29
+      cooldown: 2
+      conditions:
+        - '%mob type% = BLAZE or %mob type% = ZOMBIE_PIGMAN or %mob type% = PIG_ZOMBIE
+        or %mob type% = GHAST : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '4':
+      chance: 34
+      cooldown: 2
+      conditions:
+        - '%mob type% = BLAZE or %mob type% = ZOMBIE_PIGMAN or %mob type% = PIG_ZOMBIE
+        or %mob type% = GHAST : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+    '5':
+      chance: 41
+      cooldown: 2
+      conditions:
+        - '%mob type% = BLAZE or %mob type% = ZOMBIE_PIGMAN or %mob type% = PIG_ZOMBIE
+        or %mob type% = GHAST : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>10-40</random number> @Attacker
+blind:
+  display: '%group-color%실명'
+  description: |-
+    일정 확률로 때리는 대상에게
+    실명 효과를 겁니다.
+  applies-to: 검
+  type: ATTACK
+  group: ELITE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 17
+      cooldown: 5
+      effects:
+        - POTION:BLINDNESS:0:60 @Victim
+    '2':
+      chance: 25
+      cooldown: 5
+      effects:
+        - POTION:BLINDNESS:1:80 @Victim
+    '3':
+      chance: 33
+      cooldown: 5
+      effects:
+        - POTION:BLINDNESS:2:100 @Victim
+allure:
+  display: '%group-color%끌어당김'
+  description: 때린 대상을 내 앞으로 끌고 옵니다.
+  applies-to: 검
+  type: ATTACK_MOB
+  group: ELITE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 30
+      effects:
+        - PULL_CLOSER:1 @Victim
+    '2':
+      chance: 60
+      effects:
+        - PULL_CLOSER:1.5 @Victim
+    '3':
+      effects:
+        - PULL_CLOSER:2 @Victim
+frozen:
+  display: '%group-color%얼어붙은'
+  description: |-
+    일정 확률로 방어 도중
+    공격자에게 둔화 효과를 줍니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB
+  group: ELITE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 19
+      cooldown: 6
+      effects:
+        - POTION:SLOW:0:40 @Attacker
+    '2':
+      chance: 19
+      cooldown: 6
+      effects:
+        - POTION:SLOW:1:50 @Attacker
+    '3':
+      chance: 26
+      cooldown: 6
+      effects:
+        - POTION:SLOW:2:60 @Attacker
+paralyze:
+  display: '%group-color%마비'
+  description: |-
+    번개를 내려 찍고, 일정 확률로
+    상대방을 느리게 만듭니다.
+  applies-to: 검, 도끼
+  type: ATTACK;ATTACK_MOB
+  group: ELITE
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 7
+      cooldown: 3
+      effects:
+        - LIGHTNING @Victim
+        - EXTINGUISH @Victim
+        - POTION:SLOW:0:60 @Victim
+        - POTION:SLOW_DIGGING:0:60 @Victim
+    '2':
+      chance: 10
+      cooldown: 3
+      effects:
+        - LIGHTNING @Victim
+        - EXTINGUISH @Victim
+        - POTION:SLOW:0:100 @Victim
+        - POTION:SLOW_DIGGING:0:100 @Victim
+    '3':
+      chance: 13
+      cooldown: 3
+      effects:
+        - LIGHTNING @Victim
+        - EXTINGUISH @Victim
+        - POTION:SLOW:1:60 @Victim
+        - POTION:SLOW_DIGGING:1:60 @Victim
+    '4':
+      chance: 16
+      cooldown: 3
+      effects:
+        - LIGHTNING @Victim
+        - EXTINGUISH @Victim
+        - POTION:SLOW:1:100 @Victim
+        - POTION:SLOW_DIGGING:1:100 @Victim
+poison:
+  display: '%group-color%독성'
+  description: 일정 확률로 독을 부여합니다.
+  applies-to: 검, 도끼
+  type: ATTACK;ATTACK_MOB
+  group: ELITE
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 6
+      cooldown: 2
+      effects:
+        - POTION:POISON:0:80 @Victim
+    '2':
+      chance: 22
+      cooldown: 2
+      effects:
+        - POTION:POISON:0:120 @Victim
+    '3':
+      chance: 35
+      cooldown: 2
+      effects:
+        - POTION:POISON:1:80 @Victim
+virus:
+  display: '%group-color%전염성'
+  description: 일정 확률로 독을 부여합니다.
+  applies-to: 활, 석궁, 삼지창
+  type: SHOOT_MOB;SHOOT
+  settings:
+    showActionBar: true
+  group: UNIQUE
+  applies:
+    - TRIDENT
+    - BOW
+    - CROSSBOW
+  levels:
+    '1':
+      chance: 6
+      cooldown: 2
+      effects:
+        - POTION:POISON:0:80 @Victim
+    '2':
+      chance: 22
+      cooldown: 2
+      effects:
+        - POTION:POISON:0:120 @Victim
+    '3':
+      chance: 35
+      cooldown: 2
+      effects:
+        - POTION:POISON:2:80 @Victim
+poisoned:
+  display: '%group-color%중독'
+  description: 일정 확률로 자신을 공격한 사람에게 독을 부여합니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB;DEFENSE_PROJECTILE
+  group: ELITE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 8
+      cooldown: 6
+      effects:
+        - POTION:POISON:0:60 @Attacker
+    '2':
+      chance: 12
+      cooldown: 6
+      effects:
+        - POTION:POISON:0:120 @Attacker
+    '3':
+      chance: 17
+      cooldown: 6
+      effects:
+        - POTION:POISON:1:60 @Attacker
+    '4':
+      chance: 23
+      cooldown: 6
+      effects:
+        - POTION:POISON:1:120 @Attacker
+reforged:
+  display: '%group-color%보강'
+  description: |-
+    무기나 도구의 내구도를 보호합니다.
+    아이템을 더 오래 쓸 수 있습니다.
+  applies-to: 무기, 도구
+  type: ATTACK_MOB;MINING
+  group: ELITE
+  applies:
+    - ALL_AXE
+    - ALL_SWORD
+    - ALL_PICKAXE
+    - ALL_SPADE
+  levels:
+    '1':
+      chance: 10
+      effects:
+        - ADD_DURABILITY_ITEM:1
+    '2':
+      chance: 20
+      effects:
+        - ADD_DURABILITY_ITEM:1
+    '3':
+      chance: 30
+      effects:
+        - ADD_DURABILITY_ITEM:1
+    '4':
+      chance: 40
+      effects:
+        - ADD_DURABILITY_ITEM:1
+    '5':
+      chance: 50
+      effects:
+        - ADD_DURABILITY_ITEM:1
+    '6':
+      chance: 60
+      effects:
+        - ADD_DURABILITY_ITEM:1
+    '7':
+      chance: 70
+      effects:
+        - ADD_DURABILITY_ITEM:1
+    '8':
+      chance: 80
+      effects:
+        - ADD_DURABILITY_ITEM:1
+    '9':
+      chance: 90
+      effects:
+        - ADD_DURABILITY_ITEM:1
+    '10':
+      effects:
+        - ADD_DURABILITY_ITEM:1
+snare:
+  display: '%group-color%덫'
+  description: |-
+    일정 확률로 피로와 둔화를
+    적에게 줍니다.
+  applies-to: 활
+  type: SHOOT;SHOOT_MOB
+  settings:
+    showActionBar: false
+  group: ELITE
+  applies:
+    - BOW
+    - CROSSBOW
+  levels:
+    '1':
+      chance: 12
+      cooldown: 3
+      effects:
+        - POTION:SLOW:0:80 @Victim
+        - POTION:SLOW_DIGGING:0:80 @Victim
+    '2':
+      chance: 19
+      cooldown: 3
+      effects:
+        - POTION:SLOW:0:120 @Victim
+        - POTION:SLOW_DIGGING:0:120 @Victim
+    '3':
+      chance: 24
+      cooldown: 3
+      effects:
+        - POTION:SLOW:1:80 @Victim
+        - POTION:SLOW_DIGGING:1:80 @Victim
+    '4':
+      chance: 50
+      cooldown: 3
+      effects:
+        - POTION:SLOW:1:120 @Victim
+        - POTION:SLOW_DIGGING:1:120 @Victim
+springs:
+  display: '%group-color%스프링'
+  description: 더 높게 점프할 수 있습니다.
+  applies-to: 신발
+  type: EFFECT_STATIC
+  group: ELITE
+  applies:
+    - ALL_BOOTS
+  levels:
+    '1':
+      effects:
+        - POTION:JUMP:0
+    '2':
+      effects:
+        - POTION:JUMP:1
+    '3':
+      effects:
+        - POTION:JUMP:2
+undeadruse:
+  display: '%group-color%언데드러시'
+  description: |-
+    적중 시 일정 확률로 상대의 주의를 분산시킬
+    좀비들을 생성합니다.
+  applies-to: 신발
+  type: DEFENSE;DEFENSE_MOB
+  settings:
+    showActionBar: true
+  group: ELITE
+  applies:
+    - ALL_BOOTS
+  levels:
+    '1':
+      chance: 3
+      cooldown: 6
+      effects:
+        - GUARD:ZOMBIE:8:2:@Victim
+    '2':
+      chance: 4
+      cooldown: 6
+      effects:
+        - GUARD:ZOMBIE:8:2:@Victim
+    '3':
+      chance: 5
+      cooldown: 6
+      effects:
+        - GUARD:ZOMBIE:8:2:@Victim
+    '4':
+      chance: 6
+      cooldown: 6
+      effects:
+        - GUARD:ZOMBIE:8:2:@Victim
+    '5':
+      chance: 7
+      cooldown: 6
+      effects:
+        - GUARD:ZOMBIE:8:2:@Victim
+    '6':
+      chance: 8
+      cooldown: 6
+      effects:
+        - GUARD:ZOMBIE:8:3:@Victim
+    '7':
+      chance: 10
+      cooldown: 6
+      effects:
+        - GUARD:ZOMBIE:8:3:@Victim
+    '8':
+      chance: 14
+      cooldown: 6
+      effects:
+        - GUARD:ZOMBIE:8:4:@Victim
+    '9':
+      chance: 18
+      cooldown: 6
+      effects:
+        - GUARD:ZOMBIE:8:4:@Victim
+    '10':
+      chance: 40
+      cooldown: 6
+      effects:
+        - GUARD:ZOMBIE:8:5:@Victim
+voodoo:
+  display: '%group-color%부두술'
+  description: 일정 확률로 공격한 자에게 약화를 부여합니다. 
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB
+  group: ELITE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 5
+      cooldown: 2
+      effects:
+        - POTION:WEAKNESS:0:60 @Attacker
+    '2':
+      chance: 7
+      cooldown: 2
+      effects:
+        - POTION:WEAKNESS:0:100 @Attacker
+    '3':
+      chance: 9
+      cooldown: 2
+      effects:
+        - POTION:WEAKNESS:0:140 @Attacker
+    '4':
+      chance: 13
+      cooldown: 2
+      effects:
+        - POTION:WEAKNESS:0:60 @Attacker
+    '5':
+      chance: 16
+      cooldown: 2
+      effects:
+        - POTION:WEAKNESS:0:100 @Attacker
+    '6':
+      chance: 21
+      cooldown: 2
+      effects:
+        - POTION:WEAKNESS:0:120 @Attacker
+wither:
+  display: '%group-color%위더'
+  description: 일정 확률로 공격한 자에게 위더 효과를 부여합니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB
+  group: ELITE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 9
+      cooldown: 3
+      effects:
+        - POTION:WITHER:0:60 @Attacker
+    '2':
+      chance: 11
+      cooldown: 3
+      effects:
+        - POTION:WITHER:0:100 @Attacker
+    '3':
+      chance: 14
+      cooldown: 3
+      effects:
+        - POTION:WITHER:0:140 @Attacker
+    '4':
+      chance: 17
+      cooldown: 3
+      effects:
+        - POTION:WITHER:1:60 @Attacker
+    '5':
+      chance: 21
+      cooldown: 3
+      effects:
+        - POTION:WITHER:1:100 @Attacker
+perish:
+  display: '%group-color%급사'
+  description: 일정 확률로 위더 효과를 부여합니다
+  applies-to: 활, 석궁, 삼지창
+  type: SHOOT;SHOOT_MOB
+  settings:
+    showActionBar: true
+  group: UNIQUE
+  applies:
+    - TRIDENT
+    - BOW
+    - CROSSBOW
+  levels:
+    '1':
+      chance: 9
+      cooldown: 3
+      effects:
+        - POTION:WITHER:0:60 @Victim
+    '2':
+      chance: 11
+      cooldown: 3
+      effects:
+        - POTION:WITHER:0:100 @Victim
+    '3':
+      chance: 14
+      cooldown: 3
+      effects:
+        - POTION:WITHER:0:140 @Victim
+    '4':
+      chance: 17
+      cooldown: 3
+      effects:
+        - POTION:WITHER:1:60 @Victim
+    '5':
+      chance: 21
+      cooldown: 3
+      effects:
+        - POTION:WITHER:1:100 @Victim
+smokebomb:
+  display: '%group-color%연막탄'
+  description: |-
+    일정 확률로 죽음의 위기에 놓일 경우
+    자기 주변에 연막탄을 뿌립니다.
+  applies-to: 헬멧
+  type: DEFENSE;DEFENSE_MOB
+  settings:
+    showActionBar: true
+  group: ELITE
+  applies:
+    - ALL_HELMET
+  levels:
+    '1':
+      chance: 9
+      cooldown: 2
+      conditions:
+        - '%victim health% > 4 : %stop%'
+      effects:
+        - PARTICLE:CLOUD:200:3 @Victim
+        - POTION:BLINDNESS:0:60 @Attacker
+    '2':
+      chance: 15
+      cooldown: 2
+      conditions:
+        - '%victim health% > 4 : %stop%'
+      effects:
+        - PARTICLE:CLOUD:200:3 @Victim
+        - POTION:BLINDNESS:0:60 @Attacker
+    '3':
+      chance: 23
+      cooldown: 2
+      conditions:
+        - '%victim health% > 4 : %stop%'
+      effects:
+        - PARTICLE:CLOUD:200:3 @Victim
+        - POTION:BLINDNESS:0:100 @Attacker
+    '4':
+      chance: 28
+      cooldown: 2
+      conditions:
+        - '%victim health% > 5 : %stop%'
+      effects:
+        - PARTICLE:CLOUD:200:3 @Victim
+        - POTION:BLINDNESS:0:100 @Attacker
+    '5':
+      chance: 30
+      cooldown: 2
+      conditions:
+        - '%victim health% > 5 : %stop%'
+      effects:
+        - PARTICLE:CLOUD:200:3 @Victim
+        - POTION:BLINDNESS:1:60 @Attacker
+    '6':
+      chance: 34
+      cooldown: 2
+      conditions:
+        - '%victim health% > 5 : %stop%'
+      effects:
+        - PARTICLE:CLOUD:200:3 @Victim
+        - POTION:BLINDNESS:1:100 @Attacker
+    '7':
+      chance: 36
+      cooldown: 2
+      conditions:
+        - '%victim health% > 6 : %stop%'
+      effects:
+        - PARTICLE:CLOUD:200:3 @Victim
+        - POTION:BLINDNESS:1:140 @Attacker
+    '8':
+      chance: 100
+      cooldown: 2
+      conditions:
+        - '%victim health% > 6 : %stop%'
+      effects:
+        - PARTICLE:CLOUD:200:3 @Victim
+        - POTION:BLINDNESS:2:120 @Attacker
+infernal:
+  display: '%group-color%지옥'
+  description: 일정한 확률로 매우 뜨거운 맛을 선사합니다.
+  applies-to: 검, 도끼
+  type: ATTACK;ATTACK_MOB
+  group: ELITE
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 15
+      cooldown: 2
+      effects:
+        - PARTICLE:BURN:2:20
+        - BURN:2 @Victim
+    '2':
+      chance: 30
+      cooldown: 2
+      effects:
+        - PARTICLE:BURN:2:40
+        - BURN:4 @Victim
+    '3':
+      chance: 50
+      cooldown: 2
+      effects:
+        - PARTICLE:BURN:3:20
+        - BURN:6 @Victim
+extinguish:
+  display: '%group-color%Extinguish'
+  description: |-
+    일정 확률로 자기 자신이 불탈 때
+    불을 즉시 제거합니다.
+  applies-to: 바지
+  type: DEFENSE;DEFENSE_MOB;FIRE
+  group: ELITE
+  applies:
+    - ALL_LEGGINGS
+  levels:
+    '1':
+      chance: 20
+      effects:
+        - WAIT:1
+        - EXTINGUISH @Victim
+    '2':
+      chance: 60
+      effects:
+        - WAIT:1
+        - EXTINGUISH @Victim
+    '3':
+      chance: 80
+      effects:
+        - WAIT:1
+        - EXTINGUISH @Victim
+shockwave:
+  display: '%group-color%쇼크웨이브'
+  description: |-
+    일정 확률로 죽을 위기에 처할 때
+    공격자를 멀리 떨어뜨려 놓습니다.
+  applies-to: 상체갑옷
+  type: DEFENSE;DEFENSE_MOB
+  settings:
+    showActionBar: true
+  group: ELITE
+  applies:
+    - ALL_CHESTPLATE
+  levels:
+    '1':
+      chance: 10
+      cooldown: 4
+      conditions:
+        - '%victim health% > 5 : %stop%'
+      effects:
+        - PULL_AWAY:0.5 @Attacker
+    '2':
+      chance: 20
+      cooldown: 4
+      conditions:
+        - '%victim health% > 5 : %stop%'
+      effects:
+        - PULL_AWAY:1.0 @Attacker
+    '3':
+      chance: 30
+      cooldown: 4
+      conditions:
+        - '%victim health% > 5 : %stop%'
+      effects:
+        - PULL_AWAY:1.5 @Attacker
+    '4':
+      chance: 40
+      cooldown: 4
+      conditions:
+        - '%victim health% > 5 : %stop%'
+      effects:
+        - PULL_AWAY:2.0 @Attacker
+    '5':
+      chance: 50
+      cooldown: 4
+      conditions:
+        - '%victim health% > 5 : %stop%'
+      effects:
+        - PULL_AWAY:2.5 @Attacker
+vampire:
+  display: '%group-color%흡혈'
+  description: |-
+    일정 확률로 공격할 시
+    1~ 3 체력을 몇 초 후에 회복합니다.
+  applies-to: 검
+  type: ATTACK;ATTACK_MOB
+  group: ELITE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 7
+      cooldown: 4
+      effects:
+        - WAIT:40
+        - ADD_HEALTH:<random number>1-6</random number>
+    '2':
+      chance: 12
+      cooldown: 4
+      effects:
+        - WAIT:40
+        - ADD_HEALTH:<random number>1-6</random number>
+    '3':
+      chance: 15
+      cooldown: 4
+      effects:
+        - WAIT:40
+        - ADD_HEALTH:<random number>1-6</random number>
+greatsword:
+  display: '%group-color%소드마스터'
+  description: |-
+    일정 확률로 활을 든 상대에게 몇 배의
+    데미지를 줍니다.
+  applies-to: 검
+  type: ATTACK
+  group: ELITE
+  settings:
+    showActionBar: true
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 15
+      cooldown: 2
+      conditions:
+        - '%victim is holding% contains BOW : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>45-70</random number> @Attacker
+    '2':
+      chance: 25
+      cooldown: 2
+      conditions:
+        - '%victim is holding% contains BOW : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>75-90</random number> @Attacker
+    '3':
+      chance: 35
+      cooldown: 2
+      conditions:
+        - '%victim is holding% contains BOW : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>85-165</random number> @Attacker
+    '4':
+      chance: 45
+      cooldown: 2
+      conditions:
+        - '%victim is holding% contains BOW : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>105-205</random number>
+    '5':
+      chance: 70
+      cooldown: 2
+      conditions:
+        - '%victim is holding% contains BOW : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>105-205</random number>
+bowmaster:
+  display: '%group-color%원거리마스터'
+  description: |-
+    일정 확률로 검을 든 상대에게 데미지를
+    몇 배로 입힙니다.
+  applies-to: 활, 석궁, 삼지창
+  type: SHOOT
+  group: ELITE
+  applies:
+    - TRIDENT
+    - BOW
+    - CROSSBOW
+  levels:
+    '1':
+      chance: 15
+      cooldown: 2
+      conditions:
+        - '%victim is holding% contains SWORD : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>45-70</random number> @Attacker
+    '2':
+      chance: 25
+      cooldown: 2
+      conditions:
+        - '%victim is holding% contains SWORD : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>75-90</random number> @Attacker
+    '3':
+      chance: 35
+      cooldown: 2
+      conditions:
+        - '%victim is holding% contains SWORD : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>85-165</random number> @Attacker
+    '4':
+      chance: 45
+      cooldown: 2
+      conditions:
+        - '%victim is holding% contains SWORD : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>105-205</random number>
+    '5':
+      chance: 55
+      cooldown: 2
+      conditions:
+        - '%victim is holding% contains SWORD : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>105-205</random number>
+hardened:
+  display: '%group-color%보강'
+  description: 일정 확률로 데미지를 입을 시 내구도를 회복합니다.
+  applies-to: 갑옷
+  type: DEFENSE
+  group: LEGENDARY
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 25
+      cooldown: 7
+      effects:
+        - ADD_DURABILITY_CURRENT_ITEM:1 @Victim
+    '2':
+      chance: 35
+      cooldown: 7
+      effects:
+        - ADD_DURABILITY_CURRENT_ITEM:1 @Victim
+    '3':
+      chance: 45
+      cooldown: 7
+      effects:
+        - ADD_DURABILITY_CURRENT_ITEM:2 @Victim
+patch:
+  display: '%group-color%덧댐'
+  description: 일정 확률로 몬스터로부터 공격받을 때 내구도를 회복합니다.
+  applies-to: 갑옷
+  type: DEFENSE_MOB
+  group: LEGENDARY
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 25
+      cooldown: 7
+      effects:
+        - ADD_DURABILITY_CURRENT_ITEM:1 @Victim
+    '2':
+      chance: 35
+      cooldown: 7
+      effects:
+        - ADD_DURABILITY_CURRENT_ITEM:1 @Victim
+    '3':
+      chance: 45
+      cooldown: 7
+      effects:
+        - ADD_DURABILITY_CURRENT_ITEM:2 @Victim
+rocketescape:
+  display: '%group-color%로켓탈출'
+  description: 체력이 낮을 때 공중으로 뛰어오릅니다.
+  applies-to: 신발
+  type: DEFENSE;DEFENSE_MOB
+  settings:
+    showActionBar: true
+  group: ELITE
+  applies:
+    - ALL_BOOTS
+  levels:
+    '1':
+      chance: 50
+      cooldown: 8
+      conditions:
+        - '%victim health% > 6 : %stop%'
+      effects:
+        - BOOST:UP:20 @Victim
+    '2':
+      chance: 80
+      cooldown: 8
+      conditions:
+        - '%victim health% > 6 : %stop%'
+      effects:
+        - BOOST:UP:25 @Victim
+    '3':
+      chance: 90
+      cooldown: 8
+      conditions:
+        - '%victim health% > 6 : %stop%'
+      effects:
+        - BOOST:UP:30 @Victim
+trickster:
+  display: '%group-color%환영'
+  description: |-
+    일정 확률로 당신이 공격받을 때
+    즉시 상대방의 뒤로
+    텔레포트합니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB
+  settings:
+    showActionBar: true
+  group: ELITE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 8
+      cooldown: 5
+      effects:
+        - TELEPORT_BEHIND @Victim
+    '2':
+      chance: 14
+      cooldown: 5
+      effects:
+        - TELEPORT_BEHIND @Victim
+    '3':
+      chance: 17
+      cooldown: 5
+      effects:
+        - TELEPORT_BEHIND @Victim
+    '4':
+      chance: 21
+      cooldown: 5
+      effects:
+        - TELEPORT_BEHIND @Victim
+    '5':
+      chance: 29
+      cooldown: 5
+      effects:
+        - TELEPORT_BEHIND @Victim
+    '6':
+      chance: 37
+      cooldown: 5
+      effects:
+        - TELEPORT_BEHIND @Victim
+    '7':
+      chance: 46
+      cooldown: 5
+      effects:
+        - TELEPORT_BEHIND @Victim
+    '8':
+      chance: 51
+      cooldown: 5
+      effects:
+        - TELEPORT_BEHIND @Victim
+timber:
+  display: '%group-color%벌목'
+  description: 일정 확률로 툭 치면 나무가 부숴집니다.
+  applies-to: 도끼
+  group: ULTIMATE
+  type: MINING
+  settings:
+    showActionBar: true
+  applies:
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 15
+      cooldown: 5
+      effects:
+        - BREAK_TREE @Block
+    '2':
+      chance: 35
+      cooldown: 5
+      effects:
+        - BREAK_TREE @Block
+    '3':
+      chance: 55
+      cooldown: 6
+      effects:
+        - BREAK_TREE @Block
+distance:
+  display: '%group-color%거리감'
+  description: |-
+    일정 확률로 적을 멀리 떨어뜨리고,
+    체력 재생 효과를 얻습니다.
+  applies-to: 무기
+  type: ATTACK
+  group: ULTIMATE
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 16
+      cooldown: 6
+      effects:
+        - PULL_AWAY:3.0 @Victim
+        - POTION:REGENERATION:0:20 @Attacker
+    '2':
+      chance: 20
+      cooldown: 6
+      effects:
+        - PULL_AWAY:4.5 @Victim
+        - POTION:REGENERATION:0:20 @Attacker
+    '3':
+      chance: 24
+      cooldown: 6
+      effects:
+        - PULL_AWAY:5.0 @Victim
+        - POTION:REGENERATION:1:20 @Attacker
+    '4':
+      chance: 30
+      cooldown: 6
+      effects:
+        - PULL_AWAY:6.5 @Victim
+        - POTION:REGENERATION:1:40 @Attacker
+cleave:
+  display: '%group-color%패기'
+  description: |-
+    일정 반경에 들어온 플레이어들을
+    동시에 데미지를 입힙니다.
+  applies-to: 도끼
+  type: ATTACK
+  settings:
+    showActionBar: true
+  group: ULTIMATE
+  applies:
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 4
+      cooldown: 8
+      effects:
+        - DO_HARM:<random number>1-2</random number> @Aoe{radius=2,target=damageable}
+    '2':
+      chance: 5
+      cooldown: 8
+      effects:
+        - DO_HARM:<random number>1-2</random number> @Aoe{radius=2,target=damageable}
+    '3':
+      chance: 6
+      cooldown: 8
+      effects:
+        - DO_HARM:<random number>1-3</random number> @Aoe{radius=3,target=damageable}
+    '4':
+      chance: 7
+      cooldown: 8
+      effects:
+        - DO_HARM:<random number>1-3</random number> @Aoe{radius=4,target=damageable}
+    '5':
+      chance: 9
+      cooldown: 8
+      effects:
+        - DO_HARM:<random number>2-3</random number> @Aoe{radius=5,target=damageable}
+    '6':
+      chance: 12
+      cooldown: 8
+      effects:
+        - DO_HARM:<random number>2-3</random number> @Aoe{radius=6,target=damageable}
+    '7':
+      chance: 30
+      cooldown: 8
+      effects:
+        - DO_HARM:<random number>2-3</random number> @Aoe{radius=7,target=damageable}
+ambit:
+  display: '%group-color%범위'
+  description: "일정 범위에 들어온 몬스터들을 동시 공격합니다."
+  applies-to: 검, 도끼
+  type: ATTACK_MOB
+  settings:
+    showActionBar: true
+  group: ULTIMATE
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 4
+      cooldown: 8
+      effects:
+        - DO_HARM:<random number>1-2</random number> @Aoe{radius=7,target=mobs}
+    '2':
+      chance: 5
+      cooldown: 8
+      effects:
+        - DO_HARM:<random number>1-2</random number> @Aoe{radius=2,target=mobs}
+    '3':
+      chance: 6
+      cooldown: 9
+      effects:
+        - DO_HARM:<random number>1-3</random number> @Aoe{radius=3,target=mobs}
+    '4':
+      chance: 7
+      cooldown: 9
+      effects:
+        - DO_HARM:<random number>1-3</random number> @Aoe{radius=4,target=mobs}
+    '5':
+      chance: 9
+      cooldown: 10
+      effects:
+        - DO_HARM:<random number>2-3</random number> @Aoe{radius=5,target=mobs}
+    '6':
+      chance: 12
+      cooldown: 12
+      effects:
+        - DO_HARM:<random number>2-3</random number> @Aoe{radius=6,target=mobs}
+    '7':
+      chance: 100
+      cooldown: 14
+      effects:
+        - DO_HARM:<random number>2-3</random number> @Aoe{radius=7,target=mobs}
+angelic:
+  display: '%group-color%앤젤릭'
+  description: 데미지를 입었을 때 일정 확률로 회복합니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB
+  group: ULTIMATE
+  applies:
+    - ALL_CHESTPLATE
+  levels:
+    '1':
+      chance: 9
+      cooldown: 7
+      effects:
+        - ADD_HEALTH:<random number>1-3</random number> @Victim
+    '2':
+      chance: 14
+      cooldown: 9
+      effects:
+        - ADD_HEALTH:<random number>1-3</random number> @Victim
+    '3':
+      chance: 17
+      cooldown: 11
+      effects:
+        - ADD_HEALTH:<random number>1-3</random number> @Victim
+    '4':
+      chance: 26
+      cooldown: 13
+      effects:
+        - ADD_HEALTH:<random number>1-4</random number> @Victim
+    '5':
+      chance: 34
+      cooldown: 15
+      effects:
+        - ADD_HEALTH:<random number>1-4</random number> @Victim
+arrowdeflect:
+  display: '%group-color%화살반사'
+  description: 일정 확률로 화살 데미지를 무시합니다.
+  applies-to: 갑옷
+  type: DEFENSE_PROJECTILE
+  group: ULTIMATE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 15
+      cooldown: 6
+      effects:
+        - CANCEL_EVENT
+    '2':
+      chance: 25
+      cooldown: 6
+      effects:
+        - CANCEL_EVENT
+    '3':
+      chance: 35
+      cooldown: 6
+      effects:
+        - CANCEL_EVENT
+    '4':
+      chance: 45
+      cooldown: 6
+      effects:
+        - CANCEL_EVENT
+arrowbreak:
+  display: '%group-color%화살분쇄'
+  description: "이걸 인챈트한 도구를 들고 있을 경우 화살을 일정 확률로 튕겨냅니다."
+  applies-to: 도끼
+  type: DEFENSE_PROJECTILE
+  group: ULTIMATE
+  applies:
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 15
+      cooldown: 8
+      effects:
+        - CANCEL_EVENT
+        - PLAY_SOUND:ENTITY_ITEM_BREAK:2 @Victim
+    '2':
+      chance: 25
+      cooldown: 8
+      effects:
+        - CANCEL_EVENT
+        - PLAY_SOUND:ENTITY_ITEM_BREAK:2 @Victim
+    '3':
+      chance: 35
+      cooldown: 8
+      effects:
+        - CANCEL_EVENT
+        - PLAY_SOUND:ENTITY_ITEM_BREAK:2 @Victim
+    '4':
+      chance: 45
+      cooldown: 9
+      effects:
+        - CANCEL_EVENT
+        - PLAY_SOUND:ENTITY_ITEM_BREAK:2 @Victim
+    '5':
+      chance: 55
+      cooldown: 9
+      effects:
+        - CANCEL_EVENT
+        - PLAY_SOUND:ENTITY_ITEM_BREAK:2 @Victim
+    '6':
+      chance: 75
+      cooldown: 10
+      effects:
+        - CANCEL_EVENT
+        - PLAY_SOUND:ENTITY_ITEM_BREAK:2 @Victim
+curse:
+  display: '%group-color%저주'
+  description: 일정 확률로 공격하는 적에게 채굴 피로를 겁니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB
+  group: ELITE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 13
+      effects:
+        - POTION:SLOW_DIGGING:0:100 @Attacker
+    '2':
+      chance: 17
+      cooldown: 15
+      effects:
+        - POTION:SLOW_DIGGING:1:100 @Attacker
+diminish:
+  display: '%group-color%격하'
+  description: 일정 확률로 적에게 채굴 피로를 부여합니다.
+  applies-to: 도끼
+  type: ATTACK;ATTACK_MOB
+  group: ULTIMATE
+  applies:
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 13
+      effects:
+        - POTION:SLOW_DIGGING:0:100 @Victim
+interrupt:
+  display: '%group-color%방해'
+  description: 일정 확률로 적에게 채굴 피로를 부여합니다.
+  applies-to: 검
+  type: ATTACK;ATTACK_MOB
+  group: ULTIMATE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 13
+      effects:
+        - POTION:SLOW_DIGGING:0:100 @Victim
+    '2':
+      chance: 17
+      cooldown: 15
+      effects:
+        - POTION:SLOW_DIGGING:1:100 @Victim
+exalted:
+  display: '%group-color%정화'
+  description: |-
+    일정 확률로 공격 시
+    부정적인 포션 효과들을 전부 제거합니다.
+  applies-to: 검
+  type: ATTACK
+  group: ULTIMATE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 12
+      cooldown: 8
+      effects:
+        - CURE:SLOW @Attacker
+        - CURE:CONFUSION @Attacker
+        - CURE:BLINDNESS @Attacker
+        - CURE:POISON @Attacker
+        - CURE:WITHER @Attacker
+        - CURE:HUNGER @Attacker
+        - CURE:WEAKNESS @Attacker
+        - CURE:SLOW_DIGGING @Attacker
+    '2':
+      chance: 16
+      cooldown: 8
+      effects:
+        - CURE:SLOW @Attacker
+        - CURE:CONFUSION @Attacker
+        - CURE:BLINDNESS @Attacker
+        - CURE:POISON @Attacker
+        - CURE:WITHER @Attacker
+        - CURE:HUNGER @Attacker
+        - CURE:WEAKNESS @Attacker
+        - CURE:SLOW_DIGGING @Attacker
+    '3':
+      chance: 22
+      cooldown: 8
+      effects:
+        - CURE:SLOW @Attacker
+        - CURE:CONFUSION @Attacker
+        - CURE:BLINDNESS @Attacker
+        - CURE:POISON @Attacker
+        - CURE:WITHER @Attacker
+        - CURE:HUNGER @Attacker
+        - CURE:WEAKNESS @Attacker
+        - CURE:SLOW_DIGGING @Attacker
+    '4':
+      chance: 36
+      cooldown: 8
+      effects:
+        - CURE:SLOW @Attacker
+        - CURE:CONFUSION @Attacker
+        - CURE:BLINDNESS @Attacker
+        - CURE:POISON @Attacker
+        - CURE:WITHER @Attacker
+        - CURE:HUNGER @Attacker
+        - CURE:WEAKNESS @Attacker
+        - CURE:SLOW_DIGGING @Attacker
+ragdoll:
+  display: '%group-color%인형'
+  description: |-
+    일정 확률로 공격받을 시
+    적을 뒤로 밀칩니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB
+  group: ULTIMATE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 10
+      cooldown: 4
+      effects:
+        - PULL_AWAY:0.1 @Victim
+    '2':
+      chance: 20
+      cooldown: 4
+      effects:
+        - PULL_AWAY:0.2 @Victim
+    '3':
+      chance: 30
+      cooldown: 4
+      effects:
+        - PULL_AWAY:0.3 @Victim
+    '4':
+      chance: 50
+      cooldown: 4
+      effects:
+        - PULL_AWAY:0.4 @Victim
+block:
+  display: '%group-color%패링'
+  description: |-
+    일정 확률로 50 공격데미지를 무효하고
+    데미지 4를 반격합니다.
+  applies-to: 검
+  type: DEFENSE;DEFENSE_MOB
+  group: ULTIMATE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 16
+      cooldown: 4
+      effects:
+        - NEGATE_DAMAGE:50 @Victim
+        - DO_HARM:<random number>1-4</random number> @Attacker
+    '2':
+      chance: 22
+      cooldown: 4
+      effects:
+        - NEGATE_DAMAGE:50 @Victim
+        - DO_HARM:<random number>1-4</random number> @Attacker
+    '3':
+      chance: 30
+      cooldown: 4
+      effects:
+        - NEGATE_DAMAGE:50 @Victim
+        - DO_HARM:<random number>1-4</random number> @Attacker
+trench:
+  display: '%group-color%굴착기'
+  description: 일정 확률로 3x3 크기를 캡니다..
+  applies-to: 곡괭이, 삽
+  type: MINING
+  group: ULTIMATE
+  applies:
+    - ALL_PICKAXE
+    - ALL_SPADE
+  levels:
+    '1':
+      chance: 13
+      effects:
+        - BREAK_BLOCK @Trench{r=3}
+    '2':
+      chance: 26
+      effects:
+        - BREAK_BLOCK @Trench{r=3}
+    '3':
+      chance: 36
+      effects:
+        - BREAK_BLOCK @Trench{r=3}
+    '4':
+      chance: 49
+      effects:
+        - BREAK_BLOCK @Trench{r=3}
+    '5':
+      chance: 59
+      effects:
+        - BREAK_BLOCK @Trench{r=3}
+    '6':
+      chance: 72
+      effects:
+        - BREAK_BLOCK @Trench{r=3}
+    '7':
+      chance: 85
+      effects:
+        - BREAK_BLOCK @Trench{r=3}
+    '8':
+      chance: 90
+      effects:
+        - BREAK_BLOCK @Trench{r=3}
+    '9':
+      chance: 100
+      effects:
+        - BREAK_BLOCK @Trench{r=3}
+dodge:
+  display: '%group-color%회피'
+  description: |-
+    일정 확률로 공격을 회피합니다.
+    웅크리기를 할 시 확률이 7% 증가합니다.
+  applies-to: 갑옷
+  type: DEFENSE
+  group: ULTIMATE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 7
+      cooldown: 8
+      conditions:
+        - '%victim is sneaking% = true : %chance%+7'
+      effects:
+        - CANCEL_EVENT
+        - PLAY_SOUND:ENTITY_BAT_TAKEOFF:0.7 @Victim
+    '2':
+      chance: 12
+      cooldown: 8
+      conditions:
+        - '%victim is sneaking% = true : %chance%+7'
+      effects:
+        - CANCEL_EVENT
+        - PLAY_SOUND:ENTITY_BAT_TAKEOFF:0.7 @Victim
+    '3':
+      chance: 16
+      cooldown: 8
+      conditions:
+        - '%victim is sneaking% = true : %chance%+7'
+      effects:
+        - CANCEL_EVENT
+        - PLAY_SOUND:ENTITY_BAT_TAKEOFF:0.7 @Victim
+    '4':
+      chance: 22
+      cooldown: 8
+      conditions:
+        - '%victim is sneaking% = true : %chance%+7'
+      effects:
+        - CANCEL_EVENT
+        - PLAY_SOUND:ENTITY_BAT_TAKEOFF:0.7 @Victim
+    '5':
+      chance: 27
+      cooldown: 8
+      conditions:
+        - '%victim is sneaking% = true : %chance%+7'
+      effects:
+        - CANCEL_EVENT
+        - PLAY_SOUND:ENTITY_BAT_TAKEOFF:0.7 @Victim
+fumble:
+  display: '%group-color%펌블'
+  description: |-
+    일정 확률로 화살에 맞을 경우
+    그 화살을 쏜 적이 폭발합니다.
+  applies-to: 상체갑옷
+  type: DEFENSE_PROJECTILE
+  group: LEGENDARY
+  applies:
+    - ALL_CHESTPLATE
+  levels:
+    '1':
+      chance: 10
+      cooldown: 8
+      effects:
+        - TNT:1 @Attacker
+        - PLAY_SOUND:ENCHANT_THORNS_HIT:1:1 @Victim
+    '2':
+      chance: 15
+      cooldown: 8
+      effects:
+        - TNT:1 @Attacker
+        - PLAY_SOUND:ENCHANT_THORNS_HIT:1:1 @Victim
+    '3':
+      chance: 25
+      cooldown: 8
+      effects:
+        - TNT:1 @Attacker
+        - PLAY_SOUND:ENCHANT_THORNS_HIT:1:1 @Victim
+turmoil:
+  display: '%group-color%혼란'
+  description: |-
+    일정 확률로 상대방이 가디언을
+    스폰하는 행위를 막습니다.
+  applies-to: 갑옷
+  type: DEFENSE
+  group: LEGENDARY
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 10
+      cooldown: 8
+      effects:
+        - DISABLE_ACTIVATION:guardians:4
+        - DISABLE_ACTIVATION:spirits:4
+        - DISABLE_ACTIVATION:explosivedemise:4
+        - DISABLE_ACTIVATION:undeadruse:4
+    '2':
+      chance: 14
+      cooldown: 8
+      effects:
+        - DISABLE_ACTIVATION:guardians:4
+        - DISABLE_ACTIVATION:spirits:4
+        - DISABLE_ACTIVATION:explosivedemise:4
+        - DISABLE_ACTIVATION:undeadruse:4
+    '3':
+      chance: 18
+      cooldown: 8
+      effects:
+        - DISABLE_ACTIVATION:guardians:4
+        - DISABLE_ACTIVATION:spirits:4
+        - DISABLE_ACTIVATION:explosivedemise:4
+        - DISABLE_ACTIVATION:undeadruse:4
+guardians:
+  display: '%group-color%소환:가디언'
+  description: |-
+    일정 확률로 당신을 수호하는
+    가디언을 소환합니다.
+  applies-to: 갑옷
+  type: DEFENSE
+  settings:
+    showActionBar: true
+  group: ULTIMATE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 6
+      cooldown: 8
+      effects:
+        - GUARD:IRON_GOLEM:8:1 @Victim
+    '2':
+      chance: 9
+      cooldown: 8
+      effects:
+        - GUARD:IRON_GOLEM:8:1 @Victim
+    '3':
+      chance: 13
+      cooldown: 8
+      effects:
+        - GUARD:IRON_GOLEM:8:1 @Victim
+    '4':
+      chance: 14
+      cooldown: 8
+      effects:
+        - GUARD:IRON_GOLEM:8:1 @Victim
+    '5':
+      chance: 16
+      cooldown: 9
+      effects:
+        - GUARD:IRON_GOLEM:8:1 @Victim
+    '6':
+      chance: 17
+      cooldown: 10
+      effects:
+        - GUARD:IRON_GOLEM:8:2 @Victim
+    '7':
+      chance: 18
+      cooldown: 12
+      effects:
+        - GUARD:IRON_GOLEM:8:2 @Victim
+    '8':
+      chance: 20
+      cooldown: 12
+      effects:
+        - GUARD:IRON_GOLEM:8:3 @Victim
+    '9':
+      chance: 22
+      cooldown: 15
+      effects:
+        - GUARD:IRON_GOLEM:8:3 @Victim
+    '10':
+      chance: 24
+      cooldown: 15
+      effects:
+        - GUARD:IRON_GOLEM:8:4 @Victim
+iceaspect:
+  display: '%group-color%냉동'
+  description: |-
+    일정 확률로 상대방의 적을
+    매우 느리게 만듭니다.
+  applies-to: 검
+  type: ATTACK;ATTACK_MOB
+  group: ULTIMATE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 15
+      cooldown: 2
+      effects:
+        - POTION:SLOW:3:100 @Victim
+    '2':
+      chance: 23
+      cooldown: 2
+      effects:
+        - POTION:SLOW:3:100 @Victim
+    '3':
+      chance: 31
+      cooldown: 2
+      effects:
+        - POTION:SLOW:3:100 @Victim
+momentum:
+  display: '%group-color%Momentum'
+  description: |-
+    일정 확률로 폭죽으로 날아가는
+    거리를 증가시킵니다.
+  applies-to: 겉날개
+  type: RIGHT_CLICK
+  group: ELITE
+  applies:
+    - ELYTRA
+  levels:
+    '1':
+      chance: 10
+      cooldown: 5
+      conditions:
+        - '%player is holding% = FIREWORK_ROCKET : %allow%'
+      effects:
+        - POTION:SPEED:0:40
+    '2':
+      chance: 25
+      cooldown: 5
+      conditions:
+        - '%player is holding% = FIREWORK_ROCKET : %allow%'
+      effects:
+        - POTION:SPEED:1:60
+    '3':
+      chance: 45
+      cooldown: 5
+      conditions:
+        - '%player is holding% = FIREWORK_ROCKET : %allow%'
+      effects:
+        - POTION:SPEED:2:80
+reinforced:
+  display: '%group-color%강화'
+  description: 피격 데미지를 낮춰줍니다.
+  applies-to: 겉날개
+  type: DEFENSE;DEFENSE_MOB;DEFENSE_PROJECTILE
+  group: ULTIMATE
+  applies:
+    - ELYTRA
+  levels:
+    '1':
+      chance: 15
+      cooldown: 1
+      effects:
+        - DECREASE_DAMAGE:15
+    '2':
+      chance: 45
+      cooldown: 1
+      effects:
+        - DECREASE_DAMAGE:25
+    '3':
+      chance: 60
+      cooldown: 1
+      effects:
+        - DECREASE_DAMAGE:35
+    '4':
+      chance: 75
+      cooldown: 1
+      effects:
+        - DECREASE_DAMAGE:45
+restore:
+  display: '%group-color%재회복'
+  description: |-
+    일정 확률로 이 아이템이 부숴질 시
+    이 인챈트가 사라지고
+    내구도를 반 회복합니다.
+  applies-to: 도구
+  type: ITEM_BREAK
+  group: FABLED
+  settings:
+    showActionBar: true
+  applies:
+    - ALL_PICKAXE
+    - ALL_SPADE
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 40
+      effects:
+        - ADD_DURABILITY_CURRENT_ITEM:<round><math>(%maximum durability%/2)</math></round>
+        - REMOVE_ENCHANT:restore
+        - PLAY_SOUND:ITEM_TOTEM_USE
+    '2':
+      chance: 60
+      effects:
+        - ADD_DURABILITY_CURRENT_ITEM:<round><math>(%maximum durability%/2)</math></round>
+        - REMOVE_ENCHANT:restore
+        - PLAY_SOUND:ITEM_TOTEM_USE
+    '3':
+      chance: 80
+      effects:
+        - ADD_DURABILITY_CURRENT_ITEM:<round><math>(%maximum durability%/2)</math></round>
+        - REMOVE_ENCHANT:restore
+        - PLAY_SOUND:ITEM_TOTEM_USE
+    '4':
+      chance: 100
+      effects:
+        - ADD_DURABILITY_CURRENT_ITEM:<round><math>(%maximum durability%/2)</math></round>
+        - REMOVE_ENCHANT:restore
+        - PLAY_SOUND:ITEM_TOTEM_USE
+implants:
+  display: '%group-color%주입'
+  description: 일정 확률로 음식을 주입합니다.
+  applies-to: 헬멧
+  type: REPEATING
+  group: ULTIMATE
+  applies:
+    - ALL_HELMET
+  levels:
+    '1':
+      chance: 30
+      time: 5
+      effects:
+        - ADD_FOOD:1
+    '2':
+      chance: 50
+      time: 5
+      effects:
+        - ADD_FOOD:1
+    '3':
+      chance: 70
+      time: 5
+      effects:
+        - ADD_FOOD:1
+obsidianshield:
+  display: '%group-color%흑철'
+  description: 화염 방지가 상시 실행됩니다.
+  applies-to: 갑옷
+  type: EFFECT_STATIC
+  group: ULTIMATE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      effects:
+        - POTION:FIRE_RESISTANCE:0
+piercing:
+  display: '%group-color%쪼개기'
+  description: 일정 확률로 데미지를 추가로 더 줍니다.
+  applies-to: 활
+  type: SHOOT;SHOOT_MOB
+  group: ULTIMATE
+  applies:
+    - BOW
+    - CROSSBOW
+  levels:
+    '1':
+      chance: 13
+      cooldown: 3
+      effects:
+        - INCREASE_DAMAGE:<random number>50-150</random number> @Victim
+    '2':
+      chance: 19
+      cooldown: 3
+      effects:
+        - INCREASE_DAMAGE:<random number>50-150</random number> @Victim
+    '3':
+      chance: 25
+      cooldown: 3
+      effects:
+        - INCREASE_DAMAGE:<random number>50-150</random number> @Victim
+    '4':
+      chance: 32
+      cooldown: 3
+      effects:
+        - INCREASE_DAMAGE:<random number>50-150</random number> @Victim
+    '5':
+      chance: 37
+      cooldown: 3
+      effects:
+        - INCREASE_DAMAGE:<random number>50-150</random number> @Victim
+archer:
+  display: '%group-color%궁수'
+  description: 일정 확률로 활로 주는 데미지가 증가합니다.
+  applies-to: 활
+  type: SHOOT;SHOOT_MOB
+  group: ULTIMATE
+  applies:
+    - BOW
+  levels:
+    '1':
+      chance: 13
+      cooldown: 3
+      conditions:
+        - '%attacker is holding% = BOW : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>50-150</random number> @Victim
+    '2':
+      chance: 19
+      cooldown: 3
+      conditions:
+        - '%attacker is holding% = BOW : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>50-150</random number> @Victim
+    '3':
+      chance: 25
+      cooldown: 3
+      conditions:
+        - '%attacker is holding% = BOW : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>50-150</random number> @Victim
+    '4':
+      chance: 32
+      cooldown: 3
+      conditions:
+        - '%attacker is holding% = BOW : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>50-150</random number> @Victim
+marksman:
+  display: '%group-color%표적'
+  description: 일정 확률로 석궁으로 주는 데미지가 증가합니다.
+  applies-to: 석궁
+  type: SHOOT;SHOOT_MOB
+  group: ELITE
+  applies:
+    - CROSSBOW
+  levels:
+    '1':
+      chance: 13
+      cooldown: 3
+      conditions:
+        - '%attacker is holding% = CROSSBOW : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>50-150</random number> @Victim
+    '2':
+      chance: 19
+      cooldown: 3
+      conditions:
+        - '%attacker is holding% = CROSSBOW : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>50-150</random number> @Victim
+    '3':
+      chance: 25
+      cooldown: 3
+      conditions:
+        - '%attacker is holding% = CROSSBOW : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>50-150</random number> @Victim
+    '4':
+      chance: 32
+      cooldown: 3
+      conditions:
+        - '%attacker is holding% = CROSSBOW : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>50-150</random number> @Victim
+poseidon:
+  display: '%group-color%포세이돈'
+  description: 일정 확률로 삼지창이 주는 데미지가 증가합니다.
+  applies-to: 삼지창
+  type: SHOOT;SHOOT_MOB
+  group: ELITE
+  applies:
+    - TRIDENT
+  levels:
+    '1':
+      chance: 13
+      cooldown: 3
+      conditions:
+        - '%item type% = TRIDENT : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>50-150</random number> @Victim
+    '2':
+      chance: 19
+      cooldown: 3
+      conditions:
+        - '%item type% = TRIDENT : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>50-150</random number> @Victim
+    '3':
+      chance: 25
+      cooldown: 3
+      conditions:
+        - '%item type% = TRIDENT : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>50-150</random number> @Victim
+    '4':
+      chance: 32
+      cooldown: 3
+      conditions:
+        - '%item type% = TRIDENT : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>50-150</random number> @Victim
+safeguard:
+  display: '%group-color%안전'
+  description: |-
+    일정 확률로 데미지를 받을 경우
+    저항을 얻습니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB
+  group: ULTIMATE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 5
+      cooldown: 5
+      effects:
+        - POTION:DAMAGE_RESISTANCE:0:60 @Victim
+    '2':
+      chance: 9
+      cooldown: 5
+      effects:
+        - POTION:DAMAGE_RESISTANCE:1:60 @Victim
+disappear:
+  display: '%group-color%소실'
+  description: |-
+    일정 확률로 체력이 낮을 때
+    투명해집니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB
+  settings:
+    showActionBar: true
+  group: ULTIMATE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 20
+      cooldown: 20
+      conditions:
+        - '%victim health% > 5 : %stop%'
+      effects:
+        - POTION:INVISIBILITY:2:120 @Victim
+    '2':
+      chance: 23
+      cooldown: 20
+      conditions:
+        - '%victim health% > 6 : %stop%'
+      effects:
+        - POTION:INVISIBILITY:2:140 @Victim
+    '3':
+      chance: 50
+      cooldown: 20
+      conditions:
+        - '%victim health% > 7 : %stop%'
+      effects:
+        - POTION:INVISIBILITY:2:160 @Victim
+    '4':
+      chance: 100
+      cooldown: 20
+      conditions:
+        - '%victim health% > 15 : %stop%'
+      effects:
+        - POTION:INVISIBILITY:2:6000 @Victim
+confuse:
+  display: '%group-color%신기루'
+  description: 일정 확률로 상대에게 멀미를 부여합니다.
+  applies-to: 검
+  type: ATTACK
+  group: ULTIMATE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 12
+      cooldown: 6
+      effects:
+        - POTION:CONFUSION:0:60 @Victim
+    '2':
+      chance: 14
+      cooldown: 7
+      effects:
+        - POTION:CONFUSION:1:60 @Victim
+    '3':
+      chance: 16
+      cooldown: 8
+      effects:
+        - POTION:CONFUSION:2:60 @Victim
+    '4':
+      chance: 18
+      cooldown: 8
+      effects:
+        - POTION:CONFUSION:3:60 @Victim
+disintegrate:
+  display: '%group-color%붕괴'
+  description: |-
+    일정 확률로 적들이 입은 모든 방어구에게
+    내구도 공격을 진행합니다.
+  applies-to: 검
+  type: ATTACK
+  group: ULTIMATE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 12
+      cooldown: 2
+      effects:
+        - ADD_DURABILITY_ARMOR:-2 @Victim
+    '2':
+      chance: 25
+      cooldown: 2
+      effects:
+        - ADD_DURABILITY_ARMOR:-5 @Victim
+    '3':
+      chance: 39
+      cooldown: 2
+      effects:
+        - ADD_DURABILITY_ARMOR:-10 @Victim
+    '4':
+      chance: 46
+      cooldown: 2
+      effects:
+        - ADD_DURABILITY_ARMOR:-20 @Victim
+shatter:
+  display: '%group-color%박살'
+  description: |-
+    일정 확률로 적들이 입은 모든 방어구에게
+    내구도 공격을 진행합니다.
+  applies-to: 도끼
+  type: ATTACK
+  group: ULTIMATE
+  applies:
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 12
+      cooldown: 2
+      effects:
+        - ADD_DURABILITY_ARMOR:-2 @Victim
+    '2':
+      chance: 25
+      cooldown: 2
+      effects:
+        - ADD_DURABILITY_ARMOR:-5 @Victim
+    '3':
+      chance: 39
+      cooldown: 2
+      effects:
+        - ADD_DURABILITY_ARMOR:-10 @Victim
+    '4':
+      chance: 46
+      cooldown: 2
+      effects:
+        - ADD_DURABILITY_ARMOR:-20 @Victim
+heavy:
+  display: '%group-color%중장비'
+  description: |-
+    레벨 당 활로 입는 데미지가
+    2% 감소됩니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_PROJECTILE
+  group: ULTIMATE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 4
+      cooldown: 4
+      conditions:
+        - '%attacker is holding% = BOW : %allow%'
+      effects:
+        - DECREASE_DAMAGE:2 @Victim
+    '2':
+      chance: 9
+      cooldown: 4
+      conditions:
+        - '%attacker is holding% = BOW : %allow%'
+      effects:
+        - DECREASE_DAMAGE:4 @Victim
+    '3':
+      chance: 12
+      cooldown: 4
+      conditions:
+        - '%attacker is holding% = BOW : %allow%'
+      effects:
+        - DECREASE_DAMAGE:6 @Victim
+    '4':
+      chance: 16
+      cooldown: 4
+      conditions:
+        - '%attacker is holding% = BOW : %allow%'
+      effects:
+        - DECREASE_DAMAGE:8 @Victim
+    '5':
+      chance: 21
+      cooldown: 4
+      conditions:
+        - '%attacker is holding% = BOW : %allow%'
+      effects:
+        - DECREASE_DAMAGE:10 @Victim
+devour:
+  display: '%group-color%삼킴'
+  description: 일정 확률로 몬스터를 죽일 시 섭취합니다.
+  applies-to: 무기
+  type: KILL_MOB
+  group: UNIQUE
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 10
+      effects:
+        - ADD_FOOD:1
+    '2':
+      chance: 15
+      effects:
+        - ADD_FOOD:1
+    '3':
+      chance: 20
+      effects:
+        - ADD_FOOD:1
+replenish:
+  display: '%group-color%비상식량'
+  description: 광질할 경우 일정 확률로 허기를 채웁니다.
+  applies-to: 곡괭이
+  type: MINING
+  group: ELITE
+  applies:
+    - ALL_PICKAXE
+  levels:
+    '1':
+      chance: 30
+      effects:
+        - ADD_FOOD:1
+    '2':
+      chance: 40
+      effects:
+        - ADD_FOOD:2
+    '3':
+      chance: 60
+      effects:
+        - ADD_FOOD:3
+hellfire:
+  display: '%group-color%지옥불화살'
+  description: 화살이 일정 확률로 화염구로 바뀝니다.
+  applies-to: 활
+  type: SHOOT;SHOOT_MOB
+  settings:
+    showActionBar: true
+  group: ULTIMATE
+  applies:
+    - BOW
+  levels:
+    '1':
+      chance: 10
+      cooldown: 3
+      effects:
+        - FIREBALL @Victim
+    '2':
+      chance: 25
+      cooldown: 3
+      effects:
+        - FIREBALL @Victim
+    '3':
+      chance: 35
+      cooldown: 3
+      effects:
+        - FIREBALL @Victim
+    '4':
+      chance: 50
+      cooldown: 3
+      effects:
+        - FIREBALL @Victim
+    '5':
+      chance: 100
+      cooldown: 3
+      effects:
+        - FIREBALL @Victim
+missile:
+  display: '%group-color%지옥미사일'
+  description: 화살이 일정 확률로 화염구로 바뀝니다.
+  applies-to: 석궁
+  settings:
+    showActionBar: true
+  type: SHOOT;SHOOT_MOB
+  group: ELITE
+  applies:
+    - CROSSBOW
+  levels:
+    '1':
+      chance: 10
+      cooldown: 3
+      effects:
+        - FIREBALL @Victim
+    '2':
+      chance: 25
+      cooldown: 3
+      effects:
+        - FIREBALL @Victim
+    '3':
+      chance: 35
+      cooldown: 3
+      effects:
+        - FIREBALL @Victim
+    '4':
+      chance: 50
+      cooldown: 3
+      effects:
+        - FIREBALL @Victim
+    '5':
+      chance: 100
+      cooldown: 3
+      effects:
+        - FIREBALL @Victim
+longbow:
+  display: '%group-color%장거리'
+  description: |-
+    활을 들고 있는 상대에게
+    매우 큰 데미지를 일정 확률로
+    입힙니다.
+  applies-to: 활
+  settings:
+    showActionBar: true
+  type: SHOOT
+  group: ULTIMATE
+  applies:
+    - BOW
+    - CROSSBOW
+  levels:
+    '1':
+      chance: 12
+      cooldown: 4
+      conditions:
+        - '%victim is holding% = BOW : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>25-50</random number> @Attacker
+    '2':
+      chance: 17
+      cooldown: 4
+      conditions:
+        - '%victim is holding% = BOW : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>25-50</random number> @Attacker
+    '3':
+      chance: 25
+      cooldown: 4
+      conditions:
+        - '%victim is holding% = BOW : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>50-100</random number> @Attacker
+    '4':
+      chance: 33
+      cooldown: 4
+      conditions:
+        - '%victim is holding% = BOW : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>50-100</random number> @Attacker
+tank:
+  display: '%group-color%탱크'
+  description: |-
+    일정 확률로 도끼를 든 상대로부터 오는 데미지를
+    레벨 당 2% 낮춥니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB
+  group: ULTIMATE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 5
+      cooldown: 3
+      conditions:
+        - '%attacker is holding% contains AXE : %allow%'
+      effects:
+        - DECREASE_DAMAGE:2 @Victim
+    '2':
+      chance: 8
+      cooldown: 3
+      conditions:
+        - '%attacker is holding% contains AXE : %allow%'
+      effects:
+        - DECREASE_DAMAGE:4 @Victim
+    '3':
+      chance: 12
+      cooldown: 3
+      conditions:
+        - '%attacker is holding% contains AXE : %allow%'
+      effects:
+        - DECREASE_DAMAGE:6 @Victim
+    '4':
+      chance: 16
+      cooldown: 3
+      conditions:
+        - '%attacker is holding% contains AXE : %allow%'
+      effects:
+        - DECREASE_DAMAGE:8 @Victim
+swordsman:
+  display: '%group-color%패링'
+  description: |-
+    일정 확률로 검을 휘두르고 있는 상태일 경우
+    데미지가 최대레벨 기준 22% 낮아집니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB
+  group: ULTIMATE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 4
+      cooldown: 4
+      conditions:
+        - '%victim is holding% contains SWORD : %allow%'
+      effects:
+        - DECREASE_DAMAGE:<random number>1-4</random number> @Victim
+    '2':
+      chance: 9
+      cooldown: 4
+      conditions:
+        - '%attacker is holding% contains SWORD : %allow%'
+      effects:
+        - DECREASE_DAMAGE:<random number>8-12</random number> @Victim
+    '3':
+      chance: 13
+      cooldown: 4
+      conditions:
+        - '%attacker is holding% contains SWORD : %allow%'
+      effects:
+        - DECREASE_DAMAGE:<random number>12-15</random number> @Victim
+    '4':
+      chance: 16
+      cooldown: 4
+      conditions:
+        - '%attacker is holding% contains SWORD : %allow%'
+      effects:
+        - DECREASE_DAMAGE:<random number>15-18</random number> @Victim
+    '5':
+      chance: 21
+      cooldown: 4
+      conditions:
+        - '%attacker is holding% contains SWORD : %allow%'
+      effects:
+        - DECREASE_DAMAGE:<random number>18-22</random number> @Victim
+critical:
+  display: '%group-color%치뎀증'
+  description: 치명타시 데미지가 증가됩니다.
+  applies-to: 검
+  type: ATTACK_MOB;ATTACK
+  group: ELITE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 100
+      cooldown: 5
+      conditions:
+        - '%is critical% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:10
+    '2':
+      chance: 100
+      cooldown: 5
+      conditions:
+        - '%is critical% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:15
+    '3':
+      chance: 100
+      cooldown: 5
+      conditions:
+        - '%is critical% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:20
+rebound:
+  display: '%group-color%리바운드'
+  description: 일정 확률로 죽인 뒤 체력이 회복됩니다.
+  applies-to: 무기
+  type: KILL_PLAYER;KILL_MOB
+  settings:
+    showActionBar: true
+  group: LEGENDARY
+  applies:
+    - ALL_AXE
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 25
+      cooldown: 5
+      effects:
+        - ADD_HEALTH:10 @Attacker
+    '2':
+      chance: 35
+      cooldown: 5
+      effects:
+        - ADD_HEALTH:20 @Attacker
+    '3':
+      chance: 45
+      cooldown: 5
+      effects:
+        - ADD_HEALTH:30 @Attacker
+thunderlord:
+  display: '%group-color%번개군주'
+  description: |-
+    3콤보 공격 마다 일정 확률로
+    번개를 내려 꽂습니다.
+  applies-to: 무기
+  type: ATTACK_MOB
+  group: LEGENDARY
+  applies:
+    - ALL_AXE
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 25
+      cooldown: 2
+      conditions:
+        - '%attacker combo% > 2 : %allow%'
+      effects:
+        - LIGHTNING @Victim
+        - RESET_COMBO @Attacker
+    '2':
+      chance: 45
+      cooldown: 2
+      conditions:
+        - '%attacker combo% > 2 : %allow%'
+      effects:
+        - LIGHTNING @Victim
+        - RESET_COMBO @Attacker
+    '3':
+      chance: 75
+      cooldown: 2
+      conditions:
+        - '%attacker combo% > 2 : %allow%'
+      effects:
+        - LIGHTNING @Victim
+        - RESET_COMBO @Attacker
+netherling:
+  display: '%group-color%네더링'
+  description: 일정 확률로 네더에서 주는 데미지가 1.5배 증가합니다.
+  applies-to: 무기
+  type: ATTACK_MOB
+  group: ULTIMATE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 25
+      conditions:
+        - '%player world% contains NETHER : %allow%'
+      effects:
+        - INCREASE_DAMAGE:50
+    '2':
+      chance: 50
+      conditions:
+        - '%player world% contains NETHER : %allow%'
+      effects:
+        - INCREASE_DAMAGE:50
+    '3':
+      chance: 75
+      conditions:
+        - '%player world% contains NETHER : %allow%'
+      effects:
+        - INCREASE_DAMAGE:50
+endmaster:
+  display: '%group-color%엔드탐험가'
+  description: 일정 확률로 엔더에서 주는 데미지가 1.5배 증가합니다.
+  applies-to: 검
+  type: ATTACK_MOB
+  group: ULTIMATE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 25
+      conditions:
+        - '%player world% contains _END : %allow%'
+      effects:
+        - INCREASE_DAMAGE:50
+    '2':
+      chance: 50
+      conditions:
+        - '%player world% contains _END : %allow%'
+      effects:
+        - INCREASE_DAMAGE:50
+    '3':
+      chance: 75
+      conditions:
+        - '%player world% contains _END : %allow%'
+      effects:
+        - INCREASE_DAMAGE:50
+creeperarmor:
+  display: '%group-color%폭발무시'
+  description: |-
+    일정 확률로 폭발 데미지를 무시합니다.
+    더 높은 레벨일수록 체력 회복량이 증가합니다.
+  applies-to: 갑옷
+  type: EXPLOSION
+  group: ULTIMATE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 25
+      effects:
+        - CANCEL_EVENT
+    '2':
+      chance: 50
+      effects:
+        - CANCEL_EVENT
+    '3':
+      chance: 75
+      effects:
+        - CANCEL_EVENT
+        - ADD_HEALTH:<random number>1-10</random number>
+spirits:
+  display: '%group-color%정령'
+  description: 일정 확률로 공격 받을 시 블레이즈 가디언을 소환합니다.
+  applies-to: 갑옷
+  type: DEFENSE
+  settings:
+    showActionBar: true
+  group: ULTIMATE
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 2
+      cooldown: 8
+      effects:
+        - GUARD:BLAZE:8:3:@Victim
+    '2':
+      chance: 2
+      cooldown: 8
+      effects:
+        - GUARD:BLAZE:8:4:@Victim
+    '3':
+      chance: 3
+      cooldown: 8
+      effects:
+        - GUARD:BLAZE:8:4:@Victim
+    '4':
+      chance: 5
+      cooldown: 8
+      effects:
+        - GUARD:BLAZE:8:4:@Victim
+    '5':
+      chance: 8
+      cooldown: 8
+      effects:
+        - GUARD:BLAZE:8:4:@Victim
+    '6':
+      chance: 12
+      cooldown: 8
+      effects:
+        - GUARD:BLAZE:8:4:@Victim
+    '7':
+      chance: 15
+      cooldown: 8
+      effects:
+        - GUARD:BLAZE:8:4:@Victim
+    '8':
+      chance: 19
+      cooldown: 8
+      effects:
+        - GUARD:BLAZE:8:4:@Victim
+    '9':
+      chance: 22
+      cooldown: 8
+      effects:
+        - GUARD:BLAZE:8:4:@Victim
+    '10':
+      chance: 30
+      cooldown: 8
+      effects:
+        - GUARD:BLAZE:8:5:@Victim
+bleed:
+  display: '%group-color%출혈'
+  description: 일정 확률로 상대방을 출혈 상태로 만듭니다.
+  applies-to: 도끼
+  type: ATTACK;ATTACK_MOB
+  settings:
+    showActionBar: true
+  group: ULTIMATE
+  applies:
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 8
+      effects:
+        - POTION:SLOW:0:100 @Victim
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+    '2':
+      chance: 15
+      effects:
+        - POTION:SLOW:0:100 @Victim
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+    '3':
+      chance: 23
+      effects:
+        - POTION:SLOW:0:100 @Victim
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+    '4':
+      chance: 30
+      effects:
+        - POTION:SLOW:0:100 @Victim
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+    '5':
+      chance: 44
+      effects:
+        - POTION:SLOW:0:100 @Victim
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+    '6':
+      chance: 60
+      effects:
+        - POTION:SLOW:0:100 @Victim
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+        - WAIT:20
+        - DO_HARM:<random number>1-3</random number> @Victim
+lavawalker:
+  display: '%group-color%얼어붙은걸음'
+  description: 용암 위를 걸을 수 있습니다.
+  applies-to: 신발
+  type: EFFECT_STATIC
+  group: LEGENDARY
+  applies:
+    - ALL_BOOTS
+  levels:
+    '1':
+      effects:
+        - LAVA_WALKER
+waterwalker:
+  display: '%group-color%뜨거운 걸음'
+  description: Walk on Water.
+  applies-to: Boots
+  type: EFFECT_STATIC
+  group: LEGENDARY
+  applies:
+    - ALL_BOOTS
+  levels:
+    '1':
+      effects:
+        - WATER_WALKER
+aqua:
+  display: '%group-color%심해'
+  description: 수중에서 일정 확률로 주는 데미지가 2배가 됩니다.
+  applies-to: 신발
+  type: ATTACK;ATTACK_MOB
+  group: LEGENDARY
+  applies:
+    - ALL_BOOTS
+  levels:
+    '1':
+      chance: 8
+      cooldown: 3
+      conditions:
+        - '%is under water% = TRUE : %allow%'
+      effects:
+        - DOUBLE_DAMAGE
+    '2':
+      chance: 13
+      cooldown: 3
+      conditions:
+        - '%is under water% = TRUE : %allow%'
+      effects:
+        - DOUBLE_DAMAGE
+    '3':
+      chance: 19
+      cooldown: 5
+      conditions:
+        - '%is under water% = TRUE : %allow%'
+      effects:
+        - DOUBLE_DAMAGE
+    '4':
+      chance: 23
+      cooldown: 5
+      conditions:
+        - '%is under water% = TRUE : %allow%'
+      effects:
+        - DOUBLE_DAMAGE
+judgement:
+  display: '%group-color%심판'
+  description: |-
+    일정 확률로 상대방에게 독을,
+    자신에게는 회복을 겁니다.
+  applies-to: 겉날개
+  type: DEFENSE;DEFENSE_MOB
+  group: LEGENDARY
+  applies:
+    - ELYTRA
+  levels:
+    '1':
+      chance: 6
+      cooldown: 20
+      effects:
+        - POTION:POISON:0:100 @Attacker
+        - POTION:REGENERATION:0:100 @Victim
+    '2':
+      chance: 8
+      cooldown: 20
+      effects:
+        - POTION:POISON:0:100 @Attacker
+        - POTION:REGENERATION:0:100 @Victim
+    '3':
+      chance: 10
+      cooldown: 20
+      effects:
+        - POTION:POISON:0:100 @Attacker
+        - POTION:REGENERATION:0:100 @Victim
+    '4':
+      chance: 12
+      cooldown: 20
+      effects:
+        - POTION:POISON:0:100 @Attacker
+        - POTION:REGENERATION:1:60 @Victim
+    '5':
+      chance: 16
+      cooldown: 25
+      effects:
+        - POTION:POISON:0:100 @Attacker
+        - POTION:REGENERATION:1:100 @Victim
+divert:
+  display: '%group-color%전환'
+  description: |-
+    일정 확률로 상대방에게 독을, 
+    자신에게는 회복을 겁니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB
+  group: LEGENDARY
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 6
+      cooldown: 20
+      effects:
+        - POTION:POISON:0:100 @Attacker
+        - POTION:REGENERATION:0:100 @Victim
+    '2':
+      chance: 8
+      cooldown: 20
+      effects:
+        - POTION:POISON:0:100 @Attacker
+        - POTION:REGENERATION:0:100 @Victim
+    '3':
+      chance: 10
+      cooldown: 20
+      effects:
+        - POTION:POISON:0:100 @Attacker
+        - POTION:REGENERATION:0:100 @Victim
+    '4':
+      chance: 12
+      cooldown: 20
+      effects:
+        - POTION:POISON:0:100 @Attacker
+        - POTION:REGENERATION:1:60 @Victim
+    '5':
+      chance: 16
+      cooldown: 25
+      effects:
+        - POTION:POISON:0:100 @Attacker
+        - POTION:REGENERATION:1:100 @Victim
+unholy:
+  display: '%group-color%불경한 힘'
+  description: 약화와 위더효과를 주는 것과 함께 방어합니다.
+  applies-to: 갑옷
+  type: DEFENSE
+  group: LEGENDARY
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 2
+      cooldown: 40
+      effects:
+        - POTION:WITHER:0:60 @Attacker
+        - POTION:WEAKNESS:0:100 @Attacker
+    '2':
+      chance: 4
+      cooldown: 40
+      effects:
+        - POTION:WITHER:1:60 @Attacker
+        - POTION:WEAKNESS:0:5 @Attacker
+    '3':
+      chance: 6
+      cooldown: 40
+      effects:
+        - POTION:WITHER:1:60 @Attacker
+        - POTION:WEAKNESS:0:100 @Attacker
+    '4':
+      chance: 8
+      cooldown: 40
+      effects:
+        - POTION:WITHER:1:60 @Attacker
+        - POTION:WEAKNESS:0:100 @Attacker
+    '5':
+      chance: 10
+      cooldown: 40
+      effects:
+        - POTION:WITHER:1:60 @Attacker
+        - POTION:WEAKNESS:0:100 @Attacker
+chaos:
+  display: '%group-color%카오스'
+  description: 일정 확률로 약화, 위더 효과를 상대방에게 줍니다.
+  applies-to: 삼지창
+  type: SHOOT;SHOOT_MOB
+  settings:
+    showActionBar: true
+  group: LEGENDARY
+  applies:
+    - TRIDENT
+  levels:
+    '1':
+      chance: 2
+      cooldown: 40
+      effects:
+        - POTION:WITHER:0:60 @Victim
+        - POTION:WEAKNESS:0:100 @Victim
+    '2':
+      chance: 4
+      cooldown: 40
+      effects:
+        - POTION:WITHER:1:60 @Victim
+        - POTION:WEAKNESS:0:5 @Victim
+    '3':
+      chance: 6
+      cooldown: 40
+      effects:
+        - POTION:WITHER:1:60 @Victim
+        - POTION:WEAKNESS:0:100 @Victim
+    '4':
+      chance: 8
+      cooldown: 40
+      effects:
+        - POTION:WITHER:1:60 @Victim
+        - POTION:WEAKNESS:0:100 @Victim
+    '5':
+      chance: 20
+      cooldown: 40
+      effects:
+        - POTION:WITHER:1:60 @Victim
+        - POTION:WEAKNESS:0:100 @Victim
+convulse:
+  display: '%group-color%던지기'
+  description: |-
+    일정 확률로 공격한 대상을
+    공중으로 띄웁니다.
+  applies-to: 신발
+  type: DEFENSE;DEFENSE_MOB
+  group: LEGENDARY
+  applies:
+    - ALL_BOOTS
+  levels:
+    '1':
+      chance: 8
+      cooldown: 10
+      effects:
+        - BOOST:UP:5 @Attacker
+    '2':
+      chance: 10
+      cooldown: 10
+      effects:
+        - BOOST:UP:6 @Attacker
+    '3':
+      chance: 12
+      cooldown: 10
+      effects:
+        - BOOST:UP:7 @Attacker
+    '4':
+      chance: 14
+      cooldown: 10
+      effects:
+        - BOOST:UP:8 @Attacker
+    '5':
+      chance: 16
+      cooldown: 10
+      effects:
+        - BOOST:UP:9 @Attacker
+    '6':
+      chance: 18
+      cooldown: 10
+      effects:
+        - BOOST:UP:10 @Attacker
+chunky:
+  display: '%group-color%두툼함'
+  description: 일정 확률로 데미지를 % 단위로 적게 받습니다.
+  applies-to: 상체갑옷
+  type: DEFENSE;DEFENSE_MOB
+  group: LEGENDARY
+  applies:
+    - ALL_CHESTPLATE
+  levels:
+    '1':
+      chance: 5
+      cooldown: 10
+      effects:
+        - NEGATE_DAMAGE:10 @Victim
+    '2':
+      chance: 10
+      cooldown: 10
+      effects:
+        - NEGATE_DAMAGE:20 @Victim
+    '3':
+      chance: 12
+      cooldown: 10
+      effects:
+        - NEGATE_DAMAGE:30 @Victim
+    '4':
+      chance: 15
+      cooldown: 10
+      effects:
+        - NEGATE_DAMAGE:40 @Victim
+    '5':
+      chance: 18
+      cooldown: 10
+      effects:
+        - NEGATE_DAMAGE:50 @Victim
+    '6':
+      chance: 20
+      cooldown: 10
+      effects:
+        - NEGATE_DAMAGE:60 @Victim
+barbarian:
+  display: '%group-color%바바리안'
+  description: 일정 확률로 도끼 공격 데미지가 증가합니다.
+  applies-to: 도끼
+  type: ATTACK;ATTACK_MOB
+  settings:
+    showActionBar: true
+  group: LEGENDARY
+  applies:
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 8
+      cooldown: 8
+      conditions:
+        - '%attacker is holding% contains AXE : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>25-100</random number> @Victim
+    '2':
+      chance: 15
+      cooldown: 8
+      conditions:
+        - '%attacker is holding% contains AXE : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>25-100</random number> @Victim
+    '3':
+      chance: 19
+      cooldown: 8
+      conditions:
+        - '%attacker is holding% contains AXE : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>25-100</random number> @Victim
+    '4':
+      chance: 25
+      cooldown: 8
+      conditions:
+        - '%attacker is holding% contains AXE : %allow%'
+      effects:
+        - INCREASE_DAMAGE:<random number>25-100</random number> @Victim
+lucid:
+  display: '%group-color%몽환'
+  description: |-
+    일정 확률로 피격시 실명 효과를 치료하고
+    야간투시 효과를 획득합니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB
+  group: LEGENDARY
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 22
+      cooldown: 5
+      effects:
+        - CURE:BLINDNESS @Victim
+        - POTION:NIGHT_VISION:0:40 @Victim
+    '2':
+      chance: 32
+      cooldown: 5
+      effects:
+        - CURE:BLINDNESS @Victim
+        - POTION:NIGHT_VISION:0:60 @Victim
+    '3':
+      chance: 42
+      cooldown: 5
+      effects:
+        - CURE:BLINDNESS @Victim
+        - POTION:NIGHT_VISION:0:80 @Victim
+doublestrike:
+  display: '%group-color%더블어택'
+  description: 일정 확률로 2번 공격합니다.
+  applies-to: 검
+  type: ATTACK;ATTACK_MOB
+  settings:
+    showActionBar: true
+  group: LEGENDARY
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 8
+      cooldown: 15
+      effects:
+        - WAIT:20
+        - DO_HARM:%damage% @Victim
+        - BLOOD @Victim
+    '2':
+      chance: 13
+      cooldown: 15
+      effects:
+        - WAIT:20
+        - DO_HARM:%damage% @Victim
+        - BLOOD @Victim
+    '3':
+      chance: 19
+      cooldown: 15
+      effects:
+        - WAIT:20
+        - DO_HARM:%damage% @Victim
+        - BLOOD @Victim
+gears:
+  display: '%group-color%기어'
+  description: 입었을 때 이속 증가를 얻습니다.
+  applies-to: 신발
+  type: EFFECT_STATIC
+  group: LEGENDARY
+  applies:
+    - ALL_BOOTS
+  levels:
+    '1':
+      effects:
+        - POTION:SPEED:0
+    '2':
+      effects:
+        - POTION:SPEED:1
+    '3':
+      effects:
+        - POTION:SPEED:2
+inflame:
+  display: '%group-color%인플레임'
+  description: 공격시 일정 확률로 범위 내 모든 플레이어가 화염 효과를 획득합니다.
+  applies-to: 도끼
+  group: LEGENDARY
+  type: ATTACK
+  settings:
+    showActionBar: true
+  applies:
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 10
+      cooldown: 4
+      effects:
+        - PARTICLE:FALLING_LAVA:5:0 <aoe> radius=2 target=damageable </aoe>
+        - BURN:40 <aoe> radius=2 target=damageable </aoe>
+    '2':
+      chance: 12
+      cooldown: 5
+      effects:
+        - PARTICLE:FALLING_LAVA:5:0 <aoe> radius=4 target=damageable </aoe>
+        - BURN:50 <aoe> radius=6 target=damageable </aoe>
+    '3':
+      chance: 30
+      cooldown: 5
+      effects:
+        - PARTICLE:FALLING_LAVA:5:0 <aoe> radius=4 target=damageable </aoe>
+        - BURN:60 <aoe> radius=5 target=damageable </aoe>
+immolation:
+  display: '%group-color%번제'
+  description: 공격시 일정 확률로 범위 내 모든 몬스터가 화염 효과를 획득합니다.
+  applies-to: 검
+  group: ULTIMATE
+  type: ATTACK_MOB
+  settings:
+    showActionBar: true
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 10
+      cooldown: 4
+      effects:
+        - PARTICLE:FALLING_LAVA:5:0 @Aoe{radius=2,target=mobs}
+        - BURN:40 @Aoe{radius=2,target=mobs}
+    '2':
+      chance: 40
+      cooldown: 5
+      effects:
+        - PARTICLE:FALLING_LAVA:5:0@Aoe{radius=4,target=mobs}
+        - BURN:50 @Aoe{radius=4,target=mobs}
+    '3':
+      chance: 100
+      cooldown: 5
+      effects:
+        - PARTICLE:FALLING_LAVA:5:0 @Aoe{radius=6,target=mobs}
+        - BURN:60 @Aoe{radius=6,target=mobs}
+killaura:
+  display: '%group-color%살기'
+  description: |-
+    일정 확률로 일정 범위 내에 있는
+    몬스터를 죽입니다.
+  applies-to: 검
+  group: LEGENDARY
+  type: ATTACK_MOB
+  settings:
+    showActionBar: true
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 5
+      cooldown: 3
+      effects:
+        - PARTICLE:SPELL_MOB:5:0 @Aoe{radius=2,target=mobs}
+        - KILL:1 @Aoe{radius=2,target=mobs}
+    '2':
+      chance: 6
+      cooldown: 4
+      effects:
+        - PARTICLE:SPELL_MOB:5:0 @Aoe{radius=2,target=mobs}
+        - KILL:1 @Aoe{radius=2,target=mobs}
+    '3':
+      chance: 7
+      cooldown: 5
+      effects:
+        - PARTICLE:SPELL_MOB:5:0 @Aoe{radius=3,target=mobs}
+        - KILL:1 @Aoe{radius=3,target=mobs}
+    '4':
+      chance: 8
+      cooldown: 5
+      effects:
+        - PARTICLE:SPELL_MOB:5:0 @Aoe{radius=3,target=mobs}
+        - KILL:1 @Aoe{radius=3,target=mobs}
+    '5':
+      chance: 9
+      cooldown: 6
+      effects:
+        - PARTICLE:SPELL_MOB:5:0 @Aoe{radius=4,target=mobs}
+        - KILL:1 @Aoe{radius=4,target=mobs}
+inquisitive:
+  display: '%group-color%신비'
+  description: 일정 확률로 몬스터에게서 드랍되는 경험치 량이 증가합니다.
+  applies-to: 검
+  type: KILL_MOB
+  group: LEGENDARY
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 30
+      cooldown: 4
+      effects:
+        - EXP:<math>%exp% * (1.0 + 0.25 * %level%)</math> @Victim
+    '2':
+      chance: 35
+      cooldown: 4
+      effects:
+        - EXP:<math>%exp% * (1.0 + 0.25 * %level%)</math> @Victim
+    '3':
+      chance: 40
+      cooldown: 4
+      effects:
+        - EXP:<math>%exp% * (1.0 + 0.25 * %level%)</math> @Victim
+    '4':
+      chance: 45
+      cooldown: 4
+      effects:
+        - EXP:<math>%exp% * (1.0 + 0.25 * %level%)</math> @Victim
+lifesteal:
+  display: '%group-color%리치'
+  description: |-
+    일정 확률로 공격시
+    상대방의 체력을 훔칩니다.
+  applies-to: 검
+  type: ATTACK;ATTACK_MOB
+  group: LEGENDARY
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 9
+      cooldown: 15
+      effects:
+        - STEAL_HEALTH:<random number>1-3</random number> @Attacker
+    '2':
+      chance: 13
+      cooldown: 15
+      effects:
+        - STEAL_HEALTH:<random number>1-3</random number> @Attacker
+    '3':
+      chance: 17
+      cooldown: 15
+      effects:
+        - STEAL_HEALTH:<random number>1-4</random number> @Attacker
+    '4':
+      chance: 21
+      cooldown: 15
+      effects:
+        - STEAL_HEALTH:<random number>1-5</random number> @Attacker
+    '5':
+      chance: 25
+      cooldown: 15
+      effects:
+        - STEAL_HEALTH:<random number>1-5</random number> @Attacker
+overload:
+  display: '%group-color%오버로드'
+  description: 체력칸이 증가합니다.
+  applies-to: 갑옷
+  type: EFFECT_STATIC
+  group: LEGENDARY
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      effects:
+        - POTION:HEALTH_BOOST:0
+    '2':
+      effects:
+        - POTION:HEALTH_BOOST:1
+    '3':
+      effects:
+        - POTION:HEALTH_BOOST:2
+armored:
+  display: '%group-color%판금갑옷'
+  description: "검을 든 대상으로부터 레벨당 2% 데미지를 감소해서 받습니다."
+  applies-to: 갑옷
+  type: DEFENSE
+  group: LEGENDARY
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 6
+      cooldown: 8
+      conditions:
+        - '%attacker is holding% contains SWORD : %allow%'
+      effects:
+        - DECREASE_DAMAGE:2 @Attacker
+    '2':
+      chance: 12
+      cooldown: 8
+      conditions:
+        - '%attacker is holding% contains SWORD : %allow%'
+      effects:
+        - DECREASE_DAMAGE:4 @Attacker
+    '3':
+      chance: 16
+      cooldown: 8
+      conditions:
+        - '%attacker is holding% contains SWORD : %allow%'
+      effects:
+        - DECREASE_DAMAGE:6 @Attacker
+    '4':
+      chance: 20
+      cooldown: 8
+      conditions:
+        - '%attacker is holding% contains SWORD : %allow%'
+      effects:
+        - DECREASE_DAMAGE:8 @Attacker
+blacksmith:
+  display: '%group-color%대장장이'
+  description: |-
+    일정 확률로 데미지를 덜 주는 대신
+    내구도가 회복됩니다.
+  applies-to: 도끼
+  type: ATTACK;ATTACK_MOB
+  group: LEGENDARY
+  applies:
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 9
+      cooldown: 3
+      effects:
+        - ADD_DURABILITY_CURRENT_ITEM:3
+        - HALF_DAMAGE
+        - PARTICLE:BLOCK_DUST:20:1
+    '2':
+      chance: 15
+      cooldown: 3
+      effects:
+        - ADD_DURABILITY_CURRENT_ITEM:3
+        - HALF_DAMAGE
+        - PARTICLE:BLOCK_DUST:20:1
+    '3':
+      chance: 23
+      cooldown: 3
+      effects:
+        - ADD_DURABILITY_CURRENT_ITEM:3
+        - HALF_DAMAGE
+        - PARTICLE:BLOCK_DUST:20:1
+    '4':
+      chance: 31
+      cooldown: 3
+      effects:
+        - ADD_DURABILITY_CURRENT_ITEM:4
+        - HALF_DAMAGE
+        - PARTICLE:BLOCK_DUST:20:1
+    '5':
+      chance: 39
+      cooldown: 3
+      effects:
+        - ADD_DURABILITY_CURRENT_ITEM:4
+        - HALF_DAMAGE
+        - PARTICLE:BLOCK_DUST:20:1
+immortal:
+  display: '%group-color%금강불괴'
+  description: |-
+    일정 확률로 데미지를 입을 시
+    내구도가 10% 회복합니다.
+  applies-to: 갑옷
+  type: DEFENSE;DEFENSE_MOB
+  group: FABLED
+  applies:
+    - ALL_ARMOR
+  levels:
+    '1':
+      chance: 12
+      cooldown: 40
+      effects:
+        - ADD_DURABILITY_ARMOR:10 @Victim
+    '2':
+      chance: 18
+      cooldown: 40
+      effects:
+        - ADD_DURABILITY_ARMOR:10 @Victim
+    '3':
+      chance: 25
+      cooldown: 40
+      effects:
+        - ADD_DURABILITY_ARMOR:10 @Victim
+    '4':
+      chance: 31
+      cooldown: 40
+      effects:
+        - ADD_DURABILITY_ARMOR:10 @Victim
+unbreakable:
+  display: '%group-color%불멸'
+  description: 이 인챈트는 도구의 내구도가 감소되지 않게 만듭니다.
+  applies-to: 도끼
+  type: MINING;ATTACK;ATTACK_MOB
+  group: FABLED
+  applies:
+    - ALL_TOOLS
+  levels:
+    '1':
+      effects:
+        - REPAIR
+abiding:
+  display: '%group-color%영구'
+  description: 이 인챈트는 무기의 내구도가 감소되지 않게 만듭니다.
+  applies-to: 무기
+  type: ATTACK;ATTACK_MOB;SHOOT;SHOOT_MOB
+  group: LEGENDARY
+  applies:
+    - ALL_SWORD
+    - BOW
+  levels:
+    '1':
+      effects:
+        - REPAIR @Attacker
+disarmor:
+  display: '%group-color%무장해제'
+  description: |-
+    일정 확률로 공격시 상대방의 갑옷이
+    벗겨지도록 합니다.
+  applies-to: 검
+  type: ATTACK
+  settings:
+    showActionBar: true
+  group: LEGENDARY
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 0.4
+      cooldown: 6
+      effects:
+        - REMOVE_RANDOM_ARMOR @Victim
+        - MESSAGE:§6§l** YOU HAVE BEEN DISARMORED ** @Victim
+    '2':
+      chance: 0.8
+      cooldown: 6
+      effects:
+        - REMOVE_RANDOM_ARMOR @Victim
+        - MESSAGE:§6§l** YOU HAVE BEEN DISARMORED ** @Victim
+    '3':
+      chance: 1.0
+      cooldown: 6
+      effects:
+        - REMOVE_RANDOM_ARMOR @Victim
+        - MESSAGE:§6§l** YOU HAVE BEEN DISARMORED ** @Victim
+    '4':
+      chance: 1.2
+      cooldown: 6
+      effects:
+        - REMOVE_RANDOM_ARMOR @Victim
+        - MESSAGE:§6§l** YOU HAVE BEEN DISARMORED ** @Victim
+    '5':
+      chance: 1.4
+      cooldown: 6
+      effects:
+        - REMOVE_RANDOM_ARMOR @Victim
+        - MESSAGE:§6§l** YOU HAVE BEEN DISARMORED ** @Victim
+    '6':
+      chance: 1.6
+      cooldown: 6
+      effects:
+        - REMOVE_RANDOM_ARMOR @Victim
+        - MESSAGE:§6§l** YOU HAVE BEEN DISARMORED ** @Victim
+    '7':
+      chance: 1.8
+      cooldown: 6
+      effects:
+        - REMOVE_RANDOM_ARMOR @Victim
+        - MESSAGE:§6§l** YOU HAVE BEEN DISARMORED ** @Victim
+    '8':
+      chance: 2
+      cooldown: 6
+      effects:
+        - REMOVE_RANDOM_ARMOR @Victim
+        - MESSAGE:§6§l** YOU HAVE BEEN DISARMORED ** @Victim
+striker:
+  display: '%group-color%화살비'
+  description: 상대방에게 일정 확률로 화살비를 내립니다.
+  applies-to: 활
+  type: SHOOT;SHOOT_MOB
+  settings:
+    showActionBar: false
+  group: ULTIMATE
+  applies:
+    - BOW
+  levels:
+    '1':
+      chance: 15
+      cooldown: 8
+      effects:
+        - SPAWN_ARROWS @Victim
+    '2':
+      chance: 18
+      cooldown: 8
+      effects:
+        - SPAWN_ARROWS @Victim
+    '3':
+      chance: 22
+      cooldown: 8
+      effects:
+        - SPAWN_ARROWS @Victim
+sniper:
+  display: '%group-color%저격'
+  description: |-
+    활로 머리를 맞출 경우
+    데미지가 몇 배로 뜁니다.
+  applies-to: 활
+  type: SHOOT;SHOOT_MOB
+  settings:
+    showActionBar: true
+  group: ULTIMATE
+  applies:
+    - BOW
+  levels:
+    '1':
+      chance: 100
+      cooldown: 15
+      conditions:
+        - '%is headshot% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:100 @Attacker
+    '2':
+      chance: 100
+      cooldown: 5
+      conditions:
+        - '%is headshot% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:150 @Attacker
+    '3':
+      chance: 100
+      cooldown: 5
+      conditions:
+        - '%is headshot% = false : %stop%'
+      effects:
+        - INCREASE_DAMAGE:200 @Attacker
+    '4':
+      chance: 100
+      cooldown: 5
+      conditions:
+        - '%is headshot% = false : %stop%'
+      effects:
+        - INCREASE_DAMAGE:250 @Attacker
+    '5':
+      chance: 100
+      cooldown: 5
+      conditions:
+        - '%is headshot% = false : %stop%'
+      effects:
+        - INCREASE_DAMAGE:300 @Attacker
+deadshot:
+  display: '%group-color%약점포착'
+  description: |-
+    삼지창으로 머리를 공격할 시
+    데미지가 몇 배로 뜁니다.
+  applies-to: 삼지창
+  type: SHOOT;SHOOT_MOB
+  settings:
+    showActionBar: true
+  group: LEGENDARY
+  applies:
+    - TRIDENT
+  levels:
+    '1':
+      chance: 100
+      cooldown: 5
+      conditions:
+        - '%is headshot% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:100 @Attacker
+    '2':
+      chance: 100
+      cooldown: 5
+      conditions:
+        - '%is headshot% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:150 @Attacker
+    '3':
+      chance: 100
+      cooldown: 5
+      conditions:
+        - '%is headshot% = false : %stop%'
+      effects:
+        - INCREASE_DAMAGE:200 @Attacker
+    '4':
+      chance: 100
+      cooldown: 5
+      conditions:
+        - '%is headshot% = false : %stop%'
+      effects:
+        - INCREASE_DAMAGE:250 @Attacker
+    '5':
+      chance: 100
+      cooldown: 5
+      conditions:
+        - '%is headshot% = false : %stop%'
+      effects:
+        - INCREASE_DAMAGE:300 @Attacker
+soulbound:
+  display: '%group-color%영혼결속'
+  description: 이 아이템은 죽어서도 인벤토리에 남습니다. 레벨당 쿨타임 1/2배.
+  applies-to: 무기, 도구, 활, 석궁
+  type: DEATH;PASSIVE_DEATH
+  group: FABLED
+  applies:
+    - ALL_TOOLS
+    - ALL_SWORD
+    - BOW
+    - CROSSBOW
+  levels:
+    '1':
+      chance: 100
+      cooldown: 1200
+      effects:
+        - KEEP_ON_DEATH
+    '2':
+      chance: 100
+      cooldown: 600
+      effects:
+        - KEEP_ON_DEATH
+    '3':
+      chance: 100
+      cooldown: 300
+      effects:
+        - KEEP_ON_DEATH
+neutralize:
+  display: '%group-color%자연화'
+  description: 일정 확률로 무기를 해제합니다.
+  applies-to: 활, 석궁
+  settings:
+    showActionBar: true
+  type: SHOOT
+  group: FABLED
+  applies:
+    - BOW
+    - CROSSBOW
+  levels:
+    '1':
+      chance: 5
+      cooldown: 20
+      effects:
+        - DISARM @Victim
+    '2':
+      chance: 10
+      cooldown: 20
+      effects:
+        - DISARM @Victim
+disarm:
+  display: '%group-color%해제'
+  description: 일정 확률로 무기를 해제합니다.
+  applies-to: 검
+  type: ATTACK
+  settings:
+    showActionBar: true
+  group: FABLED
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 2
+      cooldown: 20
+      effects:
+        - DISARM @Victim
+    '2':
+      chance: 4
+      cooldown: 20
+      effects:
+        - DISARM @Victim
+    '3':
+      chance: 5
+      cooldown: 20
+      effects:
+        - DISARM @Victim
+phoenix:
+  display: '%group-color%부활'
+  description: 일정 확률로 죽었을 때 되살아납니다.
+  applies-to: 상체갑옷
+  type: DEATH
+  group: FABLED
+  applies:
+    - ALL_CHESTPLATE
+  levels:
+    '1':
+      chance: 5
+      cooldown: 20
+      effects:
+        - REVIVE @Victim
+    '2':
+      chance: 10
+      cooldown: 20
+      effects:
+        - REVIVE @Victim
+    '3':
+      chance: 15
+      cooldown: 20
+      effects:
+        - REVIVE @Victim
+scare:
+  display: '%group-color%공포'
+  description: |-
+    일정 확률로 상대방의 헬멧을
+    짧은 시간동안 호박으로 변경시킵니다.
+  applies-to: 무기
+  type: ATTACK
+  group: FABLED
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 1.8
+      cooldown: 20
+      effects:
+        - PUMPKIN:40 @Victim
+        - PLAY_SOUND_OUTLOUD:BLOCK_ANVIL_LAND
+    '2':
+      chance: 3.6
+      cooldown: 20
+      effects:
+        - PUMPKIN:40 @Victim
+        - PLAY_SOUND_OUTLOUD:BLOCK_ANVIL_LAND
+    '3':
+      chance: 4.4
+      cooldown: 20
+      effects:
+        - PUMPKIN:60 @Victim
+        - PLAY_SOUND_OUTLOUD:BLOCK_ANVIL_LAND
+    '4':
+      chance: 5.2
+      cooldown: 20
+      effects:
+        - PUMPKIN:60 @Victim
+        - PLAY_SOUND_OUTLOUD:BLOCK_ANVIL_LAND
+    '5':
+      chance: 6
+      cooldown: 20
+      effects:
+        - PUMPKIN:80 @Victim
+        - PLAY_SOUND_OUTLOUD:BLOCK_ANVIL_LAND
+strife:
+  display: '%group-color%투쟁'
+  description: 일정 확률로 삼지창의 근접 공격 데미지를 증가시킵니다.
+  applies-to: 삼지창
+  type: ATTACK;ATTACK_MOB
+  group: LEGENDARY
+  applies:
+    - TRIDENT
+  levels:
+    '1':
+      chance: 5
+      cooldown: 3
+      effects:
+        - INCREASE_DAMAGE:15
+    '2':
+      chance: 10
+      cooldown: 6
+      effects:
+        - INCREASE_DAMAGE:25
+    '3':
+      chance: 15
+      cooldown: 8
+      effects:
+        - INCREASE_DAMAGE:30
+spark:
+  display: '%group-color%스파크'
+  description: 일정 확률로 상대방에게 불을 붙힙니다.
+  applies-to: 삼지창
+  type: ATTACK;ATTACK_MOB;SHOOT;SHOOT_MOB
+  group: ELITE
+  applies:
+    - TRIDENT
+  levels:
+    '1':
+      chance: 25
+      cooldown: 3
+      effects:
+        - BURN:40 @Victim
+    '2':
+      chance: 35
+      cooldown: 6
+      effects:
+        - BURN:40 @Victim
+    '3':
+      chance: 15
+      cooldown: 8
+      effects:
+        - BURN:40 @Victim
+bluntforce:
+  display: '%group-color%무뚝뚝함'
+  description: 엄청난 힘으로 상대를 때릴 기회를 가집니다.
+  applies-to: 도끼
+  group: ELITE
+  type: ATTACK
+  settings:
+    showActionBar: true
+  applies:
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 5
+      cooldown: 5
+      effects:
+        - DO_HARM:1 @Attacker
+    '2':
+      chance: 8
+      cooldown: 5
+      effects:
+        - DO_HARM:2 @Attacker
+    '3':
+      chance: 10
+      cooldown: 5
+      effects:
+        - DO_HARM:3 @Attacker
+    '4':
+      chance: 12
+      cooldown: 5
+      effects:
+        - DO_HARM:4 @Attacker
+aegis:
+  display: '%group-color%이지스'
+  description: 낙하 데미지를 받을 시 일정 확률로 신속 버프를 획득합니다.
+  applies-to: 신발
+  type: FALL_DAMAGE
+  group: ULTIMATE
+  applies:
+    - ALL_BOOTS
+  levels:
+    '1':
+      chance: 40
+      cooldown: 3
+      effects:
+        - POTION:SPEED:0:60
+    '2':
+      chance: 60
+      cooldown: 3
+      effects:
+        - POTION:SPEED:1:60
+    '3':
+      chance: 70
+      cooldown: 3
+      effects:
+        - POTION:SPEED:2:60
+plummet:
+  display: '%group-color%공중습격'
+  description: |-
+    낙하 데미지를 받을 때
+    주변 몬스터들에게 데미지를 줍니다.
+  applies-to: 신발
+  type: FALL_DAMAGE
+  settings:
+    showActionBar: true
+  group: ULTIMATE
+  applies:
+    - ALL_BOOTS
+  levels:
+    '1':
+      chance: 100
+      effects:
+        - DO_HARM:2 @Aoe{radius=3,target=mobs}
+    '2':
+      chance: 100
+      effects:
+        - DO_HARM:3 @Aoe{radius=5,target=mobs}
+    '3':
+      effects:
+        - DO_HARM:5 @Aoe{radius=8,target=mobs}
+suspend:
+  display: '%group-color%고정'
+  description: 일정 확률로 밀쳐지는 행위를 멈추게 합니다.
+  applies-to: 검
+  type: ATTACK_MOB
+  group: ELITE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 40
+      effects:
+        - STOP_KNOCKBACK @Victim
+    '2':
+      chance: 80
+      effects:
+        - STOP_KNOCKBACK @Victim
+    '3':
+      effects:
+        - STOP_KNOCKBACK @Victim
+nightowl:
+  display: '%group-color%야행성'
+  description: 밤에 데미지를 추가적으로 더 입힙니다.
+  applies-to: 검
+  type: ATTACK_MOB
+  group: ULTIMATE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 100
+      conditions:
+        - '%is night% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:25
+    '2':
+      chance: 100
+      conditions:
+        - '%is night% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:35
+    '3':
+      chance: 100
+      conditions:
+        - '%is night% = true : %allow%'
+      effects:
+        - INCREASE_DAMAGE:45
+nightwalker:
+  display: '%group-color%나이트워커'
+  description: 밤에 공격시 적들을 얼립니다.
+  applies-to: 검
+  type: ATTACK_MOB
+  group: ELITE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 100
+      conditions:
+        - '%is night% = true : %allow%'
+      effects:
+        - POTION:SLOW:10:100 @Victim
+    '2':
+      chance: 100
+      conditions:
+        - '%is night% = true : %allow%'
+      effects:
+        - POTION:SLOW:10:200 @Victim
+    '3':
+      chance: 100
+      conditions:
+        - '%is night% = true : %allow%'
+      effects:
+        - POTION:SLOW:10:400 @Victim
+launch:
+  display: '%group-color%발사'
+  description: 우클릭을 하여 자기 자신을 위로 발사합니다.
+  applies-to: 검
+  type: RIGHT_CLICK
+  settings:
+    showActionBar: true
+  group: LEGENDARY
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 100
+      cooldown: 15
+      effects:
+        - BOOST:UP:10
+        - PARTICLE:CLOUD:20:2
+    '2':
+      chance: 100
+      cooldown: 15
+      effects:
+        - BOOST:UP:15
+        - PARTICLE:CLOUD:20:2
+    '3':
+      chance: 100
+      cooldown: 10
+      effects:
+        - BOOST:UP:30
+        - PARTICLE:CLOUD:20:2
+slingshot:
+  display: '%group-color%부스트'
+  description: 날고 있을 때 그저 우클릭 시 자기자신을 부스트합니다.
+  applies-to: 겉날개
+  type: RIGHT_CLICK
+  group: LEGENDARY
+  applies:
+    - ELYTRA
+  levels:
+    '1':
+      chance: 100
+      cooldown: 20
+      conditions:
+        - '%is holding% contains FIREWORK : %stop%'
+      effects:
+        - BOOST:UP:10
+    '2':
+      chance: 100
+      cooldown: 10
+      conditions:
+        - '%is holding% contains FIREWORK : %stop%'
+      effects:
+        - BOOST:UP:12
+    '3':
+      chance: 100
+      cooldown: 5
+      conditions:
+        - '%is holding% contains FIREWORK : %stop%'
+      effects:
+        - BOOST:UP:16
+nulify:
+  display: '%group-color%광증'
+  description: |-
+    일정 확률로 데미지를 두배를 입힙니다.
+    추가적으로 눈을 멀게 하기도 하구요.
+    발동하는데 40개의 영혼이 필요합니다.
+  applies-to: 무기
+  type: ATTACK
+  group: FABLED
+  applies:
+    - ALL_SWORD
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 70
+      cooldown: 10
+      conditions:
+        - '%souls on item% < 40 : %stop%'
+      effects:
+        - REMOVE_SOULS:40 @Attacker
+        - INCREASE_DAMAGE:100
+        - POTION:BLINDNESS:2:80 @Victim
+        - PARTICLE:FLASH:1:0 @Victim
+    '2':
+      chance: 80
+      cooldown: 10
+      conditions:
+        - '%souls on item% < 40 : %stop%'
+      effects:
+        - REMOVE_SOULS:40 @Attacker
+        - INCREASE_DAMAGE:100
+        - POTION:BLINDNESS:3:80 @Victim
+        - PARTICLE:FLASH:2:0 @Victim
+    '3':
+      chance: 90
+      cooldown: 10
+      souls: 40
+      effects:
+        - INCREASE_DAMAGE:100
+        - POTION:BLINDNESS:4:80 @Victim
+        - PARTICLE:FLASH:3:0 @Victim
+    '4':
+      chance: 100
+      cooldown: 10
+      conditions:
+        - '%souls on item% < 40 : %stop%'
+      effects:
+        - REMOVE_SOULS:40 @Attacker
+        - INCREASE_DAMAGE:100
+        - POTION:BLINDNESS:5:80 @Victim
+        - PARTICLE:FLASH:4:0 @Victim
+rush:
+  display: '%group-color%러쉬'
+  description: |-
+    일정 확률로 겉날개를
+    입고 날라갈 동안 신속을 얻습니다.
+    10개의 영혼이 소모됩니다.
+  applies-to: 겉날개
+  type: ELYTRA_FLY
+  group: FABLED
+  applies:
+    - ELYTRA
+  levels:
+    '1':
+      chance: 15
+      cooldown: 5
+      conditions:
+        - '%souls on item% < 10 : %stop%'
+      effects:
+        - REMOVE_SOULS:10
+        - POTION:SPEED:3:60
+    '2':
+      chance: 25
+      cooldown: 5
+      conditions:
+        - '%souls on item% < 10 : %stop%'
+      effects:
+        - REMOVE_SOULS:10
+        - POTION:SPEED:4:60
+    '3':
+      chance: 26
+      cooldown: 5
+      conditions:
+        - '%souls on item% < 10 : %stop%'
+      effects:
+        - REMOVE_SOULS:10
+        - POTION:SPEED:5:60
+diploid:
+  display: '%group-color%복제'
+  description: |-
+    일정 확률로 몹이 떨구는 아이템을
+    2배로 복제합니다.
+    한번 발동 당 영혼이 5가 소모됩니다.
+  applies-to: 검
+  type: KILL_MOB
+  group: FABLED
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 50
+      cooldown: 5
+      souls: 5
+      effects:
+        - MORE_DROPS:1
+    '2':
+      chance: 70
+      cooldown: 5
+      souls: 5
+      effects:
+        - MORE_DROPS:1
+    '3':
+      chance: 80
+      cooldown: 6
+      souls: 5
+      effects:
+        - MORE_DROPS:1
+    '4':
+      chance: 90
+      cooldown: 7
+      souls: 5
+      effects:
+        - MORE_DROPS:1
+    '5':
+      chance: 100
+      cooldown: 8
+      souls: 5
+      effects:
+        - MORE_DROPS:1
+multiplication:
+  display: '%group-color%곱셈화'
+  description: |-
+    일정 확률로 광물 드랍을 2배로 늘립니다.
+    한번 당 영혼이 20 소모됩니다.
+  applies-to: 곡괭이
+  type: MINING
+  group: FABLED
+  applies:
+    - ALL_PICKAXE
+  levels:
+    '1':
+      chance: 50
+      cooldown: 5
+      settings:
+        whitelist:
+          - "COAL_ORE"
+          - "COPPER_ORE"
+          - "IRON_ORE"
+          - "GOLD_ORE"
+          - "LAPIS_ORE"
+          - "REDSTONE_ORE"
+          - "DIAMOND_ORE"
+          - "EMERALD_ORE"
+          - "NETHER_QUARTZ_ORE"
+          - "NETHER_GOLD_ORE"
+          - "ANCIENT_DEBRIS"
+          - "DEEPSLATE_COAL_ORE"
+          - "DEEPSLATE_COPPER_ORE"
+          - "DEEPSLATE_IRON_ORE"
+          - "DEEPSLATE_GOLD_ORE"
+          - "DEEPSLATE_LAPIS_ORE"
+          - "DEEPSLATE_REDSTONE_ORE"
+          - "DEEPSLATE_DIAMOND_ORE"
+          - "DEEPSLATE_EMERALD_ORE"
+      conditions:
+        - '%block type% contains ORE : %allow%'
+        - '%souls on item% > 19: %allow%'
+      effects:
+        - MORE_DROPS:1
+        - 'REMOVE_SOULS:5'
+    '2':
+      chance: 60
+      cooldown: 5
+      settings:
+        whitelist:
+          - "COAL_ORE"
+          - "COPPER_ORE"
+          - "IRON_ORE"
+          - "GOLD_ORE"
+          - "LAPIS_ORE"
+          - "REDSTONE_ORE"
+          - "DIAMOND_ORE"
+          - "EMERALD_ORE"
+          - "NETHER_QUARTZ_ORE"
+          - "NETHER_GOLD_ORE"
+          - "ANCIENT_DEBRIS"
+          - "DEEPSLATE_COAL_ORE"
+          - "DEEPSLATE_COPPER_ORE"
+          - "DEEPSLATE_IRON_ORE"
+          - "DEEPSLATE_GOLD_ORE"
+          - "DEEPSLATE_LAPIS_ORE"
+          - "DEEPSLATE_REDSTONE_ORE"
+          - "DEEPSLATE_DIAMOND_ORE"
+          - "DEEPSLATE_EMERALD_ORE"
+      conditions:
+        - '%block type% contains ORE : %allow%'
+        - '%souls on item% > 19: %allow%'
+      effects:
+        - MORE_DROPS:1
+        - 'REMOVE_SOULS:5'
+    '3':
+      chance: 70
+      cooldown: 6
+      settings:
+        whitelist:
+          - "COAL_ORE"
+          - "COPPER_ORE"
+          - "IRON_ORE"
+          - "GOLD_ORE"
+          - "LAPIS_ORE"
+          - "REDSTONE_ORE"
+          - "DIAMOND_ORE"
+          - "EMERALD_ORE"
+          - "NETHER_QUARTZ_ORE"
+          - "NETHER_GOLD_ORE"
+          - "ANCIENT_DEBRIS"
+          - "DEEPSLATE_COAL_ORE"
+          - "DEEPSLATE_COPPER_ORE"
+          - "DEEPSLATE_IRON_ORE"
+          - "DEEPSLATE_GOLD_ORE"
+          - "DEEPSLATE_LAPIS_ORE"
+          - "DEEPSLATE_REDSTONE_ORE"
+          - "DEEPSLATE_DIAMOND_ORE"
+          - "DEEPSLATE_EMERALD_ORE"
+      conditions:
+        - '%block type% contains ORE : %allow%'
+        - '%souls on item% > 19: %allow%'
+      effects:
+        - MORE_DROPS:1
+        - 'REMOVE_SOULS:5'
+    '4':
+      chance: 80
+      cooldown: 7
+      settings:
+        whitelist:
+          - "COAL_ORE"
+          - "COPPER_ORE"
+          - "IRON_ORE"
+          - "GOLD_ORE"
+          - "LAPIS_ORE"
+          - "REDSTONE_ORE"
+          - "DIAMOND_ORE"
+          - "EMERALD_ORE"
+          - "NETHER_QUARTZ_ORE"
+          - "NETHER_GOLD_ORE"
+          - "ANCIENT_DEBRIS"
+          - "DEEPSLATE_COAL_ORE"
+          - "DEEPSLATE_COPPER_ORE"
+          - "DEEPSLATE_IRON_ORE"
+          - "DEEPSLATE_GOLD_ORE"
+          - "DEEPSLATE_LAPIS_ORE"
+          - "DEEPSLATE_REDSTONE_ORE"
+          - "DEEPSLATE_DIAMOND_ORE"
+          - "DEEPSLATE_EMERALD_ORE"
+      conditions:
+        - '%block type% contains ORE : %allow%'
+        - '%souls on item% > 19: %allow%'
+      effects:
+        - MORE_DROPS:1
+        - 'REMOVE_SOULS:5'
+    '5':
+      chance: 100
+      cooldown: 8
+      settings:
+        whitelist:
+          - "COAL_ORE"
+          - "COPPER_ORE"
+          - "IRON_ORE"
+          - "GOLD_ORE"
+          - "LAPIS_ORE"
+          - "REDSTONE_ORE"
+          - "DIAMOND_ORE"
+          - "EMERALD_ORE"
+          - "NETHER_QUARTZ_ORE"
+          - "NETHER_GOLD_ORE"
+          - "ANCIENT_DEBRIS"
+          - "DEEPSLATE_COAL_ORE"
+          - "DEEPSLATE_COPPER_ORE"
+          - "DEEPSLATE_IRON_ORE"
+          - "DEEPSLATE_GOLD_ORE"
+          - "DEEPSLATE_LAPIS_ORE"
+          - "DEEPSLATE_REDSTONE_ORE"
+          - "DEEPSLATE_DIAMOND_ORE"
+          - "DEEPSLATE_EMERALD_ORE"
+      conditions:
+        - '%block type% contains ORE : %allow%'
+        - '%souls on item% > 19: %allow%'
+      effects:
+        - MORE_DROPS:1
+        - 'REMOVE_SOULS:5'
+fuddle:
+  display: '%group-color%취기'
+  description: 상대방의 인벤토리 아이템 순서를 랜덤으로 변경합니다.
+  applies-to: 검
+  type: ATTACK
+  settings:
+    showActionBar: true
+  group: ULTIMATE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 5
+      cooldown: 15
+      effects:
+        - SHUFFLE_HOTBAR @Victim
+    '2':
+      chance: 7
+      cooldown: 15
+      effects:
+        - SHUFFLE_HOTBAR @Victim
+    '3':
+      chance: 9
+      cooldown: 15
+      effects:
+        - SHUFFLE_HOTBAR @Victim
+spiritmaster:
+  display: '%group-color%영혼마스터'
+  description: |-
+    일정 확률로 2배의 영혼을
+    플레이어를 죽이면서 획득합니다.
+  applies-to: 검
+  type: KILL_PLAYER
+  group: FABLED
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 35
+      effects:
+        - ADD_SOULS:1
+        - PARTICLE:HEART:1:0
+    '2':
+      chance: 45
+      effects:
+        - ADD_SOULS:1
+        - PARTICLE:HEART:1:0
+    '3':
+      chance: 55
+      effects:
+        - ADD_SOULS:1
+        - PARTICLE:HEART:1:0
+axeofspirits:
+  display: '%group-color%도끼의 영혼'
+  description: |-
+    일정 확률로 플레이어를 죽이면서
+    영혼을 획득합니다.
+  applies-to: 도끼
+  type: KILL_PLAYER
+  group: FABLED
+  applies:
+    - ALL_AXE
+  levels:
+    '1':
+      chance: 45
+      effects:
+        - ADD_SOULS:1
+        - PARTICLE:HEART:1:0
+    '2':
+      chance: 65
+      effects:
+        - ADD_SOULS:1
+        - PARTICLE:HEART:1:0
+    '3':
+      chance: 75
+      effects:
+        - ADD_SOULS:1
+        - PARTICLE:HEART:1:0
+soulminer:
+  display: '%group-color%영혼광'
+  description: 채광하면서 영혼을 획득합니다.
+  applies-to: 곡괭이
+  type: MINING
+  group: FABLED
+  applies:
+    - ALL_PICKAXE
+  levels:
+    '1':
+      chance: 5
+      effects:
+        - ADD_SOULS:1
+        - PARTICLE:HEART:1:0
+    '2':
+      chance: 10
+      effects:
+        - ADD_SOULS:1
+        - PARTICLE:HEART:1:0
+    '3':
+      chance: 15
+      effects:
+        - ADD_SOULS:1
+        - PARTICLE:HEART:1:0
+soulgrind:
+  display: '%group-color%소울그라인더'
+  description: 일정 확률로 몬스터를 죽일 시 영혼을 획득합니다.
+  applies-to: 검
+  type: KILL_MOB
+  group: FABLED
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 30
+      effects:
+        - ADD_SOULS:1
+        - PARTICLE:HEART:1:0
+    '2':
+      chance: 60
+      effects:
+        - ADD_SOULS:1
+        - PARTICLE:HEART:1:0
+    '3':
+      chance: 90
+      effects:
+        - ADD_SOULS:1
+        - PARTICLE:HEART:1:0
+deranged:
+  display: '%group-color%천벌'
+  description: 일정 확률로 공격 시 주변 존재들에게 번개를 내리꽂습니다.
+  applies-to: 검
+  type: ATTACK
+  settings:
+    showActionBar: true
+  group: LEGENDARY
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 5
+      cooldown: 10
+      effects:
+        - LIGHTNING @Aoe{radius=5,target=damageable}
+    '2':
+      chance: 8
+      cooldown: 12
+      effects:
+        - LIGHTNING @Aoe{radius=6,target=damageable}
+    '3':
+      chance: 30
+      cooldown: 14
+      effects:
+        - LIGHTNING @Aoe{radius=7,target=damageable}
+magnet:
+  display: '%group-color%자석'
+  description: 공격 시 상대방을 끌고옵니다.
+  applies-to: 검
+  type: ATTACK
+  group: ELITE
+  applies:
+    - ALL_SWORD
+  levels:
+    '1':
+      chance: 30
+      cooldown: 5
+      effects:
+        - PULL_CLOSER:1 @Victim
+    '2':
+      chance: 60
+      cooldown: 5
+      effects:
+        - PULL_CLOSER:2 @Victim
+    '3':
+      cooldown: 5
+      effects:
+        - PULL_CLOSER:3 @Victim

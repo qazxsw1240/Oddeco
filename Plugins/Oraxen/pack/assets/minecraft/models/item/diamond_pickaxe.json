@@ -1,0 +1,13 @@
+// This file was recognized as a duplicate and was migrated into its relevant config(s)
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/ink_sac"
+  },
+    "overrides": [
+		{"predicate": {"custom_model_data":1}, "model": "littleroom_blacksmith:steel_pickaxe"},
+		{"predicate": {"custom_model_data":2}, "model": "littleroom_blacksmith:bronze_pickaxe"},
+		{"predicate": {"custom_model_data":3}, "model": "littleroom_blacksmith:lazulium_pickaxe"},
+		{"predicate": {"custom_model_data":4}, "model": "littleroom_blacksmith:emerite_pickaxe"}
+        ]
+}

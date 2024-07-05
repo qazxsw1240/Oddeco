@@ -1,0 +1,25 @@
+# https://docs.advntr.dev/minimessage/format.html
+messages:
+  prefix: '<gradient:#ff206c:#fdee55>[CustomCrops] </gradient>'
+  reload: '<white>Reloaded! Took <green>{time}ms.'
+  invalid-args: '<white>적당하지 않은 요구사항입니다.'
+  no-console: '<white>이 명령어는 오직 플레이어가 입력해야만 합니다.'
+  not-online: '<white>{player}는 로그아웃한 상태입니다.'
+  lack-args: '<white>요구사항이 너무 많아 렉이 걸리고 있습니다.'
+  not-none-args: '<white> 이런 명령어는 없습니다.'
+  before-plant: '<white>이 비료는 작물을 심기 전에 뿌려야합니다.'
+  unsuitable-pot: "<white> 이 토대에 심을 수 없습니다."
+  reach-crop-limit: '<white>이 작물은 다 컸습니다.'
+  no-perm: "<red>당신은 이걸 할 권한이 없습니다."
+  spring: '봄'
+  summer: '여름'
+  autumn: '가을'
+  winter: '겨울'
+  no-season: '계절 비활성화'
+  set-season: "<white> 성공적으로 {world}의 계절을 {season}로 바꿨습니다."
+  set-date: "<white>성공적으로 {world}의 날짜를 {date}로 바꿨습니다."
+  world-not-exist: '<white> {world}라는 월드는 존재하지 않습니다.'
+  season-not-exist: '<white>{season}라는 계절은 존재하지 않습니다.'
+  force-sprinkler-work: "<white>{world}의 스프링쿨러를 강제로 작동시킵니다."
+  force-consume: "<white> {world}의 토대에서 물과 비료의 량을 강제로 소모합니다."
+  force-grow: "<white>{world}의 작물을 한번 강제로 자라게 합니다."

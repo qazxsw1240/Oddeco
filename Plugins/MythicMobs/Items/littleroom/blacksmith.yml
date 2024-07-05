@@ -1,0 +1,415 @@
+#########################################################
+## Developed by Little Room, patreon.com/littleroomdev ##
+#########################################################
+
+blacksmith_hammer:
+  Id: INK_SAC
+  Display: '대장장이 망치'
+  Model: 1
+  
+blacksmith_crucible_empty:
+  Id: PIG_SPAWN_EGG
+  Display: '도가니'
+  Model: 15
+  NBT:
+    MYTHIC_EGG: blacksmith_crucible_empty
+    
+blacksmith_forge:
+  Id: PIG_SPAWN_EGG
+  Display: '용광로'
+  Model: 11
+  NBT:
+    MYTHIC_EGG: blacksmith_forge
+  
+blacksmith_anvil:
+  Id: PIG_SPAWN_EGG
+  Display: '모루'
+  Model: 12
+  NBT:
+    MYTHIC_EGG: blacksmith_anvil
+  
+blacksmith_quencher:
+  Id: PIG_SPAWN_EGG
+  Display: '냉각기'
+  Model: 13
+  NBT:
+    MYTHIC_EGG: blacksmith_quencher
+
+blacksmith_ingotmold:
+  Id: PIG_SPAWN_EGG
+  Display: '주괴 몰드'
+  Model: 14
+  NBT:
+    MYTHIC_EGG: blacksmith_ingotmold
+  
+#### IRON ####
+  
+blacksmith_crucible_iron:
+  Id: PIG_SPAWN_EGG
+  Display: '철이 담긴 도가니'
+  Model: 3
+  NBT:
+    MYTHIC_EGG: blacksmith_crucible_iron
+  
+blacksmith_crucible_iron_molten:
+  Id: PIG_SPAWN_EGG
+  Display: '녹은 철이 담긴 도가니'
+  Model: 2
+  NBT:
+    MYTHIC_EGG: blacksmith_crucible_iron_molten
+
+blacksmith_iron_ingot_hot:
+  Id: INK_SAC
+  Display: '뜨거운 철 주괴'
+  Model: 2
+    
+blacksmith_iron_sword_hot:
+  Id: INK_SAC
+  Display: '뜨거운 철 검'
+  Model: 3
+    
+blacksmith_iron_hoe_hot:
+  Id: INK_SAC
+  Display: '뜨거운 철 괭이'
+  Model: 4
+    
+blacksmith_iron_axe_hot:
+  Id: INK_SAC
+  Display: '뜨거운 철 도끼'
+  Model: 5
+    
+blacksmith_iron_shovel_hot:
+  Id: INK_SAC
+  Display: '뜨거운 철 삽'
+  Model: 6
+    
+blacksmith_iron_pickaxe_hot:
+  Id: INK_SAC
+  Display: '뜨거운 철 곡괭이'
+  Model: 7
+  
+#### STEEL ####
+  
+blacksmith_crucible_steel:
+  Id: PIG_SPAWN_EGG
+  Display: '강철이 담긴 도가니'
+  Model: 4
+  NBT:
+    MYTHIC_EGG: blacksmith_crucible_steel
+  
+blacksmith_crucible_steel_molten:
+  Id: PIG_SPAWN_EGG
+  Display: '녹은 강철이 담긴 도가니'
+  Model: 2
+  NBT:
+    MYTHIC_EGG: blacksmith_crucible_steel_molten
+    
+blacksmith_steel_ingot:
+  Id: INK_SAC
+  Display: '강철 주괴'
+  Model: 8
+    
+blacksmith_steel_ingot_hot:
+  Id: INK_SAC
+  Display: '뜨거운 강철 주괴'
+  Model: 2
+    
+blacksmith_steel_sword_hot:
+  Id: INK_SAC
+  Display: '뜨거운 강철 칼'
+  Model: 3
+    
+blacksmith_steel_hoe_hot:
+  Id: INK_SAC
+  Display: '뜨거운 강철 호미'
+  Model: 4
+    
+blacksmith_steel_axe_hot:
+  Id: INK_SAC
+  Display: '뜨거운 강철 도끼'
+  Model: 5
+    
+blacksmith_steel_shovel_hot:
+  Id: INK_SAC
+  Display: '뜨거운 강철 삽'
+  Model: 6
+    
+blacksmith_steel_pickaxe_hot:
+  Id: INK_SAC
+  Display: '뜨거운 강철 곡괭이'
+  Model: 7
+    
+blacksmith_steel_sword:
+  Id: DIAMOND_SWORD
+  Display: '강철 검'
+  Model: 1
+    
+blacksmith_steel_hoe:
+  Id: DIAMOND_HOE
+  Display: '강철 괭이'
+  Model: 1
+    
+blacksmith_steel_axe:
+  Id: DIAMOND_AXE
+  Display: '강철 도끼'
+  Model: 1
+    
+blacksmith_steel_shovel:
+  Id: DIAMOND_SHOVEL
+  Display: '강철 삽'
+  Model: 1
+
+    
+blacksmith_steel_pickaxe:
+  Id: DIAMOND_PICKAXE
+  Display: '강철 곡괭이'
+  Model: 1
+  
+#### bronze ####
+
+blacksmith_crucible_copper:
+  Id: PIG_SPAWN_EGG
+  Display: '구리가 담긴 도가니'
+  Model: 5
+  NBT:
+    MYTHIC_EGG: blacksmith_crucible_copper
+  
+blacksmith_crucible_bronze:
+  Id: PIG_SPAWN_EGG
+  Display: '청동이 담긴 도가니'
+  Model: 6
+  NBT:
+    MYTHIC_EGG: blacksmith_crucible_bronze
+  
+blacksmith_crucible_bronze_molten:
+  Id: PIG_SPAWN_EGG
+  Display: '녹은 청동이 담긴 도가니'
+  Model: 2
+  NBT:
+    MYTHIC_EGG: blacksmith_crucible_bronze_molten
+    
+blacksmith_bronze_ingot:
+  Id: INK_SAC
+  Display: '청동 주괴'
+  Model: 9
+    
+blacksmith_bronze_ingot_hot:
+  Id: INK_SAC
+  Display: '뜨거운 청동 주괴'
+  Model: 2
+    
+blacksmith_bronze_sword_hot:
+  Id: INK_SAC
+  Display: '뜨거운 청동 칼'
+  Model: 3
+    
+blacksmith_bronze_hoe_hot:
+  Id: INK_SAC
+  Display: '뜨거운 청동 괭이'
+  Model: 4
+    
+blacksmith_bronze_axe_hot:
+  Id: INK_SAC
+  Display: '뜨거운 청동 도끼'
+  Model: 5
+    
+blacksmith_bronze_shovel_hot:
+  Id: INK_SAC
+  Display: '뜨거운 청동 삽'
+  Model: 6
+    
+blacksmith_bronze_pickaxe_hot:
+  Id: INK_SAC
+  Display: '뜨거운 청동 곡괭이'
+  Model: 7
+    
+blacksmith_bronze_sword:
+  Id: DIAMOND_SWORD
+  Display: '청동 칼'
+  Model: 2
+    
+blacksmith_bronze_hoe:
+  Id: DIAMOND_HOE
+  Display: '청동 괭이'
+  Model: 2
+    
+blacksmith_bronze_axe:
+  Id: DIAMOND_AXE
+  Display: '청동 도끼'
+  Model: 2
+    
+blacksmith_bronze_shovel:
+  Id: DIAMOND_SHOVEL
+  Display: '청동 삽'
+  Model: 2
+    
+blacksmith_bronze_pickaxe:
+  Id: DIAMOND_PICKAXE
+  Display: '청동 곡괭이'
+  Model: 2
+  
+#### lazulium ####
+
+blacksmith_crucible_lapis:
+  Id: PIG_SPAWN_EGG
+  Display: '라피스 라줄리가 담긴 도가니'
+  Model: 9
+  NBT:
+    MYTHIC_EGG: blacksmith_crucible_lapis
+  
+blacksmith_crucible_lazulium:
+  Id: PIG_SPAWN_EGG
+  Display: '라즐리움이 담긴 도가니'
+  Model: 10
+  NBT:
+    MYTHIC_EGG: blacksmith_crucible_lazulium
+  
+blacksmith_crucible_lazulium_molten:
+  Id: PIG_SPAWN_EGG
+  Display: '녹은 라즐리움이 담긴 도가니'
+  Model: 2
+  NBT:
+    MYTHIC_EGG: blacksmith_crucible_lazulium_molten
+    
+blacksmith_lazulium_ingot:
+  Id: INK_SAC
+  Display: '라즐리움 주괴'
+  Model: 10
+    
+blacksmith_lazulium_ingot_hot:
+  Id: INK_SAC
+  Display: '뜨거운 라즐리움 주괴'
+  Model: 2
+    
+blacksmith_lazulium_sword_hot:
+  Id: INK_SAC
+  Display: '뜨거운 라즐리움 칼'
+  Model: 3
+    
+blacksmith_lazulium_hoe_hot:
+  Id: INK_SAC
+  Display: '뜨거운 라즐리움 괭이'
+  Model: 4
+    
+blacksmith_lazulium_axe_hot:
+  Id: INK_SAC
+  Display: '뜨거운 라즐리움 도끼'
+  Model: 5
+    
+blacksmith_lazulium_shovel_hot:
+  Id: INK_SAC
+  Display: '뜨거운 라즐리움 삽'
+  Model: 6
+    
+blacksmith_lazulium_pickaxe_hot:
+  Id: INK_SAC
+  Display: '뜨거운 라즐리움 곡괭이'
+  Model: 7
+    
+blacksmith_lazulium_sword:
+  Id: DIAMOND_SWORD
+  Display: '라즐리움 칼'
+  Model: 3
+    
+blacksmith_lazulium_hoe:
+  Id: DIAMOND_HOE
+  Display: '라즐리움 괭이'
+  Model: 3
+    
+blacksmith_lazulium_axe:
+  Id: DIAMOND_AXE
+  Display: '라즐리움 도끼'
+  Model: 3
+    
+blacksmith_lazulium_shovel:
+  Id: DIAMOND_SHOVEL
+  Display: '라즐리움 삽'
+  Model: 3
+    
+blacksmith_lazulium_pickaxe:
+  Id: DIAMOND_PICKAXE
+  Display: '라즐리움 곡괭이'
+  Model: 3
+  
+#### emerite ####
+
+blacksmith_crucible_emerald:
+  Id: PIG_SPAWN_EGG
+  Display: '에메랄드가 담긴 도가니'
+  Model: 7
+  NBT:
+    MYTHIC_EGG: blacksmith_crucible_emerald
+  
+blacksmith_crucible_emerite:
+  Id: PIG_SPAWN_EGG
+  Display: '에메라이트가 담긴 도가니'
+  Model: 8
+  NBT:
+    MYTHIC_EGG: blacksmith_crucible_emerite
+  
+blacksmith_crucible_emerite_molten:
+  Id: PIG_SPAWN_EGG
+  Display: '녹은 에메라이트가 담긴 도가니'
+  Model: 2
+  NBT:
+    MYTHIC_EGG: blacksmith_crucible_emerite_molten
+    
+blacksmith_emerite_ingot:
+  Id: INK_SAC
+  Display: '에메라이트 주괴'
+  Model: 11
+    
+blacksmith_emerite_ingot_hot:
+  Id: INK_SAC
+  Display: '뜨거운 에메라이트 주괴'
+  Model: 2
+    
+blacksmith_emerite_sword_hot:
+  Id: INK_SAC
+  Display: '뜨거운 에메라이트 칼'
+  Model: 3
+    
+blacksmith_emerite_hoe_hot:
+  Id: INK_SAC
+  Display: '뜨거운 에메라이트 괭이'
+  Model: 4
+    
+blacksmith_emerite_axe_hot:
+  Id: INK_SAC
+  Display: '뜨거운 에메라이트 도끼'
+  Model: 5
+    
+blacksmith_emerite_shovel_hot:
+  Id: INK_SAC
+  Display: '뜨거운 에메라이트 삽'
+  Model: 6
+    
+blacksmith_emerite_pickaxe_hot:
+  Id: INK_SAC
+  Display: '뜨거운 에메라이트 곡괭이'
+  Model: 7
+    
+blacksmith_emerite_sword:
+  Id: DIAMOND_SWORD
+  Display: '에메라이트 칼'
+  Model: 4
+    
+blacksmith_emerite_hoe:
+  Id: DIAMOND_HOE
+  Display: '에메라이트 괭이'
+  Model: 4
+    
+blacksmith_emerite_axe:
+  Id: DIAMOND_AXE
+  Display: '에메라이트 도끼'
+  Model: 4
+    
+blacksmith_emerite_shovel:
+  Id: DIAMOND_SHOVEL
+  Display: '에메라이트 삽'
+  Model: 4
+    
+blacksmith_emerite_pickaxe:
+  Id: DIAMOND_PICKAXE
+  Display: '에메라이트 곡괭이'
+  Model: 4

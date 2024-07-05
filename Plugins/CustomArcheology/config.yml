@@ -1,0 +1,42 @@
+# CustomArcheology by @rzt1020
+#
+# Read the Wiki here: customarcheology.superiormc.cn
+# Purchase the plugin, and you can get free texture expansion pack with 5 tools, 6 blocks included!
+
+config-files:
+  generate-default-files: true
+  language: en_US
+auto-copy-resourcepack:
+  enabled: true
+  # If you are using Oraxen, please change this to Oraxen.
+  # Other plugins is OK, you just need put correct path in path option.
+  plugin: "ItemsAdder"
+  # If you are using Oraxen, please change this to "/pack/assets".
+  path: "/contents/customarcheology/resourcepack/"
+database:
+  use-mysql: false
+  mysql:
+    host: localhost
+    port: 3306
+    user: root
+    password: root
+    database: minecraft
+settings:
+  # Support value: UUID or RANDOM
+  block-save: UUID
+  start-custom-model-data:
+    block: 10000
+    tool: 10000
+  visible-distance: 8
+  item-scale: 0.5
+  block-scale: 0.25
+  symbols:
+    vanilla: "minecraft"
+    custom-tool: "ca_tool"
+    custom-block: "ca_block"
+    itemsadder: "itemsadder"
+    oraxen: "oraxen"
+    mythicmobs: "mythicmobs"
+    mmoitems: "mmoitems"
+    eco: "eco"
+    neigeitems: 'neigeitems'

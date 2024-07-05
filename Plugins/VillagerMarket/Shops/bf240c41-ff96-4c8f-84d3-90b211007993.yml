@@ -1,0 +1,70 @@
+storageSize: 1
+shopfrontSize: 2
+type: player
+duration: infinite
+cost: -1
+storage:
+- ==: org.bukkit.inventory.ItemStack
+  v: 3465
+  type: COOKED_BEEF
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"italic":false,"color":"white","text":"치킨 케밥"}'
+    lore:
+    - '{"italic":false,"color":"gold","text":"쫄깃한 닭고기와 양상추의 아삭함이 잘 어우러진다."}'
+    custom-model-data: 4
+    ItemFlags:
+    - HIDE_ATTRIBUTES
+    internal: H4sIAAAAAAAA/+NiYOBg4PaNDPHwdI4PiQxwZeBNzshMzk7Ni89OTUpMYgAA2/fXHCEAAAA=
+trusted: []
+disable_notifications: false
+ownerUUID: 6bf6d993-e421-48fb-9ced-c7c33d828eaa
+ownerName: 검아무개
+expire: 0
+times_rented: 1
+collected_money: 0.0
+require_permission: false
+stats:
+  items_sold: 0
+  items_bought: 0
+  money_earned: 0.0
+  money_spent: 0.0
+entity:
+  profession: BUTCHER
+  name: §b검아무개의 상점
+  location:
+    x: -40.5
+    y: 64.0
+    z: 294.5
+    world: world
+items_for_sale:
+  '0':
+    item:
+      ==: org.bukkit.inventory.ItemStack
+      v: 3465
+      type: COOKED_BEEF
+      meta:
+        ==: ItemMeta
+        meta-type: UNSPECIFIC
+        display-name: '{"italic":false,"color":"white","text":"치킨 케밥"}'
+        lore:
+        - '{"italic":false,"color":"gold","text":"쫄깃한 닭고기와 양상추의 아삭함이 잘 어우러진다."}'
+        custom-model-data: 4
+        ItemFlags:
+        - HIDE_ATTRIBUTES
+        internal: H4sIAAAAAAAA/+NiYOBg4PaNDPHwdI4PiQxwZeBNzshMzk7Ni89OTUpMYgAA2/fXHCEAAAA=
+    amount: 1
+    trade_amount: 0
+    price: 1000.0
+    buy_price: 1000.0
+    mode: SELL
+    buy_limit: 0
+    command: []
+    server_trades: 0
+    limit_mode: PLAYER
+    cooldown: never
+    discount:
+      amount: 0
+      end: 0
+    next_reset: 0

@@ -1,0 +1,39 @@
+#
+# ███████╗███████╗ █████╗ ██╗   ██╗███████╗██╗████████╗███████╗███╗   ███╗
+# ██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝██║╚══██╔══╝██╔════╝████╗ ████║
+# █████╗  ███████╗███████║██║   ██║█████╗  ██║   ██║   █████╗  ██╔████╔██║
+# ██╔══╝  ╚════██║██╔══██║╚██╗ ██╔╝██╔══╝  ██║   ██║   ██╔══╝  ██║╚██╔╝██║
+# ███████╗███████║██║  ██║ ╚████╔╝ ███████╗██║   ██║   ███████╗██║ ╚═╝ ██║
+#
+# "ANSI Shadow" from http://patorjk.com/software/taag/
+# --
+# General messages
+# You can use %prefix% to replace it for the currently prefix in config.yaml
+# If you want to, you can use RGB colors (Gradients, Solid) -> more on our wiki
+# Our systems supports PAPI
+# --
+
+give-self-msg: "%prefix% &7You gave yourself a SaveItem!"
+give-target-msg: "%prefix% &7You gave %target% a SaveItem!"
+
+invalid-target-msg: "%prefix% &7Player not found!"
+info-for-target-msg: "%prefix% &7Someone just gave you a SaveItem!"
+
+# You can use %price% to tell the player the current price of the SaveItem
+successful-purchase-msg: "%prefix% &7Successfully purchased a SaveItem for &b%price%$!"
+failed-purchase-msg: "%prefix% &7You don't have enough money! You need &b%price%$!"
+buying-disabled-msg: "%prefix% &7This function is disabled at the moment!"
+
+used-saveitem-msg: "%prefix% &7You used your a SaveItem!"
+
+no-permissions: "%prefix% &7You don't have permissions!"
+
+invalid-command-msg:
+  - "&7&m---------------------------------------------"
+  - "&b/saveitem give [target] &7- &fGives a SaveItem to a player"
+  - "&b/saveitem buy &7- &fYou will purchase a SaveItem"
+  - "&b/saveitem reload&7 - &fReload the plugin"
+  - "&7&m---------------------------------------------"
+
+plugin-reloaded: "%prefix% &7Plugin reloaded!"
+update-available: "%prefix% &7There is an %new_version% update available!"

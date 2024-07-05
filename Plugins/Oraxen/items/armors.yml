@@ -1,0 +1,359 @@
+# Material list for latest spigot version: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+# EntityType list for latest spigot version: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html
+# Attribute list for latest spigot version: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/attribute/Attribute.html
+# Potion effects list for latest spigot version: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/potion/PotionEffectType.html
+# Random UUID generator: https://www.uuidgenerator.net/
+# Color codes: https://docs.adventure.kyori.net/minimessage.html#format
+
+emerald_helmet:
+  displayname: <gradient:#89E59D:#37C6BA>Emerald Helmet
+  material: LEATHER_HELMET
+  lore:
+  - <#6f737d>» <#D5D6D8>Gives 1 extra <glyph:heart>
+  Mechanics:
+    durability:
+      value: 437 # 20% more than diamond helmet
+  AttributeModifiers:
+  - attribute: GENERIC_MAX_HEALTH
+    amount: 2
+    operation: 0
+    slot: HEAD
+    uuid: d08d2c39-64e8-4cba-8523-04833db4df36
+    name: oraxen:modifier
+  - attribute: GENERIC_ARMOR
+    amount: 3
+    operation: 0
+    slot: HEAD
+    uuid: e42855ac-3504-435a-b1ee-40a61a85ef7a
+    name: oraxen:modifier
+  - attribute: GENERIC_ARMOR_TOUGHNESS
+    amount: 2
+    operation: 0
+    slot: HEAD
+    uuid: 6f148014-6d8f-4210-acff-749dc00f63ca
+    name: oraxen:modifier
+  Pack:
+    generate_model: true
+    parent_model: item/generated
+    textures: # duplicate because we use the overlay of the leather armor
+      - default/armors/emerald_helmet
+      - default/armors/emerald_helmet
+    custom_model_data: 1000
+  color: 0,0,1
+
+emerald_chestplate:
+  displayname: <gradient:#89E59D:#37C6BA>Emerald Chestplate
+  material: LEATHER_CHESTPLATE
+  lore:
+  - <#6f737d>» <#D5D6D8>Gives 1.5 extra <glyph:heart>
+  Mechanics:
+    durability:
+      value: 635
+  AttributeModifiers:
+  - attribute: GENERIC_MAX_HEALTH
+    amount: 3
+    operation: 0
+    slot: CHEST
+    uuid: 14c7751a-b90a-46ed-98ae-0a79a736a732
+    name: oraxen:modifier
+  - attribute: GENERIC_ARMOR
+    amount: 8
+    operation: 0
+    slot: CHEST
+    uuid: c69718b9-ec56-4ec8-b10a-8c51eda359f5
+    name: oraxen:modifier
+  - attribute: GENERIC_ARMOR_TOUGHNESS
+    amount: 2
+    operation: 0
+    slot: CHEST
+    uuid: e4c9cff3-c6e2-4e0a-8f12-7096dc2da921
+    name: oraxen:modifier
+  Pack:
+    generate_model: true
+    parent_model: item/generated
+    textures: # duplicate because we use the overlay of the leather armor
+      - default/armors/emerald_chestplate
+      - default/armors/emerald_chestplate
+    custom_model_data: 1000
+  color: 0,0,1
+
+emerald_leggings:
+  displayname: <gradient:#89E59D:#37C6BA>Emerald Leggings
+  material: LEATHER_LEGGINGS
+  lore:
+  - <#6f737d>» <#D5D6D8>Gives 1.5 extra <glyph:heart>
+  Mechanics:
+    durability:
+      value: 595
+  AttributeModifiers:
+  - attribute: GENERIC_MAX_HEALTH
+    amount: 3
+    operation: 0
+    slot: LEGS
+    uuid: 25b724b0-6598-47c3-a25e-0c9dc02c1b57
+    name: oraxen:modifier
+  - attribute: GENERIC_ARMOR
+    amount: 6
+    operation: 0
+    slot: LEGS
+    uuid: b5971791-1886-4819-a845-79cfe1457f48
+    name: oraxen:modifier
+  - attribute: GENERIC_ARMOR_TOUGHNESS
+    amount: 2
+    operation: 0
+    slot: LEGS
+    uuid: 17e18fd8-eada-429c-a6d5-fd08d67e1c8d
+    name: oraxen:modifier
+  Pack:
+    generate_model: true
+    parent_model: item/generated
+    textures: # duplicate because we use the overlay of the leather armor
+      - default/armors/emerald_leggings
+      - default/armors/emerald_leggings
+    custom_model_data: 1000
+  color: 0,0,1
+
+emerald_boots:
+  displayname: <gradient:#89E59D:#37C6BA>Emerald Boots
+  material: LEATHER_BOOTS
+  lore:
+  - <#6f737d>» <#D5D6D8>Gives 1 extra <glyph:heart>
+  Mechanics:
+    durability:
+      value: 516
+  AttributeModifiers:
+  - attribute: GENERIC_MAX_HEALTH
+    amount: 2
+    operation: 0
+    slot: FEET
+    uuid: 33fc72c1-7535-4931-9460-6d9ec027749a
+    name: oraxen:modifier
+  - attribute: GENERIC_ARMOR
+    amount: 3
+    operation: 0
+    slot: FEET
+    uuid: 4af538f9-d4e5-4770-83b3-71e48da17e63
+    name: oraxen:modifier
+  - attribute: GENERIC_ARMOR_TOUGHNESS
+    amount: 2
+    operation: 0
+    slot: FEET
+    uuid: 906cae5c-7f9a-423a-b266-44a2ef16479e
+    name: oraxen:modifier
+  Pack:
+    generate_model: true
+    parent_model: item/generated
+    textures: # duplicate because we use the overlay of the leather armor
+      - default/armors/emerald_boots
+      - default/armors/emerald_boots
+    custom_model_data: 1000
+  color: 0,0,1
+
+obsidian_helmet:
+  displayname: <gradient:#4B36B1:#6699FF>Obsidian Helmet
+  material: LEATHER_HELMET
+  lore:
+  - <#6f737d>» <#D5D6D8>Ludicrous durability
+  Mechanics:
+    durability:
+      value: 4370
+  AttributeModifiers:
+  - attribute: GENERIC_ARMOR
+    amount: 2
+    operation: 0
+    slot: HEAD
+    uuid: 21f97c5f-67bd-4635-a350-35f71aff8a39
+    name: oraxen:modifier
+  Pack:
+    generate_model: true
+    parent_model: item/generated
+    textures: # duplicate because we use the overlay of the leather armor
+      - default/armors/obsidian_helmet
+      - default/armors/obsidian_helmet
+    custom_model_data: 1001
+  color: 0,0,2
+
+obsidian_chestplate:
+  custom_model_data: 2
+  displayname: <gradient:#4B36B1:#6699FF>Obsidian Chestplate
+  material: LEATHER_CHESTPLATE
+  lore:
+  - <#6f737d>» <#D5D6D8>Ludicrous durability
+  Mechanics:
+    durability:
+      value: 6350
+  AttributeModifiers:
+  - attribute: GENERIC_ARMOR
+    amount: 6
+    operation: 0
+    slot: CHEST
+    uuid: c9416bfb-4b1d-4122-9451-a33408c28b64
+    name: oraxen:modifier
+  Pack:
+    generate_model: true
+    parent_model: item/generated
+    textures: # duplicate because we use the overlay of the leather armor
+      - default/armors/obsidian_chestplate
+      - default/armors/obsidian_chestplate
+    custom_model_data: 1001
+  color: 0,0,2
+
+obsidian_leggings:
+  displayname: <gradient:#4B36B1:#6699FF>Obsidian Leggings
+  material: LEATHER_LEGGINGS
+  lore:
+  - <#6f737d>» <#D5D6D8>Ludicrous durability
+  Mechanics:
+    durability:
+      value: 5950
+  AttributeModifiers:
+  - attribute: GENERIC_ARMOR
+    amount: 5
+    operation: 0
+    slot: LEGS
+    uuid: 293ca5af-e87f-40ec-ba74-8242e1f1c5fe
+    name: oraxen:modifier
+  Pack:
+    generate_model: true
+    parent_model: item/generated
+    textures: # duplicate because we use the overlay of the leather armor
+      - default/armors/obsidian_leggings
+      - default/armors/obsidian_leggings
+    custom_model_data: 1001
+  color: 0,0,2
+
+obsidian_boots:
+  displayname: <gradient:#4B36B1:#6699FF>Boots Boots
+  material: LEATHER_BOOTS
+  lore:
+  - <#6f737d>» <#D5D6D8>Ludicrous durability
+  Mechanics:
+    durability:
+      value: 5160
+  AttributeModifiers:
+  - attribute: GENERIC_ARMOR
+    amount: 2
+    operation: 0
+    slot: FEET
+    uuid: 7309471a-c555-43e0-860d-8fcc2d954b7b
+    name: oraxen:modifier
+  Pack:
+    generate_model: true
+    parent_model: item/generated
+    textures: # duplicate because we use the overlay of the leather armor
+      - default/armors/obsidian_boots
+      - default/armors/obsidian_boots
+    custom_model_data: 1001
+  color: 0,0,2
+
+ruby_helmet:
+  displayname: <gradient:#FA7CBB:#F14658>Ruby Helmet
+  material: LEATHER_HELMET
+  Mechanics:
+    durability:
+      value: 547 # 50% more than diamond helmet
+  AttributeModifiers:
+  - attribute: GENERIC_ARMOR
+    amount: 3
+    operation: 0
+    slot: HEAD
+    uuid: f00f98ba-de05-4d05-98c4-b84514664ca9
+    name: oraxen:modifier
+  - attribute: GENERIC_ARMOR_TOUGHNESS
+    amount: 2
+    operation: 0
+    slot: HEAD
+    uuid: 868ca3ef-1ca3-42b3-93a7-a5579233c2a4
+    name: oraxen:modifier
+  Pack:
+    generate_model: true
+    parent_model: item/generated
+    textures: # duplicate because we use the overlay of the leather armor
+      - default/armors/ruby_helmet
+      - default/armors/ruby_helmet
+    custom_model_data: 1002
+  color: 0,0,3
+
+ruby_chestplate:
+  displayname: <gradient:#FA7CBB:#F14658>Ruby Chestplate
+  material: LEATHER_CHESTPLATE
+  Mechanics:
+    durability:
+      value: 792
+  AttributeModifiers:
+  - attribute: GENERIC_ARMOR
+    amount: 8
+    operation: 0
+    slot: CHEST
+    uuid: 64887024-5f7c-4649-a13c-00ba7256f176
+    name: oraxen:modifier
+  - attribute: GENERIC_ARMOR_TOUGHNESS
+    amount: 2
+    operation: 0
+    slot: CHEST
+    uuid: b34e030d-5638-4f04-8784-9cf137c815df
+    name: oraxen:modifier
+  Pack:
+    generate_model: true
+    parent_model: item/generated
+    textures: # duplicate because we use the overlay of the leather armor
+      - default/armors/ruby_chestplate
+      - default/armors/ruby_chestplate
+    custom_model_data: 1002
+  color: 0,0,3
+
+ruby_leggings:
+  displayname: <gradient:#FA7CBB:#F14658>Ruby Leggings
+  material: LEATHER_LEGGINGS
+  Mechanics:
+    durability:
+      value: 742
+  AttributeModifiers:
+  - attribute: GENERIC_ARMOR
+    amount: 6
+    operation: 0
+    slot: LEGS
+    uuid: cd1fbc20-7c26-4097-b982-7ffec95854d2
+    name: oraxen:modifier
+  - attribute: GENERIC_ARMOR_TOUGHNESS
+    amount: 2
+    operation: 0
+    slot: LEGS
+    uuid: fbe662b8-f687-43fa-b218-63b0bd8cbcfd
+    name: oraxen:modifier
+  Pack:
+    generate_model: true
+    parent_model: item/generated
+    textures: # duplicate because we use the overlay of the leather armor
+      - default/armors/ruby_leggings
+      - default/armors/ruby_leggings
+    custom_model_data: 1002
+  color: 0,0,3
+
+ruby_boots:
+  displayname: <gradient:#FA7CBB:#F14658>Ruby Boots
+  material: LEATHER_BOOTS
+  Mechanics:
+    durability:
+      value: 643
+  AttributeModifiers:
+  - attribute: GENERIC_ARMOR
+    amount: 3
+    operation: 0
+    slot: FEET
+    uuid: dc7ddc4d-e804-4685-ad81-4d521203f18d
+    name: oraxen:modifier
+  - attribute: GENERIC_ARMOR_TOUGHNESS
+    amount: 2
+    operation: 0
+    slot: FEET
+    uuid: e74ba42b-cb60-4710-abcf-dc8f3469e57b
+    name: oraxen:modifier
+  Pack:
+    generate_model: true
+    parent_model: item/generated
+    textures: # duplicate because we use the overlay of the leather armor
+      - default/armors/ruby_boots
+      - default/armors/ruby_boots
+    custom_model_data: 1002
+  color: 0,0,3

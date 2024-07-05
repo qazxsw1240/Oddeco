@@ -1,0 +1,21 @@
+uuid: b0b7c92e-6e76-4ee6-b169-b67cf2be6d7d
+name: My Waystone
+ownerUUID: 6bf6d993-e421-48fb-9ced-c7c33d828eaa
+ownerName: _BIackCat_
+type: public
+yaw: 0.0
+pitch: 0.0
+noProximityPlayers: []
+worldUID: ec0987cf-935b-46c8-b5de-7a34a8078a15
+worldName: world
+x: -150
+y: 112
+z: 335
+serverName: d83dd353-6ecd-4256-a51b-d17695fd8a40
+environment: NORMAL
+model: modern
+statistics:
+  total-visitors: 0
+  total-visits: 0
+  total-users: 0
+  date-created: 1710526668173

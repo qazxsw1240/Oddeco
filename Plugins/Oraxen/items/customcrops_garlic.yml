@@ -1,0 +1,68 @@
+garlic_seeds:
+  displayname: <white>마늘 씨앗
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/crops/garlic/garlic_seeds
+    custom_model_data: 1027
+garlic:
+  displayname: <white>마늘
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/garlic/garlic
+    custom_model_data: 1012
+garlic_silver_star:
+  displayname: <white>마늘 ★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/garlic/garlic_silver_star
+    custom_model_data: 1013
+garlic_golden_star:
+  displayname: <white>마늘 <gold>★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/garlic/garlic_golden_star
+    custom_model_data: 1014
+garlic_stage_1:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 61
+      model: item/crops/garlic/stage_1
+  Pack:
+    generate_model: false
+    model: item/crops/garlic/stage_1
+    custom_model_data: 1028
+garlic_stage_2:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 62
+      model: item/crops/garlic/stage_2
+  Pack:
+    generate_model: false
+    model: item/crops/garlic/stage_2
+    custom_model_data: 1029
+garlic_stage_3:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 63
+      model: item/crops/garlic/stage_3
+  Pack:
+    generate_model: false
+    model: item/crops/garlic/stage_3
+    custom_model_data: 1030
+garlic_stage_4:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 64
+      model: item/crops/garlic/stage_4
+  Pack:
+    generate_model: false
+    model: item/crops/garlic/stage_4
+    custom_model_data: 1031

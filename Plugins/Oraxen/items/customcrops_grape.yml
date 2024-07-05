@@ -1,0 +1,88 @@
+grape_seeds:
+  displayname: <white>포도 씨앗
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/crops/grape/grape_seeds
+    custom_model_data: 1032
+grape:
+  displayname: <white>포도
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/grape/grape
+    custom_model_data: 1015
+grape_silver_star:
+  displayname: <white>포도 ★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/grape/grape_silver_star
+    custom_model_data: 1016
+grape_golden_star:
+  displayname: <white>포도 <gold>★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/grape/grape_golden_star
+    custom_model_data: 1017
+grape_stage_1:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 18
+      model: item/crops/grape/stage_1
+  Pack:
+    generate_model: false
+    model: item/crops/grape/stage_1
+    custom_model_data: 1033
+grape_stage_2:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 19
+      model: item/crops/grape/stage_2
+  Pack:
+    generate_model: false
+    model: item/crops/grape/stage_2
+    custom_model_data: 1034
+grape_stage_3:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 20
+      model: item/crops/grape/stage_3
+  Pack:
+    generate_model: false
+    model: item/crops/grape/stage_3
+    custom_model_data: 1035
+grape_stage_4:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 21
+      model: item/crops/grape/stage_4
+  Pack:
+    generate_model: false
+    model: item/crops/grape/stage_4
+    custom_model_data: 1036
+grape_stage_5:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 22
+      model: item/crops/grape/stage_5
+  Pack:
+    generate_model: false
+    model: item/crops/grape/stage_5
+    custom_model_data: 1037
+grape_stage_6:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 23
+      model: item/crops/grape/stage_6
+  Pack:
+    generate_model: false
+    model: item/crops/grape/stage_6
+    custom_model_data: 1038

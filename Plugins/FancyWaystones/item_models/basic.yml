@@ -1,0 +1,27 @@
+model:
+  - regular
+  - modern
+type:
+  - public
+  - private
+  - server
+  - linked
+item:
+  type: BREWING_STAND
+  amount: 1
+  meta:
+    display-name: "&e&l순간이동 마법석"
+    ItemFlags:
+      - HIDE_ATTRIBUTES
+      - HIDE_POTION_EFFECTS
+      - HIDE_ENCHANTS
+      - HIDE_PLACED_ON
+      - HIDE_DESTROYS
+      - HIDE_UNBREAKABLE
+    lore:
+      - "&7이 마법석을 바닥에 설치하여              &7"
+      - "&7순간이동할 지점을 설정하세요"
+      - "&7"
+      - "&7"
+      - "&7   종류: &d{waystone_type}"
+      - "&7   모델: &d{waystone_model}"

@@ -1,0 +1,215 @@
+pepper:
+  type: TRIPWIRE
+  pot-whitelist:
+  - default
+  seed: pepper_seeds
+  requirements:
+    plant:
+      requirement_1:
+        type: season
+        value:
+        - Spring
+        - Autumn
+        message: It's not a good season to plant pepper
+      requirement_2:
+        type: permission
+        value: farmer4.pepper
+        message: 고추를 심을 권한이 없습니다.
+  max-points: 5
+  points:
+    '0':
+      model: pepper_stage_1
+      hologram-offset-correction: 0.2
+      events:
+        break:
+          action_1:
+            type: drop-items
+            value:
+              other-items:
+                loot_1:
+                  item: pepper_seeds
+                  min: 1
+                  max: 1
+                  chance: 1
+          action_2:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+    '1':
+      model: pepper_stage_2
+      hologram-offset-correction: 0.2
+      events:
+        break:
+          action_1:
+            type: drop-items
+            value:
+              other-items:
+                loot_1:
+                  item: pepper_seeds
+                  min: 1
+                  max: 1
+                  chance: 1
+          action_2:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+    '2':
+      model: pepper_stage_3
+      hologram-offset-correction: 0.3
+      events:
+        break:
+          action_1:
+            type: drop-items
+            value:
+              other-items:
+                loot_1:
+                  item: pepper_seeds
+                  min: 1
+                  max: 1
+                  chance: 1
+          action_2:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+    '3':
+      model: pepper_stage_4
+      hologram-offset-correction: 0.3
+      events:
+        break:
+          action_1:
+            type: drop-items
+            value:
+              other-items:
+                loot_1:
+                  item: pepper_seeds
+                  min: 1
+                  max: 1
+                  chance: 1
+          action_2:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+    '5':
+      model: pepper_stage_5
+      hologram-offset-correction: 0.3
+      events:
+        break:
+          action_1:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+          action_2:
+            type: drop-items
+            value:
+              quality-crops:
+                min: 3
+                max: 6
+                items:
+                  '1': pepper
+                  '2': pepper_silver_star
+                  '3': pepper_golden_star
+              other-items:
+                loot_1:
+                  item: pepper_seeds
+                  min: 1
+                  max: 1
+                  chance: 1
+        interact:
+          empty_hand_action:
+            type: conditional
+            value:
+              conditions:
+                requirement_empty_hand:
+                  type: item-in-hand
+                  value:
+                    item: AIR
+              actions:
+                action_1:
+                  type: break
+                  value: true
+                action_2:
+                  type: replant
+                  value:
+                    point: 2
+                    crop: pepper
+                    model: pepper_stage_3
+  grow-conditions:
+    condition_1:
+      type: suitable_season
+      value:
+      - Spring
+      - Autumn
+  death-conditions:
+    no_water:
+      model: crop_stage_death
+      conditions:
+        condition_1:
+          type: water_less_than
+          value: 1
+    unsuitable_season:
+      model: crop_stage_death
+      conditions:
+        condition_1:
+          type: unsuitable_season
+          value:
+          - Winter
+    crow_attack:
+      conditions:
+        condition_1:
+          type: crow_attack
+          value:
+            chance: 0.001
+            fly-model: crow_fly
+            stand-model: crow_stand
+  custom-bone-meal:
+    bone_meal_1:
+      item: BONE_MEAL
+      chance:
+        '2': 0.2
+        '1': 0.6
+      actions:
+        swing_action:
+          type: swing-hand
+          value: true
+        particle_action:
+          type: particle
+          value:
+            particle: VILLAGER_HAPPY
+            count: 5
+            x: 0.5
+            y: 0.5
+            z: 0.5
+            offset-x: 0.3
+            offset-y: 0.3
+            offset-z: 0.3
+        sound_action:
+          type: sound
+          value:
+            key: minecraft:item.bone_meal.use
+            source: player
+            volume: 1
+            pitch: 1
+  events:
+    plant:
+      action_1:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.hoe.till
+          volume: 1
+          pitch: 1

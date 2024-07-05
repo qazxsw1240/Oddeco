@@ -1,0 +1,9 @@
+{
+  "connect.joining": "",
+  "menu.disconnect": "<shift:74><gray>See you soon!<shift:-142><glyph:menu_banner>",
+  "menu.returnToGame": "Back to the Oraxen experience",
+  "menu.game": "<glyph:logo>",
+  "item.dyed": "",
+  "container.inventory": " Inventory",
+  "resourcePack.server.name": "Vanilla Mod"
+}

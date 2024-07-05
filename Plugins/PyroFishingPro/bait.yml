@@ -1,0 +1,218 @@
+#==========================================================================
+#
+#  This is the default bait.yml file
+#  I would suggest editing this if you want a more unique experience.
+# 
+#==========================================================================
+
+#How it will look in the lore.
+#If you change this after letting players apply bait, it may cause issues if you have dynamic or lore that changes. 
+#This is ALWAYS stored as the last lore line. 
+BaitLoreFormat: '&b%bait% &7를 &3%uses% &7번 더 쓸 수 있음.'
+
+Baits:
+  #This can be anything, but this will be used to spawn it in. i.e /fish givebait example_bait <player> <amount>
+  basic_bait:
+    #If this bait should be enabled
+    enabled: true
+    
+    #Everything to do with the actual item
+    item:
+      name: '&a기초 낚시찌'
+      material: IRON_NUGGET
+      model_data: 0
+      glowing: false
+      lore:
+      - '&7이 &a기초 낚시찌&7를 사용하여'
+      - '&7물고기를 잡아보세요! 실버 등급의 물고기가 낚시찌'
+      - '&7유지 기간동안 잡힐 확률이 증가합니다.'
+      - ''
+      - '&7이 낚시찌는 &a%uses%&7번 쓸 수 있습니다.'
+      - ''
+      - '&7낚시대에 드래그 & 드랍하여 사용하세요.'
+   
+    #How many uses this bait has
+    uses: 50
+
+    #Everything to do with the bait being in the shop.
+    shop:
+      #If the item should appear in the shop.
+      isShopItem: false
+      
+      #The permission to buy this bait. Leave empty for no permission.
+      permission: 'fisher.basicbait'
+
+      #The cost to purchase this bait in money.
+      cost: 100
+      
+      #If buying should require a minimum fishing level
+      minimumFishingLevel: 1
+      
+      #What slot the bait should be set to.
+      #If this is -1 or not present, it will be automatically assigned.
+      slot: -1
+
+    #What fish should this bait allow you to catch?
+    #The format here is the '<TIER:FISH_NUMBER>
+    #You can find the fish number by looking in the fish.yml
+    fish:
+    - 'SILVER:1'
+    - 'SILVER:2'
+    - 'SILVER:3'
+    - 'SILVER:4'
+    - 'SILVER:5'
+    - 'SILVER:6'
+
+
+  normal_bait:
+    #If this bait should be enabled
+    enabled: true
+    
+    #Everything to do with the actual item
+    item:
+      name: '&a두툼한 낚시찌'
+      material: PRISMARINE_CRYSTALS
+      model_data: 0
+      glowing: false
+      lore:
+      - '&7이 &a두툼한 낚시찌&7를 사용하여'
+      - '&7물고기를 잡아보세요! 골드 등급의 물고기가 낚시찌'
+      - '&7유지 기간동안 잡힐 확률이 증가합니다.'
+      - ''
+      - '&7이 낚시찌는 &a%uses%&7번 쓸 수 있습니다.'
+      - ''
+      - '&7낚시대에 드래그 & 드랍하여 사용하세요.'
+   
+    #How many uses this bait has
+    uses: 50
+
+    #Everything to do with the bait being in the shop.
+    shop:
+      #If the item should appear in the shop.
+      isShopItem: false
+      
+      #The permission to buy this bait. Leave empty for no permission.
+      permission: 'fisher.basicbait'
+
+      #The cost to purchase this bait in money.
+      cost: 500
+      
+      #If buying should require a minimum fishing level
+      minimumFishingLevel: 1
+      
+      #What slot the bait should be set to.
+      #If this is -1 or not present, it will be automatically assigned.
+      slot: -1
+
+    #What fish should this bait allow you to catch?
+    #The format here is the '<TIER:FISH_NUMBER>
+    #You can find the fish number by looking in the fish.yml
+    fish:
+    - 'GOLD:1'
+    - 'GOLD:2'
+    - 'GOLD:3'
+    - 'GOLD:4'
+    - 'GOLD:5'
+
+  extreme_bait:
+    #If this bait should be enabled
+    enabled: true
+    
+    #Everything to do with the actual item
+    item:
+      name: '&a화려한 낚시찌'
+      material: TORCHFLOWER
+      model_data: 0
+      glowing: false
+      lore:
+      - '&7이 &a화려한 낚시찌&7를 사용하여'
+      - '&7물고기를 잡아보세요! 플래티넘 등급의 물고기가 낚시찌'
+      - '&7유지 기간동안 잡힐 확률이 증가합니다.'
+      - ''
+      - '&7이 낚시찌는 &a%uses%&7번 쓸 수 있습니다.'
+      - ''
+      - '&7낚시대에 드래그 & 드랍하여 사용하세요.'
+   
+    #How many uses this bait has
+    uses: 50
+
+    #Everything to do with the bait being in the shop.
+    shop:
+      #If the item should appear in the shop.
+      isShopItem: false
+      
+      #The permission to buy this bait. Leave empty for no permission.
+      permission: 'fisher.basicbait'
+
+      #The cost to purchase this bait in money.
+      cost: 1000
+      
+      #If buying should require a minimum fishing level
+      minimumFishingLevel: 1
+      
+      #What slot the bait should be set to.
+      #If this is -1 or not present, it will be automatically assigned.
+      slot: -1
+
+    #What fish should this bait allow you to catch?
+    #The format here is the '<TIER:FISH_NUMBER>
+    #You can find the fish number by looking in the fish.yml
+    fish:
+    - 'PLATINUM:1'
+    - 'PLATINUM:2'
+    - 'PLATINUM:3'
+    - 'PLATINUM:4'
+    - 'PLATINUM:5'
+    - 'PLATINUM:6'
+
+
+  mythical_bait:
+    #If this bait should be enabled
+    enabled: true
+    
+    #Everything to do with the actual item
+    item:
+      name: '&a신화적인 낚시찌'
+      material: DRAGON_HEAD
+      model_data: 0
+      glowing: false
+      lore:
+      - '&7이 &a신화적인 낚시찌&7를 사용하여'
+      - '&7물고기를 잡아보세요! 신화 등급의 물고기가'
+      - '&7낚시찌 유지 기간동안 잡힐 확률이 증가합니다.'
+      - ''
+      - '&7이 낚시찌는 &a%uses%&7번 쓸 수 있습니다.'
+      - ''
+      - '&7낚시대에 드래그 & 드랍하여 사용하세요.'
+   
+    #How many uses this bait has
+    uses: 50
+
+    #Everything to do with the bait being in the shop.
+    shop:
+      #If the item should appear in the shop.
+      isShopItem: false
+      
+      #The permission to buy this bait. Leave empty for no permission.
+      permission: 'fisher.basicbait'
+
+      #The cost to purchase this bait in money.
+      cost: 1000
+      
+      #If buying should require a minimum fishing level
+      minimumFishingLevel: 1
+      
+      #What slot the bait should be set to.
+      #If this is -1 or not present, it will be automatically assigned.
+      slot: -1
+
+    #What fish should this bait allow you to catch?
+    #The format here is the '<TIER:FISH_NUMBER>
+    #You can find the fish number by looking in the fish.yml
+    fish:
+    - 'MYTHICAL:1'
+    - 'MYTHICAL:2'
+    - 'MYTHICAL:3'
+    - 'MYTHICAL:4'
+    - 'MYTHICAL:5'
+    - 'MYTHICAL:6'

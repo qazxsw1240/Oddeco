@@ -1,0 +1,481 @@
+Command:
+  Stats:
+    Desc: Show [player's] job stats.
+    Usage: '[player]'
+    Display:
+      Info:
+      - <noprefix>
+      - ' '
+      - <light_yellow><orange>%player_name%</orange>'s Job Stats:</light_yellow>
+      - ' '
+      - '%entry%'
+      - ' '
+      Job: '<light_gray><orange>▪ </orange>%job_name%:   Level: <orange>%job_level%</orange>, XP: <orange>%job_xp%</orange>/<orange>%job_xp_max%</orange></light_gray>'
+  Info:
+    Display:
+      Currency:
+        Multiplier: '<light_gray><light_green>▪ </light_green>%currency_name% Multiplier: <light_green>x%currency_multiplier%</light_green></light_gray>'
+        Booster: '<light_gray><light_green>▪ </light_green>%currency_name% Boost: <light_green>%currency_boost_percent%%</light_green></light_gray>'
+  Booster:
+    Desc: Booster management.
+    Usage: '[help]'
+    Create:
+      Desc: Create personal booster.
+      Usage: <player> <booster> <duration> [-s]
+      Done: <light_gray>Added <light_yellow>%name%</light_yellow> job booster to <light_yellow>%player_name%</light_yellow> for <light_yellow>%time%</light_yellow></light_gray>
+      Notify:
+        Info:
+        - <noprefix><sound:'block_note_block_bell'>
+        - ' '
+        - <light_gray>You received a <light_yellow><b>Job Booster</b></light_yellow>!</light_gray>
+        - ' '
+        - '<light_gray><light_yellow>▪ </light_yellow>Jobs: <light_yellow>%job_name%</light_yellow></light_gray>'
+        - '<light_gray><light_yellow>▪ </light_yellow>XP Bonus: <light_yellow>+%xp_boost_percent%%</light_yellow></light_gray>'
+        - '%currency%'
+        - '<light_gray><light_red>▪ </light_red>Duration: <light_red>%time%</light_red></light_gray>'
+        - ' '
+        Currency: '<light_gray><light_yellow>▪ </light_yellow>%currency_name% Bonus: <light_yellow>+%currency_boost_percent%%</light_yellow></light_gray>'
+    Clear:
+      Desc: Remove personal boosters.
+      Usage: <player> [job]
+      Done:
+        Job: <light_gray>Removed personal <light_yellow>%job_name%</light_yellow> job booster from <light_yellow>%player_name%</light_yellow>.</light_gray>
+        All: <light_gray>Removed <light_yellow>All</light_yellow> personal job boosters from <light_yellow>%player_name%</light_yellow>.</light_gray>
+  XP:
+    Desc: Manage player's job XP.
+    Usage: <action> <job> <amount> [player] [-s]
+    Add:
+      Done: <light_gray>Added <light_green>%amount%</light_green> XP to <light_green>%player_name%</light_green>'s <light_green>%job_name%</light_green> job.</light_gray>
+      Notify: <light_gray><light_green>%amount%</light_green> XP has been added to your <light_green>%job_name%</light_green> job!</light_gray>
+    Remove:
+      Done: <light_gray>Removed <light_red>%amount%</light_red> XP from <light_red>%player_name%</light_red>'s <light_red>%job_name%</light_red> job.</light_gray>
+      Notify: <light_gray><light_red>%amount%</light_red> XP has been removed from your <light_red>%job_name%</light_red> job.</light_gray>
+    Set:
+      Done: <light_gray>Set <light_yellow>%amount%</light_yellow> XP for <light_yellow>%player_name%</light_yellow>'s <light_yellow>%job_name%</light_yellow> job.</light_gray>
+      Notify: <light_gray>Your <light_yellow>%job_name%</light_yellow> job XP has been set to <light_yellow>%amount%</light_yellow>.</light_gray>
+  Level:
+    Desc: Manage player's job levels.
+    Usage: <action> <job> <amount> [player] [-s]
+    Add:
+      Done: <light_gray>Added <light_green>%amount%</light_green> level(s) to <light_green>%player_name%</light_green>'s <light_green>%job_name%</light_green> job.</light_gray>
+      Notify: <light_gray><light_green>%amount%</light_green> level(s) has been added to your <light_green>%job_name%</light_green> job!</light_gray>
+    Remove:
+      Done: <light_gray>Removed <light_red>%amount%</light_red> level(s) from <light_red>%player_name%</light_red>'s <light_red>%job_name%</light_red> job.</light_gray>
+      Notify: <light_gray><light_red>%amount%</light_red> level(s) has been removed from your <light_red>%job_name%</light_red> job.</light_gray>
+    Set:
+      Done: <light_gray>Set <light_yellow>%amount%</light_yellow> level for <light_yellow>%player_name%</light_yellow>'s <light_yellow>%job_name%</light_yellow> job.</light_gray>
+      Notify: <light_gray>Your <light_yellow>%job_name%</light_yellow> job level has been set to <light_yellow>%amount%</light_yellow>.</light_gray>
+  Reset:
+    Desc: Reset [player's] job progress.
+    Usage: <job> [player] [-s]
+    Done: <light_gray>Successfully reset <light_yellow>%job_name%</light_yellow> progress for <light_yellow>%player_name%</light_yellow>.</light_gray>
+  Menu:
+    Desc: Open Jobs GUI.
+    Usage: ''
+  Objectives:
+    Usage: <job>
+    Desc: Browse job objectives.
+  Top:
+    Usage: <job> [page]
+    Desc: List most levelled players.
+    List:
+    - <noprefix>
+    - ' '
+    - <light_yellow><b>%job_name% Level Top:</b></light_yellow>
+    - ' '
+    - '%entry%'
+    - ' '
+    - <light_gray>Page <light_yellow>%current%</light_yellow> of <light_yellow>%max%</light_yellow>.</light_gray>
+    - ' '
+    Entry: '<light_gray><light_yellow>%pos%. </light_yellow>%player_name%: <light_yellow>%amount%</light_yellow> Levels</light_gray>'
+  Zone:
+    Desc: Zone commands.
+    Usage: '[help]'
+    Editor:
+      Desc: Open zones editor.
+Booster:
+  Error:
+    Invalid: <light_red>Invalid booster!</light_red>
+  Notify:
+    Global:
+    - <noprefix><sound:'block_note_block_bell'>
+    - ''
+    - <light_yellow>Jobs Booster Activated!</light_yellow>
+    - '<light_yellow>▪ <light_gray>Jobs: </light_gray>%job_name%</light_yellow>'
+    - '<light_yellow>▪ <light_gray>XP Bonus: </light_gray>+%xp_boost_percent%%</light_yellow>'
+    - '%currency%'
+    - '<light_red>▪ <light_gray>Duration: </light_gray>%time%</light_red>'
+    Total:
+    - <noprefix>
+    - ''
+    - <light_yellow>Hey! T</light_yellow>
+    - '<light_yellow>▪ <light_gray>Jobs: </light_gray>%job_name%</light_yellow>'
+    - '<light_yellow>▪ <light_gray>XP Bonus: </light_gray>+%xp_boost_percent%%</light_yellow>'
+    - '%currency%'
+    - '<light_red>▪ <light_gray>Duration: </light_gray>%time%</light_red>'
+  CurrencyLine: '<light_yellow>▪ <light_gray>%currency_name% Bonus: </light_gray>+%currency_boost_percent%%</light_yellow>'
+Currency:
+  Error:
+    Invalid: <light_red>Invalid currency!</light_red>
+Job:
+  Error:
+    Invalid: <light_red>Invalid job!</light_red>
+  Join:
+    Error:
+      AlreadyHired: <light_gray>You're already hired for the <light_red>%job_name%</light_red> job!</light_gray>
+      StateLimit: <light_gray>You can't get more than <light_red>%amount% %state%</light_red> jobs!</light_gray>
+      GeneralLimit: <light_gray>You can't get more jobs!</light_gray>
+    Success:
+    - <output:'titles:20:60:20'><sound:'entity_player_levelup'><light_green><b>Hired!</b></light_green>
+    - <light_gray>You're hired for the <light_green>%job_name%</light_green> job!</light_gray>
+  Leave:
+    Success:
+    - <output:'titles:20:60:20'><sound:'block_wooden_door_close'><light_green><b>Job Quit</b></light_green>
+    - <light_gray>You quit the <light_green>%job_name%</light_green> job!</light_gray>
+    Error:
+      NotJoined: <light_gray>You're not employed for the <light_red>%job_name%</light_red> job!</light_gray>
+  Reset:
+    Notify:
+    - <output:'titles:20:60:20'><sound:'entity_zombie_break_wooden_door'><light_green><b>Job Reset!</b></light_green>
+    - <light_gray>All <light_green>%job_name%</light_green> progress have been reset!</light_gray>
+  Payment:
+    Receipt:
+      General:
+      - <noprefix>
+      - <light_orange><s>━━━━━━━━━━━━━━━━━━━━━━━━━</s></light_orange>
+      - <light_yellow>Hey, worker!</light_yellow>
+      - <light_yellow>Here is your payment for latest <light_green>%time%</light_green>:</light_yellow>
+      - ' '
+      - '%entry%'
+      - ' '
+      - '<light_orange><b>Total: </b><light_green>%total%</light_green></light_orange>'
+      - <light_orange><s>━━━━━━━━━━━━━━━━━━━━━━━━━</s></light_orange>
+      Entry:
+        Job: <light_yellow><b>%job_name%</b> <hover:show_text:'%currency%'>[<light_green>Details</light_green>]</hover></light_yellow>
+        Currency: <light_green>%amount%</light_green>
+  XP:
+    Gain: '<output:''action_bar''><light_yellow><b>%job_name%: </b><light_green>+%amount% XP</light_green></light_yellow>'
+    Lose: <light_gray>You lost <red>%amount% XP</red> from <red>%job_name%</red> job.</light_gray>
+  Level:
+    Up:
+    - <output:'titles:20:60:20'><sound:'entity_player_levelup'><light_green><b>Job Level Up!</b></light_green>
+    - <light_gray><light_green>%job_name%</light_green> is now level <light_green>%job_level%</light_green>!</light_gray>
+    Down:
+    - <output:'titles:20:60:20'><sound:'entity_iron_golem_death'><light_red><b>Job Level Down!</b></light_red>
+    - <light_gray><light_red>%job_name%</light_red> is now level <light_red>%job_level%</light_red>!</light_gray>
+  Limit:
+    XP:
+      Notify: <light_gray>You have reached daily <light_red>XP</light_red> limit for <light_red>%job_name%</light_red> job. You can't get more today.</light_gray>
+    Currency:
+      Notify: <light_gray>You have reached daily <light_red>%currency_name%</light_red> limit for <red>%job_name%</red> job. You can't get more today.</light_gray>
+  State:
+    Primary: Primary
+  Action_Types:
+    rename_item:
+      DisplayName: Rename Item
+    repair_item:
+      DisplayName: Repair Item
+    block_break:
+      DisplayName: Block Break
+    block_fertilize:
+      DisplayName: Block Fertilize
+    block_place:
+      DisplayName: Block Place
+    block_harvest:
+      DisplayName: Block Harvest
+    inflict_damage:
+      DisplayName: Inflict Damage
+    receive_damage:
+      DisplayName: Receive Damage
+    breed_entity:
+      DisplayName: Breed Entity
+    kill_entity:
+      DisplayName: Kill Entity
+    shoot_entity:
+      DisplayName: Shoot Entity
+    shear_entity:
+      DisplayName: Shear Entity
+    tame_entity:
+      DisplayName: Tame Entity
+    launch_projectile:
+      DisplayName: Launch Projectile
+    milk_entity:
+      DisplayName: Milk Entity
+    consume_item:
+      DisplayName: Consume Item
+    craft_item:
+      DisplayName: Craft Item
+    disenchant_item:
+      DisplayName: Disenchant Item
+    enchant_item:
+      DisplayName: Enchant Item
+    fish_item:
+      DisplayName: Fish Item
+    smelt_item:
+      DisplayName: Smelt Item
+    trade_item:
+      DisplayName: Trade Item
+    brew_potion:
+      DisplayName: Brew Potion
+    drink_potion:
+      DisplayName: Drink Potion
+    get_enchant:
+      DisplayName: Get Enchant
+    remove_enchant:
+      DisplayName: Remove Enchant
+    kill_mythic_mob:
+      DisplayName: Kill Mythic Mob
+Zone:
+  Info:
+    NotAvailable: <output:'action_bar'><red>You can't work in this zone currently!</red>
+    NoPvP: <output:'action_bar'><red>PvP is disabled in this zone!</red>
+SpecialOrder:
+  Error:
+    DisabledByServer: <gray>Special Orders are <light_red>disabled</light_red> on the server.</gray>
+    DisabledByJob: <gray>Special Orders are <light_red>disabled</light_red> for this job.</gray>
+    AlreadyHave: <gray>You <light_red>already have</light_red> a Special Order of this job.</gray>
+    MaxAmount: <gray>You can not have more than <light_red>%amount%</light_red> active Special Orders.</gray>
+    Cooldown: <gray>You can take next Special Order in <light_red>%time%</light_red></gray>
+    NotEnoughFunds: <gray>You need <light_red>%amount%</light_red> to take a Special Order!</gray>
+    Generation: <gray><light_red>Whoops!</light_red> Unable to create Special Order.</gray>
+  Taken:
+    Info:
+    - <noprefix>
+    - ' '
+    - <light_yellow>You took a <orange>Special Order</orange> for <orange>%job_name%</orange> job!</light_yellow>
+    - ' '
+    - <orange><b>Objectives:</b></orange>
+    - '%entry%'
+    - ' '
+    - <orange><b>Rewards:</b></orange>
+    - '%reward%'
+    - ' '
+    - '<light_yellow>Complete it in: <orange>%time%</orange></light_yellow>'
+    - ' '
+    Reward: <light_yellow><orange>▪ </orange>%name%</light_yellow>
+    Entry: '<light_yellow><orange>▪ </orange>%name%: <orange>x%amount%</orange> <light_green><hover:show_text:''%entry%''>[Details]</hover></light_green></light_yellow>'
+    Detail: '<white>%name%: </white><gray>x%amount%</gray>'
+  Progress: '<output:''action_bar''><light_yellow>(Special Order) <orange>%name%: </orange><white>%current%</white><gray>/</gray><white>%max%</white></light_yellow>'
+  Completed:
+  - <output:'titles:20:80:20'><sound:'entity_player_levelup'><light_green><b>Order Completed!</b></light_green>
+  - <light_gray>You have completed a Special Order in <light_green>%job_name%</light_green> job!</light_gray>
+Editor:
+  Zone:
+    Item:
+      Wand:
+        Name: <yellow><b>Zone Cuboid Selector</b></yellow>
+        Lore:
+        - <light_gray><white>Left-Click</white> to set 1st corner.</light_gray>
+        - <light_gray><white>Right-Click</white> to set 2nd corner.</light_gray>
+    Enter:
+      Description: <light_gray>Enter <light_green>[Description Line]</light_green></light_gray>
+      JobId: <light_gray>Enter <light_green>[Job Identifier]</light_green></light_gray>
+    Object:
+      Name: '<yellow><b>%zone_name%<r><gray> (ID: <white>%zone_id%</white>)</gray></r></b></yellow>'
+      Lore:
+      - <gray>%zone_report%</gray>
+      - ''
+      - '<yellow>▪ <gray>Job: </gray>%zone_job_name%</yellow>'
+      - ''
+      - <gray>(<white>Left-Click</white> to edit)</gray>
+      - <gray>(<white>Drag & Drop</white> to set icon)</gray>
+      - <gray>(<white>Shift-Right</white> to delete <red>(no undo)</red>)</gray>
+    Create:
+      Name: <yellow><b>New Zone</b></yellow>
+      Lore:
+      - <gray>Click to create a new zone.</gray>
+    Selection:
+      Name: <yellow><b>Selection</b></yellow>
+      Lore:
+      - <gray>%zone_inspect_selection%</gray>
+      - ''
+      - <gray>Sets zone cuboid arena.</gray>
+      - ''
+      - <gray>(<white>Left-Click</white> to get a wand)</gray>
+    Name:
+      Name: <yellow><b>Name</b></yellow>
+      Lore:
+      - <gray>Zone display name.</gray>
+      - ''
+      - <yellow><b>Current:</b></yellow>
+      - '<yellow>▪ <gray>Name: </gray>%zone_name%<gray> (<white>Left-Click</white>)</gray></yellow>'
+    Description:
+      Name: <yellow><b>Description</b></yellow>
+      Lore:
+      - <gray>Zone description.</gray>
+      - ''
+      - <yellow><b>Current:</b></yellow>
+      - '%zone_description%'
+      - ''
+      - <gray>(<white>Left-Click</white> to add line)</gray>
+      - <gray>(<white>Right-Click</white> to remove latest)</gray>
+      - <gray>(<white>[Q] Drop Key</white> to clear list)</gray>
+    LinkedJob:
+      Name: <yellow><b>Linked Job</b></yellow>
+      Lore:
+      - <gray>%zone_inspect_job%</gray>
+      - ''
+      - <gray>Sets job linked to this zone.</gray>
+      - ''
+      - <yellow><b>Current:</b></yellow>
+      - '<yellow>▪ <gray>Job: </gray>%zone_job_name%<gray> (<white>Left-Click</white>)</gray></yellow>'
+    JobLevel:
+      Name: <yellow><b>Job Levels</b></yellow>
+      Lore:
+      - <gray>Sets job levels required to be</gray>
+      - <gray>able to access this zone.</gray>
+      - ''
+      - <yellow><b>Current:</b></yellow>
+      - '<yellow>▪ <gray>Min: </gray>%zone_job_min_level%<gray> (<white>Left-Click</white>)</gray></yellow>'
+      - '<yellow>▪ <gray>Max: </gray>%zone_job_max_level%<gray> (<white>Right-Click</white>)</gray></yellow>'
+      - ''
+      - <gray>(<white>[Q] Drop Key</white> to disable)</gray>
+    PermissionRequired:
+      Name: <yellow><b>Permission Required</b></yellow>
+      Lore:
+      - <gray>Sets whether or not players</gray>
+      - <gray>must have permission to</gray>
+      - <gray>access this zone.</gray>
+      - ''
+      - <yellow><b>Current:</b></yellow>
+      - '<yellow>▪ <gray>Enabled: </gray>%zone_permission_required%<gray> (<white>Left-Click</white>)</gray></yellow>'
+      - '<yellow>▪ <gray>Node: </gray>%zone_permission%</yellow>'
+    PvPAllowed:
+      Name: <yellow><b>PvP Allowed</b></yellow>
+      Lore:
+      - <gray>Sets whether or not players</gray>
+      - <gray>can damage each other in</gray>
+      - <gray>this zone.</gray>
+      - ''
+      - <yellow><b>Current:</b></yellow>
+      - '<yellow>▪ <gray>Enabled: </gray>%zone_pvp_allowed%<gray> (<white>Left-Click</white>)</gray></yellow>'
+    OpenTimes:
+      Name: <yellow><b>Open Times</b></yellow>
+      Lore:
+      - <gray>Sets day times when this zone</gray>
+      - <gray>is available for players.</gray>
+      - ''
+      - <gray>(<white>Left-Click</white> to navigate)</gray>
+      - <gray>(<white>[Q] Drop Key</white> to disable)</gray>
+    Modifiers:
+      Name: <yellow><b>Modifiers</b></yellow>
+      Lore:
+      - <gray>Adjust amount of job XP & payments</gray>
+      - <gray>players get when working</gray>
+      - <gray>in this zone.</gray>
+      - ''
+      - <gray>(<white>Left-Click</white> to navigate)</gray>
+    Time:
+      Object:
+        Name: <yellow><b>%name%</b></yellow>
+        Lore:
+        - '%value%'
+        - ''
+        - <gray>(<white>Left-Click</white> to add time)</gray>
+        - <gray>(<white>Right-Click</white> to remove latest)</gray>
+        - <gray>(<white>[Q] Drop Key</white> to clear all)</gray>
+    Modifier:
+      Currency_Create:
+        Name: <yellow><b>New Currency Modifier</b></yellow>
+        Lore: []
+      XP_Object:
+        Name: <yellow><b>Job XP Modifier</b></yellow>
+        Lore:
+        - <gray>Adjusts job XP amount a player</gray>
+        - <gray>can get for their work</gray>
+        - <gray>in this zone.</gray>
+        - ''
+        - <gray>Final value should be plain multipier.</gray>
+        - '<gray>Like: 0.5 = +50%, -0.25 = -25%.</gray>'
+        - ''
+        - <yellow><b>Current:</b></yellow>
+        - '<yellow>▪ <gray>Base Modifier: </gray>%modifier_base%<gray> (<white>Left-Click</white>)</gray></yellow>'
+        - '<yellow>▪ <gray>Per Job Level: </gray>%modifier_per_level%<gray> (<white>Right-Click</white>)</gray></yellow>'
+        - '<yellow>▪ <gray>Level Step: </gray>%modifier_step%<gray> (<white>Shift-Left</white>)</gray></yellow>'
+        - '<yellow>▪ <gray>Action: </gray>%modifier_action%<gray> (<white>Shift-Right</white>)</gray></yellow>'
+      Currency_Object:
+        Name: <yellow><b>%currency_name% Payment Modifier</b></yellow>
+        Lore:
+        - <gray>Adjusts payment amount for this</gray>
+        - <gray>currency a player can get</gray>
+        - <gray>for their work in</gray>
+        - <gray>this zone.</gray>
+        - ''
+        - <gray>Final value should be plain multipier.</gray>
+        - '<gray>Like: 0.5 = +50%, -0.25 = -25%.</gray>'
+        - ''
+        - <yellow><b>Current:</b></yellow>
+        - '<yellow>▪ <gray>Base Modifier: </gray>%modifier_base%<gray> (<white>Left-Click</white>)</gray></yellow>'
+        - '<yellow>▪ <gray>Per Job Level: </gray>%modifier_per_level%<gray> (<white>Right-Click</white>)</gray></yellow>'
+        - '<yellow>▪ <gray>Level Step: </gray>%modifier_step%<gray> (<white>Shift-Left</white>)</gray></yellow>'
+        - '<yellow>▪ <gray>Action: </gray>%modifier_action%<gray> (<white>Shift-Right</white>)</gray></yellow>'
+        - ''
+        - <gray>(<white>[Q] Drop Key</white> to delete <red>(no undo)</red>)</gray>
+    BlockLists:
+      Name: <yellow><b>Block Lists</b></yellow>
+      Lore:
+      - <gray>Here you can create lists of blocks</gray>
+      - <gray>allowed for breaking by players</gray>
+      - <gray>and with regeneration interval.</gray>
+      - ''
+      - <gray>(<white>Left-Click</white> to navigate)</gray>
+    BlockList:
+      Create:
+        Name: <yellow><b>New Block List</b></yellow>
+        Lore: []
+      Object:
+        Name: '<yellow><b>Block List: <r><white>%blocklist_id%</white></r></b></yellow>'
+        Lore:
+        - <gray><yellow><b>Blocks:</b></yellow></gray>
+        - '%blocklist_materials%'
+        - ''
+        - <gray>(<white>Left-Click</white> to edit)</gray>
+        - <gray>(<white>Shift-Right</white> to delete <red>(no undo)</red>)</gray>
+      Materials:
+        Name: <yellow><b>Materials</b></yellow>
+        Lore:
+        - <gray>The following block types are</gray>
+        - <gray>allowed for breaking by players:</gray>
+        - '%blocklist_materials%'
+        - ''
+        - <gray>(<white>Left-Click</white> to add material)</gray>
+        - <gray>(<white>Right-Click</white> to remove all)</gray>
+      FallbackMaterial:
+        Name: <yellow><b>Fallback Material</b></yellow>
+        Lore:
+        - <gray>Broken blocks will be replaced with</gray>
+        - <gray>specified material until restored.</gray>
+        - ''
+        - '%blocklist_fallback_material%'
+        - ''
+        - <gray>(<white>Left-Click</white> to change)</gray>
+      ResetTime:
+        Name: <yellow><b>Reset Time</b></yellow>
+        Lore:
+        - <gray>Sets how soon (in seconds) broken blocks</gray>
+        - <gray>will be regenerated back to</gray>
+        - <gray>their original materials.</gray>
+        - ''
+        - '%blocklist_reset_time%'
+        - ''
+        - <gray>(<white>Left-Click</white> to change)</gray>
+      DropItems:
+        Name: <yellow><b>Drop Items</b></yellow>
+        Lore:
+        - <gray>Sets whether or not broken blocks</gray>
+        - <gray>will drop items.</gray>
+        - ''
+        - '%blocklist_drop_items%'
+        - ''
+        - <gray>(<white>Left-Click</white> to toggle)</gray>
+  Generic:
+    Enter:
+      Id: <light_gray>Enter <light_green>[Unique Identifier]</light_green></light_gray>
+      Name: <light_gray>Enter <light_green>[Display Name]</light_green></light_gray>
+      Number: <light_gray>Enter <light_green>[Number]</light_green></light_gray>
+      Times: <light_gray>Enter <light_green>[Time1 Time2] [12:00 17:00]</light_green></light_gray>
+      Currency: <light_gray>Enter <light_green>[Currency Identifier]</light_green></light_gray>
+      Material: <light_gray>Enter <light_green>[Material Name]</light_green></light_gray>
+  Error:
+    Zone:
+      Exist: Zone already exists!

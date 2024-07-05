@@ -1,0 +1,155 @@
+variation_1:
+  type: VARIATION
+  icon: 뀒
+  times: 14
+  # If a crop's default variation chance is 0.01, now it's 0.03
+  # 如果农作物的变异概率是0.01，那么使用肥料后变成了0.03
+  chance: 0.02
+  item: variation_1
+  before-plant: true
+  pot-whitelist:
+  - default
+  events:
+    use:
+      particle_action:
+        type: particle
+        value:
+          particle: SOUL
+          x: 0.5
+          y: 1.3
+          z: 0.5
+          count: 5
+          offset-x: 0.3
+          offset-z: 0.3
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.hoe.till
+          volume: 1
+          pitch: 1
+    wrong_pot:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] This fertilizer can only be used in pots.
+    before_plant:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] You can only use this fertilizer before planting the
+          crop.
+variation_2:
+  type: VARIATION
+  icon: 뀓
+  times: 14
+  chance: 0.04
+  item: variation_2
+  before-plant: true
+  pot-whitelist:
+  - default
+  events:
+    use:
+      particle_action:
+        type: particle
+        value:
+          particle: SOUL
+          x: 0.5
+          y: 1.3
+          z: 0.5
+          count: 5
+          offset-x: 0.3
+          offset-z: 0.3
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.hoe.till
+          volume: 1
+          pitch: 1
+    wrong_pot:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] This fertilizer can only be used in pots.
+    before_plant:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] You can only use this fertilizer before planting the
+          crop.
+variation_3:
+  type: VARIATION
+  icon: 뀔
+  times: 14
+  chance: 0.08
+  item: variation_3
+  before-plant: true
+  pot-whitelist:
+  - default
+  events:
+    use:
+      particle_action:
+        type: particle
+        value:
+          particle: SOUL
+          x: 0.5
+          y: 1.3
+          z: 0.5
+          count: 5
+          offset-x: 0.3
+          offset-z: 0.3
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.hoe.till
+          volume: 1
+          pitch: 1
+    wrong_pot:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] This fertilizer can only be used in pots.
+    before_plant:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] You can only use this fertilizer before planting the
+          crop.

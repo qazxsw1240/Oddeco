@@ -1,0 +1,32 @@
+migrated_littleroom_blacksmith:steel_axe:
+  material: DIAMOND_AXE
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_blacksmith:steel_axe
+    custom_model_data: 1
+migrated_littleroom_blacksmith:bronze_axe:
+  material: DIAMOND_AXE
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_blacksmith:bronze_axe
+    custom_model_data: 2
+migrated_littleroom_blacksmith:lazulium_axe:
+  material: DIAMOND_AXE
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_blacksmith:lazulium_axe
+    custom_model_data: 3
+migrated_littleroom_blacksmith:emerite_axe:
+  material: DIAMOND_AXE
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_blacksmith:emerite_axe
+    custom_model_data: 4

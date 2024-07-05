@@ -1,0 +1,21 @@
+version: 1.0.0
+socket-types:
+  any:
+    weight: 2
+    socket-gem-style: "&6%socketgem%"
+    socket-style: "&6(소켓)"
+    ignore-colors: true
+    socket-help:
+      - "&6룬 보석&7을 구해서 &6(소켓)&7을 채우세요."
+socket-extender-types:
+  default:
+    weight: 2
+    socket-extender-style: "&3소켓 확장 도구"
+    applied-socket-type: "any"
+    socket-extender-help:
+      - "&7아무 아이템에 드래그해서 올린 뒤 발라서"
+      - "&7%applied-socket-type.socket-style%&7칸을 확보하세요."
+    slot-style: "&3(+)"
+    ignore-colors: true
+    slot-help:
+      - "&7Find a &3Socket Extender&7 to fill a &3(+)."

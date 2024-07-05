@@ -1,0 +1,91 @@
+# General settings related to alchemist inventory system.
+general:
+  settings:
+    # The alchemist should accept books.
+    # If false, the alchemist will not accept books.
+    combine-books: true
+    # The alchemist should accept dust.
+    # If false, the alchemist will not accept dusts.
+    combine-dust: true
+    books:
+      # This method adds chances together and splits by 2 (x+y/2)
+      add-up-chances: true
+      pre-set-chances:
+        enabled: false
+        success: 50
+        destroy: 50
+    dusts:
+      # This method just adds up chances together
+      add-up: true
+    price:
+      economy: EXP # MONEY, EXP, LEVEL
+      # If true the plugin will calculate the price.
+      let-plugin-count: true
+      # Your custom price here.
+      # Only works if let-plugin-count is false.
+      custom-price: 250
+    other-items-slot:
+      first-item-slot: 3
+      second-item-slot: 5
+
+# Options for customization of alchemist inventory.
+inventory:
+  # Set to "none' to disable
+  # the sound when opening the inventory.
+  open-sound: "BLOCK_CHEST_OPEN"
+
+  # The title of the inventory.
+  name: "&8연금술사"
+
+  # The size of the inventory.
+  # Must be a multiple of 9. (9, 18, 27, 36, 45, 54)
+  size: 27
+
+  items:
+    preview-item:
+      type: STAINED_GLASS_PANE
+      damage: 0
+      custom-model-data: 0
+      slot: 13
+      name: "&e&l아이템 미리보기"
+      lore:
+        - "&7당신이 연금술사로부터"
+        - "&7받게 될 아이템을 이곳에"
+        - "&7먼저 전시할 것입니다."
+    explanation-item:
+      type: STAINED_GLASS_PANE
+      damage: 14
+      custom-model-data: 0
+      slot: 22
+      name: "&e&l연금술사"
+      lore:
+        - "&7연금술사는 이런 일을 할겁니다..."
+        - ""
+        - "&b&l* &f 2 X 인챈트 북"
+        - "&7(같은 종류와 같은 레벨일 시)"
+        - "&d= &f 1 X 인챈트 북"
+        - "&7(더 높은 레벨의 인챈트북)"
+        - ""
+        - "&b&l* &f2X 마법의 가루"
+        - "&7(같은 등급의 마법의 가루일시)"
+        - "&d= &f1X 마법의 가루"
+        - "&7(더 높은 확률의 가루)"
+    confirm-item:
+      type: STAINED_GLASS_PANE
+      damage: 5
+      custom-model-data: 0
+      slot: 22
+      name: "&b&l클릭해서 교환하세요."
+      lore:
+        - "&c&l 소모 : &c%price% 만큼의 경험치"
+        - ""
+        - "&7여기를 눌러 아이템 거래를 "
+        - "&7수락한 뒤 당신의 새로운"
+        - "&7특별한 아이템을 수령하세요."
+    filler-item:
+      # Enable or disable the filler item.
+      enabled: true
+      type: STAINED_GLASS_PANE
+      damage: 15
+      name: " "
+      lore: [ ]

@@ -1,0 +1,131 @@
+# Job display name.
+# https://github.com/nulli0n/nightcore-spigot/wiki/Text-Formation
+Name: Farmer
+# Job description.
+# https://github.com/nulli0n/nightcore-spigot/wiki/Text-Formation
+Description:
+- <light_gray>Tend to fertile lands,</light_gray>
+- <light_gray>cultivate crops, and flourish</light_gray>
+- <light_gray>for money!</light_gray>
+# Job icon.
+# https://github.com/nulli0n/nightcore-spigot/wiki/Text-Formation
+Icon:
+  Material: PLAYER_HEAD
+  SkinURL: 64352b979a489dfc8ba7b1e1259763843d772f39f1420f8672537aa7522dc1bf
+# When enabled, players must have 'excellentjobs.job.farmer' permission in order to use this job.
+Permission_Required: true
+# Sets initial (start) job state for new players and new jobs.
+# This means that, when a new player joins the server, OR when there is a new job created for existent users,
+# it will be assigned to a player with specified state.
+# This might be useful if you want to grant players all jobs on first join or to predefine some of them.
+# Also, keep in mind that this setting bypasses the max jobs values defined in the config.yml!
+# [Allowed values: PRIMARY, SECONDARY, INACTIVE]
+# [Default is INACTIVE]
+Initial_State: INACTIVE
+# A list of worlds where this job will have no effect (no XP, no payments).
+Disabled_Worlds: []
+Leveling:
+  # Max. possible job level.
+  Max_Level: 8
+  # Max. possible job level when job is set as 'Secondary' for a player.
+  Max_Secondary_Level: 8
+  # Sets start amount of XP required for the next level.
+  XP_Initial: 100
+  # Sets XP multiplier to calculate XP amount required for next level.
+  # The formula is: <xp_required> = <previous_xp_required> * <xp_factor>
+  XP_Factor: 1.093
+  # A list of commands to execute when player reaches certain level(s).
+  # Key = Level reached.
+  LevelUp_Commands:
+    '2':
+    - eco give %player_name% 250
+    - permission user %player_name% parent add farmer1
+    '3':
+    - eco give %player_name% 250
+    - permission user %player_name% parent add farmer2
+    '4':
+    - eco give %player_name% 250
+    - permission user %player_name% parent add farmer3
+    '5':
+    - eco give %player_name% 250
+    - permission user %player_name% parent add farmer4
+    '6':
+    - eco give %player_name% 250
+    - permission user %player_name% parent add farmer5
+    '7':
+    - eco give %player_name% 250
+    - permission user %player_name% parent add farmer6
+    '8':
+    - eco give %player_name% 250
+    - permission user %player_name% parent add farmer7
+Payment_Modifier:
+  # Sets payment multipliers for each currency adjustable by player's job level.
+  # You can use 'default' keyword for all currencies not included here.
+  Currency:
+    money:
+      # Start modifier value.
+      Base: 0.0
+      # Additional value calculated by job level step (see below). Formula: <per_level> * <step>
+      Per_Level: 0.01
+      # Defines level step for 'Per_Level' value calculation. Formula: <job_level> / <step>
+      Step: 1.0
+      # Sets action performed between 'Base' and final 'Per_Level' values.
+      # Available types: ADD, MULTIPLY
+      Action: ADD
+  # Sets job's objective XP multiplier adjustable by player's job level.
+  XP:
+    # Start modifier value.
+    Base: 0.0
+    # Additional value calculated by job level step (see below). Formula: <per_level> * <step>
+    Per_Level: 0.01
+    # Defines level step for 'Per_Level' value calculation. Formula: <job_level> / <step>
+    Step: 3.0
+    # Sets action performed between 'Base' and final 'Per_Level' values.
+    # Available types: ADD, MULTIPLY
+    Action: ADD
+Daily_Limits:
+  # Sets payment daily limits for each currency adjustable by player's job level.
+  # You can use 'default' keyword for all currencies not included here.
+  Currency:
+    money:
+      # Start modifier value.
+      Base: -1.0
+      # Additional value calculated by job level step (see below). Formula: <per_level> * <step>
+      Per_Level: 0.0
+      # Defines level step for 'Per_Level' value calculation. Formula: <job_level> / <step>
+      Step: 0.0
+      # Sets action performed between 'Base' and final 'Per_Level' values.
+      # Available types: ADD, MULTIPLY
+      Action: ADD
+  # Sets job's objective XP daily limit adjustable by player's job level.
+  XP:
+    # Start modifier value.
+    Base: -1.0
+    # Additional value calculated by job level step (see below). Formula: <per_level> * <step>
+    Per_Level: 0.0
+    # Defines level step for 'Per_Level' value calculation. Formula: <job_level> / <step>
+    Step: 0.0
+    # Sets action performed between 'Base' and final 'Per_Level' values.
+    # Available types: ADD, MULTIPLY
+    Action: ADD
+Enabled: true
+SpecialOrder:
+  Enabled: true
+  Objectives_Amount:
+    Min: 1
+    Max: 2
+  Time_To_Complete:
+    Min: 14400
+    Max: 43200
+  Rewards_Amount:
+    Min: 1
+    Max: 3
+  # A list of reward names available to use when generating Special Orders depens on job level.
+  # When picking rewards, it will get rewards with the greatest key less than or equal to the job level.
+  # You can put asterisk '*' to include all possible rewards.
+  Rewards_List:
+    '1':
+    - '*'
+  # Sets amount of currency player have to pay to take a Special Order.
+  Cost:
+    money: 5000.0

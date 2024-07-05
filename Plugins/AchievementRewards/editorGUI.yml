@@ -1,0 +1,43 @@
+GUI:
+  UseFiller: true
+  Achievement:
+    Title: "&aAchievement Rewards"
+    Size: 54
+    Material: 'PAPER'
+  Decorations:
+    NumberPage:
+      Material: 'BOOK'
+      Slot: 49
+    PreviousPage:
+      Material: 'ARROW'
+      Slot: 45
+    NextPage:
+      Material: 'ARROW'
+      Slot: 53
+
+GUISettings:
+  UseFiller: true
+  Title: "&aSettings"
+  Enabled:
+    Material: 'REPEATER'
+  Commands:
+    Material: 'COMMAND_BLOCK'
+  Points:
+    Material: 'EXPERIENCE_BOTTLE'
+  Back:
+    Material: 'BARRIER'
+  Name:
+    Material: 'ACACIA_SIGN'
+
+GUICommands:
+  UseFiller: true
+  Title: "&dCommands"
+  Material: 'ENCHANTED_BOOK'
+
+GUIFiller:
+  material: 'BLACK_STAINED_GLASS_PANE'
+  damage: 0
+  amount: 1
+  glow: false
+  displayName: '&f'
+  lore: [ ]

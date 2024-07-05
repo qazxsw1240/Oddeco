@@ -1,0 +1,196 @@
+# Advancements messages file
+
+prefix: '&6[&5Custom&dAdvancements&6]&r'
+commands:
+  nosubcommand: '&cYou need to provide a sub command. See &e/ca help&c to see all
+    available commands.'
+  help:
+    description: Use this command to list all the commands.
+    header: |-
+      &9---- &dCustomAdvancements Help &9----
+      &5Hover commands to see how to use them!
+    content: '&9> &b{0}&8: &7{1}'
+    hover: |-
+      &5Command usage: &d{0}
+      &e&oClick to run this command.
+  checkprogress:
+    description: Use this command to see the progress of an advancement
+    usage: /ca checkprogress <tree> <advancement> [player]
+    header: '&6---- &9Advancement Progress &6----'
+    user: '&dUser: &5{0}'
+    tree: '&dTree: &5{0}'
+    advancement: '&dAdvancement: &5{0}'
+    progress: '&3Progress: &9{0}&8/&9{1}'
+    active: '&3Active: &9{0}'
+    completed: '&3Completed: &9{0}'
+  invalidplayer: '&cThe player you provided is currently not online.'
+  invalidadvancement: '&cThe advancement or advancement tree you provided does not
+    exist.'
+  invalid_usage: '&cYou used this command wrong! Correct usage: &7{0}'
+  invalid_type: '''{0}'' must be {1}'
+  set:
+    usage: /ca set <active|progress|completed> <tree> <advancement> <value> [player]
+    response: '&aSucessfully set {0} of advancement {1}.{2} to {3}'
+  reload:
+    desc: Reloads the configuration, advancements, and messages of the plugin
+    usage: /ca reload
+    response: '&aConfiguration, advancements, and messages are successfully reloaded!'
+  activate:
+    desc: Activates an advancement of a specific tree if all requirements are met
+    usage: /ca activate <tree> <advancement>
+    response:
+      activated: '&aThe quest has successfully been activated! Good luck!'
+      notactivated: |
+        &cThe quest has not been activated! You do not meet the following requirements:
+      requirement_not_met: |
+        &4> &c{0}
+  gui:
+    desc: Opens the custom advancements GUI
+    usage: /ca gui
+  invalid: '&cThis subcommand does not exist! Do &e/ca help&c to see all available
+    commands.'
+  no-permission: '&cYou do not have the required permission to use this command. &8({0})'
+  grantimpossible:
+    description: /ca grantimpossible <player> <amount> <advancement_path>
+    not-a-number: '&cThe given progress is not a number'
+    success: '&aSuccessfully given {0} {1} progress!'
+requirements:
+  advancement:
+    message: Advancement {0} from tree {1} has to be completed.
+    name: Advancement
+  permission:
+    name: Permission
+    message: You need the {0} permission.
+guis:
+  back:
+    name: '&6Go back'
+    lore: '&eGo back to the previous menu'
+  main:
+    title: '&5Server specific advancements'
+    trees:
+      name: '&5&lAdvancement trees'
+      lore: '&6> &eClick to see all advancement trees!'
+    active:
+      name: '&a&lActive advancements'
+      lore: '&6> &eClick to see all active advancements!'
+    completed:
+      name: '&2&lCompleted advancements'
+      lore: '&6> &eClick to see all completed advancements!'
+    available:
+      name: '&5&lAvailable advancements'
+      lore: '&6> &eClick to see all advancements that can be activated!'
+  page:
+    next:
+      name: '&aNext page'
+      lore: '&2Click to go to the next page'
+    previous:
+      name: '&aPrevious page'
+      lore: '&2Click to go to the previous page'
+    first:
+      name: '&7&mPrevious page'
+      lore: '&8You''re on the first page'
+    last:
+      name: '&7&mNext page'
+      lore: '&8You''re on the last page'
+  trees:
+    title: '&5Advancement trees &7({0}/{1})'
+    advancements: '&6> &eClick to view the advancements'
+    invalid_tree: '&cThe tree you tried to open no longer exists!'
+  advancements:
+    options: '&6> &eClick to view available actions for this advancement'
+    title: '{0} &7({1}/{2})'
+  advancement_options:
+    title: '{0}'
+    activate:
+      name: '&aActivate advancement'
+      lore: '&6> &eClick to activate this advancement'
+    activated:
+      name: '&7Activated'
+      lore: '&8This advancement is already active'
+    requirements:
+      name: '&cRequirements'
+      lore: |-
+        &7You meet {0} out of {1} requirements
+        &6>&e Click to see all requirements
+    completed:
+      name: '&2Completed'
+      lore: '&aYou''ve completed this advancement!'
+    not_completed:
+      name: '&4Not completed'
+      lore: '&cYou''ve not completed this advancement yet!'
+    progress:
+      name: '&6Progress'
+      lore: '&e({3}%) &7{0}&8/&7{1} {2}'
+    activated_successfully:
+      name: '&2Successfully activated!'
+      lore: '&aThis advancement is now active! Good luck!'
+    not_activated:
+      name: '&4Advancement not activated!'
+      lore: '&cYou did not meet {0} out of {1} requirements to activate this advancement'
+  requirements:
+    no_requirements:
+      name: '&4No requirements'
+      lore: '&cThis advancement does not have any requirements'
+    title: '{0} &7({1}/{2})'
+  active:
+    title: '&8Active Advancements &7({0}/{1})'
+    none:
+      name: '&4No active advancements'
+      lore: '&cYou currently have no active advancements'
+  completed:
+    title: '&8Completed Advancements &7({0}/{1})'
+    none:
+      name: '&4No completed advancements'
+      lore: '&cYou currently have no completed advancements'
+  available:
+    title: '&8Available Advancements &7({0}/{1})'
+    none:
+      name: '&4No available advancements'
+      lore: '&cYou currently have no available advancements'
+advancements:
+  types:
+    blockbreak:
+      unit: blocks broken
+    join:
+      unit: times joined
+    leave:
+      unit: times left
+    chat:
+      unit: messages sent
+    blockplace:
+      unit: blocks placed
+    catchfish:
+      unit: things caught
+    consume:
+      unit: things consumed
+    statistic:
+      unit: progress
+    xpchange:
+      unit: XP changed
+    xplevelchange:
+      unit: level changed
+  type:
+    damagetaken:
+      unit: damage taken
+    damagedealt:
+      unit: damage dealt
+    killentity:
+      unit: entities killed
+    shearsheep:
+      unit: sheeps sheared
+    breedentity:
+      unit: entities breed
+    executecommand:
+      unit: commands executed
+    blockstravelled:
+      unit: blocks travelled
+    playtime:
+      unit: minutes played
+    craftitem:
+      unit: items crafted
+    harvest:
+      unit: items harvested
+    raidfinish:
+      unit: raids finished
+    money:
+      unit: money earned

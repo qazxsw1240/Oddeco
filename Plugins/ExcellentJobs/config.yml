@@ -1,0 +1,260 @@
+Plugin:
+  # Localized plugin name. It's used in messages and with internal placeholders.
+  Name: Jobs
+  # Plugin prefix. Used in messages.
+  Prefix: <yellow>Jobs</yellow><dark_gray> » </dark_gray><gray>
+  # Command names that will be registered as main plugin commands.
+  # Do not leave this empty. Split multiple names with a comma.
+  Command_Aliases: excellentjobs,jobs,job
+  # Sets the plugin language.
+  # Basically it tells the plugin to use certain messages config from the '/lang/' sub-folder.
+  # If specified language is not available, default one (English) will be used instead.
+  # [Default is System Locale]
+  Language: ko
+General:
+  Time_Format: HH:mm
+  # A list of worlds, where jobs will have no effect.
+  Disabled_Worlds:
+  - my_world
+  - another_world
+  # Sets whether or not '/jobs menu' command is set as default plugin command instead of '/jobs help' one.
+  Default_Menu_Command: true
+  Payment:
+    # Sets how often (in seconds) players will get payments for their work.
+    # Players will get instant payment when leaving server.
+    # [Default is 900 (15 minues)]
+    Interval: 900
+Jobs:
+  # Sets how many primary jobs players with certain ranks or permissions can have at the same time.
+  # Use '-1' for unlimited amount.
+  Primary_Amount:
+    # Available values: RANK, PERMISSION
+    # RANK = Get value by player's permission group. All 'Values' keys will represent permission group names.
+    # PERMISSION = Get value by player's permissions. All 'Values' keys will become as suffix for 'Permission_Prefix' setting.
+    Mode: RANK
+    # Sets permission prefix for the 'PERMISSION' mode.
+    # All 'Values' keys will be used to check if player has permission: <permission_prefix> + <key>.
+    Permission_Prefix: excellentjobs.jobs.primary.
+    Default_Value: -1
+    Values:
+      default: -1
+  # Sets how many secondary jobs players with certain ranks or permissions can have at the same time.
+  # Use '-1' for unlimited amount.
+  Secondary_Amount:
+    # Available values: RANK, PERMISSION
+    # RANK = Get value by player's permission group. All 'Values' keys will represent permission group names.
+    # PERMISSION = Get value by player's permissions. All 'Values' keys will become as suffix for 'Permission_Prefix' setting.
+    Mode: RANK
+    # Sets permission prefix for the 'PERMISSION' mode.
+    # All 'Values' keys will be used to check if player has permission: <permission_prefix> + <key>.
+    Permission_Prefix: excellentjobs.jobs.secondary.
+    Default_Value: -1
+    Values:
+      default: -1
+  DailyLimits:
+    # Sets whether or not job's daily limits will expire right on midnight.
+    # When disabled, the whole 24 hours must be passed for limit to expire.
+    Reset_At_Midnight: true
+  # Sets whether or not leaving a job will reset all leveling progress for it.
+  Leave_Reset_Progress: true
+Zones:
+  # Enables the Zones feature.
+  # When disabled, all Zones commands & features will be unavailable.
+  Enabled: true
+  # When enabled, players will only get payments & Job XP when working inside Job Zones.
+  Strict_Mode: false
+  # When enabled, prevents players when entering zones currently available for them.
+  # Examples: When player don't have permission to specific zone; when current server time is out of zone open times, etc.
+  # You can disable this setting if you're experiencing performance issues related to 'PlayerMoveEvent' from this plugin.
+  # Even if disabled, it still won't allow players to have zone bonuses and the whole ability to work there unless all conditions are met.
+  Control_Entrance: true
+  RegenerationTask:
+    # Sets how often (in seconds) plugin will attempt to regnerate blocks in job zones.
+    Interval: 5
+SpecialOrders:
+  # Sets whether or not Special Orders feature is enabled.
+  # Special Orders allows players to take daily randomized quests for their jobs.
+  # Players gets better rewards for completing Special Orders.
+  Enabled: true
+  # Sets how many Special Orders player can have at the same time.
+  # Set '-1' for unlimited amount.
+  Max_Amount: 3
+  # Sets amount of time (in seconds) that must be passed before player can take new Special Order for a job.
+  # Set '-1' to reset after midnight.
+  Cooldown: 86400
+  # Here you can define all possible rewards for Special Orders feature.
+  # In job configuration you can specify which rewards from these will be available to use for that job's orders.
+  # For player name in commands use '%player_name%' placeholder.
+  # You can also use PlaceholderAPI placeholders in commands.
+  Rewards:
+    money_5000:
+      Name: $5000
+      Commands:
+      - eco give %player_name% 5000
+    item_ingots:
+      Name: Irong Ingot (x64), Gold Ingot (x64)
+      Commands:
+      - give %player_name% iron_ingot 64
+      - give %player_name% gold_ingot 64
+    money_15000:
+      Name: $15000
+      Commands:
+      - eco give %player_name% 15000
+    money_10000:
+      Name: $10000
+      Commands:
+      - eco give %player_name% 10000
+Leveling:
+  # Sets whether or not a random firework will be spawned above the player on job level up.
+  Fireworks: true
+Abuse_Protection:
+  # Mobs spawned by the following reasons will give no job XP / currency.
+  # https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/event/entity/CreatureSpawnEvent.SpawnReason.html
+  Ignore_SpawnReasons:
+  - BUILD_SNOWMAN
+  - SPAWNER
+  - EGG
+  - DISPENSE_EGG
+  - SPAWNER_EGG
+  - SLIME_SPLIT
+  - BUILD_IRONGOLEM
+  # A list of player GameModes where no job XP / currency will be given.
+  # https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/GameMode.html
+  Ignore_GameModes:
+  - CREATIVE
+  # The following blocks generated/formed by world mechanics will give no job XP / currency.
+  # Take block names from F3 debug screen wihout the 'minecraft:' prefix.
+  Ignore_Block_Generation:
+  - OBSIDIAN
+  - COBBLESTONE
+  - STONE
+  # The following blocks will give no job XP / currency if been fertilized by bone meal.
+  # Take block names from F3 debug screen wihout the 'minecraft:' prefix.
+  Ignore_Fertilized:
+  - POTATOES
+  - WHEAT
+  - CARROTS
+  - BEETROOTS
+Statistic:
+  # Sets whether or not Statistics module is enabled.
+  # When disabled, all job statistics including top stats will be unavailable.
+  Enabled: true
+  # Sets how often (in seconds) statistic will be fetched and updated.
+  Update_Interval: 600
+  # Sets how many entries per leaderboard page will be displated.
+  Entries_Per_Page: 10
+Boosters:
+  # List of global, automated XP / currency boosters.
+  # You can create as many boosters as you want.
+  # But keep in mind that only one global booster can be active at the same time.
+  # If you have multiple boosters applicable at the same day times, the latest one will override all previous.
+  Global:
+    example:
+      Jobs:
+      - '*'
+      Start_Times:
+        SATURDAY:
+        - '16:00:00'
+      Duration: 7200
+      Multiplier:
+        Currency:
+          money: 25.0
+        XP: 25.0
+  # List of passive XP / currency boosters based on player permission group(s).
+  # Use the 'Priority' option to define booster's priority to guarantee that players with multiple permission groups will get the best one.
+  Rank:
+    premium:
+      Priority: 10
+      Jobs:
+      - '*'
+      Multiplier:
+        Currency:
+          money: 50.0
+        XP: 50.0
+    vip:
+      Priority: 10
+      Jobs:
+      - '*'
+      Multiplier:
+        Currency:
+          money: 25.0
+        XP: 25.0
+  # List of custom XP / currency boosters to be given via booster commands.
+  # You can create as many boosters as you want.
+  # But keep in mind that only one personal booster per job can be active at the same time.
+  # If player already has a booster for as job, it will be replaced with a new one.
+  Custom:
+    xp_money_50:
+      Jobs:
+      - '*'
+      Multiplier:
+        Currency:
+          money: 50.0
+        XP: 50.0
+    xp_money_25:
+      Jobs:
+      - '*'
+      Multiplier:
+        Currency:
+          money: 25.0
+        XP: 25.0
+    xp_100:
+      Jobs:
+      - '*'
+      Multiplier:
+        Currency:
+          money: 0.0
+        XP: 100.0
+    money_100:
+      Jobs:
+      - '*'
+      Multiplier:
+        Currency:
+          money: 100.0
+        XP: 0.0
+Currency:
+  money:
+    # Sets currency display name.
+    Name: Money
+    # Sets currency format.
+    # Available placeholders:
+    # - %amount%
+    # - %currency_name%
+    # This option is useless for CoinsEngine (it has its own format setting).
+    Format: $%amount%
+Database:
+  # Sets database type.
+  # Available values: MYSQL,SQLITE
+  Type: SQLITE
+  # Sets how often (in minutes) plugin data of online players will be saved to the database.
+  # Set to '-1' to disable.
+  Auto_Save_Interval: 20
+  # Sets how often (in seconds) plugin data will be fetched and loaded from the remote database.
+  # Useless for SQLITE.
+  # Set to '-1' to disable.
+  Sync_Interval: -1
+  # Custom prefix for plugin tables in database.
+  Table_Prefix: excellentjobs
+  MySQL:
+    # Database user name.
+    Username: root
+    # Database password.
+    Password: root
+    # Database address. Like http://127.0.0.1:3306/
+    Host: localhost:3306
+    # Name of the MySQL database where plugin will create tables.
+    Database: minecraft
+    # Connection options. Do not touch unless you know what you're doing.
+    Options: ?allowPublicKeyRetrieval=true&useSSL=false
+  SQLite:
+    # File name for the SQLite database file.
+    # Actually it's a path to the file, so you can use directories here.
+    FileName: data.db
+  Purge:
+    # Enables the purge feature.
+    # Purge will remove all records from the plugin tables that are 'old' enough.
+    Enabled: false
+    # Sets maximal 'age' for the database records before they will be purged.
+    # This option may have different behavior depends on the plugin.
+    # By default it's days of inactivity for the plugin users.
+    For_Period: 60

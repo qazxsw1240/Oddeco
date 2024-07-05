@@ -1,0 +1,1348 @@
+#   ░██████╗░██╗░░░██╗░█████╗░██████╗░██████╗░██╗░░░██╗
+#   ██╔═══██╗██║░░░██║██╔══██╗██╔══██╗██╔══██╗╚██╗░██╔╝
+#   ██║██╗██║██║░░░██║███████║██████╔╝██████╔╝░╚████╔╝░
+#   ╚██████╔╝██║░░░██║██╔══██║██╔══██╗██╔══██╗░░╚██╔╝░░
+#   ░╚═██╔═╝░╚██████╔╝██║░░██║██║░░██║██║░░██║░░░██║░░░
+#   ░░░╚═╝░░░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░
+#
+# Hello. This is a configuration file. Here you can change values and messages
+# You can change some params, icons, chances here!
+# This is a premium plugin!
+# Discord support - https://discord.gg/ahDTQRX6Fb!
+# Creator - MyShimado - https://www.spigotmc.org/members/myshimado.1240004/
+
+#  ==> IMPORTANT INFORMATION <==
+# For materials, you can specify: material, or an url to the head (https://minecraft-heads.com/)
+# Numbers that were with a dot - should remain so.
+
+
+Version: 'Apatite v1.8'
+Language: en
+
+# IF YOU HAVE A VAULT - IT IS NOT REQUIRED. IF YOU DO NOT HAVE AN ECONOMY ON THE SERVER - THE SETTING WILL BE AUTOMATICALLY ENABLED
+Use quarry economy: false
+
+# If PlayerPoints is installed - you can use it as an economy
+Use PlayerPoints: false
+
+# Works with LuckyPerms, if you haven't permissions limit for all players will be by "default"
+How many quarries can be placed:
+  default: 1
+  vip: 3
+
+# How many rows will be in the quarry storage: 1 - 6
+Storage inventory rows: 6
+
+# Another settings
+Quarries can be crashed by explosion: false
+Holographic displays height above a quarry: 0.5
+
+
+# What is replenished fuel quarry. At the standard value, you need 4 coals to replenish 10% of the 100 possible.
+# If the quarry has more than 90%, you will not be able to replenish it until it falls.
+# The fuel reduction is based on speed and decreases by 0.01 each quarry tick
+Fuel material: 'COAL'
+Fuel amount to refill: 4
+Percents how much fuel fills: 10.0
+Decrease fuel per turn: 0.01
+
+
+# Resource mining system
+# You can configure where resources will go during mining
+# From this list, only 1 parameter must be set to - true
+In the quarry storage: true
+In a random chest on the sides of the quarry: false
+Into the funnel below: false
+Will drop near the quarry: false
+Will drop at the place of extraction: false
+
+
+# If the server suddenly shuts down, the quarry may display the value - active. This setting solves it
+Use update holographic displays on startup: false
+Force loading named worlds: false
+
+
+#============================= SHOP ======================================#
+# In the store, players can buy careers.
+# In the store, you can enable / disable the exchanger.
+# Access to the store can be limited by the access right, or even disable.
+
+Quarry shop enable: false
+Quarry shop rows: 6
+Quarry shop exchanger slot: 49
+Quarry shop empty slot items:
+  - [0, 'LIME_STAINED_GLASS_PANE', 0]
+  - [1, 'LIME_STAINED_GLASS_PANE', 0]
+  - [9, 'LIME_STAINED_GLASS_PANE', 0]
+  - [7, 'LIME_STAINED_GLASS_PANE', 0]
+  - [8, 'LIME_STAINED_GLASS_PANE', 0]
+  - [17, 'LIME_STAINED_GLASS_PANE', 0]
+  - [36, 'LIME_STAINED_GLASS_PANE', 0]
+  - [45, 'LIME_STAINED_GLASS_PANE', 0]
+  - [46, 'LIME_STAINED_GLASS_PANE', 0]
+  - [44, 'LIME_STAINED_GLASS_PANE', 0]
+  - [53, 'LIME_STAINED_GLASS_PANE', 0]
+  - [52, 'LIME_STAINED_GLASS_PANE', 0]
+
+Ore quarry slot in shop: 20
+Wood quarry slot in shop: 21
+Fish quarry slot in shop: 32
+Mob quarry slot in shop: 23
+Farm quarry slot in shop: 24
+Stone quarry slot in shop: 30
+Wool quarry slot in shop: 31
+
+Ore quarry price: 250000.0
+Wood quarry price: 125000.0
+Fish quarry price: 350000.0
+Mob quarry price: 250000.0
+Farm quarry price: 250000.0
+Stone quarry price: 25000.0
+Wool quarry price: 75000.0
+
+# If you do not have an economy on the server, you can exchange resources for currency here
+# You can enter the exchanger through the store -> /quarry shop
+# Resources and price per nickname can be set by a command in the game -> /quarry exchanger add ...
+
+Quarry exchanger rows: 6
+Quarry shop exchanger material: '8fe8daffe35ca1832ff99eead4617a369ea033c24b8253f511fd8b91737a7e'
+Quarry shop exchanger custom model data: 0
+Quarry exchanger empty slot items:
+  - [0, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [1, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [2, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [3, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [4, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [5, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [6, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [7, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [8, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [9, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [17, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [18, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [26, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [27, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [35, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [36, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [44, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [45, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [46, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [47, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [48, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [50, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [51, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [52, 'PURPLE_STAINED_GLASS_PANE', 0]
+  - [53, 'PURPLE_STAINED_GLASS_PANE', 0]
+
+Quarry exchanger balance slot: 49
+Quarry exchanger balance material: 'CHEST'
+Quarry exchanger balance custom model data: 0
+
+
+#=============#
+#  ORE QUARRY #
+#=============#
+
+Ore quarry block material: 'ORANGE_SHULKER_BOX'
+Ore quarry block custom model data: 0
+Ore quarry hologram enable: true
+Ore quarry work sounds enable: true
+Ore quarry work particles enable: false
+
+Ore quarry gui rows: 5
+Ore quarry replace block with material when mining: true
+Ore quarry replacement material: 'STONE'
+Ore quarry break all blocks: false
+
+Ore quarry empty slots: []
+
+Ore quarry start button slot: 13
+Ore quarry start button material: 'LEVER'
+Ore quarry start button custom model data: 0
+
+Ore quarry stop button slot: 13
+Ore quarry stop button material: 'LEVER'
+Ore quarry stop button custom model data: 0
+
+Ore quarry fuel button slot: 22
+Ore quarry fuel button material: 'LAVA_BUCKET'
+Ore quarry fuel button custom model data: 0
+
+Ore quarry storage button slot: 23
+Ore quarry storage button material: 'CHEST'
+Ore quarry storage button custom model data: 0
+Ore quarry storage empty slots: []
+
+Ore quarry owner button slot: 21
+Ore quarry owner button material: '6b9299b724c5d34ac93ede75601dfeb0bda578d70b8f4d7f82d7676f0c6c114a'
+Ore quarry owner button custom model data: 0
+
+Ore quarry speed button slot: 10
+Ore quarry speed button material: '3f46abad924b22372bc966a6d517d2f1b8b57fdd262b4e04f48352e683fff92'
+Ore quarry speed button custom model data: 0
+Ore quarry speed gui rows: 1
+Ore quarry speed coefficients and prices:
+  1:
+    Value: 1.5
+    Price: 1000.0
+    Slot: 2
+    Material: 'b221da4418bd3bfb42eb64d2ab429c61decb8f4bf7d4cfb77a162be3dcb0b927'
+    Custom model data: 0
+  2:
+    Value: 2.0
+    Price: 5000.0
+    Slot: 3
+    Material: 'f4628ace7c3afc61a476dc144893aaa642ba976d952b51ece26abafb896b8'
+    Custom model data: 0
+  3:
+    Value: 3.0
+    Price: 10000.0
+    Slot: 4
+    Material: '881bdcd562fb61ef66b8fe975a854ed19f657d17dadc647da79888566a8b2'
+    Custom model data: 0
+  4:
+    Value: 4.0
+    Price: 25000.0
+    Slot: 5
+    Material: '94a04b32d2b7598f9dd8e23fb4015c69c3cd942a37a9ea84d06869f459f1'
+    Custom model data: 0
+  5:
+    Value: 5.0
+    Price: 100000.0
+    Slot: 6
+    Material: '4b221cb9607c8a9bf02fef5d7614e3eb169cc219bf4250fd5715d5d2d6045f7'
+    Custom model data: 0
+Ore quarry speed empty slots: []
+
+Ore quarry radius button slot: 34
+Ore quarry radius button material: 'COMPASS'
+Ore quarry radius button custom model data: 0
+Ore quarry radius gui rows: 1
+Ore quarry radius coefficients and prices:
+  1:
+    Value: 12.0
+    Price: 10000.0
+    Slot: 2
+    Material: '67507f666eafdcac640e13bb06c4f5604ddfc3fabcf496e530bd91380844f5f9'
+    Custom model data: 0
+  2:
+    Value: 16.0
+    Price: 50000.0
+    Slot: 3
+    Material: '7e28a49cf23a534535be736b90772b089417224c82e201144da713ea4ea167f5'
+    Custom model data: 0
+  3:
+    Value: 24.0
+    Price: 100000.0
+    Slot: 4
+    Material: '61485349006ed1c91b7959aff44f330ddac35e3d9a99e4a82051f986ecda4755'
+    Custom model data: 0
+  4:
+    Value: 32.0
+    Price: 250000.0
+    Slot: 5
+    Material: '5f95341a5f08d250c09933072f9e2148ee9956ff3a0eb4f293c0b794337626b5'
+    Custom model data: 0
+  5:
+    Value: 48.0
+    Price: 500000.0
+    Slot: 6
+    Material: '835ef9230031769a2e8192ab46a1714410d56c3b9b38a0302a058e47973d7c4d'
+    Custom model data: 0
+Ore quarry radius empty slots: []
+
+Ore quarry luck button slot: 28
+Ore quarry luck button material: 'ENCHANTED_BOOK'
+Ore quarry luck button custom model data: 0
+Ore quarry luck gui rows: 1
+Ore quarry luck coefficients and prices:
+  1:
+    Value: 2.0
+    Price: 10000.0
+    Slot: 2
+    Material: '96c4ac00736d8551c8ced4cf5d852c05fb8fde743deca6da334c8154b2eec3f7'
+    Custom model data: 0
+  2:
+    Value: 3.0
+    Price: 50000.0
+    Slot: 3
+    Material: 'ce3d527f79df4cd7b31f25a4a5949b0d0360aaeca2bda79a665f2cf641b115e1'
+    Custom model data: 0
+  3:
+    Value: 4.0
+    Price: 150000.0
+    Slot: 4
+    Material: '185594b78e8fb3e3bd7ce3ce2bfa94f138a9ebc1baed679aebf5f63d1961c8de'
+    Custom model data: 0
+  4:
+    Value: 5.0
+    Price: 500000.0
+    Slot: 5
+    Material: '27df3991d918f959248fcf84f17bb652d12b7f86291d52227c25e929f2e4b4df'
+    Custom model data: 0
+  5:
+    Value: 6.0
+    Price: 750000.0
+    Slot: 6
+    Material: '8045743910f23cecff1008ab6adf797d8e6297b2a43c70df572f2e8245697237'
+    Custom model data: 0
+Ore quarry luck empty slots: []
+
+Ore quarry bonuses button slot: 16
+Ore quarry bonuses button material: '519d28a8632fa4d87ca199bbc2e88cf368dedd55747017ae34843569f7a634c5'
+Ore quarry bonuses button custom model data: 0
+Ore quarry bonuses gui rows: 1
+Ore quarry bonuses coefficients and prices:
+  1:
+    Value: 1.0
+    Price: 10000.0
+    Slot: 3
+    Material: '14aeab01c04f36ba887b7bda8d9c538bc9686dbbce7e3a5bb10f308c50302bc4'
+    Bonus materials:
+    - 'DIAMOND/1/0.5'
+    - 'EMERALD/1/0.7'
+    - 'GOLD_NUGGET/1/1.0'
+    Custom model data: 0
+  2:
+    Value: 2.0
+    Price: 100000.0
+    Slot: 4
+    Material: '6bf74eb8818e99e9a42691fe3b51c6b8d8d5eff066ec00cab0036245b6dfa5d3'
+    Bonus materials:
+    - 'DIAMOND/1/0.6'
+    - 'EMERALD/1/1.0'
+    - 'GOLD_NUGGET/1/0.5'
+    Custom model data: 0
+  3:
+    Value: 3.0
+    Price: 500000.0
+    Slot: 5
+    Material: 'a35c586254aed3cfe6b89385195a4ae5149997ce66a39c0f91a700d1d69b6d58'
+    Bonus materials:
+    - 'DIAMOND/1/0.8'
+    - 'EMERALD/1/1.4'
+    - 'GOLD_NUGGET/1/3.0'
+    Custom model data: 0
+Ore quarry bonuses empty slots: []
+
+Ore quarry silktouch button slot: 31
+Ore quarry silktouch button material: 'DIAMOND_ORE'
+Ore quarry silktouch button custom model data: 0
+Ore quarry silktouch gui rows: 1
+Ore quarry silktouch coefficients and prices:
+  1:
+    Active: true
+    Price: 10000.0
+    Slot: 4
+    Material: 'fb1c268efec8d7d88a1cb88c2bfa097fa57037942299f7d202159fc93cd3036d'
+    Custom model data: 0
+Ore quarry silktouch empty slots: []
+
+# Default quarry values when creating a quarry
+Ore quarry default params:
+  Speed: 1.0
+  Radius: 8.0
+  Luck: 0.0
+  Bonuses: 0.0
+  Fuel: 100.0
+  Silktouch: false
+
+# When disabled, it loads the server less and generates resources without them. Suitable for skyblock.
+# In this case, the amplifiers work for a quarry.
+# List: MATERIAL/WORLD_TYPE/CHANCE_PER_STEP
+Ore quarry produce resources from the environment: false
+Ore quarry resources from the environment:
+  - 'COAL_ORE/NORMAL/0.7'
+  - 'IRON_ORE/NORMAL/0.5'
+  - 'GOLD_ORE/NORMAL/0.15'
+  - 'LAPIS_ORE/NORMAL/0.15'
+  - 'REDSTONE_ORE/NORMAL/0.3'
+  - 'DIAMOND_ORE/NORMAL/0.06'
+  - 'EMERALD_ORE/NORMAL/0.03'
+  - 'COPPER_ORE/NORMAL/0.4'
+  - 'DEEPSLATE_COAL_ORE/NORMAL/0.7'
+  - 'DEEPSLATE_IRON_ORE/NORMAL/0.5'
+  - 'DEEPSLATE_GOLD_ORE/NORMAL/0.15'
+  - 'DEEPSLATE_LAPIS_ORE/NORMAL/0.15'
+  - 'DEEPSLATE_REDSTONE_ORE/NORMAL/0.3'
+  - 'DEEPSLATE_DIAMOND_ORE/NORMAL/0.06'
+  - 'DEEPSLATE_EMERALD_ORE/NORMAL/0.03'
+  - 'DEEPSLATE_COPPER_ORE/NORMAL/0.4'
+  - 'NETHER_QUARTZ_ORE/NETHER/0.3'
+  - 'NETHER_GOLD_ORE/NETHER/0.3'
+  - 'ANCIENT_DEBRIS/NETHER/0.005'
+
+Ore dig resources:
+  - 'STONE'
+  - 'GRASS'
+  - 'GRASS_BLOCK'
+  - 'DIRT'
+  - 'PODZOL'
+  - 'MYCELIUM'
+  - 'COARSE_DIRT'
+  - 'ROOTED_DIRT'
+  - 'CLAY'
+  - 'SAND'
+  - 'SANDSTONE'
+  - 'GRAVEL'
+  - 'RED_SAND'
+  - 'RED_SANDSTONE'
+  - 'SNOW_BLOCK'
+  - 'COBBLESTONE'
+  - 'GRANITE'
+  - 'DIORITE'
+  - 'ANDESITE'
+  - 'CALCITE'
+  - 'OBSIDIAN'
+  - 'IRON_ORE'
+  - 'COAL_ORE'
+  - 'GOLD_ORE'
+  - 'LAPIS_ORE'
+  - 'DIAMOND_ORE'
+  - 'EMERALD_ORE'
+  - 'NETHER_QUARTZ_ORE'
+  - 'NETHER_GOLD_ORE'
+  - 'COPPER_ORE'
+  - 'GLOWSTONE'
+  - 'ANCIENT_DEBRIS'
+  - 'TUFF'
+  - 'STONE_BRICKS'
+  - 'MOSSY_STONE_BRICKS'
+  - 'CRACKED_STONE_BRICKS'
+  - 'CHISELED_STONE_BRICKS'
+  - 'END_STONE_BRICKS'
+  - 'END_STONE'
+  - 'PRISMARINE_BRICKS'
+  - 'POLISHED_BLACKSTONE_BRICKS'
+  - 'CRACKED_POLISHED_BLACKSTONE_BRICKS'
+  - 'GILDED_BLACKSTONE'
+  - 'CHISELED_POLISHED_BLACKSTONE'
+  - 'DEEPSLATE_TILES'
+  - 'CRACKED_DEEPSLATE_TILES'
+  - 'DEEPSLATE_BRICKS'
+  - 'CRACKED_DEEPSLATE_BRICKS'
+  - 'NETHERRACK'
+  - 'MAGMA_BLOCK'
+  - 'BLACKSTONE'
+  - 'DEEPSLATE'
+  - 'POLISHED_DIORITE'
+  - 'POLISHED_ANDESITE'
+  - 'POLISHED_BLACKSTONE'
+  - 'POLISHED_DEEPSLATE'
+  - 'REDSTONE_ORE'
+  - 'DEEPSLATE_IRON_ORE'
+  - 'DEEPSLATE_GOLD_ORE'
+  - 'DEEPSLATE_DIAMOND_ORE'
+  - 'DEEPSLATE_LAPIS_ORE'
+  - 'DEEPSLATE_REDSTONE_ORE'
+  - 'DEEPSLATE_EMERALD_ORE'
+  - 'DEEPSLATE_COPPER_ORE'
+  - 'DEEPSLATE_COAL_ORE'
+  - 'AMETHYST_BLOCK'
+  - 'BUDDING_AMETHYST'
+  - 'POLISHED_GRANITE'
+
+
+#==============#
+#  WOOD QUARRY #
+#==============#
+
+# When disabled, it loads the server less and generates resources without them. Suitable for skyblock.
+# In this case, the amplifiers work for a quarry.
+Wood quarry produce resources from the environment: true
+
+Wood quarry block material: 'YELLOW_SHULKER_BOX'
+Wood quarry block custom model data: 0
+Wood quarry hologram enable: true
+Wood quarry work sounds enable: true
+Wood quarry work particles enable: false
+
+Wood quarry gui rows: 5
+
+Wood quarry empty slots: []
+
+Wood quarry start button slot: 13
+Wood quarry start button material: 'LEVER'
+Wood quarry start button custom model data: 0
+
+Wood quarry stop button slot: 13
+Wood quarry stop button material: 'LEVER'
+Wood quarry stop button custom model data: 0
+
+Wood quarry fuel button slot: 22
+Wood quarry fuel button material: 'LAVA_BUCKET'
+Wood quarry fuel button custom model data: 0
+
+Wood quarry storage button slot: 23
+Wood quarry storage button material: 'CHEST'
+Wood quarry storage button custom model data: 0
+Wood quarry storage empty slots: []
+
+Wood quarry owner button slot: 21
+Wood quarry owner button material: '6b9299b724c5d34ac93ede75601dfeb0bda578d70b8f4d7f82d7676f0c6c114a'
+Wood quarry owner button custom model data: 0
+
+Wood quarry speed button slot: 19
+Wood quarry speed button material: '142413cb28cdcb7edd0deca654b26d584d81646d94b825e8529db2f2df30e0'
+Wood quarry speed button custom model data: 0
+Wood quarry speed gui rows: 1
+Wood quarry speed coefficients and prices:
+  1:
+    Value: 1.5
+    Price: 1000.0
+    Slot: 2
+    Material: 'b221da4418bd3bfb42eb64d2ab429c61decb8f4bf7d4cfb77a162be3dcb0b927'
+    Custom model data: 0
+  2:
+    Value: 2.0
+    Price: 5000.0
+    Slot: 3
+    Material: 'f4628ace7c3afc61a476dc144893aaa642ba976d952b51ece26abafb896b8'
+    Custom model data: 0
+  3:
+    Value: 3.0
+    Price: 10000.0
+    Slot: 4
+    Material: '881bdcd562fb61ef66b8fe975a854ed19f657d17dadc647da79888566a8b2'
+    Custom model data: 0
+  4:
+    Value: 4.0
+    Price: 25000.0
+    Slot: 5
+    Material: '94a04b32d2b7598f9dd8e23fb4015c69c3cd942a37a9ea84d06869f459f1'
+    Custom model data: 0
+  5:
+    Value: 5.0
+    Price: 100000.0
+    Slot: 6
+    Material: '4b221cb9607c8a9bf02fef5d7614e3eb169cc219bf4250fd5715d5d2d6045f7'
+    Custom model data: 0
+Wood quarry speed empty slots: []
+
+Wood quarry radius button slot: 25
+Wood quarry radius button material: 'COMPASS'
+Wood quarry radius button custom model data: 0
+Wood quarry radius gui rows: 1
+Wood quarry radius coefficients and prices:
+  1:
+    Value: 12.0
+    Price: 25000.0
+    Slot: 2
+    Material: '67507f666eafdcac640e13bb06c4f5604ddfc3fabcf496e530bd91380844f5f9'
+    Custom model data: 0
+  2:
+    Value: 16.0
+    Price: 75000.0
+    Slot: 3
+    Material: '7e28a49cf23a534535be736b90772b089417224c82e201144da713ea4ea167f5'
+    Custom model data: 0
+  3:
+    Value: 24.0
+    Price: 100000.0
+    Slot: 4
+    Material: '61485349006ed1c91b7959aff44f330ddac35e3d9a99e4a82051f986ecda4755'
+    Custom model data: 0
+  4:
+    Value: 32.0
+    Price: 550000.0
+    Slot: 5
+    Material: '5f95341a5f08d250c09933072f9e2148ee9956ff3a0eb4f293c0b794337626b5'
+    Custom model data: 0
+  5:
+    Value: 48.0
+    Price: 800000.0
+    Slot: 6
+    Material: '835ef9230031769a2e8192ab46a1714410d56c3b9b38a0302a058e47973d7c4d'
+    Custom model data: 0
+Wood quarry radius empty slots: []
+
+# Default quarry values when creating a quarry
+Wood quarry default params:
+  Speed: 1.0
+  Radius: 8.0
+  Fuel: 100.0
+
+
+#==============#
+#  FISH QUARRY #
+#==============#
+
+Fish quarry block material: 'LIGHT_BLUE_SHULKER_BOX'
+Fish quarry block custom model data: 0
+Fish quarry hologram enable: true
+Fish quarry work sounds enable: true
+Fish quarry work particles enable: false
+
+Fish quarry gui rows: 5
+
+Fish quarry empty slots: []
+
+Fish quarry start button slot: 13
+Fish quarry start button material: 'LEVER'
+Fish quarry start button custom model data: 0
+
+Fish quarry stop button slot: 13
+Fish quarry stop button material: 'LEVER'
+Fish quarry stop button custom model data: 0
+
+Fish quarry fuel button slot: 22
+Fish quarry fuel button material: 'LAVA_BUCKET'
+Fish quarry fuel button custom model data: 0
+
+Fish quarry storage button slot: 23
+Fish quarry storage button material: 'CHEST'
+Fish quarry storage button custom model data: 0
+Fish quarry storage empty slots: []
+
+Fish quarry owner button slot: 21
+Fish quarry owner button material: '6b9299b724c5d34ac93ede75601dfeb0bda578d70b8f4d7f82d7676f0c6c114a'
+Fish quarry owner button custom model data: 0
+
+Fish quarry speed button slot: 10
+Fish quarry speed button material: 'f4628ace7c3afc61a476dc144893aaa642ba976d952b51ece26abafb896b8'
+Fish quarry speed button custom model data: 0
+Fish quarry speed gui rows: 1
+Fish quarry speed coefficients and prices:
+  1:
+    Value: 0.5
+    Price: 10000.0
+    Slot: 2
+    Material: 'b221da4418bd3bfb42eb64d2ab429c61decb8f4bf7d4cfb77a162be3dcb0b927'
+    Custom model data: 0
+  2:
+    Value: 0.8
+    Price: 50000.0
+    Slot: 3
+    Material: 'f4628ace7c3afc61a476dc144893aaa642ba976d952b51ece26abafb896b8'
+    Custom model data: 0
+  3:
+    Value: 1.2
+    Price: 150000.0
+    Slot: 4
+    Material: '881bdcd562fb61ef66b8fe975a854ed19f657d17dadc647da79888566a8b2'
+    Custom model data: 0
+  4:
+    Value: 1.5
+    Price: 500000.0
+    Slot: 5
+    Material: '94a04b32d2b7598f9dd8e23fb4015c69c3cd942a37a9ea84d06869f459f1'
+    Custom model data: 0
+  5:
+    Value: 2.0
+    Price: 1000000.0
+    Slot: 6
+    Material: '4b221cb9607c8a9bf02fef5d7614e3eb169cc219bf4250fd5715d5d2d6045f7'
+    Custom model data: 0
+Fish quarry speed empty slots: []
+
+Fish quarry luck button slot: 28
+Fish quarry luck button material: 'ENCHANTED_BOOK'
+Fish quarry luck button custom model data: 0
+Fish quarry luck gui rows: 1
+Fish quarry luck coefficients and prices:
+  1:
+    Value: 1.0
+    Price: 20000.0
+    Slot: 2
+    Material: '96c4ac00736d8551c8ced4cf5d852c05fb8fde743deca6da334c8154b2eec3f7'
+    Custom model data: 0
+  2:
+    Value: 2.0
+    Price: 100000.0
+    Slot: 3
+    Material: 'ce3d527f79df4cd7b31f25a4a5949b0d0360aaeca2bda79a665f2cf641b115e1'
+    Custom model data: 0
+  3:
+    Value: 3.0
+    Price: 500000.0
+    Slot: 4
+    Material: '185594b78e8fb3e3bd7ce3ce2bfa94f138a9ebc1baed679aebf5f63d1961c8de'
+    Custom model data: 0
+  4:
+    Value: 4.0
+    Price: 1000000.0
+    Slot: 5
+    Material: '27df3991d918f959248fcf84f17bb652d12b7f86291d52227c25e929f2e4b4df'
+    Custom model data: 0
+  5:
+    Value: 5.0
+    Price: 1750000.0
+    Slot: 6
+    Material: '8045743910f23cecff1008ab6adf797d8e6297b2a43c70df572f2e8245697237'
+    Custom model data: 0
+Fish quarry luck empty slots: []
+
+Fish quarry bonuses button slot: 25
+Fish quarry bonuses button material: 'f9e3d6ceabce729ee722c8082467ed57470eb38436157d5de07afa3491a14d5e'
+Fish quarry bonuses button custom model data: 0
+Fish quarry bonuses gui rows: 1
+Fish quarry bonuses coefficients and prices:
+  1:
+    Value: 1.0
+    Price: 20000.0
+    Slot: 3
+    Material: '14aeab01c04f36ba887b7bda8d9c538bc9686dbbce7e3a5bb10f308c50302bc4'
+    Bonus materials:
+      - 'DIAMOND/1/0.5'
+      - 'EMERALD/1/0.7'
+      - 'GOLD_NUGGET/1/1.0'
+    Custom model data: 0
+  2:
+    Value: 2.0
+    Price: 100000.0
+    Slot: 4
+    Material: '6bf74eb8818e99e9a42691fe3b51c6b8d8d5eff066ec00cab0036245b6dfa5d3'
+    Bonus materials:
+      - 'DIAMOND/1/0.6'
+      - 'EMERALD/1/1.0'
+      - 'GOLD_NUGGET/1/0.5'
+    Custom model data: 0
+  3:
+    Value: 3.0
+    Price: 500000.0
+    Slot: 5
+    Material: 'a35c586254aed3cfe6b89385195a4ae5149997ce66a39c0f91a700d1d69b6d58'
+    Bonus materials:
+      - 'DIAMOND/1/0.8'
+      - 'EMERALD/1/1.4'
+      - 'GOLD_NUGGET/1/3.0'
+    Custom model data: 0
+Fish quarry bonuses empty slots: []
+
+# Default quarry values when creating a quarry
+Fish quarry default params:
+  Speed: 0.2
+  Luck: 0.0
+  Bonuses: 0.0
+  Fuel: 100.0
+
+# Fishing drops
+# DEFAULT + 5 LUCK
+Fish quarry default drop:
+  - 'COD/1/60.0'
+  - 'SALMON/1/25.0'
+  - 'TROPICAL_FISH/1/2.0'
+  - 'PUFFERFISH/1/13.0'
+  - 'ENCHANTED_BOOK/1/0.1'
+  - 'NAME_TAG/1/0.2'
+  - 'SADDLE/1/0.2'
+  - 'LILY_PAD/1/1.0'
+  - 'LEATHER/1/0.5'
+  - 'ROTTEN_FLESH/1/2.0'
+  - 'STICK/1/2.0'
+  - 'BONE/1/2.0'
+  - 'INK_SAC/1/1.0'
+  - 'TRIPWIRE_HOOK/1/0.2'
+  - 'NAUTILUS_SHELL/1/0.1'
+  - 'BOWL/1/1.0'
+
+Fish quarry 1 luck drop:
+  - 'COD/1/50.0'
+  - 'SALMON/1/25.0'
+  - 'TROPICAL_FISH/1/2.0'
+  - 'PUFFERFISH/1/15.0'
+  - 'ENCHANTED_BOOK/1/0.2'
+  - 'NAME_TAG/1/0.3'
+  - 'SADDLE/1/0.3'
+  - 'LILY_PAD/1/1.0'
+  - 'LEATHER/1/0.8'
+  - 'STICK/1/1.5'
+  - 'BONE/1/2.0'
+  - 'INK_SAC/1/2.0'
+  - 'TRIPWIRE_HOOK/1/0.2'
+  - 'NAUTILUS_SHELL/1/0.3'
+  - 'BOWL/1/1.0'
+  - 'GOLD_INGOT/1/0.1'
+
+Fish quarry 2 luck drop:
+  - 'COD/1/50.0'
+  - 'SALMON/1/25.0'
+  - 'TROPICAL_FISH/1/2.0'
+  - 'PUFFERFISH/1/15.0'
+  - 'ENCHANTED_BOOK/1/0.3'
+  - 'NAME_TAG/1/0.4'
+  - 'SADDLE/1/0.3'
+  - 'LILY_PAD/1/1.0'
+  - 'LEATHER/1/1.2'
+  - 'BONE/1/2.0'
+  - 'INK_SAC/1/2.5'
+  - 'TRIPWIRE_HOOK/1/0.2'
+  - 'NAUTILUS_SHELL/1/0.4'
+  - 'BOWL/1/1.0'
+  - 'GOLD_INGOT/1/0.2'
+  - 'DIAMOND/1/0.1'
+
+Fish quarry 3 luck drop:
+  - 'COD/1/50.0'
+  - 'SALMON/1/25.0'
+  - 'TROPICAL_FISH/1/2.0'
+  - 'PUFFERFISH/1/15.0'
+  - 'ENCHANTED_BOOK/1/0.5'
+  - 'NAME_TAG/1/0.3'
+  - 'SADDLE/1/0.4'
+  - 'LILY_PAD/1/1.0'
+  - 'LEATHER/1/1.5'
+  - 'BONE/1/3.0'
+  - 'INK_SAC/1/2.0'
+  - 'TRIPWIRE_HOOK/1/0.2'
+  - 'NAUTILUS_SHELL/1/0.5'
+  - 'GOLD_INGOT/1/0.3'
+  - 'DIAMOND/1/0.2'
+
+Fish quarry 4 luck drop:
+  - 'COD/1/50.0'
+  - 'SALMON/1/25.0'
+  - 'TROPICAL_FISH/1/2.0'
+  - 'PUFFERFISH/1/15.0'
+  - 'ENCHANTED_BOOK/1/0.6'
+  - 'NAME_TAG/1/0.3'
+  - 'SADDLE/1/0.4'
+  - 'LILY_PAD/1/1.0'
+  - 'LEATHER/1/1.8'
+  - 'BONE/1/3.0'
+  - 'INK_SAC/1/2.0'
+  - 'NAUTILUS_SHELL/1/0.5'
+  - 'GOLD_INGOT/1/0.4'
+  - 'DIAMOND/1/0.3'
+  - 'EMERALD/1/0.1'
+
+Fish quarry 5 luck drop:
+  - 'COD/1/50.0'
+  - 'SALMON/1/25.0'
+  - 'TROPICAL_FISH/1/2.0'
+  - 'PUFFERFISH/1/15.0'
+  - 'ENCHANTED_BOOK/1/0.6'
+  - 'NAME_TAG/1/0.3'
+  - 'SADDLE/1/0.4'
+  - 'LILY_PAD/1/1.0'
+  - 'LEATHER/1/1.8'
+  - 'BONE/1/3.0'
+  - 'INK_SAC/1/2.0'
+  - 'NAUTILUS_SHELL/1/0.5'
+  - 'GOLD_INGOT/1/0.5'
+  - 'DIAMOND/1/0.4'
+  - 'EMERALD/1/0.2'
+
+
+#=============#
+#  MOB QUARRY #
+#=============#
+
+Mob quarry block material: 'RED_SHULKER_BOX'
+Mob quarry block custom model data: 0
+Mob quarry hologram enable: true
+Mob quarry work sounds enable: true
+Mob quarry work particles enable: false
+
+Mob quarry gui rows: 5
+
+Mob quarry empty slots: []
+
+Mob quarry start button slot: 13
+Mob quarry start button material: 'LEVER'
+Mob quarry start button custom model data: 0
+
+Mob quarry stop button slot: 13
+Mob quarry stop button material: 'LEVER'
+Mob quarry stop button custom model data: 0
+
+Mob quarry fuel button slot: 22
+Mob quarry fuel button material: 'LAVA_BUCKET'
+Mob quarry fuel button custom model data: 0
+
+Mob quarry storage button slot: 23
+Mob quarry storage button material: 'CHEST'
+Mob quarry storage button custom model data: 0
+Mob quarry storage empty slots: []
+
+Mob quarry owner button slot: 21
+Mob quarry owner button material: '6b9299b724c5d34ac93ede75601dfeb0bda578d70b8f4d7f82d7676f0c6c114a'
+Mob quarry owner button custom model data: 0
+
+Mob quarry speed button slot: 10
+Mob quarry speed button material: '2d9287616343d833e9e7317159caa2cb3e59745113962c1379052ce478884fa'
+Mob quarry speed button custom model data: 0
+Mob quarry speed gui rows: 1
+Mob quarry speed coefficients and prices:
+  1:
+    Value: 0.8
+    Price: 25000.0
+    Slot: 2
+    Material: 'b221da4418bd3bfb42eb64d2ab429c61decb8f4bf7d4cfb77a162be3dcb0b927'
+    Custom model data: 0
+  2:
+    Value: 1.2
+    Price: 75000.0
+    Slot: 3
+    Material: 'f4628ace7c3afc61a476dc144893aaa642ba976d952b51ece26abafb896b8'
+    Custom model data: 0
+  3:
+    Value: 1.7
+    Price: 175000.0
+    Slot: 4
+    Material: '881bdcd562fb61ef66b8fe975a854ed19f657d17dadc647da79888566a8b2'
+    Custom model data: 0
+  4:
+    Value: 2.3
+    Price: 250000.0
+    Slot: 5
+    Material: '94a04b32d2b7598f9dd8e23fb4015c69c3cd942a37a9ea84d06869f459f1'
+    Custom model data: 0
+  5:
+    Value: 3.0
+    Price: 400000.0
+    Slot: 6
+    Material: '4b221cb9607c8a9bf02fef5d7614e3eb169cc219bf4250fd5715d5d2d6045f7'
+    Custom model data: 0
+Mob quarry speed empty slots: []
+
+Mob quarry radius button slot: 25
+Mob quarry radius button material: 'COMPASS'
+Mob quarry radius button custom model data: 0
+Mob quarry radius gui rows: 1
+Mob quarry radius coefficients and prices:
+  1:
+    Value: 4.0
+    Price: 10000.0
+    Slot: 2
+    Material: '67507f666eafdcac640e13bb06c4f5604ddfc3fabcf496e530bd91380844f5f9'
+    Custom model data: 0
+  2:
+    Value: 6.0
+    Price: 25000.0
+    Slot: 3
+    Material: '7e28a49cf23a534535be736b90772b089417224c82e201144da713ea4ea167f5'
+    Custom model data: 0
+  3:
+    Value: 8.0
+    Price: 75000.0
+    Slot: 4
+    Material: '61485349006ed1c91b7959aff44f330ddac35e3d9a99e4a82051f986ecda4755'
+    Custom model data: 0
+  4:
+    Value: 10.0
+    Price: 125000.0
+    Slot: 5
+    Material: '5f95341a5f08d250c09933072f9e2148ee9956ff3a0eb4f293c0b794337626b5'
+    Custom model data: 0
+  5:
+    Value: 12.0
+    Price: 225000.0
+    Slot: 6
+    Material: '835ef9230031769a2e8192ab46a1714410d56c3b9b38a0302a058e47973d7c4d'
+    Custom model data: 0
+Mob quarry radius empty slots: []
+
+Mob quarry exp button slot: 28
+Mob quarry exp button material: 'EXPERIENCE_BOTTLE'
+Mob quarry exp button custom model data: 0
+
+# Default quarry values when creating a quarry
+Mob quarry default params:
+  Speed: 0.5
+  Radius: 2.0
+  Exp: 0.0
+  Fuel: 100.0
+
+
+#==============#
+#  FARM QUARRY #
+#==============#
+
+Farm quarry block material: 'LIME_SHULKER_BOX'
+Farm quarry block custom model data: 0
+Farm quarry hologram enable: true
+Farm quarry work sounds enable: true
+Farm quarry work particles enable: false
+
+Farm quarry gui rows: 5
+
+Farm quarry empty slots: []
+
+Farm quarry start button slot: 13
+Farm quarry start button material: 'LEVER'
+Farm quarry start button custom model data: 0
+
+Farm quarry stop button slot: 13
+Farm quarry stop button material: 'LEVER'
+Farm quarry stop button custom model data: 0
+
+Farm quarry fuel button slot: 22
+Farm quarry fuel button material: 'LAVA_BUCKET'
+Farm quarry fuel button custom model data: 0
+
+Farm quarry storage button slot: 23
+Farm quarry storage button material: 'CHEST'
+Farm quarry storage button custom model data: 0
+Farm quarry storage empty slots: []
+
+Farm quarry owner button slot: 21
+Farm quarry owner button material: '6b9299b724c5d34ac93ede75601dfeb0bda578d70b8f4d7f82d7676f0c6c114a'
+Farm quarry owner button custom model data: 0
+
+Farm quarry speed button slot: 10
+Farm quarry speed button material: 'b221da4418bd3bfb42eb64d2ab429c61decb8f4bf7d4cfb77a162be3dcb0b927'
+Farm quarry speed button custom model data: 0
+Farm quarry speed gui rows: 1
+Farm quarry speed coefficients and prices:
+  1:
+    Value: 1.5
+    Price: 25000.0
+    Slot: 2
+    Material: 'b221da4418bd3bfb42eb64d2ab429c61decb8f4bf7d4cfb77a162be3dcb0b927'
+    Custom model data: 0
+  2:
+    Value: 2.0
+    Price: 50000.0
+    Slot: 3
+    Material: 'f4628ace7c3afc61a476dc144893aaa642ba976d952b51ece26abafb896b8'
+    Custom model data: 0
+  3:
+    Value: 2.8
+    Price: 100000.0
+    Slot: 4
+    Material: '881bdcd562fb61ef66b8fe975a854ed19f657d17dadc647da79888566a8b2'
+    Custom model data: 0
+  4:
+    Value: 3.4
+    Price: 125000.0
+    Slot: 5
+    Material: '94a04b32d2b7598f9dd8e23fb4015c69c3cd942a37a9ea84d06869f459f1'
+    Custom model data: 0
+  5:
+    Value: 4.0
+    Price: 250000.0
+    Slot: 6
+    Material: '4b221cb9607c8a9bf02fef5d7614e3eb169cc219bf4250fd5715d5d2d6045f7'
+    Custom model data: 0
+Farm quarry speed empty slots: []
+
+Farm quarry radius button slot: 34
+Farm quarry radius button material: 'COMPASS'
+Farm quarry radius button custom model data: 0
+Farm quarry radius gui rows: 1
+Farm quarry radius coefficients and prices:
+  1:
+    Value: 8.0
+    Price: 100000.0
+    Slot: 2
+    Material: '67507f666eafdcac640e13bb06c4f5604ddfc3fabcf496e530bd91380844f5f9'
+    Custom model data: 0
+  2:
+    Value: 12.0
+    Price: 250000.0
+    Slot: 3
+    Material: '7e28a49cf23a534535be736b90772b089417224c82e201144da713ea4ea167f5'
+    Custom model data: 0
+  3:
+    Value: 16.0
+    Price: 500000.0
+    Slot: 4
+    Material: '61485349006ed1c91b7959aff44f330ddac35e3d9a99e4a82051f986ecda4755'
+    Custom model data: 0
+  4:
+    Value: 20.0
+    Price: 750000.0
+    Slot: 5
+    Material: '5f95341a5f08d250c09933072f9e2148ee9956ff3a0eb4f293c0b794337626b5'
+    Custom model data: 0
+  5:
+    Value: 24.0
+    Price: 1000000.0
+    Slot: 6
+    Material: '835ef9230031769a2e8192ab46a1714410d56c3b9b38a0302a058e47973d7c4d'
+    Custom model data: 0
+Farm quarry radius empty slots: []
+
+Farm quarry fertilizer button slot: 28
+Farm quarry fertilizer button material: 'BONE_MEAL'
+Farm quarry fertilizer button custom model data: 0
+
+Farm quarry humidity button slot: 16
+Farm quarry humidity button material: 'WATER_BUCKET'
+Farm quarry humidity button custom model data: 0
+
+# Default quarry values when creating a quarry
+Farm quarry default params:
+  Speed: 1.0
+  Radius: 6.0
+  Fertilizer: 100.0
+  Humidity: 100.0
+  Fuel: 100.0
+
+Farm quarry fertilizer material: 'BONE_MEAL'
+Farm quarry fertilizer amount to refill: 1
+Farm quarry fertilizer percents how much fuel fills: 10.0
+Farm quarry fertilizer decrease fuel per turn: 0.05
+
+Farm quarry humidity material: 'WATER_BUCKET'
+Farm quarry humidity amount to refill: 1
+Farm quarry humidity percents how much fuel fills: 50.0
+Farm quarry humidity decrease fuel per turn: 0.05
+
+
+#===============#
+#  STONE QUARRY #
+#===============#
+
+Stone quarry block material: 'GRAY_SHULKER_BOX'
+Stone quarry block custom model data: 0
+Stone quarry hologram enable: true
+Stone quarry work sounds enable: true
+Stone quarry work particles enable: false
+
+Stone quarry dig out all the blocks underneath: false
+
+Stone quarry gui rows: 5
+
+Stone quarry empty slots: []
+
+Stone quarry start button slot: 13
+Stone quarry start button material: 'LEVER'
+Stone quarry start button custom model data: 0
+
+Stone quarry stop button slot: 13
+Stone quarry stop button material: 'LEVER'
+Stone quarry stop button custom model data: 0
+
+Stone quarry fuel button slot: 22
+Stone quarry fuel button material: 'LAVA_BUCKET'
+Stone quarry fuel button custom model data: 0
+
+Stone quarry storage button slot: 23
+Stone quarry storage button material: 'CHEST'
+Stone quarry storage button custom model data: 0
+Stone quarry storage empty slots: []
+
+Stone quarry owner button slot: 21
+Stone quarry owner button material: '6b9299b724c5d34ac93ede75601dfeb0bda578d70b8f4d7f82d7676f0c6c114a'
+Stone quarry owner button custom model data: 0
+
+Stone quarry speed button slot: 31
+Stone quarry speed button material: '58fe251a40e4167d35d081c27869ac151af96b6bd16dd2834d5dc7235f47791d'
+Stone quarry speed button custom model data: 0
+Stone quarry speed gui rows: 1
+Stone quarry speed coefficients and prices:
+  1:
+    Value: 0.5
+    Price: 1000.0
+    Slot: 2
+    Material: 'b221da4418bd3bfb42eb64d2ab429c61decb8f4bf7d4cfb77a162be3dcb0b927'
+    Custom model data: 0
+  2:
+    Value: 0.8
+    Price: 5000.0
+    Slot: 3
+    Material: 'f4628ace7c3afc61a476dc144893aaa642ba976d952b51ece26abafb896b8'
+    Custom model data: 0
+  3:
+    Value: 1.0
+    Price: 10000.0
+    Slot: 4
+    Material: '881bdcd562fb61ef66b8fe975a854ed19f657d17dadc647da79888566a8b2'
+    Custom model data: 0
+  4:
+    Value: 1.5
+    Price: 25000.0
+    Slot: 5
+    Material: '94a04b32d2b7598f9dd8e23fb4015c69c3cd942a37a9ea84d06869f459f1'
+    Custom model data: 0
+  5:
+    Value: 2.0
+    Price: 100000.0
+    Slot: 6
+    Material: '4b221cb9607c8a9bf02fef5d7614e3eb169cc219bf4250fd5715d5d2d6045f7'
+    Custom model data: 0
+Stone quarry speed empty slots: []
+
+# Default quarry values when creating a quarry
+Stone quarry default params:
+  Speed: 0.2
+  Fuel: 100.0
+
+Stone dig resources:
+  - 'STONE'
+  - 'GRASS'
+  - 'GRASS_BLOCK'
+  - 'DIRT'
+  - 'PODZOL'
+  - 'MYCELIUM'
+  - 'COARSE_DIRT'
+  - 'ROOTED_DIRT'
+  - 'CLAY'
+  - 'SAND'
+  - 'SANDSTONE'
+  - 'GRAVEL'
+  - 'RED_SAND'
+  - 'RED_SANDSTONE'
+  - 'SNOW_BLOCK'
+  - 'COBBLESTONE'
+  - 'GRANITE'
+  - 'DIORITE'
+  - 'ANDESITE'
+  - 'CALCITE'
+  - 'OBSIDIAN'
+  - 'IRON_ORE'
+  - 'COAL_ORE'
+  - 'GOLD_ORE'
+  - 'LAPIS_ORE'
+  - 'DIAMOND_ORE'
+  - 'EMERALD_ORE'
+  - 'NETHER_QUARTZ_ORE'
+  - 'NETHER_GOLD_ORE'
+  - 'COPPER_ORE'
+  - 'GLOWSTONE'
+  - 'ANCIENT_DEBRIS'
+  - 'TUFF'
+  - 'STONE_BRICKS'
+  - 'MOSSY_STONE_BRICKS'
+  - 'CRACKED_STONE_BRICKS'
+  - 'CHISELED_STONE_BRICKS'
+  - 'END_STONE_BRICKS'
+  - 'END_STONE'
+  - 'PRISMARINE_BRICKS'
+  - 'POLISHED_BLACKSTONE_BRICKS'
+  - 'CRACKED_POLISHED_BLACKSTONE_BRICKS'
+  - 'GILDED_BLACKSTONE'
+  - 'CHISELED_POLISHED_BLACKSTONE'
+  - 'DEEPSLATE_TILES'
+  - 'CRACKED_DEEPSLATE_TILES'
+  - 'DEEPSLATE_BRICKS'
+  - 'CRACKED_DEEPSLATE_BRICKS'
+  - 'NETHERRACK'
+  - 'MAGMA_BLOCK'
+  - 'BLACKSTONE'
+  - 'DEEPSLATE'
+  - 'POLISHED_DIORITE'
+  - 'POLISHED_ANDESITE'
+  - 'POLISHED_BLACKSTONE'
+  - 'POLISHED_DEEPSLATE'
+  - 'REDSTONE_ORE'
+  - 'DEEPSLATE_IRON_ORE'
+  - 'DEEPSLATE_GOLD_ORE'
+  - 'DEEPSLATE_DIAMOND_ORE'
+  - 'DEEPSLATE_LAPIS_ORE'
+  - 'DEEPSLATE_REDSTONE_ORE'
+  - 'DEEPSLATE_EMERALD_ORE'
+  - 'DEEPSLATE_COPPER_ORE'
+  - 'DEEPSLATE_COAL_ORE'
+  - 'AMETHYST_BLOCK'
+  - 'BUDDING_AMETHYST'
+  - 'POLISHED_GRANITE'
+
+
+
+#==============#
+#  WOOL QUARRY #
+#==============#
+
+Wool quarry block material: 'PINK_SHULKER_BOX'
+Wool quarry block custom model data: 0
+Wool quarry hologram enable: true
+Wool quarry work sounds enable: true
+Wool quarry work particles enable: false
+
+Wool quarry gui rows: 5
+
+Wool quarry empty slots: []
+
+Wool quarry start button slot: 13
+Wool quarry start button material: 'LEVER'
+Wool quarry start button custom model data: 0
+
+Wool quarry stop button slot: 13
+Wool quarry stop button material: 'LEVER'
+Wool quarry stop button custom model data: 0
+
+Wool quarry fuel button slot: 22
+Wool quarry fuel button material: 'LAVA_BUCKET'
+Wool quarry fuel button custom model data: 0
+
+Wool quarry storage button slot: 23
+Wool quarry storage button material: 'CHEST'
+Wool quarry storage button custom model data: 0
+Wool quarry storage empty slots: []
+
+Wool quarry owner button slot: 21
+Wool quarry owner button material: '6b9299b724c5d34ac93ede75601dfeb0bda578d70b8f4d7f82d7676f0c6c114a'
+Wool quarry owner button custom model data: 0
+
+Wool quarry speed button slot: 19
+Wool quarry speed button material: 'eec88c76e3d9a1ebd7f4a2e55ecbcc42a8d23f696784aa410f09512a3b53a'
+Wool quarry speed button custom model data: 0
+Wool quarry speed gui rows: 1
+Wool quarry speed coefficients and prices:
+  1:
+    Value: 0.01
+    Price: 10000.0
+    Slot: 2
+    Material: 'b221da4418bd3bfb42eb64d2ab429c61decb8f4bf7d4cfb77a162be3dcb0b927'
+    Custom model data: 0
+  2:
+    Value: 0.08
+    Price: 40000.0
+    Slot: 3
+    Material: 'f4628ace7c3afc61a476dc144893aaa642ba976d952b51ece26abafb896b8'
+    Custom model data: 0
+  3:
+    Value: 0.2
+    Price: 75000.0
+    Slot: 4
+    Material: '881bdcd562fb61ef66b8fe975a854ed19f657d17dadc647da79888566a8b2'
+    Custom model data: 0
+  4:
+    Value: 0.6
+    Price: 125000.0
+    Slot: 5
+    Material: '94a04b32d2b7598f9dd8e23fb4015c69c3cd942a37a9ea84d06869f459f1'
+    Custom model data: 0
+  5:
+    Value: 1.0
+    Price: 200000.0
+    Slot: 6
+    Material: '4b221cb9607c8a9bf02fef5d7614e3eb169cc219bf4250fd5715d5d2d6045f7'
+    Custom model data: 0
+Wool quarry speed empty slots: []
+
+Wool quarry radius button slot: 25
+Wool quarry radius button material: 'COMPASS'
+Wool quarry radius button custom model data: 0
+Wool quarry radius gui rows: 1
+Wool quarry radius coefficients and prices:
+  1:
+    Value: 6.0
+    Price: 30000.0
+    Slot: 2
+    Material: '67507f666eafdcac640e13bb06c4f5604ddfc3fabcf496e530bd91380844f5f9'
+    Custom model data: 0
+  2:
+    Value: 8.0
+    Price: 75000.0
+    Slot: 3
+    Material: '7e28a49cf23a534535be736b90772b089417224c82e201144da713ea4ea167f5'
+    Custom model data: 0
+  3:
+    Value: 10.0
+    Price: 150000.0
+    Slot: 4
+    Material: '61485349006ed1c91b7959aff44f330ddac35e3d9a99e4a82051f986ecda4755'
+    Custom model data: 0
+  4:
+    Value: 12.0
+    Price: 225000.0
+    Slot: 5
+    Material: '5f95341a5f08d250c09933072f9e2148ee9956ff3a0eb4f293c0b794337626b5'
+    Custom model data: 0
+  5:
+    Value: 14.0
+    Price: 300000.0
+    Slot: 6
+    Material: '835ef9230031769a2e8192ab46a1714410d56c3b9b38a0302a058e47973d7c4d'
+    Custom model data: 0
+Wool quarry radius empty slots: []
+
+# Default quarry values when creating a quarry
+Wool quarry default params:
+  Speed: 0.05
+  Radius: 4.0
+  Fuel: 100.0

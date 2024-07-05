@@ -1,0 +1,85 @@
+cookingpotINVISIBILITY:
+  Cooldown: 5
+  Skills:
+  - potion{type=INVISIBILITY;duration=200;level=1;p=false} @self
+
+cookingpotACTIVATE:
+  Conditions:
+  - stance{s=cold} true
+  Skills:
+  - sound{s=minecraft:block.fire.extinguish;v=1;sc=HOSTILE} @self
+  - setstance{stance=onfire} @self
+  - equip{item=torch:0}
+  - effect:particles{p=flame;hs=.25;vs=.25;amount=15;speed=.05} @self
+  - ChangePart{mid=cooking_pot;pid=pot;nmid=cooking_pot_parts;npid=pot} @self
+  - ChangePart{mid=cooking_pot;pid=fire;nmid=cooking_pot_parts;npid=fire} @self
+  - delay 20
+  - setblock{m=AIR} @selflocation{y=.25}
+  
+cookingpotFX:
+  Conditions:
+  - stance{s=onfire} true
+  Skills:
+  - sound{s=minecraft:block.fire.ambient;v=1;sc=HOSTILE} @self .15
+  - sound{s=minecraft:block.lava.ambient;v=1;sc=HOSTILE} @self .1
+  - effect:particles{particle=flame;m=stone;hs=.25;vs=.25;amount=3;speed=.01} @self
+  - effect:particles{particle=campfire_cosy_smoke;m=stone;hs=.25;vs=.25;amount=1;speed=.01;d=true;dir=0,1,0} @self
+  
+cookingpotsplashLIFE:
+  Skills:
+  - delay 25
+  - remove @self
+  
+cookingpotPROXIMITY:
+  Conditions:
+  - mobsInRadius{types=cooking_pot;amount=1to4;radius=1}
+  Skills:
+  - skill{s=cookingpotREMOVE} @self
+
+cookingpotREMOVE:
+  Conditions:
+  - offgcd
+  Skills:
+  - stopsound{s=block.fire.ambient} @PIR{r=10}
+  - stopsound{s=block.lava.ambient} @PIR{r=10}
+  - effect:particles{particle=block;m=stone;hs=.5;vs=.5;amount=25} @selflocation{y=1}
+  - dropitem{i=cooking_pot} @self
+  - remove @self
+
+cookingpotPUT:
+  Skills:
+  - summon{t=cookingpot_splash} @selflocation{y=1.0}
+  - effect:particles{p=reddust;color=#53B3D9;hs=.25;vs=0} @selflocation{y=1.25}
+
+cookingpotCOOKING:
+  Skills:
+  - delay 20
+  - sound{s=littleroom_cookingpot:littleroom.cookingpot.cooking;v=0.5;sc=HOSTILE} @self
+  - defaultstate{m=cooking_pot;t=IDLE;s=cooking} @self
+  - setstance{stance=cooking} @self
+  - ChangePart{mid=cooking_pot;pid=gui;nmid=gui_bar;npid=1} @self
+  - delay 10
+  - ChangePart{mid=cooking_pot;pid=gui;nmid=gui_bar;npid=2} @self
+  - delay 10
+  - ChangePart{mid=cooking_pot;pid=gui;nmid=gui_bar;npid=3} @self
+  - delay 10
+  - ChangePart{mid=cooking_pot;pid=gui;nmid=gui_bar;npid=4} @self
+  - delay 10
+  - ChangePart{mid=cooking_pot;pid=gui;nmid=gui_bar;npid=5} @self
+  - delay 10
+  - ChangePart{mid=cooking_pot;pid=gui;nmid=gui_bar;npid=6} @self
+  - delay 10
+  - ChangePart{mid=cooking_pot;pid=gui;nmid=cooking_pot;npid=gui} @self
+  - state{s=done} @self
+  - defaultstate{m=cooking_pot;t=IDLE;s=idle} @self
+  - setstance{stance=done} @self
+  - delay 20
+  - setstance{stance=onfire} @self
+
+cookingpotFAILEFFECT:
+  Skills:
+    - effect:particles{particle=crit;amount=15;hS=.25;vS=.25;speed=.1} @selflocation{y=1.25}
+
+cookingpotSUCCESSEFFECT:
+  Skills:
+    - effect:particles{particle=composter;amount=15;hS=.5;vS=.5} @selflocation{y=1.25}

@@ -1,0 +1,60 @@
+apple_stage_1:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 12
+      model: item/crops/apple/stage_1
+  Pack:
+    generate_model: false
+    model: item/crops/apple/stage_1
+    custom_model_data: 1000
+apple_stage_2:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 13
+      model: item/crops/apple/stage_2
+  Pack:
+    generate_model: false
+    model: item/crops/apple/stage_2
+    custom_model_data: 1001
+apple_stage_3:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 14
+      model: item/crops/apple/stage_3
+  Pack:
+    generate_model: false
+    model: item/crops/apple/stage_3
+    custom_model_data: 1002
+apple_stage_4:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 15
+      model: item/crops/apple/stage_4
+  Pack:
+    generate_model: false
+    model: item/crops/apple/stage_4
+    custom_model_data: 1003
+apple_stage_5:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 16
+      model: item/crops/apple/stage_5
+  Pack:
+    generate_model: false
+    model: item/crops/apple/stage_5
+    custom_model_data: 1004
+apple_stage_6:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 17
+      model: item/crops/apple/stage_6
+  Pack:
+    generate_model: false
+    model: item/crops/apple/stage_6
+    custom_model_data: 1005

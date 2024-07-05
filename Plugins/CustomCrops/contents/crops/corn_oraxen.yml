@@ -1,0 +1,146 @@
+corn:
+  type: TRIPWIRE
+  pot-whitelist:
+  - default
+  seed: corn_seeds
+  requirements:
+    plant:
+      requirement_1:
+        type: season
+        value:
+        - Summer
+        - Autumn
+        message: It's not a good season to plant corn
+      requirement_2:
+        type: permission
+        value: farmer1.corn
+        message: 옥수수를 심을 권한이 없습니다.
+  max-points: 3
+  points:
+    '0':
+      model: corn_stage_1
+      hologram-offset-correction: -0.4
+      events:
+        break:
+          action_1:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+    '1':
+      model: corn_stage_2
+      hologram-offset-correction: -0.1
+      events:
+        break:
+          action_1:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+    '2':
+      model: corn_stage_3
+      hologram-offset-correction: 0.6
+      events:
+        break:
+          action_1:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+    '3':
+      model: corn_stage_4
+      hologram-offset-correction: 0.7
+      events:
+        break:
+          action_1:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+          action_2:
+            type: drop-items
+            value:
+              quality-crops:
+                min: 1
+                max: 3
+                items:
+                  '1': corn
+                  '2': corn_silver_star
+                  '3': corn_golden_star
+              other-items:
+                loot_1:
+                  item: corn_seeds
+                  min: 1
+                  max: 1
+                  chance: 1
+  grow-conditions:
+    condition_1:
+      type: suitable_season
+      value:
+      - Summer
+      - Autumn
+    condition_2:
+      type: water_more_than
+      value: 0
+  death-conditions:
+    unsuitable_season:
+      model: crop_stage_death
+      conditions:
+        condition_1:
+          type: unsuitable_season
+          value:
+          - Winter
+          - Spring
+    crow_attack:
+      conditions:
+        condition_1:
+          type: crow_attack
+          value:
+            chance: 0.001
+            fly-model: crow_fly
+            stand-model: crow_stand
+  custom-bone-meal:
+    bone_meal_1:
+      item: BONE_MEAL
+      chance:
+        '2': 0.2
+        '1': 0.6
+      actions:
+        swing_action:
+          type: swing-hand
+          value: true
+        particle_action:
+          type: particle
+          value:
+            particle: VILLAGER_HAPPY
+            count: 5
+            x: 0.5
+            y: 0.5
+            z: 0.5
+            offset-x: 0.3
+            offset-y: 0.3
+            offset-z: 0.3
+        sound_action:
+          type: sound
+          value:
+            key: minecraft:item.bone_meal.use
+            source: player
+            volume: 1
+            pitch: 1
+  events:
+    plant:
+      action_1:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.hoe.till
+          volume: 1
+          pitch: 1

@@ -1,0 +1,101 @@
+tomato_seeds:
+  displayname: 토마토 씨앗
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/crops/tomato/tomato_seeds
+    custom_model_data: 1101
+tomato:
+  displayname: 토마토
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/tomato/tomato
+    custom_model_data: 1030
+golden_tomato:
+  displayname: <gold>Golden Tomato
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/tomato/golden_tomato
+    custom_model_data: 1031
+tomato_silver_star:
+  displayname: 토마토 ★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/tomato/tomato_silver_star
+    custom_model_data: 1032
+tomato_golden_star:
+  displayname: 토마토 <gold>★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/tomato/tomato_golden_star
+    custom_model_data: 1033
+tomato_stage_1:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 6
+      model: item/crops/tomato/stage_1
+  Pack:
+    generate_model: false
+    model: item/crops/tomato/stage_1
+    custom_model_data: 1102
+tomato_stage_2:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 7
+      model: item/crops/tomato/stage_2
+  Pack:
+    generate_model: false
+    model: item/crops/tomato/stage_2
+    custom_model_data: 1103
+tomato_stage_3:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 8
+      model: item/crops/tomato/stage_3
+  Pack:
+    generate_model: false
+    model: item/crops/tomato/stage_3
+    custom_model_data: 1104
+tomato_stage_4:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 9
+      model: item/crops/tomato/stage_4
+  Pack:
+    generate_model: false
+    model: item/crops/tomato/stage_4
+    custom_model_data: 1105
+tomato_stage_golden:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 10
+      model: item/crops/tomato/stage_golden
+  Pack:
+    generate_model: false
+    model: item/crops/tomato/stage_golden
+    custom_model_data: 1106
+gigantic_tomato:
+  displayname: <gold>과성장 토마토
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 11
+      model: item/crops/tomato/gigantic_tomato
+      drop:
+        silktouch: false
+        loots:
+        - oraxen_item: gigantic_tomato
+          probability: 1.0
+  Pack:
+    generate_model: false
+    model: item/crops/tomato/gigantic_tomato
+    custom_model_data: 1107

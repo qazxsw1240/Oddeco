@@ -1,0 +1,121 @@
+vehiclesplus:
+  actionbar:
+    driving_info: '&b현재 속도 &f%curspeed%&7/&f%maxspeed%&bKM/H &7| &b연료 &f%curfuel%&7/&f%maxfuel%&bL &7: &f%fuelperc%%&7) &7| &b사용량 &f%fuelusage%&bL/100KM &7| &b체력 &f%health%'
+    out_of_fuel: '&c연료 다 떨어짐'
+  chat:
+    can_exit_while_moving: '&c움직이는 동안 탈출 가능: &7'
+    drift: '&c드리프트: &7'
+    purchase_complete: '&a구매 완료!'
+    enter_new_name: '&a새 차량 이름을 입력하세요. "cancel"을 입력하여 취소하세요.'
+    enter_new_owner: '&a차량 소유자로 전송할 사용자 이름을 입력하세요. "cancel"을 입력하여 취소하세요.'
+    error:
+      could_not_spawn_vehicle: '&c차량을 생성할 수 없습니다!'
+      not_enough_money: '&a돈이 충분하지 않습니다!'
+      not_online: '&c해당 플레이어가 온라인이 아닙니다!'
+      part_maxed_out: '&c이 부품은 이미 최대치에 도달했습니다.'
+      no_addons: '&c이 차량에는 애드온이 없습니다!'
+      no_fuel_found: '&c오류, 지정한 이름의 연료를 찾을 수 없습니다.'
+      no_garage: '&c보유한 차량이 없습니다!'
+      no_rim_found: '&c오류, 지정한 이름의 바퀴를 찾을 수 없습니다.'
+      no_vehicle_found: '&c오류, 지정한 이름의 차량을 찾을 수 없습니다.'
+      no_vehicles_for_sale: '&c판매용 차량이 없습니다!'
+      no_ride_permissions: '&c이 차량을 타는 권한이 없습니다.'
+      part_wheel_usage: '&c바퀴를 바꾸려면 바퀴를 클릭하세요.'
+      seat_occupied: '&c이 좌석에는 이미 타고 있습니다'
+    plugin_reloaded: '&a플러그인이 다시 로드되었습니다!'
+    vehicle:
+      given: '&a차량이 지급되었습니다!'
+      transferred: '&a차량이 이전되었습니다!'
+      locked: '&c이 차량은 잠겨 있습니다'
+      now_locked: '&a차량이 잠겨졌습니다'
+      now_unlocked: '&a차량이 잠금 해제되었습니다.'
+      refueled: '&a차량에 연료가 주입되었습니다!'
+      removed: '&a차량이 제거되었습니다!'
+      repaired: '&a차량이 수리되었습니다!'
+  command:
+    desc:
+      addon: VehiclesPlus 애드온 명령어
+      buy:
+        fuel: '&a연료 구매'
+      forcedespawn: 모든 차량 강제 소환
+      fuel: VehiclesPlus 연료 명령어
+      garage: 차고 열기
+      give:
+        addon: 애드온 소환
+        fuel: 연료통을 플레이어에게 주기
+        vehicle: 차량을 플레이어에게 주기
+        wheel: 바퀴 소환
+        paint: 페인트 통을 플레이어에게 주기
+      info: 차량에 대한 자세한 정보 표시
+      list: 로드된 차량 목록 표시
+      main: 주요 vehiclesplus 명령어
+      reload: 플러그인 다시 로드
+      shop:
+        fuel: 연료 상점 명령어
+        vehicle: '&a차량 상점 열기'
+  locale_error: '&4언어 파일 오류'
+  gui:
+    button:
+      lore:
+        acceleration: '&b가속도 &7'
+        blue: '&b파랑 &7'
+        click_for_more_info: '&8자세한 정보 보기 위해 클릭'
+        click_to_despawn: '&a좌클릭하여 소환 해제'
+        click_to_remove: '&b우클릭하여 제거'
+        click_to_spawn: '&a좌 클릭하여 소환'
+        confirm_delete: 삭제 확인
+        cost: '&b가격 &7'
+        current: '&b현재 &7'
+        fuel_storage: '&b연료통 저장 공간 &7'
+        fuel_type: '&b연료 종류 &7'
+        green: '&b초록 &7'
+        max: '&b최대 &7'
+        occupied: ' &4: 사용 중)'
+        red: '&b빨강 &7'
+        repair_cost: '&c수리 비용 &7$'
+        speed: '&b속도 &7'
+        turning_radius: '&b회전 반경 &7'
+        step: '&b단계 &7'
+        tank_capacity: '&b연료 탱크 용량 &7'
+        vehicle_is_broken: '&c차량이 고장났습니다. 수리하려면 좌클릭하세요'
+        vehicle_is_spawned: '&a차량이 소환되었습니다'
+        health: '&c체력: &7'
+        name: '&c이름: &7'
+        part: '&c 부품: '
+        price: '&c가격: &7'
+        trunk_size: '&c트렁크 사이즈: &7'
+        type: '&c종류: &7'
+      title:
+        acceleration: '&b가속도 &7'
+        addons: '&a애드온'
+        change_owner: '&a운송수단 주인 변경'
+        driver_seat: '&a운전석'
+        engine_upgrades: '&a엔진 업그레이드'
+        enter_vehicle: '&a운송수단 탑승'
+        lock_vehicle: '&a운송수단 잠그기'
+        remove_vehicle: '&a운송수단 지우기'
+        rename: '&a운송수단 이름 다시짓기'
+        seat: '&a좌석'
+        settings: '&a설정'
+        speed: '&b속도 &7'
+        steering: '&b회전 반경 &7'
+        tank_capacity: '&b탱크 용량 &7'
+        trunk: '&a트렁크'
+        unlock_vehicle: '&a운송수단 잠금해제'
+    page: ' &7- &b페이지: '
+    title:
+      addons: '&b애드온'
+      color: '&b운송수단 색깔'
+      engine_upgrades: '&b엔진 업그레이드'
+      fuel: '&b연료 상점'
+      garage: '&b차고'
+      purchase_confirm: '&b이걸 구매하시겠습니까?'
+      sell_confirm: '&b이걸 판매하시겠습니까?'
+      settings: '&b설정'
+      shop: '&b운송수단 상점'
+      trunk: '&b트렁크'
+      vehicle: '&b%vehicle%'
+  item:
+    addon: '&a애드온'
+    fuel: '&a%fuel%'
+    paint: '&a페인트 도색'

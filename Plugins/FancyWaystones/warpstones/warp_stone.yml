@@ -1,0 +1,16 @@
+Item:
+  type: ENDER_EYE
+  meta:
+    display-name: '&d&l순간이동 휴대 마법석'
+    lore:
+      - '&7 이 마법석을 사용하여 어디든지 떠나보세요.'
+      - '&e* 무제한 사용가능 *'
+      - '&e* 30 초 쿨타임 *'
+Warm Up Effect: wuExample
+Post Teleport Effect: ptExample
+Use Condition:
+  Criteria: ALWAYS
+Behavior:
+  Charge Players: true
+  One Time Item: false
+  Cooldown: 30s

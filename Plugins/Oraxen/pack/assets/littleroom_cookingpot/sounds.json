@@ -1,0 +1,32 @@
+{
+   "littleroom.cookingpot.cooking":{
+		 "sounds": [
+			"littleroom/cookingpot/cooking"
+		 ]
+	},
+   "littleroom.cookingpot.done":{
+		 "sounds": [
+			"littleroom/cookingpot/done"
+		 ]
+	},
+   "littleroom.cookingpot.fail":{
+		 "sounds": [
+			"littleroom/cookingpot/fail"
+		 ]
+	},
+   "littleroom.cookingpot.ingredient1":{
+		 "sounds": [
+			"littleroom/cookingpot/ingredient1"
+		 ]
+	},
+   "littleroom.cookingpot.ingredient2":{
+		 "sounds": [
+			"littleroom/cookingpot/ingredient2"
+		 ]
+	},
+   "littleroom.cookingpot.ingredient3":{
+		 "sounds": [
+			"littleroom/cookingpot/ingredient3"
+		 ]
+	}
+}

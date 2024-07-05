@@ -1,0 +1,88 @@
+pitaya_seeds:
+  displayname: <white>용과 씨앗
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/crops/pitaya/pitaya_seeds
+    custom_model_data: 1056
+pitaya:
+  displayname: <white>용과
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/pitaya/pitaya
+    custom_model_data: 1027
+pitaya_silver_star:
+  displayname: <white>용과 ★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/pitaya/pitaya_silver_star
+    custom_model_data: 1028
+pitaya_golden_star:
+  displayname: <white>용과 <gold>★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/pitaya/pitaya_golden_star
+    custom_model_data: 1029
+pitaya_stage_1:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 55
+      model: item/crops/pitaya/stage_1
+  Pack:
+    generate_model: false
+    model: item/crops/pitaya/stage_1
+    custom_model_data: 1057
+pitaya_stage_2:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 56
+      model: item/crops/pitaya/stage_2
+  Pack:
+    generate_model: false
+    model: item/crops/pitaya/stage_2
+    custom_model_data: 1058
+pitaya_stage_3:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 57
+      model: item/crops/pitaya/stage_3
+  Pack:
+    generate_model: false
+    model: item/crops/pitaya/stage_3
+    custom_model_data: 1059
+pitaya_stage_4:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 58
+      model: item/crops/pitaya/stage_4
+  Pack:
+    generate_model: false
+    model: item/crops/pitaya/stage_4
+    custom_model_data: 1060
+pitaya_stage_5:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 59
+      model: item/crops/pitaya/stage_5
+  Pack:
+    generate_model: false
+    model: item/crops/pitaya/stage_5
+    custom_model_data: 1061
+pitaya_stage_6:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 60
+      model: item/crops/pitaya/stage_6
+  Pack:
+    generate_model: false
+    model: item/crops/pitaya/stage_6
+    custom_model_data: 1062

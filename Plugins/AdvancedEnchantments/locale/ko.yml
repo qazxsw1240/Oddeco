@@ -1,0 +1,219 @@
+# Use %p% to insert the plugins prefix.
+# All messages support HEX color codes on 1.16+. Format: {#FFFFFF}
+# Almost all messages support PlaceholderAPI.
+prefix: "&7[&9AdvancedEnchantments&7]&r "
+
+effects:
+  steal-money: "&6%attacker% &7가 &6%amount% &7만큼 &6%victim%&7에게서 훔쳤습니다.&7"
+  used: "&r%enchant-color% %level%"
+
+commands:
+  no-permission: "&c당신에게는 권한이 없습니다."
+  offline-player: "&c그 플레이어는 로그아웃했습니다."
+  enchantment-not-found: "&c&n%enchant%&c는 찾을 수 없습니다."
+  invalid-amount: "&c1~64까지만 입력이 가능합니다."
+  invalid-enchant: "&c%enchant%는 유효한 인챈트가 아닙니다."
+  invalid-level: "&c인챈트 레벨 값이 유효하지 않습니다. %levels%만큼 사용하여야합니다."
+  invalid-usage: "&c Usage : %usage%"
+  not-a-number: "&c%number%는 숫자가 아닙니다."
+  not-holding-item: "&c당신은 아이템을 들고 있어야합니다."
+  enchantment-info:
+    invalid-usage: "&cInvalid usage! Proper usage: %command% <enchantment>"
+    open-menu-message: "&7&e%enchant% &7에 대한 정보입니다."
+  enchants:
+    open-menu-message: "&7모든 인챈트에 대한 리스트를 보여주겠습니다..."
+  apply:
+    cooldown: "&c이 커맨드는 %seconds% 후에 쓸 수 있습니다."
+    no-args: "&c어떤 플레이어가 효과를 받을 것인지 특정하여주십시오."
+    reapplied: "&a당신의 갑옷이 다시 적용되었습니다."
+    reapplied-other: "&a%player%의 갑옷이 다시 적용되었습니다."
+    reapplied-for-all: "&a모든 플레이어의 갑옷이 다시 적용되었습니다."
+  withdrawsouls:
+    invalid-usage: "&c 명령어 : /withdrawsouls <count>"
+    less-than-one: "&c숫자는 항상 양수여야 합니다."
+    invalid-item: "&c옳바르지 않은 아이템입니다."
+  aegive:
+    invalid-material: "&c옳바르지 않은 재료입니다. 'materials.yml'에서 적용이 가능한 모든 재료들을 참고해보세요."
+    invalid-item-flag: "&c옳바르지 않은 아이템 설정입니다. 가능한 것은 %itemflags%에서 선택하실 수 있습니다."
+    invalid-enchantment: "&c옳바르지 않은 인챈트입니다!"
+    success: "&a&2%amount% x %material% 를 &a%player%&a에게 보내겠습니다."
+  gedit:
+    unknown-gkit: "&c%gkit%은 없는 것 같습니다."
+    edit:
+      invalid-usage: "&c명령어 : /gedit edit <gkit>"
+    set-permission:
+      invalid-usage: "&c명령어 : /gedit setpermission <gkit> <perm>"
+      success: "&e&6%gkit%'s&e kit 의 권한을 &6%permission%으로 설정했습니다."
+    reset:
+      invalid-usage: "&c명령어 : /gedit reset <gkit> <player>"
+      success: "&e&6%player%의 &6%gkit%을 초기화하였습니다."
+    list: "&eGKits: &6%gkits%"
+    setdelay:
+      invalid-usage: "&c명령어 : /gedit setdelay <gkit> <delay (in seconds)>"
+      invalid-delay: "&c%delay%는 설정 가능한 정수가 아닙니다!"
+      success: "&e&6%gkit%의 쿨타임을 &6%delay%로 설정했습니다."
+  main:
+    unknown-command: "&c유효한 명령어가 아닙니다. \"/ae\"를 사용하여 명령어들을 확인해보세요."
+    setsouls:
+      invalid-usage: "&c정확한 명령어로는, /ae setsouls <amount>를 써주세요."
+      invalid-item: "&c유효한 아이템이 아닙니다."
+      success: "&c?해당 아이템은 %amount%만큼의 영혼을 가진 것으로 설정했습니다."
+    unenchant:
+      invalid-usage: "&c정확한 명령어로는, /ae unenchant <enchant>를 써주세요."
+      invalid-enchant: "&c%enchant%는 유효하지 않은 명령어입니다."
+      not-holding-item: "&c당신은 무조건 아이템을 들고 있어야합니다."
+      does-not-have-enchant: "&c이 아이템은 &4%enchant%&c가 없는거 같습니다."
+      success: "&a%enchant%를 성공적으로 제거했습니다!"
+    zip:
+      zip-exists: "&c다시 시도해보세요."
+      success: "&e모든 AE 플러그인에 대한 정보를 압축하여 %path%에 생성되었습니다."
+      error: "&c압축하는 과정에서 어떠한 오류가 발생했습니다. 콘솔창에서 확인해보세요."
+    greset:
+      reset: "&a %gkit%의 내용을 %player%를 위해 초기화했습니다."
+      reset-all: "&a모든 GKits을 %player%를 위해 초기화했습니다."
+    claim:
+      invalid-usage: "&c인챈트 토큰을 엔터쳐주세요."
+    givegkit:
+      success: "&c %gkit%을 %player%에게 줬습니다."
+    giverandombook:
+      success: "&a&2%player%에게 %amount% x %group%만큼의 랜덤 인챈트 북을 줬습니다."
+    givebook:
+      success: "&a&2%player%에게 %amount%x %enchant% %level% &a을 줬습니다."
+    enchant:
+      added: "&a %enchant% 를 추가합니다."
+      upgraded: "&2%enchant%를 %previous-level% 레벨에서 %level%로 업그레이드 합니다."
+      downgraded: "&2%enchant%를 %previous-level% 레벨에서 %level%로 강화 하락 당했습니다."
+      removed: "&c%enchant%를 지워버렸습니다."
+    giveitem:
+      success: "&7 %amount%x %item%&7 만큼 &b%player% &7에게 주었습니다."
+    givercbook:
+      success: "&a &2%player% 에게 %amount%x %group% &a우클릭 책들을 주었습니다."
+    give:
+      success: "&a성공적으로 %player%에게 %enchant% %level% 책을 줬습니다."
+    tinkereritem:
+      success: "&c%amount%개의 땜장이 아이템을 %player%에게 줬습니다"
+    admin:
+      invalid-page: "&c유효하지 않은 페이지입니다."
+    info:
+      - "&e&6%enchant% &e에 대한 정보&7:"
+      - "&6설명&7: &e%description%"
+      - "&6바를 수 있는 도구 &7: &e%applies%"
+      - "&6최대 레벨 &7: &e%max-level%"
+
+    pastetypes: "&a인챈트 타입 설명 문서: %url%"
+    pasteenchants: "&a인챈트 리스트: %url%"
+    open: "&a%player%에게 %menu%를 열어드리겠습니다."
+
+token:
+  success: "&2&lx &a성공적으로 &l%token%인챈트 토큰을 다운로드 받았습니다. 다시 적용해보겠습니다..."
+
+interact:
+  main-hand-only: "&c오른손에 들고 있어야 인챈트를 쓸 수 있어요!"
+
+enchanter:
+  re-buy: "&c다시 구매해주세요."
+  disabled-in-world: "&c인첸터 기능이 이 월드에서는 제한되었습니다."
+  full-inventory: "&c인벤토리가 가득찼습니다."
+  examine-book: "&7You examined %group-color%%group-name%&7 book and found %enchant-color% %level%"
+  unknown-payment-method: "&c %paymentType%으로 지불하려던 행위가 막혔습니다. 관리자에게 문의하여 주십시오."
+  successful-purchase: "&a구매 성공하셨습니다!"
+  cannot-afford:
+    - "&c이걸 구매하기에는 경험치가 부족합니다..."
+    - "&7당신의 경험치: %exp%"
+
+tinkerer:
+  trade-accepted: "&a거래 성립!"
+  non-tradeable-item:
+    - "&c이 땜장이는 그걸 원하는거 같지 않아요."
+    - "&7커스텀 인챈트 장비만 취급하는 것 같습니다."
+
+alchemist:
+  doesnt-accept: "&c연금술사가 이 아이템을 원하지 않는 것 같습니다."
+  trade-cancelled: "&c거래를 취소하였습니다."
+  cannot-afford: "&c이 합의는 당신 마음에 들지 않을 정도로 비싸군요."
+  exceeds-max-level: "&c이미 최대 레벨을 추가하였습니다."
+
+gkits:
+  no-permission: "&e%gkit%을 쓸 권한이 없습니다."
+  cooldown: "&e당신은 지금 이 킷을 쓸 수 없습니다, 해당 &6%gkit%을 쓰기 위해서는 &7(%cooldown%)만큼 기다리셔야합니다."
+  used-kit: "&e&6%gkit%을 사용하였습니다.."
+  missing-permission: "&cGkit %gkit%에 대한 권한 설정이 유효하지 않거나 존재하지 않습니다."
+  unknown-gkit: "&c그런 %gkit%은 존재하지 않는 것 같습니다."
+  unknown-enchant: "&7이런 %enchant%라는 인챈트는 없는 것 같습니다."
+
+heroic:
+  cannot-apply: "&c이 아이템에는 crystal 업그레이드가 적용되지 않습니다."
+  upgrade-failed: "&c크리스탈 업그레이드가 실패해버렸습니다."
+
+orbs:
+  cannot-apply: "&c이 아이템에는 orb를 적용할 수 없습니다."
+  failed: "&cOrb 사용 실패!"
+  incompatible: "&c사용할 수 없습니다!"
+
+sets:
+  commands:
+    unknown-command: "&c이 명령어는 존재하지 않습니다.  \"/asets\" 을 통해서 사용가능한 명령어들을 찾아보세요."
+    invalid-usage: "&c이 명령어는 옳바르지 않습니다. /asets을 사용하여 옳바른 명령어를 찾아 입력해주세요."
+    invalid-set: "&c설정 값이 유효한 값이 아닙니다."
+    invalid-set-piece: "&c유효하지 않는 설정입니다. 다음 설정 중에서 골라서 사용하실 수 있습니다. : %set pieces%"
+    invalid-weapon: "&c유효한 무기가 아닙니다."
+    offline-player: "&c이 플레이어는 로그아웃했습니다."
+    invalid-chances: "&c이 chances는 유효하지 않습니다."
+    list:
+      header: "&e사용 가능한 Sets 리스트 &7[%size%]"
+      set: " &8>> &f%set%"
+    listweapons:
+      header: "&e 사용 가능한 무기 리스트 &7[%size%]"
+      weapon: " &8>> &f%weapon%"
+    give:
+      success: "&f %set% &e를 %player%에게 주었습니다."
+    givepiece:
+      success: "&f%set%의 &f%piece%를 &e%player%에게 주었습니다."
+    weapon:
+      success: "&f %weapon% &e를 &f %player% &e에게 주었습니다."
+
+items:
+  randomization-scroll:
+    cannot-apply: "&c이 아이템엔 랜덤 스크롤을 사용할 수 없습니다!"
+    single-items-only: "&c아이템 단 1개에만 적용할 수 있습니다."
+  black-scroll:
+    full-inventory: "&c인벤토리가 가득 찼습니다."
+    no-enchants: "&c이 아이템은 인챈트가 안됬습니다!"
+    invalid-enchant: "&c이 인챈트를 플러그인에서 지원하지 않기 때문에 지울 수 없습니다!"
+    cannot-remove: "&c이 %enchant%라는 인챈트는 지울 수 없습니다."
+  soul-tracker:
+    disabled: "&c영혼 시스템은 이 서버에서 적용되지 않았습니다."
+    apply-successful: "&f&lSoul Tracker &7라는 시스템을 성공적으로 손에 들고 있는 아이템에 적용하였습니다."
+  magic-dust:
+    full-inventory: "&c인벤토리가 가득 찼습니다."
+    single-items-only: "&c아이템 단 1개에만 적용할 수 있습니다."
+  white-scroll:
+    full-inventory: "&c인벤토리가 가득 찼습니다."
+    apply-successful: "&a화이트 주문서를 아이템에 적용하였습니다."
+    item-saved: "&a화이트 주문서가 아이템을 보존했습니다."
+
+combining:
+  already-max-level: "이 인챈트는 이미 최대레벨입니다."
+  success: "&a성공했습니다. &7%enchant%의 레벨은 이제부터 %level%입니다."
+  failure: "&c실 패!"
+  something-went-wrong: "&c과정 도중에 뭔가가 잘못되었습니다..."
+
+enchant-limitations:
+  cannot-be-modified: "&c이 아이템은 수정될 수 없습니다.!"
+
+applying:
+  not-applicable-with: "&c이 &4%enchant1% 라는 인챈트는 &4%enchant2%&7라는 인챈트와 동시 적용이 불가능합니다!"
+  requires-enchant: "&c이 &4%enchant1% &c라는 인챈트는 &4%enchant2%&7&c라는 인챈트가 있어야 적용이 됩니다!"
+  already-applied: "&c이미 이 인챈트가 적용되어 있습니다."
+  applied: "&a인챈트를 적용하였습니다."
+  max-level: "&c이미 이 인챈트가 최대 레벨입니다."
+  wrong-material: "&c이 인챈트는 이 아이템에 적용되지 않습니다."
+
+slots:
+  limit-reached: "&c이 인챈트는 더이상 적용될 수 없습니다. 더이상 남은 슬롯이 없습니다. orb를 사용해서 슬롯을 늘려주세요."
+
+chances:
+  book-failed: "&c이 인챈트 책을 바르는데 실패하긴 했지만, 다행이도 파괴는 되지 않았습니다."
+
+destroy:
+  book-failed: "&c인챈트를 실패해버렸습니다!"

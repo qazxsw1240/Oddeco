@@ -1,0 +1,325 @@
+acacia:
+  Type: block_break
+  Display:
+    Name: Acacia
+    Icon:
+      Material: ACACIA_LOG
+  Objects:
+  - stripped_acacia_wood
+  - acacia_log
+  - acacia_wood
+  - stripped_acacia_log
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 1.0
+      Max: 3.0
+  Job_XP:
+    Chance: 75.0
+    Min: 3.0
+    Max: 5.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+birch:
+  Type: block_break
+  Display:
+    Name: Birch
+    Icon:
+      Material: BIRCH_LOG
+  Objects:
+  - birch_wood
+  - stripped_birch_wood
+  - stripped_birch_log
+  - birch_log
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 1.0
+      Max: 3.0
+  Job_XP:
+    Chance: 75.0
+    Min: 3.0
+    Max: 5.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+cherry:
+  Type: block_break
+  Display:
+    Name: Cherry
+    Icon:
+      Material: CHERRY_LOG
+  Objects:
+  - cherry_log
+  - stripped_cherry_log
+  - cherry_wood
+  - stripped_cherry_wood
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 1.0
+      Max: 3.0
+  Job_XP:
+    Chance: 75.0
+    Min: 3.0
+    Max: 5.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+crimson:
+  Type: block_break
+  Display:
+    Name: Crimson
+    Icon:
+      Material: CRIMSON_STEM
+  Objects:
+  - stripped_crimson_stem
+  - crimson_stem
+  - crimson_hyphae
+  - stripped_crimson_hyphae
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 1.5
+      Max: 4.5
+  Job_XP:
+    Chance: 75.0
+    Min: 4.5
+    Max: 7.5
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+dark_oak:
+  Type: block_break
+  Display:
+    Name: Dark Oak
+    Icon:
+      Material: DARK_OAK_LOG
+  Objects:
+  - dark_oak_log
+  - stripped_dark_oak_log
+  - dark_oak_wood
+  - stripped_dark_oak_wood
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 1.0
+      Max: 3.0
+  Job_XP:
+    Chance: 75.0
+    Min: 3.0
+    Max: 5.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+jungle:
+  Type: block_break
+  Display:
+    Name: Jungle
+    Icon:
+      Material: JUNGLE_LOG
+  Objects:
+  - stripped_jungle_wood
+  - jungle_log
+  - stripped_jungle_log
+  - jungle_wood
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 1.5
+      Max: 4.5
+  Job_XP:
+    Chance: 75.0
+    Min: 3.0
+    Max: 5.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+mangrove:
+  Type: block_break
+  Display:
+    Name: Mangrove
+    Icon:
+      Material: MANGROVE_LOG
+  Objects:
+  - stripped_mangrove_wood
+  - mangrove_wood
+  - mangrove_log
+  - stripped_mangrove_log
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 1.0
+      Max: 3.0
+  Job_XP:
+    Chance: 75.0
+    Min: 3.0
+    Max: 5.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+oak:
+  Type: block_break
+  Display:
+    Name: Oak
+    Icon:
+      Material: OAK_LOG
+  Objects:
+  - oak_log
+  - oak_wood
+  - stripped_oak_wood
+  - stripped_oak_log
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 1.0
+      Max: 3.0
+  Job_XP:
+    Chance: 75.0
+    Min: 3.0
+    Max: 5.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+spruce:
+  Type: block_break
+  Display:
+    Name: Spruce
+    Icon:
+      Material: SPRUCE_LOG
+  Objects:
+  - stripped_spruce_wood
+  - spruce_log
+  - stripped_spruce_log
+  - spruce_wood
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 1.0
+      Max: 3.0
+  Job_XP:
+    Chance: 75.0
+    Min: 3.0
+    Max: 5.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+warped:
+  Type: block_break
+  Display:
+    Name: Warped
+    Icon:
+      Material: WARPED_STEM
+  Objects:
+  - stripped_warped_hyphae
+  - stripped_warped_stem
+  - warped_stem
+  - warped_hyphae
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 1.5
+      Max: 4.5
+  Job_XP:
+    Chance: 75.0
+    Min: 4.5
+    Max: 7.5
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+leaves:
+  Type: block_break
+  Display:
+    Name: Leaves
+    Icon:
+      Material: OAK_LEAVES
+  Objects:
+  - mangrove_leaves
+  - flowering_azalea_leaves
+  - azalea_leaves
+  - birch_leaves
+  - cherry_leaves
+  - dark_oak_leaves
+  - spruce_leaves
+  - acacia_leaves
+  - jungle_leaves
+  - oak_leaves
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 0.01
+      Max: 0.08
+  Job_XP:
+    Chance: 25.0
+    Min: 1.0
+    Max: 2.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100

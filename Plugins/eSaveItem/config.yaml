@@ -1,0 +1,92 @@
+#
+# ███████╗███████╗ █████╗ ██╗   ██╗███████╗██╗████████╗███████╗███╗   ███╗
+# ██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝██║╚══██╔══╝██╔════╝████╗ ████║
+# █████╗  ███████╗███████║██║   ██║█████╗  ██║   ██║   █████╗  ██╔████╔██║
+# ██╔══╝  ╚════██║██╔══██║╚██╗ ██╔╝██╔══╝  ██║   ██║   ██╔══╝  ██║╚██╔╝██║
+# ███████╗███████║██║  ██║ ╚████╔╝ ███████╗██║   ██║   ███████╗██║ ╚═╝ ██║
+#
+# "ANSI Shadow" from http://patorjk.com/software/taag/
+# Version:    ${version}
+# Build time: ${timestamp}
+# Wiki: https://eproject.gitbook.io/esaveitem/
+# --
+# General configuration
+# --
+
+# Will the plugin be enabled? After change, restart needed!
+enabled: true
+
+# If set to true, the plugin will send message everytime the plugin is not updated
+check-for-updates: true
+
+# The main plugin prefix that will be displayed in front of every SaveItem plugin message
+# You can use the normal minecraft color codes by using "&bSave&fItem" or you can use our Hex color system (more information on wiki)
+prefix: "<BOLD><GRADIENT:17FFD5:17AEFF>인벤토리 세이브권</BOLD></GRADIENT> &7»&r"
+
+# Item that will be used as the main SaveItem material
+# List of all materials is available here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+material: FLOWER_BANNER_PATTERN
+
+# The display name of the SaveItem item (in inventory)
+display-name: "<BOLD><GRADIENT:17FFD5:00FF93>◆인벤토리 보호권◆</BOLD></GRADIENT>"
+
+# Lore of the SaveItem item
+# NOTE: The plugin checks if the lore in the game and in the config is the same, if not, the specific SaveItem will not work
+item-lore:
+  - "&b- &7이게 인벤토리에 있으면"
+  - "&b- &7아이템을 보호해줍니다!"
+
+# You can set your own item model
+# NOTE: -1 = IGNORED
+custom-model-data: -1
+
+# Will the SaveItem be infinity? Meaning: If true, the item will not be removed from the players inventory
+item-infinity: false
+
+# Percentage of items that will be given back to the player after his death (if he has the SaveItem)
+# Each item in inventory is solo calculated and has 'items-percentage' value to be returned to players inventory
+items-percentage: 100
+
+# If true, the players inventory will remain! The "saveitem.keepinventory" and "saveitem.keeplevel" permission will bypass this settings
+# NOTE: If 'keep-inventory' to false, it will disable the 'item-percentage' function
+keep-inventory: true
+keep-level: true
+keep-armor: true
+
+# If you want to ignore some materials, you can add them here
+# List of all materials is available here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+# Items listed below will be automatically dropped (when player dies, the SaveItem will not save it)
+ignored-materials:
+  - ""
+
+# Do you want the SaveItem to be glowing/enchanted?
+item-glow: false
+
+# SaveItem will only work, if the player holds the item in his main hand
+must-hold-in-hand: false
+
+# Do you want to enable SaveItem buying? What will the price be? (Vault required)
+# Set buying to false if you don't have vault
+enable-buying: false
+price: 500
+
+# The SaveItem will not work in these worlds (on death)
+disabled-worlds:
+  - "spawn1"
+  - "spawn2"
+
+custom-recipe:
+  # Dou you want players to craft this item?
+  crafting-enabled: false
+  # Materials travel from the upper left to the right row by row = (A,B,C) -> next row (D,E,F) -> next row (G,H,I)
+  # NOTE: Set material to 'AIR' if you want it empty
+  slots:
+    A: AIR
+    B: PRISMARINE_CRYSTALS
+    C: AIR
+    D: DIAMOND
+    E: PRISMARINE_SHARD
+    F: DIAMOND
+    G: AIR
+    H: PRISMARINE_CRYSTALS
+    I: AIR

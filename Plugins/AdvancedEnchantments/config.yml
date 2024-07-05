@@ -1,0 +1,741 @@
+# AdvancedEnchantments
+# Made by AdvancedPlugins.net
+# Config Version: 9.7.0
+# Version Release date: 29/02/2024
+
+# ** Commands and permissions
+# /enchanter - Open Enchanter; no permission
+# /tinkerer - Open Tinkerer; no permission
+# /gkits - Open GKits; no permission
+# /ae - Main plugin command; ae.help
+# /ae about - Information about current build; no permission
+# /ae list - List all custom enchantments; ae.list
+# /ae admin - Open a menu with all possible enchantments (100% success rate); ae.admin
+# /ae giveitem <player> <item> - Give various plugin items; ae.giveitem
+# /ae give <player> <enchantment> <level> - Give custom enchanted book; ae.give
+# /ae info <enchantment> - Information about custom enchantment; ae.info
+# /ae reload - Reload all configurations; ae.reload
+# /ae enchant <enchantment> <level> - Enchant item; ae.enchant
+# /ae givebook <player> <enchantment> <level> <count> <success> <destroy> - Give book with specific rates; ae.givebook
+# /ae givercbook <type> <player> <amount> - Give right-clickable book; ae.givercbook
+# /ae giverandombook <player> <group> - Gives random book from group; ae.giverandombook
+# /ae pasteenchants - Pastes formatted enchantments list; ae.admin
+# /alchemist - Open alchemist; no permission
+# /ae givegkit <player> <gkit> - Give player gkit items; ae.givegkit
+
+# /aegive - Give player gkit items; ae.give
+# Example: /aegive GC diamond_helmet 1 name:&&7cItem_name protection:5 glowing:1 lore:&&7cLore_line_#1|&&7cSecond_Line
+
+# /asets - Advanced Sets commands; asets.admin
+
+# Some configurable settings are explained, others should be self-explanatory.
+# Join support discord for help or with questions: https://advancedplugins.net/discord
+
+# Change default messages language. You can modify all messages in AdvancedEnchantments `locale` folder.
+# See all default languages & other info here: https://ae.advancedplugins.net/general-information/languages
+language: ko
+
+# Manage plugin commands
+commands:
+  advancedenchantments:
+    # Should "no permission" mnlessage be shown when
+    # user does not have "ae.help" pfsasermaission
+    permissionMessageEnabled: true
+  enchanter:
+    # Is command enabled?
+    enabled: true
+    # Main command to open Enchanter
+    command: /enchanter
+    # List of commands that will act as the command
+    aliases:
+    - e
+    - ce
+  tinkerer:
+    enabled: true
+    command: /tinkerer
+    aliases:
+    - tinker
+  alchemist:
+    enabled: true
+    command: /alchemist
+    aliases:
+    - alchem
+  withdrawsouls:
+    enabled: true
+    command: /withdrawsouls
+    aliases:
+    - wsouls
+  apply: # Reapplies current worn armor's effects, repeating effects as well
+    enabled: true
+    command: /apply
+    aliases:
+    - reapply
+
+permissions:
+  enchanter:
+    enabled: true
+    perm: ae.enchanter
+  tinkerer:
+    enabled: true
+    perm: ae.tinkerer
+  gkits:
+    enabled: true
+    perm: ae.gkits
+  alchemist:
+    enabled: true
+    perm: ae.alchemist
+
+disable-enchants:
+  # Disable enchants in specific world
+  test_world: # world name
+    - test_enchant
+
+# Only disables armorsets events
+disable-armorsets:
+  # Disable armorsets in specific world
+  test_world: # world name
+    - test_enchant
+
+souls:
+  enabled: true
+  lore: '&c영혼 보유량: %souls%'
+  item:
+    type: PAPER
+    id: 0
+    custom-model-data: 0
+    name: '&f&l영혼 개수 체크'
+    lore:
+    - '&7무기에 발라서 영혼이 몇개 있나'
+    - '&7확인해보세요.'
+    force-glow: false
+
+# Enchantments limitation
+# If an item contains the specified lore, or the specified NBT tag, custom enchants
+# will not be able to be applied.
+enchantLimitation:
+  enabled: false
+  lore: '&c&l특수 설정 불가능'
+  NBT-tag: unmodifiable
+
+# Enchantment combining (leveling up) on items.
+# Example: https://media.giphy.com/media/26n6QDunj6iC3Z6Zq/giphy.gif
+combining:
+  enabled: true
+  chances:
+    # If true, Success and Destroy chances will effect combining
+    use-chances: true
+    # If true, item will break (if Protection is added, protection will be removed).
+    break-item: false
+    # If higher level of enchantment already on item is applied, should the enchantment upgrade?
+    upgrade: true
+
+# Limit number of enchantments item can have
+slots:
+  enabled: true
+  # Max number of enchantments
+  max: 9
+  # Max slots increasement with slot increase
+  # This is a total slot number that can be with upgrades
+  max-increase-of-slots: 13
+  # Should it be displayed in lore?
+  display-in-lore: true
+  display: '&e인챈트 슬롯&7: %left%'
+
+# Applying enchantment book section
+# Miscellaneous settings for applying
+# enchantment books to items (dragging book to item).
+applying:
+  cosmetics:
+    applied:
+      particle: HAPPY_VILLAGER
+      sound: ENTITY_PLAYER_LEVELUP
+    failed:
+      particle: LAVA_POP
+      sound: BLOCK_ANVIL_BREAK
+
+# Enchantment Book section
+# This item is used to get random enchantment book
+# from a group of enchantments.
+# - Can be purchased in the enchanter menu (/enchanter).
+enchanter-books:
+  firework-on-open: true
+  cosmetics:
+    particle: HAPPY_VILLAGER
+    sound: ENTITY_PLAYER_LEVELUP
+  # Show message when enchantment book is right-clicked
+  display-right-click-message: true
+  type: BOOK
+  id: 0
+  custom-model-data: 0
+  force-glow: false
+  name: '%group-color%&l%group-name%&l 인챈트 북 가챠권&7(우클릭)'
+  lore:
+  - '&7우클릭해서 %group-color%%group-name%의 랜덤'
+  - '&7인챈트북을 획득하세요.'
+
+# Custom Items section
+# Configure the items of AdvancedEnchantments
+# such as the Black Scroll, Secret Dust, etc.
+items:
+  settings:
+    # Admin Items listed below this list will only be
+    # applicable to materials in this list
+    can-apply-to:
+    - ALL_SWORD
+    - ALL_ARMOR
+    - ALL_PICKAXE
+    - ALL_AXE
+    - ALL_SPADE
+    - ALL_HOE
+    - ALL_EDIBLE
+    - BOOK
+    - BOW
+    - CROSSBOW
+    - SKULL_ITEM
+    - PLAYER_HEAD
+    - ELYTRA
+    - TRIDENT
+  transmogscroll:
+    type: PAPER
+    id: 1
+    custom-model-data: 0
+    force-glow: false
+    name: '&c&l행주'
+    lore:
+    - '&7검을 닦는 용도입니다. &e&n커스텀 인챈트&7'
+    - '&7갯수 만큼 이름 뒤에&d숫자&7가 붙습니다. 기분이 좋습니다.'
+    - ''
+    - '&e&o적용하고 싶은 아이템에 스크롤을 드래그 앤 드랍으로 적용하세요.'
+    enchants-count-formatting: '&d[&b&n%count%&d]'
+  soulgem:
+    type: EMERALD
+    id: 1
+    custom-model-data: 0
+    force-glow: false
+    name: '&c&l영혼 보석 &7[&a%count%&7]'
+    lore:
+    - '&7아이템에 에메랄드를 발라서 영혼을 주입하세요.'
+  itemnametag:
+    type: NAME_TAG
+    id: 1
+    custom-model-data: 0
+    force-glow: false
+    name: '&6&l아이템 이름 설정권 &7(Right Click)'
+    lore:
+    - '&7이름을 새로 짓고, 자신의 무기로 커스터마이징 하세요!'
+    messages:
+      success:
+      - '&a&l(!) &a성공적으로 당신의 아이템을 &e%name%으로 변경했습니다'
+      activated:
+      - '&a&l(!) &a당신의 다음 채팅 메세지가 아이템 이름이 될 것입니다. 채팅창을 켜서 아이템 이름을 입력하고 엔터를 눌러주세요.'
+      air:
+      - '&c&l(!) &c이름을 지정하기 위해서는 해당 아이템을 계속 들고 있어야합니다.'
+      renaming-not-enchanted-item:
+      - '&c&l(!) &c오직 인챈트된 아이템만 이름을 지정할 수 있습니다.'
+    settings:
+      # Should colors be allowed
+      colors: true
+      # Should magic color codes (&k, &m, &o, &r, &l) be allowed?
+      magic: true
+      # Words the name can't be. This uses regex, not an exact match.
+      # You can learn the basics of regex here: https://www.rexegg.com/regex-quickstart.html
+      word-blacklist:
+      - fuck
+      - dick
+      - bitch
+      - 시발
+      - 병신
+  randomization-scroll:
+    type: PAPER
+    id: 2
+    custom-model-data: 0
+    force-glow: false
+    name: '%group-color%%group-name%&l%group-color% 확률 재조정 스크롤'
+    lore:
+    - ''
+    - '&7이걸 %group-color%%group-name% &7인챈트 북에 적용하세요.'
+    - '&7그러면 성공, 파괴 확률이 랜덤으로 재조정 됩니다.'
+    - ''
+    - '&7인챈트북에 드래그 & 드랍으로 적용할 수 있습니다.'
+  black-scroll:
+    type: INK_SACK
+    id: 1
+    custom-model-data: 0
+    force-glow: false
+    name: '&f&l칠흑의 주문서'
+    lore:
+    - '&7랜덤의 인챈트를 제거한 다음'
+    - '&7그 제거된 인챈트를 &f%success%% &7의'
+    - '&7인챈트 북으로 재생산합니다. (1% 파괴)'
+    - '&f적용하고 싶은 아이템 위에 드래그 & 드랍을 해보세요.'
+    success: 99
+    destroy: 1
+    random: true
+  secret-dust:
+    type: FIREBALL
+    id: 1
+    custom-model-data: 0
+    force-glow: false
+    name: '%group-color%%group-name%%group-color% 비밀의 가루 번들 &7(우클릭)'
+    lore:
+    - '&7담고 있는 것: &b신비로운, &f마법의 &7가루.'
+    - '&7정체 불명의 ★마법의 가루★입니다. 흡입하시면 안되요.'
+  mystery-dust:
+    type: SULPHUR
+    id: 1
+    custom-model-data: 0
+    force-glow: false
+    name: '&f신비로운 가루'
+    lore:
+    - '&7 마법의 가루가 실패했을 때'
+    - '&7 뜨는 부산물입니다.'
+    settings:
+      shift-click: false
+  magic-dust:
+    type: SUGAR
+    id: 1
+    custom-model-data: 0
+    force-glow: false
+    name: '%group-color%%group-name%%group-color% 마법의 가루'
+    lore:
+    - '&a+ %percent%% 성공 확률'
+    - '&7 특정 %group-color%%group-name% &7인챈트 북의 성공 확률을'
+    - '&7 %group-color%%percent%% &7만큼 올릴 수 있습니다. '
+    - '&7 적용하려고 하는 인챈트 북에 드래그 & 드랍으로 적용하세요. '
+    messages:
+      cannotApplyToStacked: '&c&l(!) &c여러개 쌓여있는 아이템엔 적용할 수 없습니다.'
+  slot-increaser:
+    type: EYE_OF_ENDER
+    id: 1
+    custom-model-data: 0
+    force-glow: false
+    name: '%group-color%&l%group-name% 슬롯 크기 증가 룬'
+    lore:
+    - '&7 인챈트 슬롯 제한 크기를 &a+%count% 만큼 증가시킬 수 있습니다.'
+    messages:
+      success:
+      - '&a&l(!) &a성공적으로 해당 아이템의 최대 인챈트 갯수 제한을 %count%만큼 늘렸습니다!'
+  blocktrak:
+    type: SLIME_BALL
+    id: 1
+    custom-model-data: 0
+    force-glow: false
+    name: '&a블록 파괴 트랙커'
+    lore:
+    - '&7이 도구로 얼마나 많은 블럭을 부쉈는지 확인할 수 있습니다.'
+    - '&7적용한 순간부터 트랙커가 실행됩니다.'
+    - '&7이 트랙커를 드래그 & 드랍으로 아이템에 적용하세요'
+    messages:
+      success:
+      - '&7성공적으로 &a블록 파괴 트랙커&7를 적용하였습니다.'
+    settings:
+      lore-display: '&e이 도구로 블럭을 캔 횟수: &6%stats%'
+  fishtrak:
+    type: FIREWORK_STAR
+    id: 1
+    custom-model-data: 0
+    force-glow: false
+    name: '&b낚시 트랙커'
+    lore:
+    - '&7이 낚시대로 얼마나 많은 낚시를 했는지 확인할 수 있습니다.'
+    - '&7적용한 순간부터 트랙커가 실행됩니다.'
+    - '&7이 트랙커를 드래그 & 드랍으로 아이템에 적용하세요'
+    messages:
+      success:
+      - '&7성공적으로 &b낚시 트랙커를 적용하였습니다.'
+    settings:
+      lore-display: '&e이 도구로 낚시를 한 횟수: &6%stats%'
+  stattrak:
+    type: MAGMA_CREAM
+    id: 1
+    custom-model-data: 0
+    force-glow: false
+    name: '&e전투 트랙커'
+    lore:
+    - '&7이 무기로 얼마나 많은 플레이어를 죽였는지 확인할 수 있습니다.'
+    - '&7적용한 순간부터 트랙커가 실행됩니다.'
+    - '&7이 트랙커를 드래그 & 드랍으로 아이템에 적용하세요'
+    messages:
+      success:
+      - '&7성공적으로 &b전투 트랙커를 적용하였습니다.'
+    settings:
+      lore-display: '&e이 무기로 플레이어를 죽인 횟수: &6%stats%'
+  mobtrak:
+    type: SLIME_BALL
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+    name: '&3몹 킬 트랙커'
+    lore:
+    - '&7이 무기로 얼마나 많은 몬스터를 죽였는지 확인할 수 있습니다.'
+    - '&7적용한 순간부터 트랙커가 실행됩니다.'
+    - '&7이 트랙커를 드래그 & 드랍으로 아이템에 적용하세요'
+    messages:
+      success:
+      - '&7성공적으로 &b몹킬 트랙커를 적용하였습니다.'
+    settings:
+      lore-display: '&3이 무기로 몬스터를 죽인 횟수: &f%stats%'
+  holywhitescroll:
+    type: PAPER
+    id: 3
+    custom-model-data: 0
+    force-glow: true
+    name: '&6&l성스러운 백색 스크롤'
+    lore:
+    - '&e이 전설적인 백색 스크롤은'
+    - '&e무기나 갑옷에 적용할 수 있으며,'
+    - '&e적용하고서부터는 아이템이 축복받아'
+    - '&e플레이어가 죽었을 때에도 아이템이 1번 귀속되게 됩니다.'
+    messages:
+      applied:
+      - '&7성공적으로 &6&l성스러운 백색 스크롤&7을 적용했습니다'
+    settings:
+      lore-display: '&e&l*&f&l휘황찬란하게&e&l* &f&l보호되고 있음.'
+  # Orbs allow applying x number of enchants
+  orb:
+    lore: '&a%max%만큼 인챈트 슬롯 추가됌. &7( : 오브 [&a+%increased%&7])'
+    weapon:
+      material: EYE_OF_ENDER
+      custom-model-data: 3
+      force-glow: false
+      name: '&6&l무기 인챈트 오브 &6[&a&n%max%&6]'
+      lore:
+      - '&a%success%% 성공 확률'
+      - ''
+      - '&6+%new% 인챈트 슬롯 확보'
+      - '&6%max%까지 인챈트할 수 있음.'
+      - ''
+      - '&e하나의 무기에 적용할 수 있는'
+      - '&e최대 인챈트 슬롯을 %max%만큼 확장하여'
+      - '&e%new% 인챈트 슬롯을 추가로 얻음.'
+      - '&7아이템에 드래그 & 드롭으로 적용할 수 있음.'
+    armor:
+      material: EYE_OF_ENDER
+      custom-model-data: 4
+      force-glow: false
+      name: '&6&l갑옷 인챈트 오브 &6[&a&n%max%&6]'
+      lore:
+      - '&a%success%% 성공 확률'
+      - ''
+      - '&6+%new% 인챈트 슬롯 확보'
+      - '&6%max%까지 인챈트할 수 있음'
+      - ''
+      - '&e하나의 갑옷에 적용할 수 있는'
+      - '&e최대 인챈트 슬롯을 %max%만큼 확장하여'
+      - '&e%new% 인챈트 슬롯을 추가로 얻음.'
+      - '&7아이템에 드래그 & 드롭으로 적용할 수 있음.'
+    tool:
+      material: EYE_OF_ENDER
+      custom-model-data: 5
+      force-glow: false
+      name: '&6&l도구 인챈트 오브 &6[&a&n%max%&6]'
+      lore:
+      - '&a%success%% 성공 확률'
+      - ''
+      - '&6+%new% 인챈트 슬롯 확보'
+      - '&6%max%까지 인챈트할 수 있음'
+      - ''
+      - '&e하나의 도구에 적용할 수 있는'
+      - '&e최대 인챈트 슬롯을 %max%만큼 확장하여'
+      - '&e%new% 인챈트 슬롯을 추가로 얻음.'
+      - '&7아이템에 드래그 & 드롭으로 적용할 수 있음.'
+
+# Related to armor items, put the
+# material name here to make it
+# a valid armor item.
+# Another items can be added here
+# to make them valid armor items.
+armor-items:
+  # Items that count as helmet
+  helmet:
+  - HEAD
+  - SKULL_ITEM
+  - SKULL
+  - PLAYER_HEAD
+  - CREEPER_HEAD
+  - DRAGON_HEAD
+  - ZOMBIE_HEAD
+  - NETHERITE_HELMET
+  - DIAMOND_HELMET
+  - GOLD_HELMET
+  - GOLDEN_HELMET
+  - IRON_HELMET
+  - CHAINMAIL_HELMET
+  - LEATHER_HELMET
+  - TURTLE_SHELL
+  - PUMPKIN
+  - CARVED_PUMPKIN
+  - TURTLE_HELMET
+  # - "FEATHER" # Custom Item Example
+  # Items that count as chest plate
+  chest-plate:
+  - NETHERITE_CHESTPLATE
+  - DIAMOND_CHESTPLATE
+  - GOLD_CHESTPLATE
+  - GOLDEN_CHESTPLATE
+  - IRON_CHESTPLATE
+  - CHAINMAIL_CHESTPLATE
+  - LEATHER_CHESTPLATE
+  - ELYTRA
+  # - "LEATHER" # Custom Item Example
+  # Items that count as leggings
+  leggings:
+  - LEGS
+  - DIAMOND_LEGGINGS
+  - NETHERITE_LEGGINGS
+  - GOLD_LEGGINGS
+  - GOLDEN_LEGGINGS
+  - IRON_LEGGINGS
+  - CHAINMAIL_LEGGINGS
+  - LEATHER_LEGGINGS
+  # - "PAPER" # Custom Item Example
+  # Items that count as boots
+  boots:
+  - FEET
+  - DIAMOND_BOOTS
+  - NETHERITE_BOOTS
+  - GOLD_BOOTS
+  - GOLDEN_BOOTS
+  - IRON_BOOTS
+  - CHAINMAIL_BOOTS
+  - LEATHER_BOOTS
+# - "EGG"
+
+white-scroll:
+  # Obtain white scroll by giving it with command "/ae giveitem <player> whitescroll"
+  # Should the white scroll be removed once applied enchantment fails?
+  delete: true
+  # Display in item lore
+  lore-display: '&f&l보호됌.'
+  item:
+    type: EMPTY_MAP
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+    name: '&f백색의 주문서'
+    lore:
+    - '&f아이템이 인챈트 실패로 인해'
+    - '&f파괴되는 것을 막는 스크롤.'
+    - '&e파괴를 막을 아이템에 드래그 & 드롭으로 적용.'
+
+destroy:
+  # Should book be destroyed if it fails?
+  enabled: true
+  # Should Item be destroyed?
+  destroy-item: true
+
+chances:
+  # Should book chances be random?
+  random: true
+  # If not random, what should be the simple values?
+  # Can use `<min>-<max>` to define range between
+  success: 99
+  destroy: 1
+  # If applying book fails, should the plugin destroy item 100% of the time or use Destroy from book to give a chance to
+  # neither apply to enchant neither destroy. If set to "enabled: true', item will always be destroyed.
+  destroy-if-fail:
+    enabled: false
+
+enchantment-book:
+  # If true, books can be applied to items in anvils.
+  anvil-application: false
+  # If true, books can be applied to items by dragging and dropping them on the item in an inventory.
+  drag-drop-application: true
+  item:
+    type: ENCHANTED_BOOK
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+  # Variables: %enchant%, %enchant-no-color%, %description%, %level-description%, %applies%, %success%, %destroy%, %color%, %max-level%
+  name: '%group-color%&l&n%enchant-no-color% %level%'
+  lore:
+  - '&a%success%% 성공 확률'
+  - '&c%destroy%% 파괴 확률'
+  - '&e%description%'
+  - '&7%applies-to% 인챈트'
+  - '&7아이템에 드래그앤 드롭으로 적용해보세요!'
+
+applies-groups:
+  MISC_HELMETS:
+  - CARVED_PUMPKIN
+  SKULL_ITEM: []
+  SWORD: []
+
+settings:
+  # If true, right-click triggers will work on off-hand.
+  right-click-triggers-on-off-hand: false
+  # If true, grindstones will remove custom enchants from items and return a small amount of XP.
+  grindstones-remove-custom-enchants: true
+  # Should enchantments on items be organized automatically in lore based on rarity?
+  organizeEnchantsOnItems: true
+  # The mode used to organize enchants in items lore's.
+  # 0 = No organization.
+  # 1 = Organize by group.
+  # 2 = Organize by group & alphabetically.
+  # 3 = Organize alphabetically.
+  lore-organize-mode: 2
+  # If this is true, items with custom enchants will have the same glowing effect
+  # as items with vanilla enchants.
+  custom-enchants-cause-glow: true
+  # Non-legacy potions system stacks potions and removes portions of potion from player,
+  # so removing one piece will not remove the whole streak. Suggested value: true
+  use-legacy-potions-system: true
+  # If this is enabled, when Fortune is paired with a custom enchant like
+  # SMELT or TP_DROPS, extra drops will be given just like if you used fortune on diamonds.
+  fortune-works-on-iron-gold: false
+  # Setting for the STEAL_MONEY effect.
+  steal-money:
+    message-enabled: false
+  # Should trench drops be automatically added to inventory? (prevents lag)
+  trench-autoadd-items: false
+  # If true, when TRENCH is paired with MORE_DROPS, the MORE_DROPS effect will
+  # be applied to each block TRENCH breaks.
+  trench-works-with-more-drops: false
+  # If true, the Rename Tag will only work on enchanted items.
+  renametag-enchanted-only: true
+  # Length of name player can rename items to with itemnametag
+  itemnametag-max-name-length: 32
+  # Use all mined blocks durability on TRENCH items
+  # true = does how many blocks were mined damage on item
+  # false = does 1 durability damage on item
+  trench-do-all-durab: true
+  # Should magic dust lower failure chances on books as well?
+  lower-destroy-with-magic-dust: true
+  # Enable COMBO effect on mobs?
+  enable-combo-for-mobs: true
+  # Clear potion effects on quit (maybe useful in-case exploits are found) ?
+  clear-potion-effects-on-quit: true
+  # Should /ae market be enabled?
+  ae-market-enabled: true
+  # Use Numbers instead of Roman Numerals?
+  use-numbers: false
+  # If disabled, non-armor items such as pickaxes won't trigger enchants when worn on armor slots.
+  activate-non-armor-in-armor-slots: false
+  # If this is enabled, whenever an item with HELD is equipped/ unequipped, all armor will be reapplied.
+  # And when armor is equipped/ unequipped, the item you're holding will have its effects updated.
+  # This can solve issues with armor & held items giving the same potion effect but may cause some
+  # unwanted side effects. Test before using on a live server.
+  held-effect-static-cross-update: false
+  # Should HELD update SHIFT effect? This will only happen if player is holding an item with SHIFT type effects and is shifting
+  # Settings to false leads to permanent effects staying when held item is switched while SHIFT type is active
+  held-shift-cross-update: true
+  # EXPERIMENTAL!!! If true, AE will use a different way of handling damage for effects like DOUBLE_DAMAGE. This may solve
+  # issues with kills not counting towards players. If you find any issues
+  # with it, please report them on GitHub https://github.com/GC-spigot/AdvancedEnchantments/issues/new/choose
+  use-experimental-damage: false
+  # All blocks trench won't break.
+  trench-blacklist: []
+  # Trench Whitelist
+  # If list is not empty, will not allow to break any other blocks than listed here
+  trench-whitelist: []
+  # Whitelist for blocks VEIN_MINE can break.
+  veinmine-whitelist:
+  - COAL_ORE
+  - COPPER_ORE
+  - IRON_ORE
+  - GOLD_ORE
+  - LAPIS_ORE
+  - REDSTONE_ORE
+  - DIAMOND_ORE
+  - EMERALD_ORE
+  - NETHER_QUARTZ_ORE
+  - NETHER_GOLD_ORE
+  - ANCIENT_DEBRIS
+  - DEEPSLATE_COAL_ORE
+  - DEEPSLATE_COPPER_ORE
+  - DEEPSLATE_IRON_ORE
+  - DEEPSLATE_GOLD_ORE
+  - DEEPSLATE_LAPIS_ORE
+  - DEEPSLATE_REDSTONE_ORE
+  - DEEPSLATE_DIAMOND_ORE
+  - DEEPSLATE_EMERALD_ORE
+  # Blocks that BREAK_EFFECT should ignore
+  # WARNING if you remove any values, make sure to handle the blocks with conditions in enchantments
+  break-block-effect-blacklist:
+  - SPAWNER
+  - AIR
+  - LAVA
+  - WATER
+  - CAULDRON
+  - BEDROCK
+  # Worlds to disable enchantments in
+  enchantment-world-blacklist:
+  - no_enchantments_world
+  holy-whitescrolls-world-blacklist:
+  - no_holywhitescrolls_world
+  # If a player is in any of the worlds listed, the FLY effect will not work.
+  # Note that the world names are case-sensitive.
+  fly-world-blacklist:
+  - no_fly_world
+  open-enchanter-by-right-clicking-enchantment-table: false
+  # If this is enabled, "Nether trees" (and mushrooms) will be counted as regular
+  # trees for effects like BREAK_TREE.
+  stems-count-as-trees: false
+  # If this is enabled, BREAK_TREE effect will not break logs placed by players
+  respect-player-placed-blocks: true
+  # Get activated enchants listed in chat upon enchant type trigger
+  enchants-debug-mode: false
+  # Cooldown (in seconds) for /apply command, make sure to have a cooldown as extensive spam could impact performance
+  apply-cooldown: 20
+  # White scroll material blacklist
+  whitescroll-material-blacklist:
+  - STONE
+  # Amount of souls given per kill
+  souls-per-kill: 1
+  # TRENCH optimization system configuration
+  trench-optimization:
+    # Should player automatically detect what protection plugins are used and work from there
+    #   Explanation of how this works: Currently AE can support either WorldGuard only checks
+    #   or Universal which will support all protection plugins but this may sometimes result in
+    #   poor performance (depending on what protection plugins server is running). Recommended to
+    #   leave this setting as "true" if you are using other land plugins (ie. Factions, SkyBlock, etc.)
+    # Setting this to FALSE will only make the plugin work with WorldGuard
+    # Setting this to TRUE will let plugin choose between WG-only or Universal method, may cause performance loss
+    automaticallyDetect: true
+  # Radius of the "LAVA_WALKER" enchant. Can't be less than 2 or more than 10.
+  lava-walker-radius: 2
+  # Same as lavawalker-range but for WATER_WALKER.
+  water-walker-radius: 2
+  # Should souls be collected from mobs?
+  collect-souls-from-mobs: true
+  # Should souls be collected from players?
+  collect-souls-from-players: true
+  
+  # Show enchantment level for level 1 enchants?
+  # E.g. if enabled, enchant "Gears I" would be shown as "Gears', but "Gears II" would stay the same.
+  showFirstLevel: true
+  # If WorldGuardExtraFlags is installed, should the FLY effect only work if
+  # the player is allowed to fly in that area.
+  use-worldguard-fly-flag: false
+  # If set to false, mobs that spawn from spawners won't
+  # drop custom drops defined in the mobs.yml file.
+  custom-drops-from-spawners: false
+  # Collecting souls from mining
+  # This can be used as a "tokens" currency for prison servers
+  miningSouls:
+    enabled: true
+    # Chance to gain a soul from mining
+    chance: 20
+  fishingSouls:
+    enabled: true
+    # Chance to gain a soul from fishing
+    chance: 20
+  # Should BOW enchants only activate if bow that was shot with was extended fully?
+  bow-full-power: true
+  # Should enchantment descriptions be added under enchant names in lores?
+  #   for per level descriptions use %level-description%. (will default to %description% if level description is not setup)
+  #   if level description is set, but here it's still to %description%, the placeholder won't parse!
+  lore-descriptions:
+    enabled: true
+    display: '%group-color%* &8%description%'
+  # Should block breaking effects, such as TRENCH or TP_DROPS give McMMO EXP?
+  give-mcmmo-with-custom-block-breaks: true
+  # Should placing of armor blocks be allowed? (IE CARVED_PUMPKIN's)
+  allow-place-of-armor-block: true
+  # Should the blocks broken by effects be counted in minecraft stats
+  minecraft-stats-blocks-broken-count: true
+  # Should EXP effect give xp even when tool has silktouch
+  exp-effect-ignore-silktouch: false
+
+# Do not edit this setting
+version: 1.0

@@ -1,0 +1,19 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/ink_sac"
+  },
+    "overrides": [
+		{"predicate": {"custom_model_data":1}, "model": "littleroom_blacksmith:blacksmith_hammer"},
+		{"predicate": {"custom_model_data":2}, "model": "littleroom_blacksmith:hot_ingot"},
+		{"predicate": {"custom_model_data":3}, "model": "littleroom_blacksmith:sword_hot"},
+		{"predicate": {"custom_model_data":4}, "model": "littleroom_blacksmith:hoe_hot"},
+		{"predicate": {"custom_model_data":5}, "model": "littleroom_blacksmith:axe_hot"},
+		{"predicate": {"custom_model_data":6}, "model": "littleroom_blacksmith:shovel_hot"},
+		{"predicate": {"custom_model_data":7}, "model": "littleroom_blacksmith:pickaxe_hot"},
+		{"predicate": {"custom_model_data":8}, "model": "littleroom_blacksmith:steel_ingot"},
+		{"predicate": {"custom_model_data":9}, "model": "littleroom_blacksmith:bronze_ingot"},
+		{"predicate": {"custom_model_data":10}, "model": "littleroom_blacksmith:lazulium_ingot"},
+		{"predicate": {"custom_model_data":11}, "model": "littleroom_blacksmith:emerite_ingot"}
+        ]
+}

@@ -1,0 +1,84 @@
+# Configuration Version, do not change!
+Configuration Version: "1.0.2"
+
+Books:
+  Teleportation Books:
+    regular:
+      Charge Back On Invalid Waystone: true
+      Can Be Used:
+        Criteria: ALWAYS
+      Can Be Activated:
+        Criteria: LOGIC_AND
+        Conditions:
+          - Criteria: TYPE_WHITELIST
+            Types:
+              - public
+              - private
+          - Criteria: IS_MEMBER
+      Empty Item:
+        type: ENCHANTED_BOOK
+        meta:
+          display-name: "&e빈 순간이동 마법서"
+          lore:
+            - "&7 * 이 아이템으로 텔레포트"
+            - "&7   하고 싶은 순간이동 마법석을"
+            - "&7   우클릭할 시 적용됩니다."
+      Item:
+        type: ENCHANTED_BOOK
+        meta:
+          display-name: "&d{waystone_name}&e이동 주문서"
+          lore:
+            - "&7 * 이 아이템을 우클릭해서"
+            - "&7   지정된 마법석으로 순간"
+            - "&7   이동합니다."
+            - "&6 * 그 어떤 금액도 소모되지 않습니다."
+    my_tp_book:
+      Charge Back On Invalid Waystone: true
+      Can Be Used:
+        Criteria: ALWAYS
+      Can Be Activated:
+        Criteria: TYPE_WHITELIST
+        Types:
+          - server
+      Empty Item:
+        type: ENCHANTED_BOOK
+        meta:
+          display-name: "&e빈 커스텀 순간이동 마법서"
+          lore:
+            - "&7 * 이 아이템으로 텔레포트"
+            - "&7   하고 싶은 순간이동 마법석을"
+            - "&7   우클릭할 시 적용됩니다."
+      Item:
+        type: ENCHANTED_BOOK
+        meta:
+          display-name: "&d{waystone_name}&e이동 주문서"
+          lore:
+            - "&7 * 이 아이템을 우클릭해서"
+            - "&7   지정된 마법석으로 순간"
+            - "&7   이동합니다."
+            - "&6 * 그 어떤 금액도 소모되지 않습니다."
+
+  Death Books:
+    regular:
+      Extra No Damage Time: 20s
+      Ignore Unsafe Destination: true
+      Unsafe Refund: true
+      Can Be Used:
+        Criteria: ALWAYS
+      Check Height: 10
+      Check Radius: 10
+      # Use "-1" or "unlimited" to disable location time out
+      Location Time Out: 10m
+      # Empty world whitelist will allow all world except if blacklisted is not empty
+      World Whitelist: [ ]
+      # Empty world blacklist will allow all world except if whitelisted is not empty
+      World Blacklist: [ ]
+      Item:
+        type: ENCHANTED_BOOK
+        meta:
+          display-name: "&e죽은 위치 이동서"
+          lore:
+            - "&7 * 이 아이템을 우클릭하여"
+            - "&7   당신이 가장 최근에 사망한"
+            - "&7   위치로 되돌아갑니다."
+            - "&6 * 그 어떤 금액도 소모되지 않습니다."

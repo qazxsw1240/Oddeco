@@ -1,0 +1,127 @@
+Backpacks:
+  Tier1:
+    Displayname: "&9&l1티어 가방"
+    Lore:
+    - "&7가방 공간: &f7"
+    - "&e우클릭해서 열어보세요."
+    Texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODIyNGIyYzczOTFlYjViZmNiMjc4NDMxZDVjODI3Y2IyNjM0OTUyNmM3YmM1MzViMWU5NWY2ZGY5ZjNmZGYzIn19fQ=="
+    Recipe:
+      Enabled: true
+      Title: "&81티어 가방 제작 레시피"
+      Cannot-craft: "&c티어 1 가방을 만들 권한이 없습니다!"
+      Cannot-recipe: "&c티어 1 가방 레시피를 확인할 권한이 없습니다!"
+      Ingredients:
+        L: "LEATHER"
+        I: "BUNDLE"
+        B: "BUCKET"
+        C: "CHEST"
+        S: "LAPIS_BLOCK"
+      Shape:
+      - "LIL"
+      - "BCB"
+      - "LSL"
+  Tier2:
+    Displayname: "&c&l2티어 가방"
+    Lore:
+    - "&7가방 공간: &f16"
+    - "&e우클릭하여 열어보세요."
+    Texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODVlNGY5ZGE2OGM4MWZhNDgxZWVjZGNhNDhhMTM4Y2VjZGUyY2RkZmZlZWFlODRhYjFhZmQyNGEzNjNlMDI4In19fQ=="
+    Recipe:
+      Enabled: true
+      Title: "&82티어 가방 제작 레시피"
+      Cannot-craft: "&c티어 2 가방을 만들 권한이 없습니다!"
+      Cannot-recipe: "&c티어 2 가방 레시피를 확인할 권한이 없습니다!"
+      Ingredients:
+        L: "LEATHER"
+        I: "BUNDLE"
+        B: "BUCKET"
+        C: "ENDER_CHEST"
+        S: "REDSTONE_BLOCK"
+      Shape:
+      - "LIL"
+      - "BCB"
+      - "LSL"
+  Tier3:
+    Displayname: "&7&l티어 3 가방"
+    Lore:
+    - "&7가방 공간: &f25"
+    - "&e우클릭하여 열어보세요."
+    Texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWJkZjhkNTNiZGI5MzJjMjIzYzYyN2JiYjhjMWUwYzVlMzUxYTYxNmNkODA1NjkyOWM2NmU2ZGNlNDQ0MzNkYiJ9fX0="
+    Recipe:
+      Enabled: true
+      Title: "&83티어 가방 제작 레시피"
+      Cannot-craft: "&c티어 3 가방을 만들 권한이 없습니다!"
+      Cannot-recipe: "&c티어 3 가방 레시피를 확인할 권한이 없습니다!"
+      Ingredients:
+        L: "LEATHER"
+        I: "BUNDLE"
+        B: "BUCKET"
+        C: "SHULKER_BOX"
+        S: "IRON_BLOCK"
+      Shape:
+      - "LIL"
+      - "BCB"
+      - "LSL"
+  Tier4:
+    Displayname: "&6&l4티어 가방"
+    Lore:
+    - "&7가방 공간: &f34"
+    - "&e우클릭하여 열어보세요."
+    Texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTM3YTM1NTIyZjY3YjJhZjkyMzQ1NTkyODQ2YjcwMmI5YWZiOWQ3YzhkYmFkNWVhMTUwNjczYzllNDRkZTMifX19"
+    Recipe:
+      Enabled: true
+      Title: "&84티어 가방 제작 레시피"
+      Cannot-craft: "&c티어 4 가방을 만들 권한이 없습니다!"
+      Cannot-recipe: "&c티어 4 가방 레시피를 확인할 권한이 없습니다!"
+      Ingredients:
+        L: "RABBIT_HIDE"
+        I: "BUNDLE"
+        B: "BUCKET"
+        C: "SHULKER_BOX"
+        S: "GOLD_BLOCK"
+      Shape:
+      - "LIL"
+      - "BCB"
+      - "LSL"
+  Tier5:
+    Displayname: "&a&l5티어 가방"
+    Lore:
+    - "&7가방 공간: &f43"
+    - "&e우클릭하여 열어보세요."
+    Texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2E2YWQ4YWQ5MTNkZWYxM2JkNTc0MTY1NWU3N2QxMzRlYjFiNTdmMDI5NzBkYWE2YjMzMDgyNzU0ZDFhZmZjNCJ9fX0="
+    Recipe:
+      Enabled: true
+      Title: "&85티어 가방 제작 레시피"
+      Cannot-craft: "&c티어 5 가방을 만들 권한이 없습니다!"
+      Cannot-recipe: "&c티어 5 가방 레시피를 확인할 권한이 없습니다!"
+      Ingredients:
+        L: "RABBIT_HIDE"
+        I: "BUNDLE"
+        B: "BUCKET"
+        C: "SHULKER_BOX"
+        S: "DIAMOND_BLOCK"
+      Shape:
+      - "LIL"
+      - "BCB"
+      - "LSL"
+  Tier6:
+    Displayname: "&b&l6티어 가방"
+    Lore:
+    - "&7가방 공간: &f52"
+    - "&e우클릭하여 열어보세요."
+    Texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGRjYzZlYjQwZjNiYWRhNDFlNDMzOTg4OGQ2ZDIwNzQzNzU5OGJkYmQxNzVjMmU3MzExOTFkNWE5YTQyZDNjOCJ9fX0="
+    Recipe:
+      Enabled: true
+      Title: "&86티어 가방 제작 레시피"
+      Cannot-craft: "&c티어 6 가방을 만들 권한이 없습니다!"
+      Cannot-recipe: "&c티어 6 가방 레시피를 확인할 권한이 없습니다!"
+      Ingredients:
+        L: "RABBIT_HIDE"
+        I: "BUNDLE"
+        B: "BUCKET"
+        C: "SHULKER_BOX"
+        S: "NETHERITE_INGOT"
+      Shape:
+      - "LIL"
+      - "BCB"
+      - "LSL"

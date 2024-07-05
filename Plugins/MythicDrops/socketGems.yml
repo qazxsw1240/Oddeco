@@ -1,0 +1,898 @@
+version: 5.5.0
+socket-gems:
+  단단한 룬 I:
+    trigger-type: WHEN_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      DAMAGE_RESISTANCE:
+        intensity: 0
+        duration: 600
+        target: SELF
+        radius: 0
+    weight: 400
+    prefix: Hard
+    lore:
+      - "&4공격받을 때 0.5초 동안 저항 효과를 획득합니다."
+    family: Harden
+    level: 1
+    socket-type: any
+  단단한 룬 II:
+    trigger-type: WHEN_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      DAMAGE_RESISTANCE:
+        intensity: 0
+        duration: 1100
+        target: SELF
+        radius: 0
+    weight: 50
+    prefix: Defensive
+    lore:
+      - "&4공격받을 때 1초 동안 저항 효과를 획득합니다."
+    family: Harden
+    level: 2
+    socket-type: any
+  단단한 룬 III:
+    trigger-type: WHEN_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      DAMAGE_RESISTANCE:
+        intensity: 0
+        duration: 1600
+        target: SELF
+        radius: 0
+    weight: 10
+    prefix: Plated
+    lore:
+      - "&4공격받을 때 1.5초 동안 저항 효과를 획득합니다."
+    family: Harden
+    level: 3
+    socket-type: any
+  단단한 룬 IV:
+    trigger-type: WHEN_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      DAMAGE_RESISTANCE:
+        intensity: 0
+        duration: 2100
+        target: SELF
+        radius: 0
+    weight: 2
+    prefix: Turtle Club's
+    lore:
+      - "&4공격받을 때 2초 동안 저항 효과를 획득합니다."
+    family: Harden
+    level: 4
+    socket-type: any
+  서리내린 룬 I:
+    trigger-type: WHEN_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      SLOW:
+        intensity: 0
+        duration: 600
+        target: OTHER
+        radius: 0
+    weight: 400
+    prefix: Cold
+    lore:
+      - "&4공격받을 때 적들에게 0.5초 느려짐 효과를 줍니다."
+    family: Frost
+    level: 1
+    socket-type: any
+  서리내린 룬 II:
+    trigger-type: WHEN_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      SLOW:
+        intensity: 0
+        duration: 1100
+        target: OTHER
+        radius: 0
+    weight: 50
+    prefix: Freezing
+    lore:
+      - "&4공격받을 때 적들에게 1초 느려짐 효과를 줍니다."
+    family: Frost
+    level: 2
+    socket-type: any
+  서리내린 룬 III:
+    trigger-type: WHEN_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      SLOW:
+        intensity: 0
+        duration: 1600
+        target: OTHER
+        radius: 0
+    weight: 10
+    prefix: Frostbitten
+    lore:
+      - "&4공격받을 때 적들에게 1.5초 느려짐 효과를 줍니다."
+    family: Frost
+    level: 3
+    socket-type: any
+  서리내린 룬 IV:
+    trigger-type: WHEN_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      SLOW:
+        intensity: 0
+        duration: 2100
+        target: OTHER
+        radius: 0
+    weight: 2
+    prefix: Ice Queen's
+    lore:
+      - "&4공격받을 때 적들에게 2초 느려짐 효과를 줍니다."
+    family: Frost
+    level: 4
+    socket-type: any
+  바늘가시 룬 I:
+    trigger-type: WHEN_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      POISON:
+        intensity: 0
+        duration: 900
+        target: OTHER
+        radius: 0
+    weight: 400
+    prefix: Barbed
+    lore:
+      - "&4공격받을 때 적들에게 0.5초 중독 효과를 줍니다."
+    family: Needles
+    level: 1
+    socket-type: any
+  바늘가시 룬 II:
+    trigger-type: WHEN_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      POISON:
+        intensity: 0
+        duration: 1400
+        target: OTHER
+        radius: 0
+    weight: 50
+    prefix: Stinging
+    lore:
+      - "&4공격받을 때 적들에게 1초 중독 효과를 줍니다."
+    family: Needles
+    level: 2
+    socket-type: any
+  바늘가시 룬 III:
+    trigger-type: WHEN_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      POISON:
+        intensity: 0
+        duration: 1900
+        target: OTHER
+        radius: 0
+    weight: 10
+    prefix: Poisonous
+    lore:
+      - "&4공격받을 때 적들에게 1.5초 중독 효과를 줍니다."
+    family: Needles
+    level: 3
+    socket-type: any
+  바늘가시 IV:
+    trigger-type: WHEN_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      POISON:
+        intensity: 0
+        duration: 2400
+        target: OTHER
+        radius: 0
+    weight: 2
+    prefix: Toxic
+    lore:
+      - "&4공격받을 때 적들에게 2초 중독 효과를 줍니다."
+    family: Needles
+    level: 4
+    socket-type: any
+  가시돋힌 룬 I:
+    trigger-type: WHEN_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      WITHER:
+        intensity: 0
+        duration: 900
+        target: OTHER
+        radius: 0
+    weight: 400
+    prefix: Spiked
+    lore:
+      - "&4공격받을 때 적들에게 0.5초 사그라듬 효과를 줍니다."
+    family: Spikes
+    level: 1
+    socket-type: any
+  가시돋힌 룬 II:
+    trigger-type: WHEN_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      WITHER:
+        intensity: 0
+        duration: 1400
+        target: OTHER
+        radius: 0
+    weight: 25
+    prefix: Jaded
+    lore:
+      - "&4공격받을 때 적들에게 1초 사그라듬 효과를 줍니다."
+    family: Spikes
+    level: 2
+    socket-type: any
+  가시돋힌 룬 III:
+    trigger-type: WHEN_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      WITHER:
+        intensity: 0
+        duration: 1900
+        target: OTHER
+        radius: 0
+    weight: 5
+    prefix: Blackened
+    lore:
+      - "&4공격받을 때 적들에게 1.5초 사그라듬 효과를 줍니다"
+    family: Spikes
+    level: 3
+    socket-type: any
+  가시돋힌 룬 IV:
+    trigger-type: WHEN_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      WITHER:
+        intensity: 0
+        duration: 2400
+        target: OTHER
+        radius: 0
+    weight: 1
+    prefix: Heartless
+    lore:
+      - "&4공격받을 때 적들에게 2초 사그라듬 효과를 줍니다"
+    family: Spikes
+    level: 4
+    socket-type: any
+  정전기 룬 I:
+    trigger-type: ON_HIT
+    particle-effects:
+      FIREWORKS_SPARK:
+        intensity: 1
+        duration: 2000
+        target: TARGET
+        radius: 0
+    weight: 400
+    prefix: Sparkly
+    lore:
+      - "&4공격할 때 적들을 반짝이게 합니다."
+    family: Sparkly
+    level: 1
+    socket-type: any
+  으스스한 룬 I:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      SLOW:
+        intensity: 0
+        duration: 1100
+        target: OTHER
+        radius: 0
+    weight: 400
+    prefix: Brisk
+    lore:
+      - "&4공격할 때 1초동안 적들에게 느려짐 효과를 줍니다."
+    family: Chill
+    level: 1
+    socket-type: any
+  으스스한 룬 II:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      SLOW:
+        intensity: 0
+        duration: 2100
+        target: OTHER
+        radius: 0
+    weight: 50
+    prefix: Frosty
+    lore:
+      - "&4공격할 때 2초동안 적들에게 느려짐 효과를 줍니다"
+    family: Chill
+    level: 2
+    socket-type: any
+  으스스한 룬 III:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      SLOW:
+        intensity: 0
+        duration: 3100
+        target: OTHER
+        radius: 0
+    weight: 10
+    prefix: Numbing
+    lore:
+      - "&4공격할 때 3초동안 적들에게 느려짐 효과를 줍니다"
+    family: Chill
+    level: 3
+    socket-type: any
+  으스스한 룬 IV:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      SLOW:
+        intensity: 0
+        duration: 4100
+        target: OTHER
+        radius: 0
+    weight: 2
+    prefix: Frigid
+    lore:
+      - "&4공격할 때 4초동안 적들에게 느려짐 효과를 줍니다"
+    family: Chill
+    level: 4
+    socket-type: any
+  카운터 룬 I:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - melee
+      - weapon
+    potion-effects:
+      ABSORPTION:
+        intensity: 0
+        duration: 300
+        target: SELF
+        radius: 0
+    weight: 400
+    prefix: Shielding
+    lore:
+      - "&4공격할 때 0.2초동안 자신에게 실드를 줍니다."
+    family: Counter
+    level: 1
+    socket-type: any
+  카운터 룬 II:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - melee
+      - weapon
+    potion-effects:
+      ABSORPTION:
+        intensity: 0
+        duration: 400
+        target: SELF
+        radius: 0
+    weight: 50
+    prefix: Guardian's
+    lore:
+      - "&4공격할 때 0.3초동안 자신에게 실드를 줍니다"
+    family: Counter
+    level: 2
+    socket-type: any
+  카운터 룬 III:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - melee
+      - weapon
+    potion-effects:
+      ABSORPTION:
+        intensity: 0
+        duration: 500
+        target: SELF
+        radius: 0
+    weight: 10
+    prefix: Golden
+    lore:
+      - "&4공격할 때 0.3초동안 자신에게 실드를 줍니다"
+    family: Counter
+    level: 3
+    socket-type: any
+  카운터 룬 IV:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - melee
+      - weapon
+    potion-effects:
+      ABSORPTION:
+        intensity: 0
+        duration: 600
+        target: SELF
+        radius: 0
+    weight: 2
+    prefix: Twin Hearts of
+    lore:
+      - "&4공격할 때 0.5초동안 자신에게 실드를 줍니다"
+    family: Counter
+    level: 4
+    socket-type: any
+  약화 룬 I:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      WEAKNESS:
+        intensity: 0
+        duration: 1100
+        target: OTHER
+        radius: 0
+    weight: 400
+    prefix: Pathetic
+    lore:
+      - "&4공격할 때 1초동안 적들에게 약화 효과를 줍니다"
+    family: Weaken
+    level: 1
+    socket-type: any
+  약화 룬 II:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      WEAKNESS:
+        intensity: 1
+        duration: 2100
+        target: OTHER
+        radius: 0
+    weight: 50
+    prefix: Depressed
+    lore:
+      - "&4공격할 때 2초동안 적들에게 약화 효과를 줍니다"
+    family: Weaken
+    level: 2
+    socket-type: any
+  약화 룬 III:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      WEAKNESS:
+        intensity: 2
+        duration: 3100
+        target: OTHER
+        radius: 0
+    weight: 10
+    prefix: Draining
+    lore:
+      - "&4공격할 때 3초동안 적들에게 약화 효과를 줍니다"
+    family: Weaken
+    level: 3
+    socket-type: any
+  약화 룬 IV:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      WEAKNESS:
+        intensity: 3
+        duration: 4100
+        target: OTHER
+        radius: 0
+    weight: 2
+    prefix: Totally Lame
+    lore:
+      - "&4공격할 때 4초동안 적들에게 약화 효과를 줍니다"
+    family: Weaken
+    level: 4
+    socket-type: any
+  혼란 룬 I:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      CONFUSION:
+        intensity: 0
+        duration: 5100
+        target: OTHER
+        radius: 0
+    weight: 400
+    prefix: Pathetic
+    lore:
+      - "&4공격할 때 5초동안 적들에게 약화 효과를 줍니다"
+    family: Confusion
+    level: 1
+    socket-type: any
+  혼란 룬 II:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      CONFUSION:
+        intensity: 1
+        duration: 10100
+        target: OTHER
+        radius: 0
+    weight: 50
+    prefix: Depressed
+    lore:
+      - "&410초마다 플레이어를 공격할 시 해당 플레이어가 바라보는 방향 변경"
+    family: Confusion
+    level: 2
+    socket-type: any
+  혼란 룬 III:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      CONFUSION:
+        intensity: 2
+        duration: 15100
+        target: OTHER
+        radius: 0
+    weight: 10
+    prefix: Draining
+    lore:
+      - "&4Disorients players for 15.0s on hit"
+    family: Confusion
+    level: 3
+    socket-type: any
+  혼란 룬 IV:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      CONFUSION:
+        intensity: 3
+        duration: 20100
+        target: OTHER
+        radius: 0
+    weight: 2
+    prefix: Totally Lame
+    lore:
+      - "&4Disorients players for 20.0s on hit"
+    family: Confusion
+    level: 4
+    socket-type: any
+  어둠 룬 I:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      BLINDNESS:
+        intensity: 0
+        duration: 5100
+        target: OTHER
+        radius: 0
+    weight: 400
+    prefix: Pathetic
+    lore:
+      - "&4때릴 시 1초동안 플레이어의 눈을 멀게합니다."
+    family: Darkness
+    level: 1
+    socket-type: any
+  어둠 룬 II:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      BLINDNESS:
+        intensity: 1
+        duration: 10100
+        target: OTHER
+        radius: 0
+    weight: 50
+    prefix: Depressed
+    lore:
+      - "&4때릴 시 2초동안 플레이어의 눈을 멀게합니다"
+    family: Darkness
+    level: 2
+    socket-type: any
+  어둠 룬 III:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      BLINDNESS:
+        intensity: 2
+        duration: 15100
+        target: OTHER
+        radius: 0
+    weight: 10
+    prefix: Draining
+    lore:
+      - "&4때릴 시 3초동안 플레이어의 눈을 멀게합니다"
+    family: Darkness
+    level: 3
+    socket-type: any
+  어둠 룬 IV:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      BLINDNESS:
+        intensity: 3
+        duration: 20100
+        target: OTHER
+        radius: 0
+    weight: 2
+    prefix: Totally Lame
+    lore:
+      - "&4때릴 시 4초동안 플레이어의 눈을 멀게합니다"
+    family: Darkness
+    level: 4
+    socket-type: any
+  독 룬 I:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      POISON:
+        intensity: 0
+        duration: 1100
+        target: OTHER
+        radius: 0
+    weight: 400
+    suffix: (P)
+    lore:
+      - "&4때릴 시 1초동안 적들에게 중독 효과를 줍니다"
+    family: Poison
+    level: 1
+    socket-type: any
+  독 룬 II:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      POISON:
+        intensity: 0
+        duration: 2100
+        target: OTHER
+        radius: 0
+    weight: 50
+    suffix: (SP)
+    lore:
+      - "&4때릴 시 2초동안 적들에게 중독 효과를 줍니다"
+    family: Poison
+    level: 2
+    socket-type: any
+  독 룬 III:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      POISON:
+        intensity: 0
+        duration: 3100
+        target: OTHER
+        radius: 0
+    weight: 10
+    suffix: (SP+)
+    lore:
+      - "&4때릴 시 3초동안 적들에게 중독 효과를 줍니다"
+    family: Poison
+    level: 3
+    socket-type: any
+  독 룬 IV:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      POISON:
+        intensity: 0
+        duration: 4100
+        target: OTHER
+        radius: 0
+    weight: 2
+    suffix: (SP++)
+    lore:
+      - "&4때릴 시 4초동안 적들에게 중독 효과를 줍니다"
+    family: Poison
+    level: 4
+    socket-type: any
+  위더 룬 I:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      WITHER:
+        intensity: 0
+        duration: 1100
+        target: OTHER
+        radius: 0
+    weight: 400
+    prefix: Decaying
+    lore:
+      - "&4때릴 시 1초동안 적들에게 사그라듬 효과를 줍니다"
+    family: Wither
+    level: 1
+    socket-type: any
+  위더 룬 II:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      WITHER:
+        intensity: 0
+        duration: 2100
+        target: OTHER
+        radius: 0
+    weight: 25
+    prefix: Vile
+    lore:
+      - "&4때릴 시 2초동안 적들에게 사그라듬 효과를 줍니다"
+    family: Wither
+    level: 2
+    socket-type: any
+  위더 룬 III:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      WITHER:
+        intensity: 0
+        duration: 3100
+        target: OTHER
+        radius: 0
+    weight: 5
+    prefix: Decrepit
+    lore:
+      - "&4때릴 시 3초동안 적들에게 사그라듬 효과를 줍니다"
+    family: Wither
+    level: 3
+    socket-type: any
+  위더 룬 IV:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      WITHER:
+        intensity: 0
+        duration: 4100
+        target: OTHER
+        radius: 0
+    weight: 1
+    prefix: Depraved
+    lore:
+      - "&4때릴 시 4초동안 적들에게 사그라듬 효과를 줍니다"
+    family: Wither
+    level: 4
+    socket-type: any
+  아드레날린 룬 I:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      SPEED:
+        intensity: 0
+        duration: 1100
+        target: SELF
+        radius: 0
+    weight: 400
+    prefix: Speedy
+    lore:
+      - "&때릴 시 신속을 1초동안 얻습니다."
+    family: Adrenaline
+    level: 1
+    socket-type: any
+  아드레날린 룬 II:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      SPEED:
+        intensity: 0
+        duration: 2100
+        target: SELF
+        radius: 0
+    weight: 50
+    prefix: Quick
+    lore:
+      - "&4때릴 시 신속을 2초동안 얻습니다."
+    family: Adrenaline
+    level: 2
+    socket-type: any
+  아드레날린 룬 III:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      SPEED:
+        intensity: 0
+        duration: 3100
+        target: SELF
+        radius: 0
+    weight: 10
+    prefix: Death Defying
+    lore:
+      - "&4때릴 시 신속을 3초동안 얻습니다."
+    family: Adrenaline
+    level: 3
+    socket-type: any
+  아드레날린 룬 IV:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - weapon
+    potion-effects:
+      SPEED:
+        intensity: 0
+        duration: 4100
+        target: SELF
+        radius: 0
+    weight: 2
+    suffix: of GOTTA GO FAST!
+    lore:
+      - "&4때릴 시 신속을 4초동안 얻습니다."
+    family: Adrenaline
+    level: 4
+    socket-type: any
+  고통 룬 I:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      WITHER:
+        intensity: 1
+        duration: 30000
+        target: AREA
+        radius: 3
+        affects-wielder: true
+        affects-target: true
+        chance-to-trigger: 0.5
+    weight: 0
+    suffix: of Pain
+    lore:
+      - "&4모두가 이제 진실된 고통과 마주하리니(아마도)"
+    entity-types-can-drop-from:
+      - WITHER
+    family: Torment
+    level: 1
+    socket-type: any
+  고통 룬 II:
+    trigger-type: ON_HIT
+    all-of-item-groups:
+      - armor
+    potion-effects:
+      WITHER:
+        intensity: 1
+        duration: 1600
+        target: AREA
+        radius: 3
+        affects-wielder: true
+        affects-target: true
+    weight: 0
+    suffix: of Pain
+    lore:
+      - "&4모두가 이제 진실된 고통과 마주하리니"
+    entity-types-can-drop-from:
+      - WITHER
+    family: Torment
+    level: 2
+    socket-type: any
+  건강 룬 I:
+    trigger-type: WHEN_HIT
+    all-of-item-groups:
+      - chestplate
+    attributes:
+      legendaryuniquekey5:
+        attribute: GENERIC_MAX_HEALTH
+        minimum-amount: 3.0
+        maximum-amount: 5.0
+        operation: MULTIPLY_SCALAR_1
+        slot: CHEST
+    weight: 0
+    suffix: of GOTTA GO FAST!
+    lore:
+      - "&4공격받을 시 최대 체력이 증가합니다."
+    family: Adrenaline
+    level: 1
+    socket-type: any

@@ -1,0 +1,117 @@
+dry_pot:
+  displayname: <white>토대
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/basics/dry_pot
+    custom_model_data: 1071
+  Mechanics:
+    noteblock:
+      custom_variation: 51
+      model: item/basics/dry_pot
+      hardness: 5
+      block_sounds:
+        place_sound: block.bamboo_wood.place
+        break_sound: block.bamboo_wood.break
+      drop:
+        silktouch: false
+        loots:
+        - oraxen_item: dry_pot
+          probability: 1.0
+wet_pot:
+  displayname: <white>젖은 토대
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/basics/wet_pot
+    custom_model_data: 1072
+  Mechanics:
+    noteblock:
+      custom_variation: 52
+      model: item/basics/wet_pot
+      hardness: 4
+      block_sounds:
+        place_sound: block.bamboo_wood.place
+        break_sound: block.bamboo_wood.break
+      drop:
+        silktouch: false
+        loots:
+        - oraxen_item: dry_pot
+          probability: 1.0
+soil_surveyor:
+  displayname: <white>토양 감지기
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/basics/soil_surveyor
+    custom_model_data: 1073
+scarecrow:
+  displayname: <white>허수아비
+  material: SUGAR
+  Mechanics:
+    furniture:
+      type: ITEM_FRAME
+      limited_placing:
+        roof: false
+        floor: true
+        wall: false
+        type: DENY
+        block_types: []
+        block_tags: []
+        oraxen_blocks: []
+      block_sounds:
+        place_sound: block.bamboo_wood.place
+        break_sound: block.bamboo_wood.break
+      barrier: false
+      drop:
+        silktouch: false
+        loots:
+        - oraxen_item: scarecrow
+          probability: 1.0
+  Pack:
+    generate_model: false
+    model: item/basics/scarecrow
+    custom_model_data: 1074
+crow_fly:
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/basics/crow_fly
+    custom_model_data: 1075
+crow_stand:
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/basics/crow_stand
+    custom_model_data: 1076
+greenhouse_glass:
+  displayname: <white>Greenhouse Glass
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 4
+      model: item/basics/greenhouse_glass
+      block_sounds:
+        place_sound: block.glass.place
+        break_sound: block.glass.break
+      drop:
+        silktouch: false
+        loots:
+        - oraxen_item: greenhouse_glass
+          probability: 1.0
+  Pack:
+    generate_model: false
+    model: item/basics/greenhouse_glass
+    custom_model_data: 1077
+crop_stage_death:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 5
+      model: item/basics/dead_crop
+      block_sounds:
+        break_sound: block.crop.break
+  Pack:
+    generate_model: false
+    model: item/basics/dead_crop
+    custom_model_data: 1078

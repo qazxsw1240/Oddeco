@@ -1,0 +1,68 @@
+common_ground_blocks:
+  Type: block_break
+  Display:
+    Name: Common Ground Blocks
+    Icon:
+      Material: GRASS_BLOCK
+  Objects:
+  - red_sand
+  - rooted_dirt
+  - dirt
+  - moss_block
+  - grass_block
+  - powder_snow
+  - snow_block
+  - sand
+  - snow
+  - suspicious_sand
+  - muddy_mangrove_roots
+  - podzol
+  - coarse_dirt
+  - mud
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 0.01
+      Max: 0.03
+  Job_XP:
+    Chance: 25.0
+    Min: 1.0
+    Max: 2.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+rare_ground_blocks:
+  Type: block_break
+  Display:
+    Name: Rare Ground Blocks
+    Icon:
+      Material: CLAY
+  Objects:
+  - gravel
+  - mycelium
+  - soul_sand
+  - clay
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 0.5
+      Max: 1.5
+  Job_XP:
+    Chance: 75.0
+    Min: 3.0
+    Max: 5.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100

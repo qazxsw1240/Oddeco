@@ -1,0 +1,71 @@
+Items:
+  Tank:
+    Empty:
+      Displayname: "&a&l빈 탱크"
+      Lore:
+        - "&76 양동이의 량만큼"
+        - "&7물, 용암, 우유, 꿀,"
+        - "&7가루눈을 담을 수 있습니다.."
+    Filled:
+      Milk: "&f&l우유 탱크"
+      Lava: "&c&l용암 탱크"
+      Water: "&9&l물 탱크"
+      Honey: "&6&l꿀 탱크"
+      Powder-snow: "&f&l가루눈 탱크"
+      Lore:
+        - "&7레벨: &f{LEVEL}&7/&f6"
+  Tiers-recipes:
+    Close:
+      Displayname: "&c닫기"
+      Lore:
+        - "&7레시피를 닫습니다."
+    1:
+      Displayname: "&9&l티어 1"
+      Lore:
+        - "&7티어 1 가방의 레시피를 확인합니다."
+    2:
+      Displayname: "&c&l티어 2"
+      Lore:
+        - "&7티어 2 가방의 레시피를 확인합니다."
+    3:
+      Displayname: "&7&l티어 3"
+      Lore:
+        - "&7티어 3 가방의 레시피를 확인합니다."
+    4:
+      Displayname: "&6&l티어 4"
+      Lore:
+        - "&7티어 4 가방의 레시피를 확인합니다."
+    5:
+      Displayname: "&a&l티어 5"
+      Lore:
+        - "&7티어 5 가방의 레시피를 확인합니다."
+    6:
+      Displayname: "&b&l티어 6"
+      Lore:
+        - "&7티어 6 가방의 레시피를 확인합니다."
+  Tiers-build:
+    Title: "&8어떤 티어를 원하시나요?"
+    1:
+      Displayname: "&9&l티어 1 선택"
+      Lore:
+        - "&7가방 칸 크기 7칸인 가방을 얻습니다."
+    2:
+      Displayname: "&9&l티어 2 선택"
+      Lore:
+        - "&7가방 칸 크기 16칸인 가방을 얻습니다."
+    3:
+      Displayname: "&9&l티어 3 선택"
+      Lore:
+        - "&7가방 칸 크기 25칸인 가방을 얻습니다."
+    4:
+      Displayname: "&9&l티어 4 선택"
+      Lore:
+        - "&7가방 칸 크기 34칸인 가방을 얻습니다."
+    5:
+      Displayname: "&9&l티어 5 선택"
+      Lore:
+        - "&7가방 칸 크기 43칸인 가방을 얻습니다."
+    6:
+      Displayname: "&9&l티어 6 선택"
+      Lore:
+        - "&7가방 칸 크기 52칸인 가방을 얻습니다."

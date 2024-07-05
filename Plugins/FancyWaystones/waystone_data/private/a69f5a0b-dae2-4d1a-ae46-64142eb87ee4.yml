@@ -1,0 +1,30 @@
+uuid: a69f5a0b-dae2-4d1a-ae46-64142eb87ee4
+name: 테스트
+ownerUUID: 6bf6d993-e421-48fb-9ced-c7c33d828eaa
+ownerName: _BIackCat_
+type: private
+password: '3895'
+description: 집으로. rkw
+offset:
+  x: 0
+  y: 0
+  z: 1
+yaw: 0.0
+pitch: 0.0
+noProximityPlayers:
+- 6bf6d993-e421-48fb-9ced-c7c33d828eaa
+worldUID: ec0987cf-935b-46c8-b5de-7a34a8078a15
+worldName: world
+x: -61
+y: 64
+z: 272
+serverName: d83dd353-6ecd-4256-a51b-d17695fd8a40
+environment: NORMAL
+model: modern
+members:
+  6bf6d993-e421-48fb-9ced-c7c33d828eaa: '#_BIackCat_'
+statistics:
+  total-visitors: 7
+  total-visits: 5
+  total-users: 3
+  date-created: 1710473853294

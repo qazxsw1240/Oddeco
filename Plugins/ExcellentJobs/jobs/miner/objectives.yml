@@ -1,0 +1,250 @@
+stones:
+  Type: block_break
+  Display:
+    Name: Stones
+    Icon:
+      Material: STONE
+  Objects:
+  - deepslate
+  - cobblestone
+  - granite
+  - tuff
+  - mossy_cobblestone
+  - andesite
+  - diorite
+  - stone
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 0.01
+      Max: 0.07
+  Job_XP:
+    Chance: 25.0
+    Min: 1.0
+    Max: 2.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+stone_bricks:
+  Type: block_break
+  Display:
+    Name: Stone Bricks
+    Icon:
+      Material: STONE_BRICKS
+  Objects:
+  - mossy_stone_bricks
+  - stone_bricks
+  - cracked_stone_bricks
+  - chiseled_stone_bricks
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 0.5
+      Max: 1.5
+  Job_XP:
+    Chance: 75.0
+    Min: 3.0
+    Max: 5.0
+  Unlock_Level: 15
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+common_ores:
+  Type: block_break
+  Display:
+    Name: Common Ores
+    Icon:
+      Material: COAL_ORE
+  Objects:
+  - copper_ore
+  - coal_ore
+  - deepslate_iron_ore
+  - deepslate_coal_ore
+  - iron_ore
+  - deepslate_copper_ore
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 0.5
+      Max: 1.5
+  Job_XP:
+    Chance: 75.0
+    Min: 3.0
+    Max: 5.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+rare_ores:
+  Type: block_break
+  Display:
+    Name: Rare Ores
+    Icon:
+      Material: GOLD_ORE
+  Objects:
+  - lapis_ore
+  - gold_ore
+  - nether_gold_ore
+  - redstone_ore
+  - deepslate_redstone_ore
+  - deepslate_lapis_ore
+  - deepslate_gold_ore
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 2.0
+      Max: 4.0
+  Job_XP:
+    Chance: 100.0
+    Min: 10.0
+    Max: 15.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+unique_ores:
+  Type: block_break
+  Display:
+    Name: Unique Ores
+    Icon:
+      Material: DIAMOND_ORE
+  Objects:
+  - deepslate_emerald_ore
+  - emerald_ore
+  - deepslate_diamond_ore
+  - diamond_ore
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 5.0
+      Max: 10.0
+  Job_XP:
+    Chance: 100.0
+    Min: 20.0
+    Max: 30.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+nether_ores:
+  Type: block_break
+  Display:
+    Name: Nether Ores
+    Icon:
+      Material: NETHER_QUARTZ_ORE
+  Objects:
+  - nether_gold_ore
+  - nether_quartz_ore
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 2.0
+      Max: 4.0
+  Job_XP:
+    Chance: 100.0
+    Min: 10.0
+    Max: 15.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+terracotta:
+  Type: block_break
+  Display:
+    Name: Terracotta
+    Icon:
+      Material: TERRACOTTA
+  Objects:
+  - light_gray_terracotta
+  - terracotta
+  - gray_terracotta
+  - white_terracotta
+  - lime_terracotta
+  - cyan_terracotta
+  - green_terracotta
+  - red_terracotta
+  - yellow_terracotta
+  - pink_terracotta
+  - blue_terracotta
+  - magenta_terracotta
+  - orange_terracotta
+  - light_blue_terracotta
+  - brown_terracotta
+  - purple_terracotta
+  - black_terracotta
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 0.5
+      Max: 1.5
+  Job_XP:
+    Chance: 75.0
+    Min: 3.0
+    Max: 5.0
+  Unlock_Level: 15
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+nylium:
+  Type: block_break
+  Display:
+    Name: Nylium
+    Icon:
+      Material: CRIMSON_NYLIUM
+  Objects:
+  - crimson_nylium
+  - warped_nylium
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 0.5
+      Max: 1.5
+  Job_XP:
+    Chance: 75.0
+    Min: 3.0
+    Max: 5.0
+  Unlock_Level: 25
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100

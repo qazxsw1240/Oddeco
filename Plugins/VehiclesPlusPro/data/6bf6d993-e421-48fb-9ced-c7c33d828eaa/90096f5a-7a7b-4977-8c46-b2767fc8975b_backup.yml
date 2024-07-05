@@ -1,0 +1,38 @@
+className: me.legofreak107.vehiclesplus.vehicles.vehicles.objects.StorageVehicle
+name: ExampleHovercraft
+uuid: 90096f5a-7a7b-4977-8c46-b2767fc8975b
+baseVehicle: ExampleHovercraft
+owner: 6bf6d993-e421-48fb-9ced-c7c33d828eaa
+partList:
+  list0:
+    className: me.legofreak107.vehiclesplus.vehicles.vehicles.objects.addons.skins.Skin
+    skin:
+      ==: org.bukkit.inventory.ItemStack
+      v: 3465
+      type: LEATHER_BOOTS
+      meta:
+        ==: ItemMeta
+        meta-type: COLORABLE_ARMOR
+        Unbreakable: true
+        Damage: 6
+    color:
+      ==: Color
+      ALPHA: 255
+      RED: 255
+      BLUE: 0
+      GREEN: 0
+    xOffset: 0.0
+    yOffset: 0.0
+    UID: f6f1c29a-d0ef-49ef-a17f-c490042e2027
+    zOffset: 0.0
+    isCustomPlaced: false
+vehicleStats:
+  className: me.legofreak107.vehiclesplus.vehicles.vehicles.objects.VehicleStats
+  speed: 100
+  steering: 5
+  fuelTank: 50
+  currentFuel: 50.0
+  acceleration: 50
+  health: 100
+  broken: false
+vehicleTrunk: ''

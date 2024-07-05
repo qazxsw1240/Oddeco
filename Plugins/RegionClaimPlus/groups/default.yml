@@ -1,0 +1,77 @@
+###################################################################
+# A permission group, with the name of this file (without .yml).
+# Permissions will be created automatically with the same name,
+# so group 'default' corresponds to the permission 'claim.group.default'.
+###################################################################
+
+# if a user is in multiple groups, the HIGHEST priority group decides
+priority: 1
+# amount: the maximum amount of allowed claims per world in this group
+amount: 1
+
+# how much money (with vault economy system) it costs to create a claim
+# Without vault this will be ignored. Set to 0 to disable
+price: 0
+# exponentially increase price of new region by this factor depending on amount of owned regions in a world
+# Without vault this will be ignored. Set to 1.0 to disable
+price-multiplier: 1.0
+# how much of a region's claiming price should be returned when a player removes it, from 0 to 1.
+price-refund: 0.0
+
+# After how many hours of PLAYER INACTIVITY (not logging in) a claim expires, set to a negative number to disable
+# Claims are purged on start or explicitly through /claim admin purge
+no-activity-expire-hours: -1
+
+# whether players can use '/claim friend ...'.
+# when this is false, the friend options won't show up in the tab-completion.
+can-invite: false
+
+# whether players can teleport to their own regions using `/claim tp ...`
+can-teleport: false
+# how much money (with vault economy system) it costs to teleport to a region
+# Without vault this will be ignored. Set to 0 to disable
+teleport-price: 0
+
+# whether players can move the corners of their claims
+can-move-corners: false
+
+# size: the maximum length of a claim. So size=80 means a maximum of 80 by 80 blocks.
+size: 15
+# how many blocks their claim expands DOWNWARDS from the position they are in when they claim
+# keep in mind that the actual lowest point can be capped in the main configuration
+depth: 10
+# how many blocks their claim expands UPWARDS from the position they are in when they claim
+# keep in mind that the actual highest point can be capped in the main configuration
+height: 40
+
+# Maximum allowed area (in blocks) of a SINGLE claim. Set to -1 to ignore this setting.
+max-single-area: -1
+
+# Maximum total allowed area (in blocks) of all claims COMBINED. Set to -1 to ignore this setting.
+max-total-area: -1
+
+# WorldGuard flags to set. The value should always be within quotation marks, format corresponds to the type of flag,
+# please see https://worldguard.enginehub.org/en/latest/regions/flags/.
+# Unrecognized flags will be ignored and logged to the console.
+# It is possible to make a flag only apply to a certain group, set the 'group' value underneath the flag.
+# This has to be one of 'all' (default), 'members' (friends + owners), 'owners', 'non_members' or 'non_owners'.
+
+flags:
+  - use: "allow"
+  - pvp: "allow"
+  - fire-spread: "deny"
+
+    # The placeholders below work in every string flag
+  - greeting: "당신은 지금 %owner%의 %region% 토지에 들어왔습니다!"
+    # everybody but the owner will be greeted
+    group: "non_owners"
+
+    # allow both owners and friends to break/place
+  - block-place: "allow"
+    group: "members"
+  - block-break: "allow"
+    group: "members"
+  - interact: "allow"
+    group: "members"
+  - chest-access: "allow"
+    group: "members"

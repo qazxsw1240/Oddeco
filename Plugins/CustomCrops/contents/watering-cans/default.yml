@@ -1,0 +1,259 @@
+# Watering can key name
+watering_can_1:
+  # 物品 id
+  item: watering_can_1
+  # This is optional. It would decide the look of the watering can when having different water amount
+  # 可选配置，他会影响水壶在不同水量情况下的外观
+  # appearance:
+  #  # custom-model-data
+  #  0: 1000
+  #  1: 1001
+  #  2: 1002
+  #  3: 1003
+  # 储水量
+  capacity: 3
+  # Effective Range
+  # 有效范围
+  effective-range:
+    width: 1
+    length: 1
+  # Methods to fill the watering can
+  fill-method:
+    method_1:
+      # The target block/furniture id
+      # use capital letters for vanilla items
+      target: WATER
+      # water amount to add
+      # 加水量
+      amount: 1
+  # This decides where the watering can can be used
+  # 这决定了水壶能使用在哪些种植盆上
+  pot-whitelist:
+  - default
+  # allows you to add water to sprinkler by clicking with a watering can
+  # 允许水壶对洒水器加水
+  sprinkler-whitelist:
+  - sprinkler_1
+  - sprinkler_2
+  - sprinkler_3
+  dynamic-lore:
+    # Should watering-can has dynamic lore according to the water amount
+    # 水壶是否有根据水量变化的动态lore
+    enable: true
+    # Available placeholders:
+    # {water_bar} water bar image
+    # {current} current water
+    # {storage} max storage
+    lore:
+    - <italic:false><white><font:minecraft:customcrops>{water_bar}</font>
+    - <italic:false><gray>Right click water to add water to the can.
+  water-bar:
+    left: 뀂
+    full: 뀁뀃
+    empty: 뀁뀄
+    right: 뀁뀅
+  events:
+    consume_water:
+      sound_action:
+        type: sound
+        value:
+          key: minecraft:block.water.ambient
+          source: player
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <font:minecraft:customcrops>{water_bar}</font>
+    add_water:
+      particle_action:
+        type: particle
+        value:
+          particle: WATER_SPLASH
+          x: 0.5
+          z: 0.5
+          y: 1.3
+          count: 5
+      actionbar_action:
+        type: actionbar
+        value: <font:minecraft:customcrops>{water_bar}</font>
+      sound_action:
+        type: sound
+        value:
+          key: minecraft:item.bucket.empty
+          source: player
+          volume: 1
+          pitch: 1
+
+watering_can_2:
+  item: watering_can_2
+  capacity: 4
+  effective-range:
+    width: 1
+    length: 2
+  fill-method:
+    method_1:
+      target: WATER
+      amount: 1
+  pot-whitelist:
+  - default
+  sprinkler-whitelist:
+  - sprinkler_1
+  - sprinkler_2
+  - sprinkler_3
+  dynamic-lore:
+    enable: true
+    lore:
+    - <italic:false><white><font:minecraft:customcrops>{water_bar}</font>
+    - <italic:false><gray>Right click water to add water to the can.
+  water-bar:
+    left: 뀂
+    full: 뀁뀃
+    empty: 뀁뀄
+    right: 뀁뀅
+  events:
+    consume_water:
+      sound_action:
+        type: sound
+        value:
+          key: minecraft:block.water.ambient
+          source: player
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <font:minecraft:customcrops>{water_bar}</font>
+    add_water:
+      particle_action:
+        type: particle
+        value:
+          particle: WATER_SPLASH
+          x: 0.5
+          z: 0.5
+          y: 1.3
+          count: 5
+      actionbar_action:
+        type: actionbar
+        value: <font:minecraft:customcrops>{water_bar}</font>
+      sound_action:
+        type: sound
+        value:
+          key: minecraft:item.bucket.empty
+          source: player
+          volume: 1
+          pitch: 1
+
+watering_can_3:
+  item: watering_can_3
+  capacity: 5
+  effective-range:
+    width: 1
+    length: 3
+  fill-method:
+    method_1:
+      target: WATER
+      amount: 1
+  pot-whitelist:
+  - default
+  sprinkler-whitelist:
+  - sprinkler_1
+  - sprinkler_2
+  - sprinkler_3
+  dynamic-lore:
+    enable: true
+    lore:
+    - <italic:false><white><font:minecraft:customcrops>{water_bar}</font>
+    - <italic:false><gray>Right click water to add water to the can.
+  water-bar:
+    left: 뀂
+    full: 뀁뀃
+    empty: 뀁뀄
+    right: 뀁뀅
+  events:
+    consume_water:
+      sound_action:
+        type: sound
+        value:
+          key: minecraft:block.water.ambient
+          source: player
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <font:minecraft:customcrops>{water_bar}</font>
+    add_water:
+      particle_action:
+        type: particle
+        value:
+          particle: WATER_SPLASH
+          x: 0.5
+          z: 0.5
+          y: 1.3
+          count: 5
+      actionbar_action:
+        type: actionbar
+        value: <font:minecraft:customcrops>{water_bar}</font>
+      sound_action:
+        type: sound
+        value:
+          key: minecraft:item.bucket.empty
+          source: player
+          volume: 1
+          pitch: 1
+
+watering_can_4:
+  item: watering_can_4
+  capacity: 3
+  effective-range:
+    width: 3
+    length: 3
+  fill-method:
+    method_1:
+      target: WATER
+      amount: 1
+  pot-whitelist:
+  - default
+  sprinkler-whitelist:
+  - sprinkler_1
+  - sprinkler_2
+  - sprinkler_3
+  dynamic-lore:
+    enable: true
+    lore:
+    - <italic:false><white><font:minecraft:customcrops>{water_bar}</font>
+    - <italic:false><gray>Right click water to add water to the can.
+  water-bar:
+    left: 뀂
+    full: 뀁뀃
+    empty: 뀁뀄
+    right: 뀁뀅
+  events:
+    consume_water:
+      sound_action:
+        type: sound
+        value:
+          key: minecraft:block.water.ambient
+          source: player
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <font:minecraft:customcrops>{water_bar}</font>
+    add_water:
+      particle_action:
+        type: particle
+        value:
+          particle: WATER_SPLASH
+          x: 0.5
+          z: 0.5
+          y: 1.3
+          count: 5
+      actionbar_action:
+        type: actionbar
+        value: <font:minecraft:customcrops>{water_bar}</font>
+      sound_action:
+        type: sound
+        value:
+          key: minecraft:item.bucket.empty
+          source: player
+          volume: 1
+          pitch: 1

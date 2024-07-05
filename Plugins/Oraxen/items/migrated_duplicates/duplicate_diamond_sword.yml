@@ -1,0 +1,32 @@
+migrated_littleroom_blacksmith:steel_sword:
+  material: DIAMOND_SWORD
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_blacksmith:steel_sword
+    custom_model_data: 1
+migrated_littleroom_blacksmith:bronze_sword:
+  material: DIAMOND_SWORD
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_blacksmith:bronze_sword
+    custom_model_data: 2
+migrated_littleroom_blacksmith:lazulium_sword:
+  material: DIAMOND_SWORD
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_blacksmith:lazulium_sword
+    custom_model_data: 3
+migrated_littleroom_blacksmith:emerite_sword:
+  material: DIAMOND_SWORD
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_blacksmith:emerite_sword
+    custom_model_data: 4

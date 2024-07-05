@@ -1,0 +1,418 @@
+ShopMenu:
+  Size: 45
+  Title: "&a&lPoint Shop"
+  UseFiller: true
+  Decorations:
+    - 'balance:36'
+  Categories:
+    '10':
+      'spawners':
+        enabled: true
+        material: 'SPAWNER'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: "&a&lSpawners"
+        lore:
+          - "&7Click to view the spawners category"
+    '12':
+      'keys':
+        enabled: true
+        material: 'TRIPWIRE_HOOK'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&a&lCrate Keys'
+        lore:
+          - '&7Click to view the keys category'
+    '14':
+      'tags':
+        enabled: true
+        material: 'NAME_TAG'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&a&lTags'
+        lore:
+          - '&7Click to view the tags category'
+    '16':
+      'enchants':
+        enabled: true
+        material: 'ENCHANTED_BOOK'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&a&lEnchantment Books'
+        lore:
+          - '&7Click to view the enchantments category'
+    '31':
+      'donators':
+        enabled: true
+        material: 'CHEST'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&a&lDonators'
+        lore:
+          - '&7Click to view the donators category'
+
+
+Shops:
+  Spawners:
+    Size: 36
+    Title: '&a&lSpawners Shop'
+    UseFiller: true
+    Decorations:
+      - 'balance:27'
+      - 'menu:31'
+    Rewards:
+      '11':
+        price: 100
+        giveItem: false
+        material: 'SPAWNER'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&eZombie &fSpawner'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]ss give {player} zombie 1'
+      '12':
+        price: 200
+        giveItem: false
+        material: 'SPAWNER'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&eSkeleton &fSpawner'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]ss give {player} skeleton 1'
+      '13':
+        price: 300
+        giveItem: false
+        material: 'SPAWNER'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&eBlaze &fSpawner'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]ss give {player} blaze 1'
+      '14':
+        price: 400
+        giveItem: false
+        material: 'SPAWNER'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&eCreeper &fSpawner'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]ss give {player} creeper 1'
+      '15':
+        price: 500
+        giveItem: false
+        material: 'SPAWNER'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&eEnderman &fSpawner'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]ss give {player} enderman 1'
+
+  Keys:
+    Size: 36
+    Title: '&a&lKeys Shop'
+    UseFiller: true
+    Decorations:
+      - 'balance:27'
+      - 'menu:31'
+    Rewards:
+      '11':
+        price: 100
+        giveItem: false
+        material: 'TRIPWIRE_HOOK'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&7Common Key'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]cc give p common 1 {player}'
+      '12':
+        price: 200
+        giveItem: false
+        material: 'TRIPWIRE_HOOK'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&aUncommon Key'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]cc give p uncommon 1 {player}'
+      '13':
+        price: 300
+        giveItem: false
+        material: 'TRIPWIRE_HOOK'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&bRare Key'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]cc give p rare 1 {player}'
+      '14':
+        price: 400
+        giveItem: false
+        material: 'TRIPWIRE_HOOK'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&dEpic Key'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]cc give p epic 1 {player}'
+      '15':
+        price: 500
+        giveItem: false
+        material: 'TRIPWIRE_HOOK'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&6Legendary Key'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]cc give p legendary 1 {player}'
+
+  Tags:
+    Size: 36
+    Title: '&a&lTags Shop'
+    UseFiller: true
+    Decorations:
+      - 'balance:27'
+      - 'menu:31'
+    Rewards:
+      '11':
+        price: 100
+        giveItem: false
+        material: 'PAPER'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&7&nNoob&f Tag'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]tags give {player} noob 1'
+      '12':
+        price: 200
+        giveItem: false
+        material: 'PAPER'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&d&nEGirl&f Tag'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]tags give {player} egirl 1'
+      '13':
+        price: 300
+        giveItem: false
+        material: 'PAPER'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&e&nGrinder&f Tag'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]tags give {player} grinder 1'
+      '14':
+        price: 400
+        giveItem: false
+        material: 'PAPER'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&a&nPointsMaker&f Tag'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]tags give {player} pointsmaker 1'
+      '15':
+        price: 500
+        giveItem: false
+        material: 'PAPER'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&b&nPvPGod&f Tag'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]tags give {player} pvpgod 1'
+
+  Enchants:
+    Size: 36
+    Title: '&a&lEnchants Shop'
+    UseFiller: true
+    Decorations:
+      - 'balance:27'
+      - 'menu:31'
+    Rewards:
+      '11':
+        price: 100
+        giveItem: true
+        material: 'ENCHANTED_BOOK'
+        damage: 0
+        amount: 1
+        glow: false
+        displayName: '&aSharpness V'
+        lore:
+          - '&aPrice: &7{price} Points'
+        enchants:
+          - 'DAMAGE_ALL:5'
+      '12':
+        price: 200
+        giveItem: true
+        material: 'ENCHANTED_BOOK'
+        damage: 0
+        amount: 1
+        glow: false
+        displayName: '&aLooting III'
+        lore:
+          - '&aPrice: &7{price} Points'
+        enchants:
+          - 'LOOT_BONUS_MOBS:3'
+      '13':
+        price: 300
+        giveItem: true
+        material: 'ENCHANTED_BOOK'
+        damage: 0
+        amount: 1
+        glow: false
+        displayName: '&aUnbreaking III'
+        lore:
+          - '&aPrice: &7{price} Points'
+        enchants:
+          - 'DURABILITY:3'
+      '14':
+        price: 400
+        giveItem: true
+        material: 'ENCHANTED_BOOK'
+        damage: 0
+        amount: 1
+        glow: false
+        displayName: '&aSilk Touch I'
+        lore:
+          - '&aPrice: &7{price} Points'
+        enchants:
+          - 'SILK_TOUCH:1'
+      '15':
+        price: 500
+        giveItem: true
+        material: 'ENCHANTED_BOOK'
+        damage: 0
+        amount: 1
+        glow: false
+        displayName: '&aFortune III'
+        lore:
+          - '&aPrice: &7{price} Points'
+        enchants:
+          - 'LOOT_BONUS_BLOCKS:3'
+
+  Donators:
+    Size: 36
+    Title: '&a&lDonators Shop'
+    UseFiller: true
+    Decorations:
+      - 'balance:27'
+      - 'menu:31'
+    Rewards:
+      '11':
+        price: 1000
+        giveItem: false
+        material: 'END_PORTAL_FRAME'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&a&lMoney Generator &fTier 1'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]generator give {player} money 1 1'
+      '13':
+        price: 2000
+        giveItem: false
+        material: 'END_PORTAL_FRAME'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&a&lMoney Generator &fTier 2'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]generator give {player} money 2 1'
+      '15':
+        price: 3000
+        giveItem: false
+        material: 'END_PORTAL_FRAME'
+        damage: 0
+        amount: 1
+        glow: true
+        displayName: '&a&lMoney Generator &fTier 3'
+        lore:
+          - '&aPrice: &7{price} Points'
+        commands:
+          - '[console]generator give {player} money 3 1'
+
+
+GUIFiller:
+  material: 'BLACK_STAINED_GLASS_PANE'
+  damage: 0
+  amount: 1
+  glow: false
+  displayName: '&f'
+  lore: []
+
+
+Decorations:
+  menu:
+    action: 'open_shop'
+    material: 'BARRIER'
+    damage: 0
+    amount: 1
+    glow: false
+    displayName: '&eBack Button'
+    lore:
+      - '&fClick to return to the Points Shop menu!'
+  balance:
+    material: 'ENDER_CHEST'
+    damage: 0
+    amount: 1
+    glow: false
+    displayName: '&fYou currently have &a&l{balance} &fPoints'
+    lore: []
+
+
+#Cooldown, in Milliseconds, between how long a player must wait to purchase another item. (Cooldown resets when the server or plugin restarts) (20 milliseconds = 1 second)
+purchase-cooldown: 5
+
+Sounds:
+  purchase:
+    sound: 'ORB_PICKUP'
+    volume: 1
+    pitch: 1

@@ -1,0 +1,174 @@
+#    ___      _   _           ___          _                 _             Our plugins: https://alonsoaliaga.com/plugins
+#   | _ ) ___| |_| |_ ___ _ _| _ ) __ _ __| |___ __  __ _ __| |__ ___      Support server: https://alonsoaliaga.com/discord
+#   | _ \/ -_)  _|  _/ -_) '_| _ \/ _` / _| / / '_ \/ _` / _| / /(_-<      Youtube: https://alonsoaliaga.com/play
+#   |___/\___|\__|\__\___|_| |___/\__,_\__|_\_\ .__/\__,_\__|_\_\/__/      Test server: plugins.alonsoaliaga.com
+#                          by AlonsoAliaga   |_|                           Twitch: https://alonsoaliaga.com/twitch
+#           Considering donating? https://alonsoaliaga.com/donate          Want more features? Check our premium version on https://alonsoaliaga/BetterBackpacksPro
+# ======================================================================================================================================
+# |              Downloaded this jar in a server setup? Tell the author he is NOT allowed to upload someone else work!                 |
+# |   Update to latest version as soon as possible. Support WON'T be given when using old versions. Specially from downloaded setups.  |
+# | Remember: Support is only provided for .jar files downloaded DIRECTLY from spigotmc.org! Other files will be considered as invalid |
+# |        as they are NOT the same .jar file the developer (me) uploaded and I cannot guarantee that the file is safe or not.         |
+# |                   If you have issues with setup configs. Tell the setup author to update his config file.                          |
+# ======================================================================================================================================
+Messages:
+  No-permission: "&c권한이 없습니다."
+  Cooldown-message: "&c가방을 너무 빠르게 열고 있습니다. 좀 천천히 진행해주세요."
+  Corrupted-backpack: "&c이 가방은 불법적으로 이루어진 가방이거나 데이터가 파손되었습니다. 버려주세요."
+  Cannot-stacked: "&c가방을 여러 개를 한번에 열 수 없습니다."
+  Cannot-craft-stacked: "&c가방을 여러 개를 한번에 만들 수 없습니다. 한 개씩 만들어주세요."
+  Reloaded: "&a리로딩합니다. 가끔은 재시작이 요구될 수도 있습니다."
+  Invalid-player: "&c플레이어가 오프라인입니다!"
+  Invalid-tier: "&c티어 숫자가 맞지 않습니다. 오직 1에서 6사이까지만 입력하실 수 있습니다."
+  Only-main-hand: "&c가방은 오직 오른손에 들고 있어야 쓸 수 있습니다."
+  Unknown-error-crafting: "&c뭔가 이상하군요. 관리자에게 연락해주세요!"
+  #Can be set to "none" to disable message. Block sound will always be played.
+  Cannot-number-key: "none"
+  #Can be set to "none" to disable message. Block sound will always be played.
+  Cannot-right-click: "none"
+  Sorting-disabled: "none"
+  Usage:
+    Backpack-no-permission: "&c당신은 이 가방을 사용할 수 없습니다."
+    Tank-left-no-permission: "&c당신은 왼쪽에 있는 탱크를 사용할 권한이 없습니다."
+    Tank-right-no-permission: "&c당신은 오른쪽에 있는 탱크를 사용할 권한이 없습니다."
+    Unknown-error: "&c뭔가 잘못되었군요. 관리자에게 연락해주세요. ({CODE})"
+    Disabled-world: "&c이 차원에서는 가방이 금지되어있습니다!"
+    Backpack-title: "&8가방"
+  Build:
+    Success: "&6{TARGET}에게 커스텀 가방을 1개 줍니다."
+    Success-other: "&a당신은 커스텀 가방을 받았습니다."
+  Give:
+    Received: "&6{TIER}티어의 가방을 받았습니다!"
+    Gave: "&a{TARGET}에게 {TIER}티어의 가방을 줬습니다!"
+  Recipe:
+    Disabled: "&c레시피를 보지 못하도록 설정되었습니다."
+    Disabled-for-you: "&c그 어떤 가방 레시피를 해금한 적이 없는 것 같습니다."
+    Disabled-for-other: "&c그 사람은 그 어떤 가방의 레시피를 해금한 적이 없는 것 같습니다."
+    Opened-for-other: "&6{TARGET}에게 가방 레시피를 보여줍니다."
+  Unique:
+    Disabled: "&c이 기능은 최근에 비활성화되었습니다."
+    Opened-for-other: "&6{TARGET}에게 유니크 가방 GUI를 엽니다."
+  Help:
+    Admin:
+    - "&2 /betterbackpacks recipe <player> &f- &a플레이어에게 가방 레시피를 열도록 합니다."
+    - "&2 /betterbackpacks unique <player> &f- &a플레이어에게 유니크 가방 GUI을 열어줍니다."
+    - "&2 /betterbackpacks give <player> <tier> &f- &a플레이어에게 가방을 줍니다."
+    - "&2 /betterbackpacks build <player> <tier> <texture> &f- &a어떤 텍스쳐를 입혀서 가방을 줍니다."
+    - "&2 /betterbackpacks reload &f- &a리로드합니다."
+    User:
+    - "&2 /betterbackpacks recipe &f- &a조합법을 엽니다."
+    - "&2 /betterbackpacks unique &f- &a유니크 가방 GUI를 엽니다."
+  WorldGuard:
+    Disabled-region: "&c이 지역에서는 가방을 열 수 없습니다!"
+
+#Set to "none" if no permission is required. Admin permission will always be required, even if "none"
+Permissions:
+  Admin: "betterbackpacks.admin"
+  #This will allow players to open backpacks. This permission IS REQUIRED even if players have specific tier permissions.
+  #This is to allow rpg make the usage of backpacks an unlockable perk.
+  Use: "none" #Example: "betterbackpacks.use"
+  #This will allow players to craft backpacks of different types. {TYPE} will be replaced internally with 1,2,3,4,5 or 6.
+  Tier: "betterbackpacks.tier.{TYPE}"
+  Unique: "none"
+  #This will allow players to view recipes for the tiers they have permission for if they are available (If craftable)
+  Recipe: "betterbackpacks.recipe"
+  #Allow players to use left tank.
+  Tank-left: "none" #Example: "betterbackpacks.tank.left"
+  #Allow players to use right tank.
+  Tank-right: "none" #Example: "betterbackpacks.tank.right"
+
+#What is this? This just adds an inventory filled with backpacks with custom textures defined in this config.
+#This is an easy way for admins to take custom backpacks to reward players in events. Or simply display players
+#available backpacks. Admins can obtain backpacks just by clicking on it and selecting tier.
+Unique-backpacks:
+  Enabled: true
+  Title: "&8유니크 가방"
+  #Max amount is 54
+  #You can add new textures in the following format:
+  # - "&cTexture name|texture"
+  Textures:
+    - "&5알론소알리아가|ewogICJ0aW1lc3RhbXAiIDogMTU5NDQ0NjkyMDI5NiwKICAicHJvZmlsZUlkIiA6ICJlMWMxYTE5NDdlODY0MTRmODZiYjQyZDgyYTIxY2ZiOCIsCiAgInByb2ZpbGVOYW1lIiA6ICJBbG9uc29BbGlhZ2EiLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTY4YWE3NGNjODg1NzgwNjBkMGZlM2JkOTA4YjM0ZjY5ZjEyZTA3ZjFmODljNWRkYzE1ZTZiZjYwZjA0Y2NjNiIKICAgIH0KICB9Cn0="
+    - "&d핑크 새|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmE3MmJhMzhlZTQ5NWRlNDk0ZTk5YTgzMWVjN2Q4YzU2MTMyOTcyMmNlMzI2MjQ0OGU0YjU2YThkMDljMjE0YSJ9fX0="
+    - "&2오크|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGViMjgxZjZhMTg1ZWY3ZWQ3NzhjOTQyNmIyZWVmMzk5Y2VkNWEwZWU3YzViNzM2NWQ3MzRjMjE4MjU1NmIxYSJ9fX0="
+    - "&e스티브|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGQxOGM5NTQ5ODAzMWZlYTNmZTc0OGIxN2M3YTVjOWU4OTI4YjNkN2M4ODllZGU3OTAyZDc4YmFhZDYyMmE5NCJ9fX0="
+    - "&b쿠키 몬스터|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDdiNzY2MjAwOWU0NGE5ODRiNTUzMDRlNDNjMDI4MDRiZGYwNGMyODExZjJiNGNiMzkxNWI0NDMxYjc1NzJiZiJ9fX0="
+    - "&c엘모|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTQzOTE4OWU2MTM3NTMyMjkyYzg1OGY1NTIxMjI0MTMxMDhjZGNlNzI5ZTI2ZWU3YjEzNWVhN2NhNDI4ZWM1YiJ9fX0="
+    - "&d돼지|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTgzZWIwNzMxM2MwZDJlZjcyNmMyNjdmMmIxMjg1ZmRhYmQwMjg2NDYwMzEwMjNmYWExYmQ0YzFlNmYwMWRmOCJ9fX0="
+    - "&5스트라이더|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTE5MDNlNGQ5ZWM1NjE3MTFhZDllMTcxYWY2Yjc5ZmZiNjllMjk1ZGNkOWJmMjMwNjhjOWFiYjdlMjE5NDkwZCJ9fX0="
+    - "&9캡틴아메리카|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmQ4ZGIyMzczODRjOTA2YTY5ODEzMDlkMjlmYzY4Mjc3ZDljN2U1OWY4NWM2MGMxMDgyYjYxZTExZGJmMGIwIn19fQ=="
+    - "&3오징어|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGM1ZmZmYzJlOTc4ZDYzOWM3ODI2MjYyYTI1YzA4YTJiMGI5ZmZmNTM2MGUzNzVjMDA0Yjc5OWIzZmY2NzkyNiJ9fX0="
+    - "&d버즈 라이트이어|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2U2NDcwNjc3NmU4NGZhOGM5MGNmYjk1Nzc3NzU5YzFkMTc2ODc3MzBlYTUwMGNjYmU5OTMxOGIxOTU0OTc2MCJ9fX0="
+    - "&6탱크|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjNlZTVmMjhiYmMwM2QyNjEyZmM3NDRkOGEyMmNlMjZlYmRmMWU5OTIxZWM4YTEyNzk3MWRkMDUzMjhmYzhmNCJ9fX0="
+    - "&a탱크|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjJkYTBkYWEzNzg3MTEyMzliMGRiZjY5MDhmMGE1ZjA0MzFiNTI4NzQ4NDE3YTM4MzE2YzQ2NzdjNWIyZDA5YSJ9fX0="
+    - "&e소비에트 공화국|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODU5NTM5Y2U4MzRkOTJlM2Y3ODI1ZTQxM2FlOWNjYmQyNzg4MTUwMTg3MDNkYTgyMzJkMmUxNzczYTE4YjJiMyJ9fX0="
+    - "&4빛나는 맥퀸|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzhlMjJmMTk2ZWE5NmVmYzMzZDQ1NWQ5YzIyYTBjZDIwNTUxZjZkM2U3ZmI0ZTc2NmMzY2M0NjhkZjNjOTY4In19fQ=="
+    - "&6매터|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTQxODkyNjg0NmQxNjg5NmZmOTQ0NjA5MmU4NGRjYjJkZDZhYWNhNGE3NWEzNDA3YmE2NjUzNTM2ZGRmIn19fQ=="
+    - "&a치킨힉스|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2ViOGIxOGRiZDNhZmY0NWY4ZWY2OTc4YzI2NzNiMDIxODc1YzVlMTdiYmRkYTJmMjE4MTY0YTlkM2IzZCJ9fX0="
+    - "&6전설의 달걀|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjA0YzhjN2JhMWYwZGFlYTNiNDEwZWRkYjQ5OWQ1NjUwM2RkZGQ0NzQ2ZTgyMWE1YmRlNDUxM2I2Mjg3NGIxIn19fQ=="
+    - "&9디스코드 핑|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWQ4MzNiNTE1NjY1NjU2NThmOTAxMWRlODc4NGU5MGMxYWQ5YmE1ZDMzMzdmOGMwNjkyMTNiYmRlZTk4NjUyMyJ9fX0="
+    - "&c빨간 줄무늬 가방|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWNlODMzYWE5YTI4YmNmMjA3ZTViMzZhNTkxY2VmMWY5OTdkZDJmNGE0YTIzNmFmNTBkZDA4MWYzYTVkOWM0YyJ9fX0="
+    - "&3엔더 가방|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjEyYzBhMzljZjQ2YTcyYzE4ZmJhMzA3YjgxNTQ2MmQxOTk3NGZlZWU3YTA3ODY0MzU2OWRlY2JmNWI3In19fQ=="
+    - "&5이상한 가방|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDA4N2M2NWQ3YmRlNjY1YjZlMTk1ZThkY2ZjMjFmNGFkZGNmOTJhOTA3MTQwYzM3ZDQ3NGMxMmFjY2Y3YWIifX19"
+    - "&7버그 버니|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzNiMzg2MTQzYWNiZGE5NmQwNjkxNzg5OGZjYmI3YmMwYTJkY2VlOTNmNWU1OWNhNWI3M2U2NzgzZTVjMSJ9fX0="
+    - "&7버그 버니밈|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjM0Y2Q2YmJlYzViNDk3NmY5M2UzZjI0MTU1NjcyNDg2MjY4NzdmMTdiYWY4OWEzNzIyMDUwNmY1OTU3Yjk3YyJ9fX0="
+
+Options:
+  Debug-mode: false
+  #To apply changes for aliases you must RESTART the server.
+  #Plugman or similar plugins are NOT and will NEVER be supported.
+  #Use /reload or restart your server.
+  Aliases:
+  - "betterbackpack"
+  - "bbackpack"
+  - "bbackpacks"
+  - "bbp"
+  #Allow players to place backpacks inside backpacks?
+  #Highly recommended to leave this disabled. If players stack too many backpacks world MIGHT corrupt
+  #and player won't be able to join until you remove his data from the world.
+  #STRONGLY RECOMMENDED TO LEAVE IT DISABLED. IF ENABLED, IT COULD POTENTIALLY BREAK YOUR PLAYER DATA.
+  #You'll need to delete player data from main world to "fix" it. (Might potentially corrupt the whole world)
+  Backpackception: false
+  #Close backpacks inventories if player receives damage.
+  Close-on-damage: true
+  Disabled-worlds:
+    - "world_pvp"
+    - "world_safari"
+  WorldGuard:
+    Warning:
+    - "Default flag:"
+    - " This is the default behavior if the flag is not specified BUT you are inside in a WorldGuard region."
+    - "  true - Players can open backpacks."
+    - "  false - Players cannot open backpacks."
+    Default-flag: true
+  #Materials for which LEFT-CLICK will be disabled.
+  #This is to prevent issues from other plugins.
+  Disabled-click:
+  - "SHULKER_BOX"
+  - "BLACK_SHULKER_BOX"
+  - "WHITE_SHULKER_BOX"
+  - "ORANGE_SHULKER_BOX"
+  - "MAGENTA_SHULKER_BOX"
+  - "LIGHT_BLUE_SHULKER_BOX"
+  - "YELLOW_SHULKER_BOX"
+  - "LIME_SHULKER_BOX"
+  - "PINK_SHULKER_BOX"
+  - "GRAY_SHULKER_BOX"
+  - "SILVER_SHULKER_BOX"
+  - "CYAN_SHULKER_BOX"
+  - "PURPLE_SHULKER_BOX"
+  - "BLUE_SHULKER_BOX"
+  - "BROWN_SHULKER_BOX"
+  - "GREEN_SHULKER_BOX"
+  - "RED_SHULKER_BOX"
+
+Updates:
+  #Auto update configuration? Enabling will delete comments.
+  Auto-update-configuration: true
+  #Check for updates? Recommended to keep it enabled.
+  Check-updates: true
+  #Notify updates when player with permission joins the server?
+  Notify-updates: true
+  #Permission required to receive update message.
+  Permission: "betterbackpacks.update"
+  #Message to send when update is found.
+  Message: "&2[BetterBackpacks] &eA new update has been found! You are using version {CURRENT}. Download version {NEW} here &c{LINK}"

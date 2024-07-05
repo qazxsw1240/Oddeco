@@ -1,0 +1,25 @@
+storageSize: 1
+shopfrontSize: 1
+type: PLAYER
+duration: infinite
+cost: 2000
+storage: []
+trusted: []
+disable_notifications: false
+expire: 0
+times_rented: 1
+collected_money: 0.0
+require_permission: false
+stats:
+  items_sold: 0
+  items_bought: 0
+  money_earned: 0.0
+  money_spent: 0.0
+entity:
+  profession: NONE
+  name: §aAvailable shop!
+  location:
+    x: -27.783586571794725
+    y: 98.0
+    z: 79.2299366378395
+    world: world

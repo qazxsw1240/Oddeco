@@ -1,0 +1,20 @@
+#Configuration Version, do not change!
+Configuration Version: "1.0"
+
+Default Warpstone: warp_stone
+Command Bypasses Condition: false
+Command Bypasses Cooldown: false
+
+Cooldown Indicator:
+  Type: BOSS_BAR
+  # or BOSS_BAR or TITLE
+  Action Bar:
+    Text: "&6{cooldown} &e쿨타임 중!"
+  Boss Bar:
+    Text: "&6{cooldown} &e쿨타임 중!"
+    Bar Color: WHITE
+    Bar Style: SOLID
+    Bar Flags: []
+  Title:
+    Text: '&aCooldown!'
+    Sub Text: "&6{cooldown} &e쿨타임 중!"

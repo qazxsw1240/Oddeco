@@ -1,0 +1,524 @@
+
+#########################################################
+## Developed by Little Room, patreon.com/littleroomdev ##
+#########################################################
+
+### WALLCHECK ###
+
+blacksmithwallcheckdummy:
+  Type: ARMOR_STAND
+  Disguise: ARMOR_STAND setInvisible
+  Options:
+    Marker: true
+  Skills:
+  - skill{s=blacksmithwallcheckPOSITIVE} @parent{target=armorstands} ~onSpawn
+  
+  
+blacksmith_forge:
+  Type: ARMOR_STAND
+  Display: 'blacksmith_forge' 
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  DamageModifiers:
+    - SUFFOCATION -1
+  Drops:
+  - blacksmith_forge 1 1
+  Skills:
+  - skill{s=blacksmith_rotate} @self ~onInteract
+  - skill{s=blacksmith_rotatecheck} @self ~onTimer:20
+  - skill{s=blacksmitherrorprevention} @self ~onTimer:5
+  - skill{s=blacksmithREMOVE} @self ~onDeath
+  - skill{s=blacksmithblockcheck} @origin ~onSpawn
+  #- skill{s=blacksmithbarriercheck} @origin ~onTimer:20
+  - look{headOnly=false;immediately=true;repeat=20;repeatInterval=1} @children{target=armorstands} ~onTimer:20
+  - skill{s=blacksmithDOOR} @self ~onTimer:10
+  - skill{s=blacksmithINPUT} @trigger ~onInteract
+  - model{mid=blacksmith_forge;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_forge;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_forge;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_forge;c=0} @self ~onLoad  
+  
+blacksmith_anvil:
+  Type: ARMOR_STAND
+  Display: 'blacksmith_anvil' 
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  DamageModifiers:
+    - SUFFOCATION -1
+  Drops:
+  - blacksmith_anvil 1 1
+  Skills:
+  - skill{s=blacksmith_rotate} @self ~onInteract
+  - skill{s=blacksmith_rotatecheck} @self ~onTimer:20
+  - skill{s=blacksmitherrorprevention} @self ~onTimer:5
+  - skill{s=blacksmithREMOVE} @self ~onDeath
+  - skill{s=blacksmithblockcheck} @origin ~onSpawn
+  #- skill{s=blacksmithbarriercheck} @origin ~onTimer:20
+  - look{headOnly=false;immediately=true;repeat=20;repeatInterval=1} @children{target=armorstands} ~onTimer:20
+  - skill{s=blacksmithANVILgive} @trigger ~onInteract
+  - skill{s=blacksmithANVILhit} @trigger ~onDamaged
+  - skill{s=blacksmithANVILtake} @trigger ~onInteract
+  - model{mid=blacksmith_anvil;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_anvil;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_anvil;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_anvil;c=0} @self ~onLoad  
+  
+blacksmith_quencher:
+  Type: ARMOR_STAND
+  Display: 'blacksmith_quencher' 
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  DamageModifiers:
+    - SUFFOCATION -1
+  Drops:
+  - blacksmith_quencher 1 1
+  Skills:
+  - skill{s=blacksmith_rotate} @self ~onInteract
+  - skill{s=blacksmith_rotatecheck} @self ~onTimer:20
+  - skill{s=blacksmitherrorprevention} @self ~onTimer:5
+  - skill{s=blacksmithREMOVE} @self ~onDeath
+  - skill{s=blacksmithblockcheck} @origin ~onSpawn
+  #- skill{s=blacksmithbarriercheck} @origin ~onTimer:20
+  - look{headOnly=false;immediately=true;repeat=20;repeatInterval=1} @children{target=armorstands} ~onTimer:20
+  - skill{s=blacksmithQUENCHERgive} @trigger ~onInteract
+  - skill{s=blacksmithQUENCHERtake} @trigger ~onInteract
+  - model{mid=blacksmith_quencher;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_quencher;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_quencher;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_quencher;c=0} @self ~onLoad  
+  
+blacksmith_ingotmold:
+  Type: ARMOR_STAND
+  Display: 'Quencher' 
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  Drops:
+  - blacksmith_ingotmold 1 1
+  Skills:
+  - skill{s=blacksmith_rotate} @self ~onInteract
+  - skill{s=blacksmith_rotatecheck} @self ~onTimer:20
+  - skill{s=blacksmithINGOTinput} @trigger ~onInteract
+  - model{mid=blacksmith_ingotmold;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_ingotmold;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_ingotmold;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_ingotmold;c=0} @self ~onLoad  
+  
+blacksmith_crucible_empty:
+  Type: ARMOR_STAND
+  Display: 'blacksmith_crucible_empty' 
+  Disguise: ARMOR_STAND setInvisible
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  Drops:
+  - blacksmith_crucible_empty 1 1
+  Skills:
+  - skill{s=blacksmithCRUCIBLESPAWN} @self ~onSpawn
+  - skill{s=blacksmithCRUCIBLEGRAB} @trigger ~onInteract
+  - skill{s=blacksmithCRUCIBLEGIVE} @trigger ~onInteract
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onLoad  
+
+
+
+
+
+
+## IRON ##
+blacksmith_crucible_iron:
+  Type: ARMOR_STAND
+  Display: 'blacksmith_crucible_iron' 
+  Disguise: ARMOR_STAND setInvisible
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  Drops:
+  - blacksmith_crucible_iron 1 1
+  Skills:
+  - skill{s=blacksmithCRUCIBLESPAWN} @self ~onSpawn
+  - skill{s=blacksmithCRUCIBLEGRAB} @trigger ~onInteract
+  - skill{s=blacksmithCRUCIBLEGIVE} @trigger ~onInteract
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onLoad  
+  
+blacksmith_crucible_iron_molten:
+  Type: ARMOR_STAND
+  Display: 'blacksmith_crucible_iron_molten' 
+  Disguise: ARMOR_STAND setInvisible
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  Drops:
+  - blacksmith_crucible_iron_molten 1 1
+  Skills:
+  - skill{s=blacksmithCRUCIBLESPAWN} @self ~onSpawn
+  - skill{s=blacksmithCRUCIBLEGRAB} @trigger ~onInteract
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onLoad  
+
+
+
+
+
+
+## steel ##
+blacksmith_crucible_steel:
+  Type: ARMOR_STAND
+  Display: 'blacksmith_crucible_steel' 
+  Disguise: ARMOR_STAND setInvisible
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  Drops:
+  - blacksmith_crucible_steel 1 1
+  Skills:
+  - skill{s=blacksmithCRUCIBLESPAWN} @self ~onSpawn
+  - skill{s=blacksmithCRUCIBLEGRAB} @trigger ~onInteract
+  - skill{s=blacksmithCRUCIBLEGIVE} @trigger ~onInteract
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onLoad  
+  
+blacksmith_crucible_steel_molten:
+  Type: ARMOR_STAND
+  Display: 'blacksmith_crucible_steel_molten' 
+  Disguise: ARMOR_STAND setInvisible
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  Drops:
+  - blacksmith_crucible_steel_molten 1 1
+  Skills:
+  - skill{s=blacksmithCRUCIBLESPAWN} @self ~onSpawn
+  - skill{s=blacksmithCRUCIBLEGRAB} @trigger ~onInteract
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onLoad  
+  
+  
+    
+## copper ##
+blacksmith_crucible_copper:
+  Type: ARMOR_STAND
+  Display: 'blacksmith_crucible_copper' 
+  Disguise: ARMOR_STAND setInvisible
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  Drops:
+  - blacksmith_crucible_copper 1 1
+  Skills:
+  - skill{s=blacksmithCRUCIBLESPAWN} @self ~onSpawn
+  - skill{s=blacksmithCRUCIBLEGRAB} @trigger ~onInteract
+  - skill{s=blacksmithCRUCIBLEGIVE} @trigger ~onInteract
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onLoad  
+  
+  
+## bronze ##
+blacksmith_crucible_bronze:
+  Type: ARMOR_STAND
+  Display: 'blacksmith_crucible_bronze' 
+  Disguise: ARMOR_STAND setInvisible
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  Drops:
+  - blacksmith_crucible_bronze 1 1
+  Skills:
+  - skill{s=blacksmithCRUCIBLESPAWN} @self ~onSpawn
+  - skill{s=blacksmithCRUCIBLEGRAB} @trigger ~onInteract
+  - skill{s=blacksmithCRUCIBLEGIVE} @trigger ~onInteract
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onLoad  
+  
+blacksmith_crucible_bronze_molten:
+  Type: ARMOR_STAND
+  Display: 'blacksmith_crucible_bronze_molten' 
+  Disguise: ARMOR_STAND setInvisible
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  Drops:
+  - blacksmith_crucible_bronze_molten 1 1
+  Skills:
+  - skill{s=blacksmithCRUCIBLESPAWN} @self ~onSpawn
+  - skill{s=blacksmithCRUCIBLEGRAB} @trigger ~onInteract
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onLoad    
+  
+    
+## emerald ##
+blacksmith_crucible_emerald:
+  Type: ARMOR_STAND
+  Display: 'blacksmith_crucible_emerald' 
+  Disguise: ARMOR_STAND setInvisible
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  Drops:
+  - blacksmith_crucible_emerald 1 1
+  Skills:
+  - skill{s=blacksmithCRUCIBLESPAWN} @self ~onSpawn
+  - skill{s=blacksmithCRUCIBLEGRAB} @trigger ~onInteract
+  - skill{s=blacksmithCRUCIBLEGIVE} @trigger ~onInteract
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onLoad  
+  
+  
+## emerite ##
+blacksmith_crucible_emerite:
+  Type: ARMOR_STAND
+  Display: 'blacksmith_crucible_emerite' 
+  Disguise: ARMOR_STAND setInvisible
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  Drops:
+  - blacksmith_crucible_emerite 1 1
+  Skills:
+  - skill{s=blacksmithCRUCIBLESPAWN} @self ~onSpawn
+  - skill{s=blacksmithCRUCIBLEGRAB} @trigger ~onInteract
+  - skill{s=blacksmithCRUCIBLEGIVE} @trigger ~onInteract
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onLoad  
+  
+blacksmith_crucible_emerite_molten:
+  Type: ARMOR_STAND
+  Display: 'blacksmith_crucible_emerite_molten' 
+  Disguise: ARMOR_STAND setInvisible
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  Drops:
+  - blacksmith_crucible_emerite_molten 1 1
+  Skills:
+  - skill{s=blacksmithCRUCIBLESPAWN} @self ~onSpawn
+  - skill{s=blacksmithCRUCIBLEGRAB} @trigger ~onInteract
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onLoad    
+    
+## lapis ##
+blacksmith_crucible_lapis:
+  Type: ARMOR_STAND
+  Display: 'blacksmith_crucible_lapis' 
+  Disguise: ARMOR_STAND setInvisible
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  Drops:
+  - blacksmith_crucible_lapis 1 1
+  Skills:
+  - skill{s=blacksmithCRUCIBLESPAWN} @self ~onSpawn
+  - skill{s=blacksmithCRUCIBLEGRAB} @trigger ~onInteract
+  - skill{s=blacksmithCRUCIBLEGIVE} @trigger ~onInteract
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onLoad  
+  
+  
+## lazulium ##
+blacksmith_crucible_lazulium:
+  Type: ARMOR_STAND
+  Display: 'blacksmith_crucible_lazulium' 
+  Disguise: ARMOR_STAND setInvisible
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  Drops:
+  - blacksmith_crucible_lazulium 1 1
+  Skills:
+  - skill{s=blacksmithCRUCIBLESPAWN} @self ~onSpawn
+  - skill{s=blacksmithCRUCIBLEGRAB} @trigger ~onInteract
+  - skill{s=blacksmithCRUCIBLEGIVE} @trigger ~onInteract
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onLoad  
+  
+blacksmith_crucible_lazulium_molten:
+  Type: ARMOR_STAND
+  Display: 'blacksmith_crucible_lazulium_molten' 
+  Disguise: ARMOR_STAND setInvisible
+  Health: 500
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Persistent: true
+    Despawn: false
+    Collidable: false
+    Silent: true
+    PreventOtherDrops: true
+  Drops:
+  - blacksmith_crucible_lazulium_molten 1 1
+  Skills:
+  - skill{s=blacksmithCRUCIBLESPAWN} @self ~onSpawn
+  - skill{s=blacksmithCRUCIBLEGRAB} @trigger ~onInteract
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onSpawn
+  - model{mid=blacksmith_crucible;d=false;i=true} @self ~onLoad  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onSpawn  
+  - bodyclamp{m=blacksmith_crucible;c=0} @self ~onLoad  
+  

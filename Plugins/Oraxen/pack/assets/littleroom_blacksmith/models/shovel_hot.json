@@ -1,0 +1,65 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"1": "modelengine:entity/blacksmith_anvil_parts"
+	},
+	"elements": [
+		{
+			"from": [8, 7, 7.5],
+			"to": [8.5, 13, 11.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8.25, 10, 8.25]},
+			"faces": {
+				"north": {"uv": [0, 2, 6, 2.5], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [6, 0, 0, 5], "rotation": 270, "texture": "#1"},
+				"south": {"uv": [5, 0, 11, 0.5], "rotation": 270, "texture": "#1"},
+				"west": {"uv": [6, 5, 0, 0], "rotation": 270, "texture": "#1"},
+				"up": {"uv": [5, 1, 10, 1.5], "rotation": 270, "texture": "#1"},
+				"down": {"uv": [5, 1, 10, 1.5], "rotation": 270, "texture": "#1"}
+			}
+		},
+		{
+			"from": [8, 8, 6.5],
+			"to": [8.5, 12, 7.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8.25, 10, 8.25]},
+			"faces": {
+				"north": {"uv": [0, 2, 4, 2.5], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [4, 0, 0, 1], "rotation": 270, "texture": "#1"},
+				"south": {"uv": [5, 0, 9, 0.5], "rotation": 270, "texture": "#1"},
+				"west": {"uv": [4, 1, 0, 0], "rotation": 270, "texture": "#1"},
+				"up": {"uv": [6, 1, 7, 1.5], "rotation": 270, "texture": "#1"},
+				"down": {"uv": [5, 1, 6, 1.5], "rotation": 270, "texture": "#1"}
+			}
+		}
+	],
+	"gui_light": "front",
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 0.25, 1.5]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 0.25, 1.5]
+		},
+		"firstperson_righthand": {
+			"translation": [0, 0.25, 1.5]
+		},
+		"firstperson_lefthand": {
+			"translation": [0, 0.25, 1.5]
+		},
+		"ground": {
+			"rotation": [0, 0, 48],
+			"translation": [0, -0.5, 0]
+		},
+		"gui": {
+			"rotation": [64, -146, 65],
+			"translation": [-1.75, -1.75, 0]
+		}
+	},
+	"groups": [
+		{
+			"name": "shovel",
+			"origin": [0, 14.5, 21],
+			"color": 0,
+			"children": [0, 1]
+		}
+	]
+}

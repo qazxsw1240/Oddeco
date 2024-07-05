@@ -1,0 +1,175 @@
+speed_grow_1:
+  type: SPEED_GROW
+  # Fertilizer Hologram display icon
+  # 肥料在悬浮字中显示的图标
+  icon: 뀌
+  # How many days can this fertilizer stay in pot
+  # 肥料有效时间（游戏日）
+  times: 14
+  # item id
+  # 物品ID
+  item: speed_grow_1
+  # Should this fertilizer be used before planting
+  # 肥料是否只能在种植前使用
+  before-plant: true
+  # Pot whitelist
+  # 种植盆白名单
+  pot-whitelist:
+  - default
+  # 50% chance to gain another 1 points
+  chance:
+    '1': 0.5
+  events:
+    use:
+      particle_action:
+        type: particle
+        value:
+          particle: SPELL_WITCH
+          x: 0.5
+          y: 1.3
+          z: 0.5
+          count: 5
+          offset-x: 0.3
+          offset-z: 0.3
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.hoe.till
+          volume: 1
+          pitch: 1
+    wrong_pot:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] This fertilizer can only be used in pots.
+    before_plant:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] You can only use this fertilizer before planting the
+          crop.
+speed_grow_2:
+  type: SPEED_GROW
+  icon: 뀍
+  times: 14
+  item: speed_grow_2
+  before-plant: true
+  pot-whitelist:
+  - default
+  # 10% chance to gain another 2 points
+  # (100% - 10%) * 70% = 63% chance to gain another 1 point
+  chance:
+    '2': 0.1
+    '1': 0.7
+  events:
+    use:
+      particle_action:
+        type: particle
+        value:
+          particle: SPELL_WITCH
+          x: 0.5
+          y: 1.3
+          z: 0.5
+          count: 5
+          offset-x: 0.3
+          offset-z: 0.3
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.hoe.till
+          volume: 1
+          pitch: 1
+    wrong_pot:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] This fertilizer can only be used in pots.
+    before_plant:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] You can only use this fertilizer before planting the
+          crop.
+speed_grow_3:
+  type: SPEED_GROW
+  icon: 뀎
+  times: 14
+  item: speed_grow_3
+  before-plant: true
+  pot-whitelist:
+  - default
+  # 10% chance to gain another 3 points
+  # (100% - 10%) * 40% = 36% chance to gain another 2 points
+  # (100% - (36% + 10%)) * 80% = 43.2% chance to gain another 1 point
+  chance:
+    '3': 0.1
+    '2': 0.4
+    '1': 0.8
+  events:
+    use:
+      particle_action:
+        type: particle
+        value:
+          particle: SPELL_WITCH
+          x: 0.5
+          y: 1.3
+          z: 0.5
+          count: 5
+          offset-x: 0.3
+          offset-z: 0.3
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.hoe.till
+          volume: 1
+          pitch: 1
+    wrong_pot:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] This fertilizer can only be used in pots.
+    before_plant:
+      sound_action:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.bundle.insert
+          volume: 1
+          pitch: 1
+      actionbar_action:
+        type: actionbar
+        value: <red><bold>[X] You can only use this fertilizer before planting the
+          crop.

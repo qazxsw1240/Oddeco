@@ -1,0 +1,120 @@
+garlic:
+  type: TRIPWIRE
+  pot-whitelist:
+  - default
+  seed: garlic_seeds
+  requirements:
+    plant:
+      requirement_1:
+        type: season
+        value:
+        - Summer
+        - Autumn
+        message: It's not a good season to plant eggplant
+      requirement_2:
+        type: permission
+        value: farmer3.garlic
+        message: 마늘을 심을 권한이 없습니다.
+  max-points: 3
+  points:
+    '0':
+      model: garlic_stage_1
+      hologram-offset-correction: -0.4
+      events:
+        break:
+          action_1:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+    '1':
+      model: garlic_stage_2
+      hologram-offset-correction: -0.4
+      events:
+        break:
+          action_1:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+    '2':
+      model: garlic_stage_3
+      hologram-offset-correction: -0.4
+      events:
+        break:
+          action_1:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+    '3':
+      model: garlic_stage_4
+      hologram-offset-correction: -0.4
+      events:
+        break:
+          action_1:
+            type: sound
+            value:
+              source: player
+              key: minecraft:block.crop.break
+              volume: 1
+              pitch: 1
+          action_2:
+            type: drop-items
+            value:
+              quality-crops:
+                min: 4
+                max: 4
+                items:
+                  '1': garlic
+                  '2': garlic_silver_star
+                  '3': garlic_golden_star
+              other-items:
+                loot_1:
+                  item: garlic_seeds
+                  min: 1
+                  max: 1
+                  chance: 1
+  custom-bone-meal:
+    bone_meal_1:
+      item: BONE_MEAL
+      chance:
+        '2': 0.2
+        '1': 0.6
+      actions:
+        swing_action:
+          type: swing-hand
+          value: true
+        particle_action:
+          type: particle
+          value:
+            particle: VILLAGER_HAPPY
+            count: 5
+            x: 0.5
+            y: 0.5
+            z: 0.5
+            offset-x: 0.3
+            offset-y: 0.3
+            offset-z: 0.3
+        sound_action:
+          type: sound
+          value:
+            key: minecraft:item.bone_meal.use
+            source: player
+            volume: 1
+            pitch: 1
+  events:
+    plant:
+      action_1:
+        type: sound
+        value:
+          source: player
+          key: minecraft:item.hoe.till
+          volume: 1
+          pitch: 1

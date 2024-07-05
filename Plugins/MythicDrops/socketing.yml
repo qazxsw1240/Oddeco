@@ -1,0 +1,74 @@
+version: 6.0.0
+options:
+  prevent-crafting-with-gems: true
+  prevent-multiple-name-changes-from-sockets: false
+  use-attacker-item-in-hand: true
+  use-attacker-armor-equipped: false
+  use-defender-item-in-hand: false
+  use-defender-armor-equipped: true
+  socket-gem-material-ids:
+    - EMERALD
+  default-socket-name-color-on-items: GOLD
+  aura-gem-refresh-in-seconds: 30
+  socket-extender-material-ids:
+    - DIAMOND
+  require-extender-slots-to-add-sockets: false
+  click-type-to-socket: RIGHT
+  maximum-number-of-sockets-via-extender: 5
+items:
+  socket-extender:
+    slot: "any"
+    name: "&3룬 소켓 확장자"
+    lore:
+      - "&7이 아이템을 든 상태로 다른 아이템에"
+      - "&7우클릭할 시, 다른 보석을 박아 넣을 수 "
+      - "&7있는 빈 공간이 형성됩니다."
+  socket-gem:
+    glow: false
+    lore:
+      - "%socketitemgrouplore%"
+      - "%socketfamilylore%"
+      - ""
+      - "&7이 룬을 든 상태로 빈 소켓 공간이 있는"
+      - "&7다른 아이템을 우클릭 할 시"
+      - "&7박아넣을 수 있습니다!"
+      - ""
+      - "%socketgemlore%"
+    family-lore:
+      - "&7계열: &F%family% &7(&F%level%&7)"
+    item-group-lore:
+      - "&7종류: &F%itemgroup%"
+    any-of-item-group-lore:
+      - "  &7다음 장비에 세공 가능: &F%itemgroup%"
+    all-of-item-group-lore:
+      - "  &7다음 장비에 세공 가능: &F%itemgroup%"
+    none-of-item-group-lore:
+      - "  &7다음 장비에 세공 불가능: &F%itemgroup%"
+  socket-gem-combiner:
+    name: "&4룬 압축기"
+    buffer:
+      name: "&6 보석 룬&a을 넣어서 시작하세요!"
+      material: "IRON_BARS"
+      lore: []
+    click-to-combine:
+      name: "&E&L클릭하여 압축하세요!"
+      material: "NETHER_STAR"
+      lore: []
+    ineligible-to-combine:
+      name: "&C&L결합하실 수 없습니다!"
+      material: "BARRIER"
+      same-family-lore:
+        - "&74개의 동일한 계열의 &6룬&7을"
+        - "&7합칠 수 있습니다."
+      same-level-lore:
+        - "&74개의 동일한 레벨의 &6룬&7을"
+        - "&7합칠 수 있습니다."
+      same-family-and-level-lore:
+        - "&74개의 동일한 레벨과 계열의 &6룬"
+        - "&7을 합칠 수 있습니다."
+      no-gem-found-lore:
+        - "&7그 보석을 합치기에는"
+        - "&7보석이 유효하지 않습니다!"
+combining:
+  require-same-family: false
+  require-same-level: false

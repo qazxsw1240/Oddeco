@@ -1,0 +1,1674 @@
+Items:
+  EntropyCrystal:
+    Lore:
+    - '&7&d10,000 낚시코인을 클릭하면 주는 아이템&7.'
+    - '&7/fish augment GUI에서 만들 수 있습니다.'
+    - '&3플레이어끼리 교환하며 사용할 수 있습니다.'
+    Name: '&b낚시코인 크리스탈 &8(&310,000&8)'
+  CrabScales:
+    Name: '&e&l게 껍질'
+    Lore:
+    - '&7꽃게들을 잡으면서 얻은 부산물이다.'
+    - '&7낚시대 특별 미끼를 제작할 때 사용된다.'
+  CrabClaw:
+    Name: '&9&l집게발'
+    Lore:
+    - '&7꽃게들을 잡으면서 얻은 부산물이다.'
+    - '&7특별 미끼를 제작할 때 사용된다.'
+  EtherealOrb:
+    Name: '&3&l이터럴 오브'
+    Lore:
+    - '&7낚시 토템을 초기화해주는 오브다.'
+    - ''
+    - '&7오직 낚시 토템에만 사용 가능하다.'
+    - ''
+    - '&a우클릭&7해서 사용한다.'
+  SquidTentacle:
+    Name: '&9&l오징어 촉수'
+    Lore:
+    - '&7오징어를 잡다가 주울 수 있다.'
+    - '&7특별 미끼를 제작하는데 재료로 들어가거나'
+    - '&7낚시 토템으로 사용된다.'
+  DolphinTail:
+    Lore:
+    - '&7돌고래를 잡다가 주울 수 있다.'
+    - '&7특별 미끼를 제작하는데 재료로 들어간다.'
+    Name: '&3&l돌고래 꼬리'
+  EntropyBooster:
+    Lore:
+    - '&7배달 보상으로 받을 수 있다.'
+    - '&7낚시로 낚시코인을 얻는 량을 증가시킨다.'
+    - '&7이 부스터는 물고기 해체, 측정에는 작용하지 않는다'
+    - ''
+    - '&730분동안 적용된다&7.'
+    - ''
+    - '&a우클릭&7해서 사용한다.'
+    Name: '&b&l낚시코인 부스터 &8(&3%multi%x&8)'
+  CrabLure:
+    Lore:
+    - '&7배달 보상으로 받을 수 있다.'
+    - '&7게 등장 확률을 &d2배&7 올린다.'
+    - ''
+    - '&a우클릭&7해서 사용한다.'
+    Name: '&b&l게 미끼'
+  MythicalLure:
+    Name: '&5&l신화적인 미끼'
+    Lore:
+    - '&7배달 보상으로 얻을 수 있다. 사용해서'
+    - '&7&5Mythical &7등급의 물고기를 잡을 확률을 &d2.5배&7 올린다.'
+    - ''
+    - '&a우클릭&7해서 사용한다.'
+  PlatinumLure:
+    Lore:
+    - '&7배달 보상으로 얻을 수 있다. 사용해서'
+    - '&7&5Platinum &7등급의 물고기를 잡을 확률을 &d2.5배&7 올린다.'
+    - ''
+    - '&a우클릭&7해서 사용한다.'
+    Name: '&c&l플래티넘 미끼'
+SeasonalEvents:
+  CRABMAS:
+    SalmonName: '&3전기 뱀장어'
+    UsedOrb: '&7당신은 5개의 &c크랩스마스 오브&7 사용했습니다. 당신의 다음 &c크랩스마스&7는 보스가 소환됩니다.'
+    CrabmasOrb:
+      Name: '&c크랩스마스 오브'
+      Lore:
+      - '&7이 특별한 오브는 오직 &c크랩스마스&7를'
+      - '&7잡을 때 드랍한다. 이 오브는 오직 &c크랩스마스 이벤트&7.'
+      - '&7때만 얻을 수 있다.'
+      - ''
+      - '&7이 오브를 &25개 &7를 사용할 시'
+      - '&c크랩스마스 &7아주 특별한 보스를 체험할 수 있다!'
+      - ''
+      - '&7이 이벤트는 매주 일요일마다 열린다.'
+    Changed: '&c크랩스마스 바이옴이 &7변경되었습니다...'
+    NotEnoughOrbs: '&7적어도 &c5개의 크랩스마스 오브 &7가 있어야 사용할 수 있습니다.'
+    FoundBiome: '&3%player% &7가 &c크랩스마스 바이옴을&7 찾았습니다!'
+    CrabmasBabyName: '&c크랩스마스 꼬마'
+    CrabmasName: '&c&l크랩스마스'
+    AlreadyUsedOrb: '&7이미 5개의 오브를 사용한 상태다. &c크랩스마스&7가 다음 보스로 등장할 겁니다.'
+  Names:
+    CRABMAS: Crabmas
+GUI:
+  Codex:
+    Misc:
+      Sun: 화창함
+      PerBait: '  &7» &a%bait%'
+      FoundDuring: '&7다음 상태일 때 찾을 수 있습니다: &a'
+      Rain: 비
+      Night: 밤
+      Day: 낮
+      FoundBetween: '&7등장하는 Y 높이: &a'
+      TotalCaught: '&7총 잡은 횟수: &a'
+      Bait: '&7 요구 낚시찌 :'
+      FirstCaught: '&7제일 처음 잡은 사람: &a'
+    Main:
+      Platinum:
+        Lore:
+        - '&7클릭해서 어떤 플래티넘 생선이 있는지 확인해보세요!'
+        Name: '&6&lPlatinum'
+      Silver:
+        Name: '&6&lSilver'
+        Lore:
+        - '&7클릭해서 어떤 실버 등급 생선이 있는지 확인해보세요!'
+      Info2:
+        Name: '&a&l안내서 (2/2)'
+        Lore:
+        - '&7여기서 특정 물고기를 누가 제일 먼저'
+        - '&7잡았는지, 누가 제일 많이 잡았는지'
+        - '&7확인할 수 있습니다!'
+      Mythical:
+        Lore:
+        - '&7클릭해서 어떤 신화적인 등급 생선이 있는지 확인해보세요!'
+        Name: '&5&lMythical'
+      Bronze:
+        Lore:
+        - '&7클릭해서 어떤 브론즈 등급 생선이 있는지 확인해보세요!'
+        Name: '&6&lBronze'
+      Diamond:
+        Name: '&6&lDiamond'
+        Lore:
+        - '&7클릭해서 어떤 다이아 등급 생선이 있는지 확인해보세요!'
+      Gold:
+        Lore:
+        - '&7클릭해서 어떤 골드 등급 생선이 있는지 확인해보세요!'
+        Name: '&6&lGold'
+      Info1:
+        Lore:
+        - '&7클릭해서 각 티어에 있는 물고기가'
+        - '&7뭐가 있는지 확인해보세요!'
+        - '&7어디서 어떤 상태일 때 잡을 수 있는지'
+        - '&7확인할 수 있습니다.'
+        Name: '&a&l안내서 (1/2)'
+    InfoEmerald:
+      Name: '&a&l안내서'
+      Lore:
+      - '&7이게 &3%tier% &7의 모든 생선입니다!'
+      - '&7마우스를 올려서 확인해보세요!'
+    NextPage:
+      Name: '&a&l다음 페이지'
+      Lore:
+      - '&7클릭해서 다음 페이지를 확인합니다.'
+  Shop:
+    SpecialFish:
+      Name: '&a&l특별한 생선 상점'
+      Lore:
+      - §8§m--------------------------
+      - '§7 ★ 특별 상점 ★:'
+      - '§8➤ §7물고기: §3%name%'
+      - '§8➤ §7티어: §3%tier%'
+      - '§8➤ §7배율: §3%multiplier%x'
+      - §8§m--------------------------
+      - §7§3%minutes% §7분 뒤에 다시 조정됩니다.
+      - §8§m--------------------------
+    Prices:
+      Name: '&2&l가격'
+      Lore:
+      - '§7모든 아이템들은 다음과 같은 가격대를 가지고 있습니다 : '
+      - '§7날 생선: §3%RawFishMoney%'
+      - '§7브론즈: §3%BronzeMoney%'
+      - '§7실버: §3%SilverMoney%'
+      - '§7골드: §3%GoldMoney%'
+      - '§7다이아몬드: §3%DiamondMoney%'
+      - '§7플래티넘: §3%PlatinumMoney%'
+      - '§7신화적: §3%MythicalMoney%'
+    Info:
+      Name: '&a&l설명서'
+      Lore:
+      - '&7아이템을 여기 위에 올려놓고'
+      - '&7그냥 닫아서 팔아버리세요!'
+    Back:
+      Name: '&c&l뒤로'
+      Lore:
+      - '&7클릭해서 메인 메뉴로 되돌아갑니다.'
+  Deliveries:
+    DeliveryFor: '&3배달 수취인: &b%name%'
+    Upgrade:
+      INCREASE_CAPACITY:
+        Name: '&7업그레이드 : &e배달 가능량 증가'
+        Lore:
+        - '&7배달 의뢰 내용을 더 많이'
+        - '&7들고 있을 수 있습니다.'
+      EXPERT_DELIVERER:
+        Lore:
+        - '&7배달에 요구되는 물고기 량이 감소합니다'
+        - '&7오직 일반 배달에만 적용됩니다.'
+        Name: '&7업그레이드 : &c배달 전문가'
+      LUCKY_CHARM:
+        Lore:
+        - '&7새로운 배달 의뢰를 받기까지'
+        - '&7필요한 낚시 량을 줄입니다!'
+        Name: '&7업그레이드: &d행운의 부적'
+      Lore:
+      - ''
+      - '§7업그레이드 스텟:'
+      - '§7- 현재 레벨: §b%level%'
+      - '§7- 다음 레벨: §9%nextlevel%'
+      - '§7- 업그레이드 비용: §3%cost%'
+      - '§7- 최대 레벨: §3%maxlevel%'
+      - ''
+      - §7클릭해서 업그레이드 하십시오.
+      OVERCLOCKED:
+        Name: '&7업그레이드: &e총알배송'
+        Lore:
+        - '&7배송하는데 걸리는 시간을'
+        - '&7감소시킵니다!'
+      PAY_RISE:
+        Name: '&7업그레이드: &3급여 증가'
+        Lore:
+        - '&7배달 의뢰를 성공했을 때 얻는 보상을'
+        - '&7증가시킵니다!'
+    Upgrades:
+      Misc:
+        LUCKY_CHARM: 줄어든 물고기량
+        INCREASE_CAPACITY: 추가된 의뢰슬롯
+        MaxLevel: 최대 레벨.
+        OVERCLOCKED: '%'
+        EXPERT_DELIVERER: ' 줄어든 물고기량'
+        PAY_RISE: 배 낚시코인
+      Upgraded: '&e%name% &7를 &3%level%&7로 업그레이드하였습니다.'
+      NoEntropy: '&7 낚시코인이 부족합니다. &c%entropy%&7 만큼의 낚시코인이 필요합니다.'
+    Misc:
+      Entropy: '&7낚시코인 보상 &9'
+      Reward: '&7보상 &9'
+      Fish: '&7필요한 물고기:'
+    Status:
+      NotStarted: '&c시작하지 않음'
+      Ready: '&a준비중...'
+      InProgress: '&6실행중...'
+    LockedSlot:
+      Name: '&4잠긴 의뢰 슬롯'
+      Lore:
+      - '&7이 슬롯은 잠겨있습니다. &e배달 가능량 증가'
+      - '&7업그레이드를 통해 해금하세요!'
+    EmptySlot:
+      Lore:
+      - '&7이 슬롯은 비어있습니다. 새로운 의뢰를'
+      - '&7위해서 180마리의 물고기를 잡으세요.'
+      Name: '&c의뢰 수주 중...'
+    TimeToDelivery:
+      Ready: '&7배달 : &a준비 완료!'
+      InProgress: '&7배달 완료까지 걸리는 시간: &9%time%'
+    MiddleClick:
+      NoLonger: '&9이걸 무효화시킬 수는 없을 것 같습니다.'
+    DeleteDelivery:
+      Delete: '&9쉬프트+우클릭 &7으로 배달 의뢰를 취소할 수 있습니다.'
+    Info:
+      Lore:
+      - '&7배달은 돈이나 &f낚시코인&7을'
+      - '&7벌 수 있는 새로운 수단이 될 것입니다!'
+      - '&7새로운 배달 의뢰를 받으려면 &6180마리의'
+      - '&7물고기를 잡아야합니다.'
+      - ''
+      - '&7배달은 다양한 종류의 물고기를 요구하기'
+      - '&7때문에 유저들간의 거래를 추천합니다!'
+      - ''
+      - '&7끝 부분에 있는 업그레이드를 눌러서'
+      - '&7배달을 더 빨리 할 수 있도록 해보세요!'
+      - ''
+      - '&7배달 난이도:'
+      - '&7- Common &8(&e★&7☆☆&8)'
+      - '&7- Uncommon &8(&e★★&7☆&8)'
+      - '&7- Rare &8(&e★★★&8)'
+      - '&7- Mythical &8(&5★&8)'
+      Name: '&a&l설명서:'
+  Totems:
+    TotemPassives:
+      LittleCritters:
+        Lore:
+        - '&7이 패시브는 꽃게를 잡을 확률을'
+        - '&7올려줍니다. 조그마한 이 악동들은'
+        - '&7이제 낚시꾼들에겐 필요한 자원이죠.'
+        - ''
+        - '&8➛  &7패시브 슬롯이 필요합니다 : &3%slots%'
+        - '&8➛  &7낚시 레벨이 필요합니다 : &b%level%'
+        - '&8➛  &7활동 : &b%buff%'
+        Name: '&9작은 악동들 &7패시브 능력'
+      StarFall:
+        Name: '&d별똥별 &7패시브 능력'
+        Lore:
+        - '&7이 패시브 능력은 당신이 물고기를'
+        - '&7잡았을 때 랜덤으로 번개를 내려찍고'
+        - '&7엄청 강한 물고기를 소환합니다.'
+        - '&7엄청 강한 물고기를 잡으면 많은'
+        - '&7보상과 낚시코인을 줍니다.'
+        - ''
+        - '&8➛  &7패시브 슬롯이 필요합니다: &3%slots%'
+        - '&8➛  &7낚시 레벨이 필요합니다 : &b%level%'
+        - '&8➛  &7활동 : &b%buff%'
+      MythicalWaters:
+        Name: '&5고대의 영역 &7패시브 능력'
+        Lore:
+        - '&7이 패시브 능력은 더 크고 더 희귀한'
+        - '&7물고기를 잡을 확률을 올려줍니다'
+        - ''
+        - '&8➛  &7패시브 슬롯이 필요합니다: &3%slots%'
+        - '&8➛  &7낚시 레벨이 필요합니다 : &b%level%'
+        - '&8➛  &7활동 : &b%buff%'
+      EntropyHorder:
+        Lore:
+        - '&7이 패시브 능력은 영향 범위 내에서'
+        - '&7물고기를 잡을 경우 얻을 수 있는'
+        - '&7낚시코인의 량을 증가시킵니다.'
+        - ''
+        - '&8➛  &7패시브 슬롯이 필요합니다: &3%slots%'
+        - '&8➛  &7낚시 레벨이 필요합니다 : &b%level%'
+        - '&8➛  &7활동 : &b%buff%'
+        Name: '&b낚시코인 파밍 &7패시브 능력'
+      FishSchool:
+        Name: '&e물고기 학교 &7패시브 능력'
+        Lore:
+        - '&7이 패시브 능력은 여러명이서 모여'
+        - '&7얻는 버프를 증가시킵니다.'
+        - ''
+        - '&8➛  &7패시브 슬롯이 필요합니다: &3%slots%'
+        - '&8➛  &7낚시 레벨이 필요합니다 : &b%level%'
+        - '&8➛  &7활동 : &b%buff%'
+      RandomDrops:
+        Name: '&2랜덤 파밍 &7패시브 능력'
+        Lore:
+        - '&7이 패시브 능력은 꽃게를 잡을 때'
+        - '&7랜덤으로 오징어, 돌고래 등의'
+        - '&7낚시 파밍 요소를 드랍하게 합니다.'
+        - ''
+        - '&8➛  &7패시브 슬롯이 필요합니다: &3%slots%'
+        - '&8➛  &7낚시 레벨이 필요합니다 : &b%level%'
+        - '&8➛  &7활동 : &b%buff%'
+      ExperiencedFisherman:
+        Name: '&a숙련된 어부 &7패시브 능력'
+        Lore:
+        - '&7이 패시브 능력은 낚시를 통해서'
+        - '&7얻을 수 있는 &a경험치를'
+        - '&7유의미하게 증가합니다.'
+        - ''
+        - '&8➛  &7패시브 슬롯이 필요합니다: &3%slots%'
+        - '&8➛  &7낚시 레벨이 필요합니다 : &b%level%'
+        - '&8➛  &7활동 : &b%buff%'
+      TreasureHunter:
+        Lore:
+        - '&7이 패시브 능력은 낚시 도중'
+        - '&7물고기를 잡을 때 랜덤으로'
+        - '&7귀한 랜덤 아이템을 드랍합니다.'
+        - ''
+        - '&8➛  &7패시브 슬롯이 필요합니다: &3%slots%'
+        - '&8➛  &7낚시 레벨이 필요합니다 : &b%level%'
+        - '&8➛  &7활동 : &b%buff%'
+        Name: '&6보물 사냥꾼 &7패시브 능력'
+    Activate:
+      Lore:
+      - '&a토템&7을 클릭하여 활성화하십시오.'
+      - ''
+      - '&7활성화 시간: &a%active_time%'
+      - '&7쿨타임 시간: &c%cooldown_time%'
+      - '&7범위: &6%radius% 블록'
+      Name: '&a클릭하여 발동'
+    Upgrades:
+      COOLDOWN_REDUCTION:
+        Name: '&e쿨타임 감소 &7업그레이드'
+        Lore:
+        - '&7이 업그레이드는 토템을 사용하는데'
+        - '&7쿨타임을 줄여줍니다.'
+        - ''
+        - '&7 업그레이드:'
+        - '&8➛ &7현재 레벨: &b%level%'
+        - '&8➛ &7현재 지속기간: &3%time%'
+        - '&8➛ &7업그레이드 비용: &9%upgrade_cost% 낚시코인'
+        - '&8➛ &7다음 레벨 지속시간: &9%upgrade_time%'
+        - '&8➛ &7최대 레벨: &9%max_level%'
+      ACTIVE_TIME:
+        Lore:
+        - '&7이 업그레이드는 토템이 활성화되는'
+        - '&7시간을 늘려줍니다.'
+        - ''
+        - '&7 업그레이드:'
+        - '&8➛ &7현재 레벨: &b%level%'
+        - '&8➛ &7현재 지속기간: &3%time%'
+        - '&8➛ &7업그레이드 비용: &9%upgrade_cost% 낚시코인'
+        - '&8➛ &7다음 레벨 지속시간: &9%upgrade_time%'
+        - '&8➛ &7최대 레벨: &9%max_level%'
+        Name: '&a활성화 시간 증가 &7업그레이드'
+      RANGE:
+        Lore:
+        - '&7이 업그레이드는 토템의 영향 범위를'
+        - '&7넓혀줍니다.'
+        - ''
+        - '&7 업그레이드:'
+        - '&8➛ &7현재 레벨: &b%level%'
+        - '&8➛ &7현재 지속기간: &3%time%'
+        - '&8➛ &7업그레이드 비용: &9%upgrade_cost% 낚시코인'
+        - '&8➛ &7다음 레벨 지속시간: &9%upgrade_time%'
+        - '&8➛ &7최대 레벨: &9%max_level%'
+        Name: '&c토템 범위 &7업그레이드'
+    Passives:
+      ConfigDisabled: '&7이 토템 효과는 관리자에 의해서 금지되었습니다.'
+      Misc:
+        Disabled: '&7다음 패시브 효과를 &c비활성화 했습니다: &b%passive% &7.'
+        MaxSlots: '&7이미 최대 갯수의 패시브 칸을 구매했습니다.'
+        NotLevel: '&7이 패시브를 활성화하기에는 레벨이 부족합니다'
+        NoSlots: '&7이 패시브를 활성화하기에는 패시브 슬롯이 꽉찼습니다.'
+        Activated: '&7당신은 이 패시브를 &a활성화 했습니다: &b%passive% &7.'
+        Active:
+        - ''
+        - '&a&l효과 실행'
+        PurchasedSlot: '&7또다른 &e패시브 슬롯 &7을 구매하여 지금 &b%slots% &7개가 있습니다.'
+        NoItemsForNewSlot: '&7이 패시브 슬롯을 구매하기엔 동일한 &5신화적인 물고기&7나 &c플래티넘 물고기 &7 개수가
+          부족합니다. &7'
+        AlreadyActive: '&7이미 이 패시브는 사용 중입니다.'
+    InUse:
+      Name: '&c토템 활성화 &7| &c%time%'
+      Lore:
+      - '&7당신의 &c토템&7은 앞으로'
+      - '&7&c%time%&7만큼 활성화됩니다.'
+    Misc:
+      Times: chance
+      BonusChance: bonus chance
+      Chance: chance
+    Cooldown:
+      Name: '&e토템 쿨타임 &7| &e%time%'
+      Lore:
+      - '&7당신의 &e토템은 &7 지금'
+      - '&7&e%time%&7시간 후 활성화 할 수 있습니다.'
+    Information:
+      Lore:
+      - '&3토템 패시브는&7 오직 당신의 '
+      - '&7&e토템이 &7활성화 될 때 적용됩니다.'
+      - ''
+      - '&7패시브는 &eTotem&7의 &c쿨타임 기간&7'
+      - '&7동안 자동으로 비활성화 됩니다.'
+      - ''
+      - '&e토템 &7을 부수면 서버는'
+      - '&7데이터를 저장한 뒤 당신에게'
+      - '&7특별한 아이템을 줄 것 입니다.'
+      - '&7이사할 때 편하게 하기 위해서요.'
+      Name: '&aInformation'
+    PassiveSlots:
+      NewLore:
+      - '&7이걸 업그레이드 할 경우'
+      - '&7사용할 수 있는 패시브의 갯수'
+      - '&7가 증가합니다.'
+      - ''
+      - '&7업그레이드 비용:'
+      - '&7- &d%mythicalAmount% x 동일한 신화적인 물고기 &n(any)&r&5 혹은'
+      - '&7- &d%platinumAmount% x 동일한 플래티넘 물고기 &n(any)'
+      - ''
+      - '&7현재 최대 패시브 슬롯: &3%slots% &7개.'
+      - '&7사용중인 패시브 슬롯: (&b%active_slots%&7/&3%slots%&7).'
+      - ''
+      - '&3클릭해서 업그레이드합니다.'
+      Name: '&3패시브 슬롯 - &7증가 업그레이드'
+  Skills:
+    Disabled:
+      Name: '&4스킬 비활성화'
+      Lore:
+      - '&7이 스킬은 비활성화 되어서'
+      - '&7사용할 수 없습니다.'
+    Messages:
+      UpgradedSkill: '&7이 &b%name% &7스킬을 레벨업하였습니다. 현재 레벨: &3%level%&7.'
+      Skill:
+        BETTER_GUTTING: '&3%fish%를 해체하고 &3%entropy% &7낚시코인만큼 획득했습니다. (&b+%bonus% &7스킬
+          보너스 획득).'
+        AUGMENT_INFUSION: '&b특별 미끼를 조합하면서 &7스킬 효과에 의해 재료 몇 개를 되돌려 받습니다.'
+      PurchasedSkill: '&b%name%&7을 구매합니다.'
+      NoPoints: '&7이 스킬을 업그레이드하거나 해금하기엔 충분한 포인트가 없습니다.'
+      NonUpgradableAlreadyOwned: '&7이 스킬은 오직 한번만 구매가 가능하며 낚시 레벨을 통해 업그레이드 할 수 있습니다.'
+    Skill:
+      BETTER_GUTTING:
+        Name: '&b향상된 손질 &7| 레벨: &9%level%'
+        Lore:
+        - '&7이 스킬은 물고기를 해체할 때'
+        - '&7더 많은 &b낚시코인&7을 줍니다.'
+        - ''
+        - '&7스텟:'
+        - '&8➵ &7포인트 : &9%points%'
+        - '&8➵ &7효과: &3%current%% 보너스 낚시코인'
+        - '&8➵ &7다음 포인트 보너스: &b+%next%% 보너스 낚시코인'
+        - ''
+        - '&7이 스킬은&c정밀하게 절단된 미끼&7와 중첩되지 않습니다.'
+        - '&7이 둘은 독립적으로 계산됩니다.'
+        - ''
+        - '&b클릭하여 업그레이드합니다.'
+      AUGMENT_INFUSION:
+        Lore:
+        - '&7이 스킬은 미끼를 만드는데 사용된'
+        - '&7재료를 50% 반환해줍니다.'
+        - ''
+        - '&7스텟:'
+        - '&8➵ &7효과: &3%current%% 반환 확률'
+        - ''
+        - '&7이 스킬은 &9%levelsneeded%&7낚시 레벨만큼 &b%bonus%% 보정을 받습니다.'
+        - ''
+        - '&7이 반환 확률은 레시피에'
+        - '&7사용된 각각의 재료에 독립적으로 적용됩니다.'
+        - '&7예시) 5%일 경우 각각의 재료마다 5%의 확률을 가짐.'
+        - '&7만약 아이템이 반환될 경우, 반환 확률이 어떻든간'
+        - '&7소모된 만큼에서 50%를 반환합니다.'
+        - ''
+        - '%cost%'
+        Name: '&b미끼 재료 반환 &7| %unlocked%'
+      TRIBAL_SHOUT:
+        Name: '&b부족의 함성 &7| %unlocked%'
+        Lore:
+        - '&7이 스킬은 다른 사람들도 내 &6낚시 토템&7의'
+        - '&7전체적인 스킬을 몇 퍼센트 적용될 수 있도록'
+        - '&7합니다. (see notes below)'
+        - ''
+        - '&7스텟:'
+        - '&8➵ &7효과: &3%current%%의 보너스 효과'
+        - ''
+        - '&7이 스킬은 &9%levelsneeded%&7낚시 레벨만큼 &b%bonus%% 보정을 받습니다.'
+        - ''
+        - '&7이 스킬은 다른 토템들과 중첩이 불가능합니다.'
+        - '&7당신의 토템이 다른 토템들의 대표성을 띄게 됩니다.'
+        - '&7(다른 토템들이 당신의 토템 영향력 안에 들어가게 된다면요).'
+        - '&7토템 주인은 본래의 버프를 &f안 &7잃습니다.'
+        - ''
+        - '%cost%'
+      COMBO_CATCHER:
+        Lore:
+        - '&7이 스킬은 더 희귀한 생선을 잡을 수 있게'
+        - '&7하는 콤보를 쉽게 증가시킵니다. 높은'
+        - '&7스킬 레벨일수록, 더 희귀한 생선을 잡을 수 있습니다.'
+        - ''
+        - '&7Stats:'
+        - '&8➵ &7최대 콤보: &3%current% 잡았음'
+        - '&8➵ &7최근 콤보: &b%combo% 잡았음'
+        - ''
+        - '&7이 스킬은 &9%levelsneeded%&7낚시 레벨만큼 &b%bonus%% 보정을 받습니다.'
+        - ''
+        - '&7최대 콤보량은 레벨에 따라 규모가 지정됩니다.'
+        - '&d20마리 콤보로 잡을 때&7마다 &d10 &7레벨의'
+        - '&d숙련된 어부가 제작한 미끼&7와 동일한 효과를 가집니다.'
+        - '&7가집니다. 30초 동안 물고기를 잡지 못하면 콤보가'
+        - '&7리셋됩니다. 잘 보실 수 있게 &b최근 콤보&7를'
+        - '&7업데이트하여 보여드리겠습니다.'
+        - ''
+        - '%cost%'
+        Name: '&b콤보 플레이어 &7| %unlocked%'
+      TOTEM_LEADER:
+        Lore:
+        - '&7이 스킬은 당신이 물고기를 잡을 때 마다'
+        - '&7당신의 &b토템 쿨타임을 줄여줍니다.'
+        - ''
+        - '&7Stats:'
+        - '&8➵ &7포인트: &9%points%'
+        - '&8➵ &7효과: &3%current% 초가 감소됌.'
+        - '&8➵ &7다음 포인트 보너스: &b+%next% 초가 추가로 감소됌'
+        - ''
+        - '&7생선을 더 많이 잡게 해주는 특별'
+        - '&7미끼와는 연계되지 않습니다. 예시) &6만선 미끼&7.'
+        - ''
+        - '&b 클릭하여 업그레이드합니다.'
+        Name: '&b토템 리더 &7| Level: &9%level%'
+      MASTER_AUGMENTER:
+        Name: '&b미끼 마스터 &7| Level: &9%level%'
+        Lore:
+        - '&7이 스킬은 특별 미끼를 만드는데'
+        - '&7들어가는 재료의 량을 줄여줍니다.'
+        - ''
+        - '&7스텟:'
+        - '&8➵ &7포인트: &9%points%'
+        - '&8➵ &7효과: &3%current%% 비용 절감'
+        - '&8➵ &7다음 포인트 보너스: &b+%next%% 비용 절감'
+        - ''
+        - '&b 클릭하여 업그레이드합니다.'
+      DIVINE_JUDGEMENT:
+        Lore:
+        - '&7이 스킬은 쓰나미를 발생시키도록 하여'
+        - '&7신의 한방을 노리는 스킬입니다.'
+        - '&7쓰나미가 발생한 지역에서는'
+        - '&7물고기가 2배로 잡힙니다.'
+        - ''
+        - '&7스텟:'
+        - '&8➵ &7효과: &3%current%% 확률로 발생'
+        - ''
+        - '&7이 스킬은 &9%levelsneeded%&7낚시 레벨만큼 &b%bonus%% 보정을 받습니다.'
+        - ''
+        - '&7같은 유저로부터 쓰나미가 여러번 발동될 경우 중첩이 불가능합니다.'
+        - '&7다른 사람들이 당신이 발생시킨 쓰나미에서 이득을 볼 수 있습니다.'
+        - '&6이것과 비슷한 부류의 스킬은 중첩이 불가능합니다.'
+        - ''
+        - '%cost%'
+        Name: '&b신의 심판 &7| %unlocked%'
+      LUCK_OF_THE_CATCH:
+        Name: '&b행운의 사나이 &7| Level: &9%level%'
+        Lore:
+        - '&7이 스킬은 당신이 물고기를 잡았을 때'
+        - '&7더 많은 &b낚시코인&7를 주게 합니다.'
+        - ''
+        - '&7스텟:'
+        - '&8➵ &7포인트: &9%points%'
+        - '&8➵ &7효과: &3%current%% 보너스 낚시코인'
+        - '&8➵ &7다음 포인트 보너스: &b+%next%% 보너스 낚시코인'
+        - ''
+        - '&7이 보너스는 다른 생선을 잡을 때 낚시코인을 추가로 주는 기능들과'
+        - '&7독립적으로 계산됩니다.'
+        - ''
+        - '&b 클릭하여 업그레이드합니다.'
+    Misc:
+      Locked: '&4잠금'
+      Cost: '&7해금 비용: &c%points% 스킬 포인트&7.'
+      Unlocked: '&a해금'
+    Respec:
+      Lore:
+      - '&7클릭하여 이미 분배되었던 스킬을'
+      - '&7당신이 원하는 스킬로 재분배를'
+      - '&7할 수 있도록 해보세요.'
+      - ''
+      - '&7비용: &b50,000 낚시코인'
+      Name: '&a&l스킬 리셋'
+    Info:
+      Name: '&a&l스킬 정보'
+      Lore:
+      - '&7스킬은 2가지로 나뉩니다. &b업그레이드가 가능한 것'
+      - '&7그리고 &한번 구매한 것 &7이 2개로요.'
+      - ''
+      - '&B강화 가능한 스킬들&7은 &9스킬 포인트&7를 소모'
+      - '&7하여 강화할 수 있습니다'
+      - ''
+      - '&b한번 구매하면 되는 &7스킬은 한번 비싸게'
+      - '&7구매한 뒤 평생 해금되는 형식입니다.'
+      - '&7이 스킬들은 당신의 낚시 레벨과 동일하게'
+      - '&7레벨업 합니다.'
+      - ''
+      - '&7스킬포인트: &a%points%'
+      - '&7낚시 레벨: &a%level%'
+  Augments:
+    AcceptAugment:
+      Lore:
+      - '&7아래에 있는 유리를 클릭하여 특별 미끼를 사용함을'
+      - '&7수락하세요. 이는 특별 미끼를 소모할 것입니다.'
+      Name: '&a&l특별 미끼 사용'
+    Withdraw:
+      Name: '&310,000 낚시코인 인출하기'
+      Lore:
+      - '&7당신의 계정에서 &d10,000 낚시코인'
+      - '&7를 꺼내서 &3Fish Coin Crystal&7화'
+      - '&7합니다. 크리스탈을 우클릭할 시'
+      - '&7&d10,000 낚시코인&7을 획득할 수 있습니다.'
+    FishingRod:
+      Lore:
+      - '&7이 칸에 당신이 미끼를 바르고 싶어하는'
+      - '&7낚시대를 올려놓아주세요.'
+      Name: '&b&l낚시대'
+    Help:
+      Name: '&2&l특별 미끼 설명서'
+      Lore:
+      - '&7클릭하여 특별 미끼들의 레시피나 효과를 확인해보세요.'
+      - ''
+      - '&7특별 미끼를 만들기 위해서는 다음과 같은 과정이 필요합니다.'
+      - '&7재료 아이템을 전부 &b가마솥&7에 넣으신 뒤 &2낚시대&7로 클릭하면 됩니다.'
+      - '&7꼭 그 &b가마솥&7에는 물이 들어가 있어야 하며'
+      - '&7&o정확한 갯수의 &7아이템이 들어가 있어야합니다.'
+      - ''
+      - '&7현재 가지고 있는 낚시코인 량: &b%entropy%'
+      - '&7낚시 레벨: &b%level%'
+    Remove:
+      Lore:
+      - '&7이 행위는 당신의 낚시대에 있는 &b특별 미끼'
+      - '&7를 다시 빼는 과정을 가집니다.'
+      - '&7&d25,000 낚시코인&7이 청구됩니다.'
+      - ''
+      - '&7제거하시려면 꼭 해당 특별 미끼를'
+      - '&7제거하려는 낚시대를 GUI창에 올려두셔야합니다.'
+      - ''
+      - '&c&o이 기능에는 ''다시 확인하는'' 버튼이 없으므로'
+      - '&c&o심사숙고해서 정해주세요!'
+      Name: '&4&l특별 미끼 제거'
+    Cancel:
+      Name: '&c&l취소'
+      Lore: []
+    Augment:
+      Lore:
+      - '&7당신이 낚시대에 추가하고 싶은 특별한 미끼를'
+      - '&7아래 슬롯에 놓아두시면 됩니다.'
+      Name: '&b&l미끼'
+    Confirm:
+      Name: '&a&l확인'
+      Lore: []
+    CancelAugment:
+      Lore:
+      - '&7아래에 있는 유리를 클릭함으로써'
+      - '&7미끼와 낚시대를 합하는 과정을 취소하고'
+      - '&7낚시대와 미끼를 인벤토리로 보냅니다.'
+      Name: '&c&l미끼 취소'
+    Info:
+      Lore:
+      - '&7Apply augments by putting your rod'
+      - '&7and augments into the slots below.'
+      - ''
+      - '&7» Fishing Level: &a%level%'
+      - '&7» Entropy: &b%entropy%'
+      - ''
+      - '&eClick for an augment list and information.'
+      Name: '&aAugment Information'
+    Back:
+      Lore:
+      - '&7Click to go back to the main menu.'
+      Name: '&cBack'
+  Stats:
+    Stat:
+      CurrentXP: '&7최근 경험치: &a'
+      Level: '&7레벨: &a'
+      SkillPoints: '&7스킬포인트: &a'
+      Entropy: '&7낚시코인: &a'
+      RequiredXP: '&7필요 경험치: &a'
+    Stats1:
+    - '&7물고기 잡은 총합 횟수: &a%TotalFishCaught%'
+    - '&7커스텀 물고기 잡은 총합 횟수: &a%TotalCustomCaught%'
+    - ''
+    - '&7브론즈 물고기 잡은 횟수: &a%BronzeFishCaught%'
+    - '&7실버 물고기 잡은 횟수: &a%SilverFishCaught%'
+    - '&7골드 물고기 잡은 횟수: &a%GoldFishCaught%'
+    - '&7다이아 물고기 잡은 횟수: &a%DiamondFishCaught%'
+    - '&7플래티넘 물고기 잡은 횟수: &a%PlatinumFishCaught%'
+    - '&7신화적인 물고기 잡은 횟수: &a%MythicalFishCaught%'
+    - ''
+    - '&7매출: &a%MoneyMade%'
+    - '&7게를 잡은 횟수: &a%CrabsKilled%'
+    - '&7물고기 해체한 횟수: &a%FishGutted%'
+    - '&7배달 성공 수: &a%DeliveriesMade%'
+    - ''
+    - '&7미끼 제작한 횟수: &a%AugmentsCrafted%'
+    - '&7물고기 죽인 수: &a%FishKilled%'
+    - '&7가장 긴 물고기: &a%LongestFish%'
+    - ''
+    - '&7토너먼트 우승: &a%TournamentsWon%'
+    Stats2:
+    - '&7레벨: &a%Level%'
+    - '&7스킬 포인트: &a%SkillPoints%'
+    - '&7현재 경험치: &a%CurrentXP%'
+    - '&7필요 경험치: &a%RequiredXP%'
+    - '&7낚시코인: &a%Entropy%'
+    GeneralStats: '&3&L일반적인 통계'
+    SkillTree: '&b&l스킬 트리'
+  FishBag:
+    InfoEmerald:
+      Lore:
+      - '&7여기를 클릭해서 가방 안에 있는'
+      - '&7모든 물고기를 판매합니다.'
+      Name: '&a&l물고기 판매'
+    Deliveries:
+      Status:
+        'true': '&a활성화됨'
+        'false': '&C비활성화됨'
+      Name: '&3&l물고기 가방 배달'
+      Lore:
+      - '&7클릭하여 배달할 때 생선 가방에'
+      - '&7그 물고기가 있는지 탐지하는 기능을'
+      - '&7ON/OFF 합니다.'
+      - ''
+      - '&7상태: %status%'
+  Totem:
+    Unlock:
+      NotLevelNew: '&7이 독특한 기능이 어떻게 작용하는지 지금 이해하긴 힘들 것 같습니다. &7레벨이 &c20&7일때 다시 돌아오는게
+        좋아 보입니다.'
+      Unlocked: '&7토템 기능을 해금하였습니다.'
+      NoItems: '&7이걸 토템으로 변환하는데 있어 아이템이 부족한 것 같습니다.'
+      Required: '&7고대로부터 온 이 기술은 당신이 다음과 같은 아이템을 가져와야 온전하게 그 힘을 사용할 수 있을 것 같습니다.'
+      NewItems:
+      - '&7요구되는 아이템:'
+      - '&8- &c6x 플래티넘 물고기'
+      - '&8- &c16x 게 껍질'
+      - '&8- &c16x 집게발'
+      - '&8- &c16x 돌고래 꼬리'
+      - '&8- &c16x 오징어 촉수'
+  Scales:
+    ExtremeRisk:
+      Name: '&b&l위험도 : 익스트림'
+    Risk:
+      Lore:
+      - '&7길이를 재는데 %risk% 위험도를 설정합니다.'
+      - '&7'
+      - '&7Information:'
+      - '&8➤ &7이득을 볼 수 있는 확률: &3%profit%%'
+      - '&8➤ &7값: 기본 금액에서 &3+-%moneychange%%&7만큼 변동됩니다.'
+    ScaleFish:
+      Name: '&a&l길이 확인'
+      Lore:
+      - '&7클릭하여 인벤토리 안에 있는'
+      - '&7모든 생선의 길이를 확인합니다.'
+    Risks:
+      High: 높음
+      Extreme: 익스트림
+      Low: 낮음
+      Medium: 보통
+    LowRisk:
+      Name: '&7&l위험도 : 낮음'
+    MediumRisk:
+      Name: '&f&l위험도 : 보통'
+    Misc:
+      Selected: '&a선택됨'
+    HighRisk:
+      Name: '&6&l위험도 : 높음'
+  Main:
+    Totem:
+      Lore:
+      - '&7클릭하여 토템을 확인합니다.'
+      - '&7&o무엇을 선택할지 정합니다.'
+      Name: '&b&l토템'
+    Bait:
+      Lore:
+      - '&7낚시 찌 상점을 확인합니다.'
+      - '&7&o낚시 지로 특별 물고기를 잡아보세요.'
+      Name: '&9&l낚시용품 상점'
+    Shop:
+      Lore:
+      - '&7클릭해서 물고기 판매하는 상점에 들러'
+      - '&7&o모든 물고기를 팔아보세요!'
+      Name: '&3&l물고기 시장'
+    Bag:
+      Name: '&3&l물고기 가방'
+      Lore:
+      - '&7클릭해서 물고기 가방을 확인해보세요.'
+      - '&7&o어떤 물고기를 잡았는지 볼 수 있습니다.'
+    Scales:
+      Name: '&b&l길이 측정'
+      Lore:
+      - '&7물고기의 크기를 측정해보세요.'
+      - '&7&o돈을 추가로 더 벌 수 있습니다.'
+    Deliveries:
+      Name: '&6&l배달'
+      NewLore:
+      - '&7클릭해서 최근 배달 의뢰를 확인해보세요.'
+      - '&7&o배달 의뢰를 성공하면 돈을 받습니다.'
+      - ''
+      - '&7다음 물고기 배달 의뢰를 받으려면 &3%amount%개의'
+      - '&7커스텀 물고기를 잡아야합니다!'
+    NoRod:
+      Lore:
+      - '&7당신은 낚시대를 들고 있지 않습니다.'
+      Name: '&4&l낚시대 없음'
+    Skills:
+      Name: '&9&l낚시 스킬'
+      Lore:
+      - '&7클릭하여 낚시 스킬을 관리해보세요.'
+      - '&7&o업그레이드를 할 수 있습니다.'
+    Codex:
+      Name: '&3&l도감'
+      Lore:
+      - '&7클릭하여 도감을 확인해보세요!'
+      - '&7&o어떤 물고기가 있나 보십시오.'
+    ChristmasEvent:
+      Name: '&3&l이벤트'
+      NewPlaceholderLore:
+      - '&7지금으로부터 서버가 끝날 때까지'
+      - '&7당신은 생선을 3400마리 낚을 때 마다'
+      - '&선물을 받습니다!'
+      - ''
+      - '&7다음 선물을 받을 때 까지'
+      - '&a%fish%&7마리 잡아야합니다.'
+    Augments:
+      Lore:
+      - '&7클릭하여 낚시대 미끼를 관리합니다.'
+      - '&7&o미끼는 많을수록 좋습니다.'
+      Name: '&2&l특별 미끼'
+    Gut:
+      Lore:
+      - '&7클릭하여 물고기 해체 스테이션을 방문합니다!'
+      - '&7&o물고기를 해체하여 아이템과 낚시코인을 얻으세요!'
+      Name: '&2&l해체 스테이션'
+    Stats:
+      Lore:
+      - '&7클릭하여 통계를 확인합니다.'
+      - '&7&o1등인지 확인이 가능합니다.'
+      Name: '&e&l통계'
+  TotemsStructure:
+    Info:
+      Lore:
+      - '&7옆에 보이는 건축물을 그대로 지어주세요.'
+      - '&7블럭이 모두 &f&n정확하게&r&7 동일하게 있어야합니다.'
+      - ''
+      - '&7짓고 난 다음에 제일 1번째에 놓여있는'
+      - '&7옵저버를 &f&n낚시대&7로 클릭해주세요.'
+      - ''
+      - '&7그러면 토템을 활성화하기 위한 추가적인'
+      - '&7아이템이 요구될 것입니다. 한번이라도 끝나면, '
+      - '&7당신만의 토템을 소유하고 있을 수 있습니다.'
+      - ''
+      - '&7&o토템은 한사람당 1개씩만 가질 수 있습니다.'
+      Name: '&a&l설명서'
+  Gutting:
+    GutForEntropy:
+      Lore:
+      - §7이걸 클릭해서 물고기를
+      - §7해체하여 낚시코인을 얻습니다.
+      - ''
+      - '§7해체해서 얻는 값:'
+      - '§8➤ §7브론즈 물고기: §3%bronze%'
+      - '§8➤ §7실버 물고기: §3%silver%'
+      - '§8➤ §7골드 물고기: §3%gold%'
+      - '§8➤ §7다이아몬드 물고기: §3%diamond%'
+      - '§8➤ §7플래티넘 물고기: §3%platinum%'
+      Name: '&6&l낚시코인 파밍'
+  Deliveies:
+    Upgrades:
+      MaxLevel: '&7이 업그레이드는 이미 최대로 강화되었습니다.'
+  AugmentList:
+    Back:
+      Name: '&cBack'
+      Lore:
+      - '&7Click to go back to the previous menu.'
+    Info:
+      Lore:
+      - '&7Below is a list of all augments'
+      - '&7available in the plugin currently.'
+      - ''
+      - '&7To craft augments, drop the required'
+      - '&7items into a &fCauldron &7and hit'
+      - '&7it with a fishing rod.'
+      - ''
+      - '&7If you are on Geyser/Bedrock you'
+      - '&7might need to use &eJoystick Controls&7.'
+      Name: '&aAugment Information'
+Commands:
+  GivenEntropy: '&b%entropy%&7낚시코인을 받았습니다. 지금 총 &b%total%&7 낚시코인만큼 가지고 있습니다.'
+  Events:
+    Error: '&7커맨드를 실행하던 도중 오류가 발생했습니다. 특별 미끼와 이벤트가 이 서버에서 비활성화 되어있는지 확인해보세요.'
+    InvalidType: '&7이벤트 ''&c%name%&7'' 는 유효하지 않은 이벤트 타입입니다.'
+    Misc:
+      NotFound: 모르겠습니다...
+    Base: '&7이벤트에 대한 설명을 읽어보고 싶다면, 미끼를 검색했을 때와 같이 이벤트 이름을 검색해주세요.'
+    Info:
+      CRABMAS:
+      - |2-
+           &l크랩스마스 이벤트&r
+
+        &l»&r 생물 군계: %biome%
+        &l»&r 시간: %timeleft%
+
+        이 값들은 자동적으로 계속 바뀔 것입니다.
+
+        The event is active for another: &5%time%&r.
+      - |-
+        &l크랩스마스 설명서&r
+
+        크랩마스는 무작위 생물 군집에서 살고 있는 특별한 크랩을 찾고, 그것을 잡아 충분한 오브를 찾아서, 전리품을 얻기 위해 특별한 보스를 죽이는 이벤트입니다.
+      - "&l뭘 하면 되나요?라고 물어보신다면&r\n\n그저 평소대로 여러가지 바이옴에서 낚시 하면 됩니다. 운이 좋다면 정말 특별한 게가\
+        \ 잡힐 것이며. 만약에 그렇다면 모두에게 안내가 될 것이고, 크랩 스폰 바이옴은 한시간 가량 고정될 것입니다. "
+      - 1시간이 지나면 새로운 바이옴으로 변경될 것입니다. 조그마한 이 &c크랩스마스&r를 잡으면 &c크랩스마스 오브&r를 떨굽니다. 만약
+        &45&r개 의 오브를 공중에 두고 &2우클릭&r하면, 다음에 &c크랩스마스&r는 &c보스&r가 뜹니다. 이 보스는 스페셜한 공격을
+        합니다. 이 보스를 죽이면 다음과 같은 랜덤 아이템을 드랍합니다.
+      - 다음 페이지를 눌러 디테일한 드랍 테이블을 확인해보세요.
+      - |-
+        &l크랩스마스 보스 보상 테이블&r
+
+        &l»&r 스노우글로브 미끼
+        &l»&r 만선 미끼
+        &l»&r 낚시코인 크리스탈
+        &l»&r 게 미끼
+        &l»&r 플래티넘 미끼
+        &l»&r 신화적인 미끼
+        &l»&r 집게발 x2
+        &l»&r 게 껍질 x2
+        &l»&r 돌고래 꼬리 x2
+        &l»&r 오징어 촉수 x2
+      - |-
+        &l»&r 낚시코인 부스터 (1.25x)
+        &l»&r 낚시코인 부스터 (1.65x)
+        &l»&r 낚시코인 부스터 (2x)
+        &l»&r 낚시코인 부스터 (4x)
+    NotActive: '&7이 이벤트는 &c%date%&7까지는 진행되지 않습니다.'
+  StartTournament:
+    InvalidArgs: '&7명령어 형식: &c/ft start <tournament> [duration]'
+    TooShort: '&7입력값 &c%value% &7는 너무 짧습니다. 0초보단 커야합니다.'
+    Started: '&7Y토너먼트를 시작합니다. 토너먼트 종류 : &b%type%&7.'
+    InvalidDuration: '&7입력값 &c%value% &7는 정수 형태의 숫자가 아닙니다.'
+    InvalidType: '&7이러한 토너먼트 타입은 존재하지 않습니다.'
+  RemoveDelivery:
+    Removed: '&7해당 배달 의뢰를 삭제합니다.'
+    CannotRemove: '&7완료가 되었거나 배달중에 놓여있는 의뢰는 삭제할 수 없습니다.'
+    NoDelivery: '&7그 슬롯에는 배달 의뢰가 있지 않습니다.'
+  InvalidSubCommand: '&7유효하지 않는 커맨드입니다. /fish를 입력하여 어떤 명령어가 있는지 확인하세요.'
+  Entropy:
+    Amount: '&7지금 &a%entropy% &7낚시코인을 가지고 있습니다.'
+  ReloadPlugin: '&3PyroFishingPro &7플러그인이 성공적으로 리로딩 되었습니다.'
+  NotAnItem: '&7그런 아이템은 없습니다.'
+  TournamentInfo:
+    NoTournament: '&7진행중인 토너먼트가 없습니다.'
+  InvalidArgument: '&7 유효하지 않는 미끼입니다. /fish를 입력하여 확인해보세요.'
+  InvalidUsername: '&7유효하지 않는 이름입니다.'
+  GivenXP: '&b%xp% &7경험치를 획득하였습니다. 지금 가지고 있는 경험치 : &b%total%&7.'
+  InvalidNumber: '&7입력할 수 있는 입력값을 초과하여 입력하였습니다.'
+  RemoveBait:
+    Removed: '&7당신의 낚시대에서 낚시찌를 제거합니다.'
+    InvalidItem: '&7들고 있는 아이템은 유효한 아이템이 아닙니다.'
+    NoBait: '&7들고 있는 아이템은 낚시찌를 사용하고 있지 않습니다.'
+  DisabledInWorld: '&7이 커맨드는 이 월드에선 비활성화 되어있습니다.'
+  AddedEntropy: '&b%player%&7는 방금 &b%entropy% &7낚시코인을 가졌습니다. 이제 &b%total%&7낚시코인 만큼
+    가지고 있습니다.'
+  InvalidDeliveryNumber: '&7유효하지 않는 배달 의뢰 번호입니다. 번호는 항상 1에서 15 사이 입니다.'
+  StopTournament:
+    NoTournament: '&7현재 실행되고 있는 토너먼트가 없습니다.'
+    Stopped: '&7실행되고 있는 토너먼트가 중지되었습니다.'
+    Broadcast: '&7최근에 실행되고 있는 토너먼트가 관리자에 의해 종료되었습니다.'
+  PlayerNotFound: '&7그 플레이어는 데이터베이스에 존재하지 않습니다!'
+  InvalidAugment: '&7유효하지 않는 미끼입니다. 스페이스바나 언더바를 사용하지 말아주세요. 예시: &chotspot&7.'
+  NoPermission: '&7당신은 이 명령어를 사용할 권한이 없습니다.'
+  AddedXP: '&b%player%&7에게 &b%xp% &7경험치를 추가됩니다. 이제&b%total%&7경험치를 가지고 있습니다.'
+  EntropyBoosterFailed: '&7낚시코인 부스터를 사용하기에 잘못된 숫자를 입력하였습니다.'
+  InvalidAugmentName: '&7That is not a valid augment name. Check the tab completion
+    for a full list.'
+Tournaments:
+  Names:
+    LONGEST_LENGTH: 가장 긴 물고기 잡기
+    TOTAL_LENGTH: 물고기들의 길이 총합
+    LONGEST_CAST: 가장 멀리 낚시찌를 던지기
+    MOST_CATCH: 가장 많이 잡기
+    CRAB_KILLING: 가장 많은 게를 죽이기
+    MOST_BIOMES: 최대 생물 군계에서 낚시하기
+    BASE_ENTROPY_EARNED: 가장 많이 낚시코인 벌기
+    RANDOM_CATCH: 이 %fish%를 가장 많이 잡기
+    SHORTEST_LENGTH: 가장 짧은 물고기 잡기
+  NoTournament: '&7최근 개최한 &c토너먼트&7가 없습니다.'
+  Time:
+    Disabled: '&7토너먼트의 자동 실행이 이 서버에서는 비활성화 되어있습니다.'
+    TimeLeft: '&7현재 토너먼트가 실행 중이며 &a%time% &7시간 남았습니다.'
+    Time: '&7다음 토너먼트 시간: &3%time%'
+  AlreadyActive: '&7이미 &3토너먼트&7가 진행중입니다.'
+  NA:
+    Score: N/A
+    Name: N/A
+  Misc:
+    With: '&7with '
+  InvalidArgument: '&c유효하지 않는 미끼입니다. /ft 명령어를 통해 확인해보세요.'
+CommandsList:
+- ''
+- '&8]&m-----------+&8[ &6&lPyroFishingPro &8]&m+-----------&8['
+- ''
+- '&e/fish help &7- Show some general help.'
+- '&e/fish menu &7- Opens the main fishing menu.'
+- '&e/fish codex &7- Access the fish codex.'
+- '&e/fish shop &7- Opens the fish shop.'
+- '&e/fish stats <player> &7- Shows your fishing stats.'
+- '&e/fish scales &7- Opens the fish scales.'
+- '&e/fish bag &7- Opens the fish bag.'
+- '&e/fish gut &7- Opens the gutting menu.'
+- '&e/fish deliveries &7- Opens the deliveries menu.'
+- '&e/fish removedelivery &7- Remove a delivery.'
+- '&e/fish augment &7- Opens the augment menu.'
+- '&e/fish augments &7- View all the augments.'
+- '&e/fish entropy &7- View your entropy balance.'
+- '&e/fish boosters &7- View your active boosters.'
+- '&e/fish skills &7- View your fishing skills.'
+- '&6/fish reload &7- Reloads the plugin.'
+- '&6/fish give <player> <fishName> <amount> &7- Give players fish.'
+- '&6/fish giveitem <item> <player> <amount> &7- Give an item.'
+- '&6/fish version &7- See the version of the plugin.'
+- '&6/fish giveaugment <augment> <player> <amount> &7- Gives you a specific augment.'
+- '&6/fish addentropy <player> <amount> &7- Give players entropy.'
+- '&6/fish addxp <player> <amount> &7- Give a player fishing xp.'
+- ''
+- '&8]&m------------------------------------------&8['
+- ''
+FishSkills:
+  Names:
+    TOTEM_LEADER: 토템 리더
+    AUGMENT_INFUSION: 미끼 재료 반환
+    TRIBAL_SHOUT: 부족의 함성
+    MASTER_AUGMENTER: 미끼 마스터
+    LUCK_OF_THE_CATCH: 행운의 사나이
+    DIVINE_JUDGEMENT: 신의 심판
+    COMBO_CATCHER: 콤보 플레이어
+    BETTER_GUTTING: 향상된 손질
+Boosters:
+  End: '&7당신의 %name%&7가 끝났습니다!'
+  InUse: '&7당신은 %name%&7를 사용하였으며 &3%seconds% &7초 동안 진행됩니다.'
+  Names:
+    MYTHICAL: 신화적인 부스터
+    PLATINUM: 플래티넘 부스터
+    ENTROPY: 낚시코인 부스터
+    CRAB: 게 부스터
+  Use: '&7당신은 %name%&7를 사용했으며 이는 &330 &7분동안 진행됩니다.'
+  Commands:
+    None: '&7당신은 미끼나 부스터를 가지고 있지 않습니다.'
+    Platinum: '&8➤ &c플래티넘 부스터&7는 앞으로 &3%seconds% &7초 동안 진행됩니다.'
+    Entropy: '&8➤ &b낚시코인 부스터&3(%boost%배율)&7는 앞으로 &3%seconds%&7초 동안 진행됩니다.'
+    List:
+    - ''
+    - '&8]&m--------------+&r&8[&r &6&l부스터 &8]&m+--------------&r&8['
+    - ''
+    - '&6부스터: %boosters%'
+    - ''
+    - '&8]&m------------------------------------------&r&8['
+    - ''
+    Mythical: '&8➤ &5신화적인 부스터&7는 앞으로 &3%seconds% &7초 동안 진행됩니다.'
+    Crab: '&8➤ &b게 부스터&7는 앞으로 &3%seconds% &7초동안 진행됩니다.'
+Biomes:
+  CUSTOM: 커스텀
+  SAVANNA_PLATEAU: 사바나 고원
+  COLD_OCEAN: 차가운 바다
+  END_BARRENS: 엔드 외곽 지역
+  SNOWY_SLOPES: 눈덮힌 비탈
+  CHERRY_GROVE: 벚나무 숲
+  BAMBOO_JUNGLE: 대나무 정글
+  FROZEN_PEAKS: 얼어붙은 봉우리
+  MUSHROOM_FIELDS: 버섯 들판
+  WINDSWEPT_SAVANNA: 바람이 세찬 사바나
+  DRIPSTONE_CAVES: 점적석 동굴
+  BADLANDS: 악지
+  RIVER: 강
+  MEADOW: 목초지
+  SNOWY_TAIGA: 눈덮인 타이가
+  GROVE: 산림
+  DESERT: 사막
+  FOREST: 숲
+  DEEP_DARK: 깊은 어둠
+  SUNFLOWER_PLAINS: 해바라기 평원
+  OLD_GROWTH_BIRCH_FOREST: 자작나무 원시림
+  THE_VOID: 공허
+  BASALT_DELTAS: 현무암 삼각주
+  SPARSE_JUNGLE: 듬성듬성한 정글
+  PLAINS: 평원
+  SNOWY_BEACH: 눈덮힌 해변
+  SOUL_SAND_VALLEY: 영혼 모래 골자기
+  END_HIGHLANDS: 엔드 고지
+  DEEP_FROZEN_OCEAN: 깊고 얼어붙은 바다
+  DEEP_OCEAN: 깊은 바다
+  WARM_OCEAN: 따뜻한 바다
+  OLD_GROWTH_PINE_TAIGA: 소나무 원시 타이가
+  SAVANNA: 사바나
+  STONY_PEAKS: 돌 봉우리
+  JAGGED_PEAKS: 뾰족한 봉우리
+  BIRCH_FOREST: 자작나무 숲
+  ICE_SPIKES: 역고드름
+  END_MIDLANDS: 엔드 중지
+  WARPED_FOREST: 뒤틀린 숲
+  WOODED_BADLANDS: 나무가 우거진 악지
+  FLOWER_FOREST: 꽃 숲
+  LUKEWARM_OCEAN: 미지근한 바다
+  WINDSWEPT_HILLS: 바람이 세찬 언덕
+  SWAMP: 늪지
+  ERODED_BADLANDS: 침식된 악지
+  THE_END: 디 엔드
+  DEEP_LUKEWARM_OCEAN: 깊고 미지근한 바다
+  TAIGA: 타이가
+  JUNGLE: 정글
+  FROZEN_RIVER: 얼어붙은 강
+  SNOWY_PLAINS: 눈 덮인 평원
+  OLD_GROWTH_SPRUCE_TAIGA: 가문비 원시 타이가
+  DEEP_COLD_OCEAN: 깊고 차가운 바다
+  STONY_SHORE: 돌 해안
+  DARK_FOREST: 어두운 숲
+  WINDSWEPT_FOREST: 바람이 세찬 숲
+  NETHER_WASTES: 네더 황무지
+  WINDSWEPT_GRAVELLY_HILLS: 바람이 세찬 자갈투성이 언덕
+  BEACH: 해변가
+  LUSH_CAVES: 우거진 동굴
+  FROZEN_OCEAN: 얼어붙은 바다
+  MANGROVE_SWAMP: 맹그로브 늪지
+  CRIMSON_FOREST: 진홍빛 숲
+  SMALL_END_ISLANDS: 작은 엔드 섬
+  OCEAN: 바다
+Augments:
+  MoreThenOneRod: '&7특수 미끼를 만들 때 낚시대를 여러개 겹쳐서 올리면 작동하지 않습니다. 낚시대는 1개만 들어주세요.'
+  SolarRage: '&e광합성 미끼&7 덕분에 &e$%money%&7만큼의 보너스를 획득했습니다.'
+  Recipe:
+    COBBLESTONE: 조약돌
+    COD: 대구
+    LILY_PAD: 연꽃잎
+    GOLD_BLOCK: 금 블록
+    BOOK: 책
+    IRON_BLOCK: 철 블록
+    OAK_BOAT: 참나무 보트
+    IRON_AXE: 철 도끼
+    BAKED_POTATO: 구운 감자
+    GLASS: 유리
+    EMERALD_BLOCK: 에메랄드 블럭
+    SNOWBALL: 눈덩이
+    ANVIL: 모루
+    GOLDEN_APPLE: 황금 사과
+    NAUTILUS_SHELL: 앵무조개 껍데기
+    CAKE: 케익
+    GLISTERING_MELON_SLICE: 반짝거리는 멜론 조각
+    LAPIS_BLOCK: 라피스 블록
+    HEART_OF_THE_SEA: 바다의 심장
+    DIAMOND_BLOCK: 다이아몬드 블록
+    GLOWSTONE: 발광석
+    DIAMOND: 다이아몬드
+    DIAMOND_SWORD: 다이아몬드 검
+    GHAST_TEAR: 가스트의 눈물
+    REDSTONE: 레드스톤
+    WATER_BUCKET: 물 양동이
+    OAK_LOG: 참나무 원목
+    SPONGE: 스펀지
+    NETHER_STAR: 네더의 별
+    WITHER_SKELETON_SKULL: 위더 스켈레톤 머리
+    GUNPOWDER: 화약
+    COOKED_BEEF: 스테이크
+    SAND: 모래
+    EMERALD: 에메랄드
+    KELP: 켈프
+    STRING: 실
+    SUGAR: 설탕
+    TURTLE_EGG: 거북알
+  CraftedAugment: '&7%augment%라는 특별 미끼를 &3%amount%레벨만큼 제작했습니다!'
+  Lores:
+    sage:
+    - §2현자 미끼§7는 당신에게 물고기를 낚을 때마다
+    - §7추가적으로 낚시 경험치를 줍니다.
+    - §7미끼 레벨이 높으면 높을 수록 경험치를
+    - §7더 줍니다
+    Misc:
+      CraftingPermission: '&7제작 권한: '
+      Crafting: '&7제작 요구사항: '
+      UseAugment: '&7제작 권한 사용: '
+      InfoLine: '&8&m-----------&r&8[%color% 정보 &8]&8&m-----------'
+    intellect:
+    - §a똑똑해보이는 미끼§7는 물고기를 잡을 때 경험치를.
+    - §7추가로 줍니다. 높은 레벨일수록 경험치를 더
+    - §7받습니다.
+    saturate:
+    - §3포만감 미끼§7는 물고기를 잡을 때 일정 확률로
+    - §7당신의 허기를 채워줍니다. 미끼의 레벨이 높을수록
+    - §7확률이 높아집니다.
+    hotspot:
+    - §6 만선 미끼§7는 한 번 물고기를 잡을 때 여러 마리
+    - §7가 잡힐 수 있도록 합니다. 높은 레벨의 미끼일수록
+    - §7더 높은 확률로 한 번에 여러마리를 잡을 수 있도록
+    - §7할 것입니다.
+    trophy:
+    - §e트로피 미끼§7는 물고기 길이를 측정할 때
+    - §7물고기가 더 긴 길이를 가질 확률을 보정해줍니다.
+    - §7미끼의 레벨이 높은 레벨일수록 확률 보정율이
+    - §7더 높아집니다.
+    precisioncutting:
+    - §c정밀하게 절단된 미끼§7는 물고기를 손질할 때
+    - §7더 많은 낚시코인이 나오도록 합니다. 높은 레벨의
+    - §7미끼일수록, 더 많은 낚시코인이 드랍됩니다.
+    biomedisruption:
+    - §2생물군계혼합미끼§7는 현재 바이옴에서 다른
+    - §7바이옴에서 잡힐 수 있는 물고기를 잡을 확률을
+    - §7제공합니다. 높은 레벨의 미끼일수록 확률이 높습니다.
+    masterfisherman:
+    - §d숙련된 어부가 제작한 미끼§7는 더 높은 등급의
+    - §7물고기를 잡을 확률을 올려줍니다. 이 미끼는
+    - §7다른 모든 미끼보다 좋습니다. 오직 최고로 숙련된
+    - §7어부들만 쓸 수 있습니다.
+    perception:
+    - §6탐지 미끼§7는 커스텀 물고기를 잡을 때 추가적인
+    - §7낚시코인을 줍니다. 높은 레벨의 미끼일수록
+    - §7커스텀 물고기를 낚아 올렸을 때
+    - §7더 많은 낚시코인을 획득할 수 있습니다.
+    solarrage:
+    - §e광합성 미끼§7는 물고기를 상점에 팔 때
+    - §7추가적으로 돈을 벌 수 있도록 합니다.
+    - §7높은 레벨일수록 돈을 더 벌 수 있습니다.
+    callofthestorm:
+    - §9폭풍의 부름 미끼§7는 비가 내릴 동안 물고기를
+    - §7더 많이 잡을 수 있도록 합니다. 높은 레벨의
+    - §7미끼일수록, 더 많이 물고기를 잡을 수 있습니다.
+    snowglobe:
+    - §f스노우글로브 미끼§7는 랜덤으로 스노우글로브를
+    - §7주변에 생성합니다. 이 스노우글로브는 주변 플레이어
+    - §7에게 낚시코인과 낚시 경험치 획득에 보너스를 줍니다.
+    - §7높은 레벨의 미끼일수록 보너스 량이 더 커집니다.
+    crabbait:
+    - §b통발 미끼§7는 낚시 도중 꽃게를 잡을 확률을
+    - §7올려줍니다. 꽃게를 잡을 때 만큼은 다른 미끼보단
+    - §7이 미끼가 제일 좋습니다.
+  'True': 허가됌
+  Names:
+    BIOME_DISRUPTION: '&2생물군계혼합미끼'
+    CALL_OF_THE_STORM: '&9폭풍의 부름 미끼'
+    TROPHY: '&e트로피 미끼'
+    CRAB_BAIT: '&b통발 미끼'
+    PERCEPTION: '&6탐지 미끼'
+    SOLAR_RAGE: '&e광합성 미끼'
+    HOT_SPOT: '&6만선 미끼'
+    SAGE: '&2현자 미끼'
+    PRECISION_CUTTING: '&c정밀하게 절단된 미끼'
+    SNOW_GLOBE: '&b스노우글로브 미끼'
+    MASTER_FISHERMAN: '&d숙련된 어부가 제작한 미끼'
+    SATURATE: '&3포만감 미끼'
+    INTELLECT: '&a똑똑해보이는 미끼'
+  NoCraftingPermission: '&7이 %augment%를 만들 &c권한 &7이 없습니다.'
+  Misc:
+    Entropy: '&7그 아이템을 만들 수 없습니다. &c%entropy%&7 낚시코인이 추가적으로 필요합니다.'
+    NoValidRecipe: '&7지금 투입된 재료들로는 그 어떤 아이템도 제작할 수 없습니다.'
+    Crafted: '&7%name%를 만들고 &3%cost%&7만큼 낚시코인이 소모되었습니다.'
+    RemoveEntropyOnApply:
+      Removed: '&7당신은 이 미끼를 적용하면서 &b%entropy%만큼의 낚시코인이 소모되었습니다.'
+      Failed: '&7당신은 낚시코인이 부족해서 이 미끼들을 추가할 수 없습니다. 낚시코인이 적어도 &c%entropy%&7만큼 필요합니다.'
+    CheckForLevel: '&7이 낚시대에 그 미끼를 쓰기에는 안타깝게도 당신의 레벨이 충분하지 않습니다.'
+    TooManyItems: '&7너무 많은 아이템을 떨어뜨려놨습니다. 몇개를 다시 줍고 진행하여주세요.'
+    CreativeMode: '&7미끼는 &c크리에이티브 모드&7때 만들어지지 않습니다.'
+    NoAugment: '&7Please use an Augment in the second slot instead of your current
+      item.'
+    AddedAugment: '&7You have added the Augment ''%augment%&7'' and it is now level
+      %color%%level%&7. %maxlevel%'
+    RemovalNoAugments: '&7There are no augments on your current item!'
+    AppliesTo:
+      FISHING_ROD: Fishing Rod
+    NoCraftingPermission: '&7You do not have &cpermission &7to craft %augment%&7.'
+    PerItem: '&7- %color%%amount%x %item%'
+    Lore:
+      Item: '&7» %color%%amount%x &7%item%'
+      Recipe:
+      - '%color%Crafting Recipe:'
+      - '%items%'
+      - ''
+      - '&7Drop these into a cauldron to craft!'
+    MaxLevelAdded: '&7(&bmax level&7)'
+    Cooldown: '&7You must wait at least &c1 second &7before doing this again.'
+    RemovedAugments: '&7You have removed all the augments from your current item.'
+    NotHighEnoughLevel: '&7You are not a high enough level to craft that Augment.'
+    AugmentDisabled: '&7This augment has been disabled and cannot be crafted.'
+    OldRod: '&7Your rod is old and needs to be converted. Please catch a fish and
+      it should convert automatically for you.'
+    WrongType: '&7That augment cannot be applied to that item type!'
+    ConvertedRod: '&7The &6Augments &7on your rod have been converted into the new
+      system. You may now augment this rod again.'
+    CraftedAugment: '&7You have augmented %augment% &7with level &3%amount%.'
+    RemovalInvalidRod: '&7That is not a valid item that you can remove augments from.'
+    NotCraftable:
+    - '&cThis augment cannot be crafted.'
+    AugmentMaxLevel: '&7That Augment is already max level.'
+    MoreThenOneRod: '&7You cannot have a stack of rods inside the augment menu. Unstack
+      them and try again.'
+    ApplyAugment: '&eUse /fish augment to apply this.'
+    NotAugment: '&7That item is not a valid augment!'
+  Extra:
+    PerItem: '&7- %color%%amount% x %item%'
+  AugmentDisabled: '&7이 미끼는 비활성화 되었고, 더 이상 만들수도, 사용할 수도 없습니다.'
+  CallOfTheStorm: '&9폭풍의 부름 미끼&7가 추가적인 물고기를 낚도록 하였습니다.'
+  NoAugment: '&7 2번째 슬롯에는 지금 올려둔 아이템이 아닌 미끼를 올려주시면 감사드리겠습니다.'
+  Cooldown: '&7이걸 다시 하기 전에 적어도  &c1 초&7만 기다려 주세요.'
+  NotValidAugment: '&7유효하지 않은 미끼입니다.'
+  NoFishingRod: '&7 1번째 슬롯에는 지금 올려둔 도구가 아닌 낚시대를 올려주시면 감사드리겠습니다.'
+  Lore:
+  - '&7한번 할 때 마다 1레벨씩 미끼 레벨이 오릅니다.'
+  - '&7 미끼 메뉴를 열어 낚시대에 미끼들을 추가해주세요.'
+  - '&8&m-----------&r&8[%color% Information &8]&8&m-----------'
+  - '%color%필요한 레벨:&8 ➤ &7%requiredlevel%'
+  - '%color%낚시코인 비용t:&8 ➤ &7%cost%'
+  - '%color%최대 미끼 레벨l:&8 ➤ &7%maxlevel%'
+  - '%color%적용될 수 있는 물건:&8 ➤ &7낚시대'
+  - '&8&m-----------&r&8[%color% 정보 &8]&8&m-----------'
+  - '%description%'
+  - '&8&m-----------&r&8[%color% 정보 &8]&8&m-----------'
+  HotSpot: '&6만선 미끼&7가 당신에게 추가적인 물고기를 잡을 수 있도록 했습니다.'
+  PrecisionCutting: '&c정밀하게 절단된 미끼&7가 당신에게 &3%entropy% &7만큼의 보너스를 주었습니다.'
+  AugmentMaxLevel: '&7그 미끼는 이미 최대 레벨입니다.'
+  Saturate: '&3포만감 미끼&7가 당신의 배고픔을 채워줍니다.'
+  'False': 거부됌
+  NotHighEnoughLevel: '&7당신은 이 미끼를 만들기엔 낚시 레벨이 낮습니다.'
+  MASTER_FISHERMAN:
+    Description:
+    - '&7Gives you a higher chance to catch'
+    - '&7better tiered fish. For the most'
+    - '&7dedicated fishers out there!'
+  Colours:
+    BIOME_DISRUPTION: '&2'
+    CRAB_BAIT: '&b'
+    HOT_SPOT: '&6'
+    CALL_OF_THE_STORM: '&9'
+    SAGE: '&2'
+    PERCEPTION: '&6'
+    MASTER_FISHERMAN: '&d'
+    SOLAR_RAGE: '&e'
+    PRECISION_CUTTING: '&c'
+    SATURATE: '&3'
+    TROPHY: '&e'
+    INTELLECT: '&a'
+    SNOW_GLOBE: '&b'
+  PRECISION_CUTTING:
+    Description:
+    - '&7Gives you more entropy from gutting'
+    - '&7fish inside of the &c/fish gut &7station.'
+  HOT_SPOT:
+    Description:
+    - '&7Gives you a chance to catch multiple'
+    - '&7fish with a single cast of your rod.'
+    - '&7This only works when it is not raining.'
+  SATURATE:
+    Description:
+    - '&7Gives you a chance to refill your hunger'
+    - '&7when catching fish.'
+  SNOW_GLOBE:
+    Description:
+    - '&7Randomly creates a &fSnow Ring &7that'
+    - '&7gives bonus entropy and xp when'
+    - '&7fishing inside of it. Works for'
+    - '&7all players fishing inside it.'
+    Extra:
+    - ''
+    - '%color%Obtained from the Crabmas Event.'
+  CALL_OF_THE_STORM:
+    Description:
+    - '&7Gives you a chance to catch multiple'
+    - '&7fish with a single cast when it is'
+    - '&9raining&7. This does not work'
+    - '&7if it is not raining in your world.'
+  TROPHY:
+    Description:
+    - '&7Gives you a higher chance to profit'
+    - '&7when using the &e/fish scales&7 feature.'
+  BIOME_DISRUPTION:
+    Description:
+    - '&7Gives you a chance to catch fish from any'
+    - '&7biome when fishing. This does not apply to'
+    - '&7fish that have extra catch requirements.'
+  CRAB_BAIT:
+    Description:
+    - '&7Gives you a higher chance to catch'
+    - '&bCrabs &7when fishing.'
+  SAGE:
+    Description:
+    - '&7Gives you more &2Plugin XP&7 from'
+    - '&7catching fish. '
+  SOLAR_RAGE:
+    Description:
+    - '&7Increases the money you make from selling'
+    - '&7fish inside of the &e/fish shop&7.'
+  NewLore:
+  - '%description%'
+  - ''
+  - '%color%Augment Information:'
+  - '&7» Required Fishing Level: %color%%requiredlevel%'
+  - '&7» Entropy Cost:&8 %color%%cost%'
+  - '&7» Max Augment Level:&8 %color%%maxlevel%'
+  - '&7» Applied to:&8 %color%%type%'
+  - ''
+  - '%apply_augment%'
+  - '%craftable%'
+  - '%extra%'
+  - '%crafting_recipe%'
+  PERCEPTION:
+    Description:
+    - '&7Gives you more base entropy from'
+    - '&7catching custom fish.'
+  INTELLECT:
+    Description:
+    - '&7Gives you more &aPlayer XP &7from'
+    - '&7catching fish.'
+GUINames:
+  PerCodex: '&9&l물고기 도감 &8- &3%tier%'
+  Skills: '&9&l낚시 스킬'
+  TotemStructure: '&9토템 건축 구조'
+  Augments: '&9&l미끼 작업대'
+  Totem: '&9&l낚시 토템'
+  BaitShop: '&9&l낚시 찌 상점'
+  Codex: '&9&l도감'
+  Main: '&9&l낚시 메뉴'
+  Deliveries: '&9&l배달 의뢰'
+  Stats: '&9&l통계: &3&l%player%'
+  Shop: '&9&l물고기 판매'
+  Scales: '&9&l무게 측정'
+  GuttingStation: '&9&l물고기 손질 작업대'
+  FishingAugments: '&9&l낚시 미끼들'
+  FishBag: '&9&l물고기 가방'
+TierNames:
+  Mythical: 신화적인 등급
+  Diamond: 다이아몬드
+  Platinum: 플래티넘
+  Silver: 실버
+  Bronze: 브론즈
+  Gold: 골드
+CaughtCrab: '&7당신은 &cCrab&7를 잡았습니다!'
+Bait:
+  Ranout: '&7낚시대에 적용한 낚시찌가 내구도가 다 떨어진 것 같습니다.'
+  Information:
+    Lore:
+    - '&7Baits are used when catching rare fish.'
+    - '&7Buying baits cost money and have a limited'
+    - '&7number of uses.'
+    - ''
+    - '&7You can find what fish require what'
+    - '&7bait by looking in the fish codex.'
+    Name: '&a&l정보'
+  Bought: '&7%bait%을 &b%cost%&7에 구매했습니다.'
+  Applied: '&7낚시대에 %bait% &7 낚시찌를 적용하였습니다.'
+  NoVault: '&7This feature requires an economy provider to function and this server
+    does not have one.'
+  NotHighEnoughLevel: '&7이걸 구매하기에는 레벨이 부족합니다.'
+  Shop:
+    Cost:
+    - '&7'
+    - '&7비용: &a$%cost%'
+    NoPermission:
+    - ''
+    - '&c당신을 이것을 구매할 권한이 없습니다.'
+    Level: '&c이걸 쓰기엔 당신의 레벨이 부족합니다.'
+  NoPermission: '&당신을 이것을 구매할 권한이 없습니다.'
+  AlreadyHave: '&7이미 이 낚시대에는 낚시찌가 적용되어 있습니다.'
+  FishingRod: '&7낚시찌는 낚시대에만 적용할 수 있습니다.'
+  NotEnoughSpace: '&7인벤토리를 비운 후 구매 해주세요.'
+  NotEnoughMoney: '&7이걸 구매하기엔 돈이 부족합니다.'
+Misc:
+  SimpleTime:
+    NoHours: '%minutes%분 %seconds%초'
+    Hours: '%hours%시 %minutes%분 %seconds%초'
+    Days: '%days%일 %hours%시 %minutes%분 %seconds%초'
+  Time:
+    Days: '%days% 일 %hours% 시 %minutes% 분 %seconds% 초'
+    Hours: '%hours% 시 %minutes% 분 %seconds% 초'
+    NoHours: '%minutes% 분 %seconds% 초'
+  NA: N/A
+Totems:
+  Placed: '&e토템&7을 성공적으로 설치하였으며, 데이터도 불러왔습니다. 토템 모양이 동일하게 건축되었는지 확실하게 확인 해주세요.'
+  AlreadyOwnedTotem: '&7당신은 이미 토템을 가지고 있어서 또다른 &C토템 &7을 소유할 수 없습니다. 당신의 토템은 &cX: %x%&7,
+    &cY: %y%&7, &cZ: %z%&7에 위치하고 있습니다. 만일 옵저버가 없다면, 다시 설치하시고 부수시면 됩니다.'
+  MythicalWaters: '&7당신은 &5고대의 영역&7에서 %fish%를 낚았고 그래서 그게 %newfish%&7로 변경되었습니다.'
+  GlobalRangeEnabled: '&7이 서버는 글로벌 토템 설정이 켜져있습니다. 그래서 범위 증가 업그레이드 를 하실 수 없습니다.'
+  InvalidStructure: '&7정확하지 않는 건축물입니다. 사용하기 전에 구조를 옳바르게 다시 건축해주세요.'
+  NotEnoughEntropy: '&7업그레이드 하기에는 &c낚시코인&7이 부족합니다.'
+  Broken: '&6낚시 토템&7을 철거하였습니다!'
+  Upgraded: '&3%upgrade%&7를 업그레이드 했습니다!'
+  Unlocked: '&7당신은 &6낚시 토템&7을 해금 및 생성하였습니다.'
+  Break:
+    Lore:
+    - '&7이 낚시 토템은 보기만 해도'
+    - '&7신비로운 힘을 담고 있는 것 같다.'
+    - ''
+    - '&7토템 정보:'
+    - '&8➛ &7소유자: &a%owner%'
+    - '&8➛ &7범위: &a%radius%'
+    - '&8➛ &7액티브: &a%active_time%'
+    - '&8➛ &7쿨타임: &a%cooldown_time%'
+    - '&8➛ &7최대 패시브 슬롯: &a%max_passive_slots%'
+    - ''
+    - '&3데이터를 복구하려면 설치하세요.'
+    Name: '&e%player% &7낚시 토템'
+  NotYours: '&7이 &c토템&7은 당신게 아닙니다. 이건 &c%name%&7님의 것입니다.'
+RedeemStackEntropy: '&7You have redeemed &d%amount% Entropy&7.'
+NotEnoughEntropy: '&7낚시코인이 부족합니다. 업그레이드를 하려면 &c%entropy% &7낚시코인 정도 필요합니다.'
+Skills:
+  Respec:
+    NoEntropy: '&7낚시코인이 부족합니다.'
+    Done: '&7스킬 스테이터스를 초기화하였습니다. 이제 원하시는걸 찍으실 수 있습니다.'
+Prefix: ''
+TotemUpgrades:
+  Names:
+    RANGE: 범위
+    ACTIVE_TIME: 액티브 시간
+    COOLDOWN_REDUCTION: 쿨타임 시간
+TotemPassives:
+  Names:
+    MYTHICAL_WATERS: '&5고대의 영역'
+    FISH_SCHOOL: '&e물고기 학교'
+    ENTROPY_HORDER: '&b낚시코인 파밍'
+    EXPERIENCED_FISHERMAN: '&a숙련된 어부'
+    STAR_FALL: '&d별똥별'
+    RANDOM_DROPS: '&2랜덤 파밍'
+    LITTLE_CRITTERS: '&9작은 악동들'
+    TREASURE_HUNTER: '&6보물 사냥꾼'
+DeliveryUpgrades:
+  Names:
+    INCREASE_CAPACITY: 배달 가능량 증가
+    EXPERT_DELIVERER: 배달 전문가
+    PAY_RISE: 급여 증가
+    LUCKY_CHARM: 행운의 부적
+    OVERCLOCKED: 총알배송
+GUITitleColour: '&9&l'
+RedeemEntropy: '&d10,000 낚시코인&7을 획득했습니다.'
+Scales:
+  RiskSelected: '&7이 위험도는 이미 선택되어있습니다.'
+  ScaledFish: '&7이미 무게를 측정한 물고기들이 인벤토리에 있습니다.'
+  SelectRisk: '&7무게를 측정하기 전에 선호하는 위험도를 선택해야합니다.'
+WithdrawingDisabled: '&b낚시코인&7을 환전하는 것은 관리자로 인해 비활성화되었습니다.'
+PlatinumCatchBroadcast: '&3%player%&7가 방금 막 &3플래티넘 등급의 &7%fish%&7를 잡았습니다!'
+ChristasEvent:
+  NotReady: '&7당신은 아직 선물을 요청받을 수 없습니다. 나중을 기약해주세요.'
+Deliveries:
+  NewDelivery: '&7새로운 배달 의뢰가 온 것 같습니다...'
+  NoSpace: '&7이 배달 보상을 받기 위해서는 적어도 인벤토리 1칸은 비어있어야합니다.'
+  Dismissed: '&7이 배달 의뢰를 무시했습니다.'
+  Started: '&b%name%&7 배달 의뢰를 실행하여 전송하였고, 보상 받기까지 &9%time%&7 걸립니다.'
+  Finished: '&b%name%&7배달 의뢰를 마쳤고, %item%&7을 보상받았습니다.'
+  CannotDismiss: '&7이 배달은 무시할 수 없습니다.'
+  NotEnoughFish: '&7물고기가 부족합니다.'
+ReturnToMainMenu: '&7클릭하여 메인 메뉴로 되돌아갑니다.'
+Placeholders:
+  TimeTillTournament:
+    OnGoing: 다음 시간동안 진행됩니다 %time%
+ShopLoreInformation: '&7여기에 물고기를 올린 뒤 창을 닫아서 판매하시면 됩니다.'
+AntiAFKFisher: '&7너무 한자리에서 오래 잠수 낚시한 것 같습니다. 살짝 이동해서 낚시를 진행해주세요.'
+KillFish: ''
+NoOffHandFishing: '&7왼손에 낚시대를 올려두고 낚시할 수 없습니다.'
+GutFish:
+  NoFish: '&c손질할 물고기가 없습니다!'
+  Entropy: '&7&3%fish%&7를 손질하여 성공적으로 &3%entropy%&7만큼 낚시코인을 벌었습니다.'
+RemovedAugments: '&7당신의 낚시대에 있는 모든 미끼들을 제거했습니다.'
+FishLore:
+- '&a%description%'
+- ''
+- '&6&l정보:'
+- '&e➤ &2티어: &a%tier%'
+- '&e➤ &2무게: &a%weight%'
+- '&e➤ &2가격: &a$%price%'
+- '&e➤ &2생물군계: &a%allbiomes%'
+- '   &a★ &d%biome%'
+FishLoreExtra:
+  AllBiomes: 모든 생물 군계
+  Weight: '&7물고기의 무게를 쟀습니다!'
+PartyFishing:
+  Boost: ''
+NoPermission: '&c권한이 없습니다.'
+CreativeMode: '&c크리에이티브 모드&7에서는 작업할 수 없습니다.'
+TotemsDisabled: '&3낚시 토템&7은 이 서버에서 비활성화 되어있습니다.'
+NotRequiredLevel: '&4이 일을 하기 위해서는 다음 레벨이 되어야합니다 : &c'
+FishUpdate:
+  Weighed: '&7업그레이드를 하다보니 더이상 이 물고기는 무게를 잴 수 없게 되었습니다. 그냥 팔아버리거나 모아두셔도 괜찮겠습니다.'
+  Cooldown: '&7이 명령어는 지금 쿨타임 중에 놓여있습니다. &c%seconds%초 동안 더 기다려주세요.'
+  Updated: '&7인벤토리에 있는 물고기들이 새 품목으로 업데이트 되었습니다.'
+Lores:
+  ScalesGUI:
+    Information:
+    - §7물고기를 여기 위에 올린 다음
+    - §7모루를 클릭하여 크기를 측정합니다.
+    - §7GUI 오른쪽 편에 있는 위험도를 설정하여
+    - §7돈을 추가적으로 벌 수 있습니다.
+Tournament:
+  Length:
+    CaughtMessage: '&b%length%cm&7의 &7&b%FISHNAME%&7를 잡았습니다.'
+    LongestFish: '&7당신이 방금 아주 기다란 생선을 잡았습니다! 전에 잡은 최대 물고기 길이: &3%before%cm&7였고, 지금
+      새로 업그레이드 되서 &b%new%cm&7입니다!'
+  NoTournament: '&7지금 실행되고 있는 토너먼트가 없습니다.'
+  LongestCast:
+    Message: '&7가장 멀리 던진 것으로 기록되었습니다. 던진 기록 : &b%distance%m&7.'
+WithdrawnEntropy: '&7당신은 &d10,000&7 낚시코인을 &b낚시코인 크리스탈&7로 전환했습니다.'
+ShopTitleInformation: '&a여기서 물고기를 파세요'
+FirstCaught: '&7당신이 이 %fish%&7를 제일 첫번째로 잡은 사람입니다!'
+ErrorPrefix: ''
+MythicalCatchBroadcast: '&3%player%&7가 방금 &5신화적인 &7%fish%&7를 잡았습니다!'
+CaughtFirstFish: '&a당신이 가장 처음으로 물고기를 잡아 기록했습니다.'
+CaughtFish: ''
+tournyCmds:
+- ''
+- '&8]&8&m----------+&r&8[ &6&l낚시 토너먼트 &8]&8&m+-----------&r&8['
+- ''
+- '&6/ft start <tournamentType> [time] &7- Starts the specified tournament.'
+- '&6/ft stop [giveRewards] &7- Stops the tournament. Gives rewards if true.'
+- '&e/ft time &7- Shows time till next tournament.'
+- ''
+- '&8]&m--------------------------------------------&r&8['
+- ''
+HelpInChat:
+- '&7--------------------------------------------------'
+- '&7To start the plugin off. Shift-Right-Click'
+- '&7holding a Fishing Rod to open the Main Menu.'
+- ''
+- '&7You can sell, scale and gut fish using the'
+- '&7main menu. These will allow you to gain special'
+- '&7items and money from your fishing session.'
+- ''
+- '&7There are also &aAugments&7. Augments are basically'
+- '&7custom enchantments that can only be obtained from'
+- '&7custom crafting using a Cauldron. To see all the'
+- '&7recipes. Open the fishing menu and click Augments.'
+- '&7There will be a recipe book in there.'
+- ''
+- '&7You can also gain skill points from leveling up'
+- '&7your fishing level. These can be spent in the'
+- '&7fishing rod menu. (See above on how to open)'
+- '&7--------------------------------------------------'
+WithdrawEntropyNotEnough: '&c낚시코인 크리스탈&7로 전환하기에는 낚시코인이 부족합니다.'
+SellMessage: '&b%fishsold% 물고기를 팔아서 &b%moneyearned%&7$만큼 벌었습니다.'
+InvalidItem: '&7유효하지 않은 낚시대 발견: No Augments or Invalid Item.'
+Fish:
+  FishNameColour: '&b&l'
+FishShopLogging: '[PyroFishingPro] %player%가 %fish%물고기를 팔아서 %money%만큼 벌었습니다.'
+SellFish:
+  SpecialFishMoney: '&7특별한 생선을 팔아서 &b%money%&7$만큼 벌었습니다!'
+MoneyCooldown:
+  Limit: '&7오늘 낚시로 벌 수 있는 돈의 최대치를 이미 벌었습니다. &b%time%&7만큼 기다려주세요.'
+MainLevelUp: '&a낚시 레벨이 &b%level%&7로 올랐습니다!'

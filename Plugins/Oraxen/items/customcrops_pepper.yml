@@ -1,0 +1,78 @@
+pepper_seeds:
+  displayname: <white>고추 씨앗
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/crops/pepper/pepper_seeds
+    custom_model_data: 1044
+pepper:
+  displayname: 고추
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/pepper/pepper
+    custom_model_data: 1021
+pepper_silver_star:
+  displayname: <white>고추 ★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/pepper/pepper_silver_star
+    custom_model_data: 1022
+pepper_golden_star:
+  displayname: <white>고추 <gold>★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/pepper/pepper_golden_star
+    custom_model_data: 1023
+pepper_stage_1:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 37
+      model: item/crops/pepper/stage_1
+  Pack:
+    generate_model: false
+    model: item/crops/pepper/stage_1
+    custom_model_data: 1045
+pepper_stage_2:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 38
+      model: item/crops/pepper/stage_2
+  Pack:
+    generate_model: false
+    model: item/crops/pepper/stage_2
+    custom_model_data: 1046
+pepper_stage_3:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 39
+      model: item/crops/pepper/stage_3
+  Pack:
+    generate_model: false
+    model: item/crops/pepper/stage_3
+    custom_model_data: 1047
+pepper_stage_4:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 40
+      model: item/crops/pepper/stage_4
+  Pack:
+    generate_model: false
+    model: item/crops/pepper/stage_4
+    custom_model_data: 1048
+pepper_stage_5:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 41
+      model: item/crops/pepper/stage_5
+  Pack:
+    generate_model: false
+    model: item/crops/pepper/stage_5
+    custom_model_data: 1049

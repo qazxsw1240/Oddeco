@@ -1,0 +1,36 @@
+// This file was recognized as a duplicate and was migrated into its relevant config(s)
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "item/cooked_beef"
+    },
+    "overrides": [
+		{"predicate": {"custom_model_data":1}, "model": "littleroom_cookingpot:failure_food"},
+		{"predicate": {"custom_model_data":2}, "model": "littleroom_cookingpot:glazed_ham"},
+		{"predicate": {"custom_model_data":3}, "model": "littleroom_cookingpot:beef_kebab"},
+		{"predicate": {"custom_model_data":4}, "model": "littleroom_cookingpot:chicken_kebab"},
+		{"predicate": {"custom_model_data":5}, "model": "littleroom_cookingpot:fruit_salad"},
+		{"predicate": {"custom_model_data":6}, "model": "littleroom_cookingpot:cod_sushi"},
+		{"predicate": {"custom_model_data":7}, "model": "littleroom_cookingpot:salmon_sushi"},
+		{"predicate": {"custom_model_data":8}, "model": "littleroom_cookingpot:apple_turnover"},
+		{"predicate": {"custom_model_data":9}, "model": "littleroom_cookingpot:porkchops_applesauce"},
+		{"predicate": {"custom_model_data":10}, "model": "littleroom_cookingpot:candy_apple"},
+		{"predicate": {"custom_model_data":11}, "model": "littleroom_cookingpot:brownie"},
+		{"predicate": {"custom_model_data":12}, "model": "littleroom_cookingpot:cod_sandwich"},
+		{"predicate": {"custom_model_data":13}, "model": "littleroom_cookingpot:salmon_sandwich"},
+		{"predicate": {"custom_model_data":14}, "model": "littleroom_cookingpot:beef_sandwich"},
+		{"predicate": {"custom_model_data":15}, "model": "littleroom_cookingpot:chicken_sandwich"},
+		{"predicate": {"custom_model_data":16}, "model": "littleroom_cookingpot:egg_basket"},
+		{"predicate": {"custom_model_data":17}, "model": "littleroom_cookingpot:ham_sandwich"},
+		{"predicate": {"custom_model_data":18}, "model": "littleroom_cookingpot:donut"},
+		{"predicate": {"custom_model_data":19}, "model": "littleroom_cookingpot:pancakes"},
+		{"predicate": {"custom_model_data":20}, "model": "littleroom_cookingpot:chocolate_bar"},
+		{"predicate": {"custom_model_data":21}, "model": "littleroom_cookingpot:fish_chips"},
+		{"predicate": {"custom_model_data":22}, "model": "littleroom_cookingpot:milk_steak"},
+		{"predicate": {"custom_model_data":23}, "model": "littleroom_cookingpot:steak_eggs"},
+		{"predicate": {"custom_model_data":24}, "model": "littleroom_cookingpot:lollipop"},
+		{"predicate": {"custom_model_data":25}, "model": "littleroom_cookingpot:cotton_candy"},
+		{"predicate": {"custom_model_data":26}, "model": "littleroom_cookingpot:bacon_eggs"}
+
+        ]
+}

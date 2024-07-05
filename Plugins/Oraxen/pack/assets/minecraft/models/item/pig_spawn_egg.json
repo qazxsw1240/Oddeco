@@ -1,0 +1,65 @@
+{
+  "parent": "minecraft:item/template_spawn_egg",
+	"overrides": [
+		{
+			"predicate": { "custom_model_data": 1 },
+			"model": "littleroom_cookingpot:cooking_pot"
+		},
+		{
+			"predicate": { "custom_model_data": 2 },
+			"model": "littleroom_blacksmith:crucible_molten"
+		},
+		{
+			"predicate": { "custom_model_data": 3 },
+			"model": "littleroom_blacksmith:crucible_iron"
+		},
+		{
+			"predicate": { "custom_model_data": 4 },
+			"model": "littleroom_blacksmith:crucible_steel"
+		},
+		{
+			"predicate": { "custom_model_data": 5 },
+			"model": "littleroom_blacksmith:crucible_copper"
+		},
+		{
+			"predicate": { "custom_model_data": 6 },
+			"model": "littleroom_blacksmith:crucible_bronze"
+		},
+		{
+			"predicate": { "custom_model_data": 7 },
+			"model": "littleroom_blacksmith:crucible_emerald"
+		},
+		{
+			"predicate": { "custom_model_data": 8 },
+			"model": "littleroom_blacksmith:crucible_emerite"
+		},
+		{
+			"predicate": { "custom_model_data": 9 },
+			"model": "littleroom_blacksmith:crucible_lapislazuli"
+		},
+		{
+			"predicate": { "custom_model_data": 10 },
+			"model": "littleroom_blacksmith:crucible_lazulium"
+		},
+		{
+			"predicate": { "custom_model_data": 11 },
+			"model": "littleroom_blacksmith:blacksmith_forge"
+		},
+		{
+			"predicate": { "custom_model_data": 12 },
+			"model": "littleroom_blacksmith:blacksmith_anvil"
+		},
+		{
+			"predicate": { "custom_model_data": 13 },
+			"model": "littleroom_blacksmith:blacksmith_quencher"
+		},
+		{
+			"predicate": { "custom_model_data": 14 },
+			"model": "littleroom_blacksmith:blacksmith_ingotmold"
+		},
+		{
+			"predicate": { "custom_model_data": 15 },
+			"model": "littleroom_blacksmith:crucible"
+		}
+	]
+}

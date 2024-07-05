@@ -1,0 +1,11 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "item/milk_bucket"
+    },
+    "overrides": [
+		{"predicate": {"custom_model_data":1}, "model": "littleroom_cookingpot:chocolate_milk"},
+		{"predicate": {"custom_model_data":2}, "model": "littleroom_cookingpot:berry_milk"}
+
+        ]
+}

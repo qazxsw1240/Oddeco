@@ -1,0 +1,105 @@
+speed_grow_1:
+  displayname: <white>성장 촉진제
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/fertilizers/speed_grow_1
+    custom_model_data: 1079
+speed_grow_2:
+  displayname: <white> 딜럭스 성장 촉진제
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/fertilizers/speed_grow_2
+    custom_model_data: 1080
+speed_grow_3:
+  displayname: <white> 하이퍼 성장 촉진제
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/fertilizers/speed_grow_3
+    custom_model_data: 1081
+soil_retain_1:
+  displayname: <white>기초 수분 관리제
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/fertilizers/soil_retain_1
+    custom_model_data: 1082
+soil_retain_2:
+  displayname: <white>일반 수분 관리제
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/fertilizers/soil_retain_2
+    custom_model_data: 1083
+soil_retain_3:
+  displayname: <white>딜럭스 수분 관리제
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/fertilizers/soil_retain_3
+    custom_model_data: 1084
+quality_1:
+  displayname: <white>기초 비료
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/fertilizers/quality_1
+    custom_model_data: 1085
+quality_2:
+  displayname: <white>일반 비료
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/fertilizers/quality_2
+    custom_model_data: 1086
+quality_3:
+  displayname: <white>딜럭스 비료
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/fertilizers/quality_3
+    custom_model_data: 1087
+yield_increase_1:
+  displayname: <white>기초 수확 증가 관리제
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/fertilizers/yield_increase_1
+    custom_model_data: 1088
+yield_increase_2:
+  displayname: <white>일반 수확 증가 관리제
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/fertilizers/yield_increase_2
+    custom_model_data: 1089
+yield_increase_3:
+  displayname: <white>딜럭스 수확 증가 관리제
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/fertilizers/yield_increase_3
+    custom_model_data: 1090
+variation_1:
+  displayname: <white>초급 마법의 물병
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/fertilizers/variation_1
+    custom_model_data: 1091
+variation_2:
+  displayname: <white>중급 마법의 물병
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/fertilizers/variation_2
+    custom_model_data: 1092
+variation_3:
+  displayname: <white>고급 마법의 물병
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/fertilizers/variation_3
+    custom_model_data: 1093

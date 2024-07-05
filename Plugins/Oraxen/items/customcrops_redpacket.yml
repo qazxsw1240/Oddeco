@@ -1,0 +1,83 @@
+redpacket_seeds:
+  displayname: <white>새해 복주머니 나무 씨앗
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/crops/redpacket/redpacket_seeds
+    custom_model_data: 1063
+redpacket:
+  displayname: <white>복주머니
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/crops/redpacket/redpacket
+    custom_model_data: 1064
+  Mechanics:
+    custom:
+      redpacket:
+        one_usage: true
+        event: CLICK:right:air
+        conditions:
+        - HAS_PERMISSION:group.default
+        actions:
+        - '[console] money give <player> 5'
+redpacket_stage_1:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 65
+      model: item/crops/redpacket/stage_1
+  Pack:
+    generate_model: false
+    model: item/crops/redpacket/stage_1
+    custom_model_data: 1065
+redpacket_stage_2:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 66
+      model: item/crops/redpacket/stage_2
+  Pack:
+    generate_model: false
+    model: item/crops/redpacket/stage_2
+    custom_model_data: 1066
+redpacket_stage_3:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 67
+      model: item/crops/redpacket/stage_3
+  Pack:
+    generate_model: false
+    model: item/crops/redpacket/stage_3
+    custom_model_data: 1067
+redpacket_stage_4:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 68
+      model: item/crops/redpacket/stage_4
+  Pack:
+    generate_model: false
+    model: item/crops/redpacket/stage_4
+    custom_model_data: 1068
+redpacket_stage_5:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 69
+      model: item/crops/redpacket/stage_5
+  Pack:
+    generate_model: false
+    model: item/crops/redpacket/stage_5
+    custom_model_data: 1069
+redpacket_stage_6:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 70
+      model: item/crops/redpacket/stage_6
+  Pack:
+    generate_model: false
+    model: item/crops/redpacket/stage_6
+    custom_model_data: 1070

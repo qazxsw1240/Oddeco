@@ -1,0 +1,84 @@
+pineapple_seeds:
+  displayname: <white>파인애플 씨앗
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/crops/pineapple/pineapple_seeds
+    custom_model_data: 1050
+pineapple:
+  displayname: <white>파인애플
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/pineapple/pineapple
+    custom_model_data: 1024
+pineapple_silver_star:
+  displayname: <white>파인애플 ★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/pineapple/pineapple_silver_star
+    custom_model_data: 1025
+pineapple_golden_star:
+  displayname: <white>파인애플 <gold>★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/pineapple/pineapple_golden_star
+    custom_model_data: 1026
+pineapple_stage_1:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 28
+      model: item/crops/pineapple/stage_1
+  Pack:
+    generate_model: false
+    model: item/crops/pineapple/stage_1
+    custom_model_data: 1051
+pineapple_stage_2:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 29
+      model: item/crops/pineapple/stage_2
+  Pack:
+    generate_model: false
+    model: item/crops/pineapple/stage_2
+    custom_model_data: 1052
+pineapple_stage_3:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 30
+      model: item/crops/pineapple/stage_3
+  Pack:
+    generate_model: false
+    model: item/crops/pineapple/stage_3
+    custom_model_data: 1053
+pineapple_stage_4:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 31
+      model: item/crops/pineapple/stage_4
+  Pack:
+    generate_model: false
+    model: item/crops/pineapple/stage_4
+    custom_model_data: 1054
+gigantic_pineapple:
+  displayname: <gold>과성장 파인애플
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 32
+      model: item/crops/pineapple/gigantic_pineapple
+      drop:
+        silktouch: false
+        loots:
+        - oraxen_item: gigantic_pineapple
+          probability: 1.0
+  Pack:
+    generate_model: false
+    model: item/crops/pineapple/gigantic_pineapple
+    custom_model_data: 1055

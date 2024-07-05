@@ -1,0 +1,22 @@
+# 닉네임 자동 저장 주기 (틱 단위)
+auto-save-period: 12000
+
+# 닉네임 길이
+nickname:
+  # 사용 가능한 닉네임 패턴
+  regex: "^[a-zA-Z0-9_가-힣]*$"
+  length:
+    min: 2
+    max: 10
+
+sync:
+  # 변경된 이름을 display name에도 적용
+  display-name: true
+  # 탭에 변경된 이름으로 적용
+  tab: true
+
+# 접속(종료) 포맷 변경
+# %player% = 유저 이름
+format:
+  join: "&a[+] &f%player%"
+  quit: "&c[-] &f%player%"

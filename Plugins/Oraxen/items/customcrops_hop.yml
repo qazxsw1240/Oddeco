@@ -1,0 +1,68 @@
+hop_seeds:
+  displayname: <white>홉 씨앗
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/crops/hop/hop_seeds
+    custom_model_data: 1039
+hop:
+  displayname: <white>홉
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/hop/hop
+    custom_model_data: 1018
+hop_silver_star:
+  displayname: <white>홉 ★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/hop/hop_silver_star
+    custom_model_data: 1019
+hop_golden_star:
+  displayname: <white>홉 <gold>★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/hop/hop_golden_star
+    custom_model_data: 1020
+hop_stage_1:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 51
+      model: item/crops/hop/stage_1
+  Pack:
+    generate_model: false
+    model: item/crops/hop/stage_1
+    custom_model_data: 1040
+hop_stage_2:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 52
+      model: item/crops/hop/stage_2
+  Pack:
+    generate_model: false
+    model: item/crops/hop/stage_2
+    custom_model_data: 1041
+hop_stage_3:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 53
+      model: item/crops/hop/stage_3
+  Pack:
+    generate_model: false
+    model: item/crops/hop/stage_3
+    custom_model_data: 1042
+hop_stage_4:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 54
+      model: item/crops/hop/stage_4
+  Pack:
+    generate_model: false
+    model: item/crops/hop/stage_4
+    custom_model_data: 1043

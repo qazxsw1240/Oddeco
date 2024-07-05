@@ -1,0 +1,15 @@
+Item:
+  type: COMMAND_BLOCK
+  meta:
+    display-name: '&6&l어드민 순간이동석'
+    lore:
+      - '&7오직 관리자만 쓸 수 있습니다'
+Use Condition:
+  Criteria: HAS_PERMISSION
+  Permission: 'fancywaystones.admin'
+Behavior:
+  One Time Item: false
+  Cooldown: 0s
+  # if Admin Mode sets to true, it will list all loaded waystones
+  Admin Mode: true
+  Charge Players: false

@@ -1,0 +1,68 @@
+chinese_cabbage_seeds:
+  displayname: <white>배추 씨앗
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/crops/chinese_cabbage/chinese_cabbage_seeds
+    custom_model_data: 1012
+chinese_cabbage:
+  displayname: <white>배추
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/chinese_cabbage/chinese_cabbage
+    custom_model_data: 1003
+chinese_cabbage_silver_star:
+  displayname: <white>배추 ★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/chinese_cabbage/chinese_cabbage_silver_star
+    custom_model_data: 1004
+chinese_cabbage_golden_star:
+  displayname: <white>배추 <gold>★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/chinese_cabbage/chinese_cabbage_golden_star
+    custom_model_data: 1005
+chinese_cabbage_stage_1:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 47
+      model: item/crops/chinese_cabbage/stage_1
+  Pack:
+    generate_model: false
+    model: item/crops/chinese_cabbage/stage_1
+    custom_model_data: 1013
+chinese_cabbage_stage_2:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 48
+      model: item/crops/chinese_cabbage/stage_2
+  Pack:
+    generate_model: false
+    model: item/crops/chinese_cabbage/stage_2
+    custom_model_data: 1014
+chinese_cabbage_stage_3:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 49
+      model: item/crops/chinese_cabbage/stage_3
+  Pack:
+    generate_model: false
+    model: item/crops/chinese_cabbage/stage_3
+    custom_model_data: 1015
+chinese_cabbage_stage_4:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 50
+      model: item/crops/chinese_cabbage/stage_4
+  Pack:
+    generate_model: false
+    model: item/crops/chinese_cabbage/stage_4
+    custom_model_data: 1016

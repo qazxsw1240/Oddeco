@@ -1,0 +1,54 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"1": "modelengine:entity/blacksmith_anvil_parts"
+	},
+	"elements": [
+		{
+			"from": [7.75, 1.25, 7],
+			"to": [8.25, 11.25, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.25, 8.5]},
+			"faces": {
+				"north": {"uv": [0, 0, 10, 0.5], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [10, 0, 0, 2], "rotation": 270, "texture": "#1"},
+				"south": {"uv": [1, 0, 11, 0.5], "rotation": 270, "texture": "#1"},
+				"west": {"uv": [10, 2, 0, 0], "rotation": 270, "texture": "#1"},
+				"up": {"uv": [6, 1, 8, 1.5], "rotation": 270, "texture": "#1"},
+				"down": {"uv": [6, 2, 8, 2.5], "rotation": 270, "texture": "#1"}
+			}
+		}
+	],
+	"gui_light": "front",
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 6, 0]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 6, 0]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 13, -15],
+			"translation": [2.25, 6, 0]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 13, -15],
+			"translation": [2.25, 6, 0]
+		},
+		"ground": {
+			"rotation": [0, 0, 48],
+			"translation": [0, 3.25, 0]
+		},
+		"gui": {
+			"rotation": [64, -146, 65],
+			"translation": [1.25, 0.75, 0]
+		}
+	},
+	"groups": [
+		{
+			"name": "sword",
+			"origin": [0, 14.5, 4],
+			"color": 0,
+			"children": [0]
+		}
+	]
+}

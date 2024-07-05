@@ -1,0 +1,2421 @@
+
+#########################################################
+## Developed by Little Room, patreon.com/littleroomdev ##
+#########################################################
+
+#### TUTORIAL ####
+
+blacksmithTUTORIALcrucible_ore:
+  TargetConditions:
+  - score{o=blacksmith_tutorial;v=1} false
+  Skills:
+  - speak{offset=0.3f;lineprefix="&f";message="우클릭을 해서 광물을 넣으세요!";duration=120;chat=false} @self
+  
+blacksmithTUTORIALcrucible_forge:
+  TargetConditions:
+  - score{o=blacksmith_tutorial;v=1} false
+  Skills:
+  - speak{offset=0.3f;lineprefix="&f";message="용광로에 넣으세요!";duration=120;chat=false} @self
+  
+blacksmithTUTORIALforge_mold:
+  TargetConditions:
+  - score{o=blacksmith_tutorial;v=1} false
+  Skills:
+  - speak{offset=0.5f;lineprefix="&f";message="주괴 거푸집에 부워주세요!";duration=120;chat=false} @self
+  
+blacksmithTUTORIALmold_forge:
+  TargetConditions:
+  - score{o=blacksmith_tutorial;v=1} false
+  Skills:
+  - speak{offset=0.3f;lineprefix="&f";message="용광로에 넣어주세요!";duration=120;chat=false} @self
+  
+blacksmithTUTORIALforge_anvil:
+  TargetConditions:
+  - score{o=blacksmith_tutorial;v=1} false
+  Skills:
+  - speak{offset=0.5f;lineprefix="&f";message="모루에 올려주세요!";duration=120;chat=false} @self
+  
+blacksmithTUTORIALanvil_hammer:
+  TargetConditions:
+  - score{o=blacksmith_tutorial;v=1} false
+  Skills:
+  - speak{offset=0.5f;lineprefix="&f";message="해머로 두들겨주세요!";duration=120;chat=false} @self
+  
+blacksmithTUTORIALanvil_hammer2:
+  TargetConditions:
+  - score{o=blacksmith_tutorial;v=1} false
+  Skills:
+  - speak{offset=0.5f;lineprefix="&f";message="우클릭해서 잡아주세요!";duration=120;chat=false} @self
+  
+blacksmithTUTORIALanvil_quencher:
+  TargetConditions:
+  - score{o=blacksmith_tutorial;v=1} false
+  Skills:
+  - speak{offset=0.5f;lineprefix="&f";message="냉각기에 넣어주세요!";duration=120;chat=false} @self
+  
+blacksmithTUTORIALquencher_stick:
+  TargetConditions:
+  - score{o=blacksmith_tutorial;v=1} false
+  Skills:
+  - speak{offset=0.5f;lineprefix="&f";message="나무 막대기를 들고 우클릭해주세요!";duration=120;chat=false} @self
+  
+blacksmithTUTORIALingot_cooled:
+  TargetConditions:
+  - score{o=blacksmith_tutorial;v=1} false
+  Skills:
+  - speak{offset=0.4f;lineprefix="&c";message="주괴가 식었습니다.";duration=40;chat=false} @self
+
+#### WALLCHECK ####
+
+blacksmitherrorprevention:
+  Cooldown: 1
+  Conditions:
+  - ismoving true
+  Skills:
+  - setblock{m=AIR;md=0} @selflocation
+  - dropitem{i=<caster.name>} @self
+  - remove @self
+
+blacksmith_rotate:
+  Cooldown: 1
+  TriggerConditions:
+  - crouching true
+  - holding{m=AIR} true
+  Conditions:
+  - score{o=rotate;v=>3} castinstead blacksmith_rotate_reset
+  Skills:
+  - speak{offset=0.6f;radius=30;maxlinelength=22;lineprefix="&f";message="회전중...";chatprefix="";duration=20;chat=false} @self
+  - modifytargetscore{o=rotate;a=add;v=1} @self
+  
+blacksmith_rotate_reset:
+  Skills:
+  - settargetscore{o=rotate;v=0} @self
+  
+blacksmith_rotatecheck:
+  Skills:
+  - skill{s=blacksmith_north} @self
+  - skill{s=blacksmith_east} @self
+  - skill{s=blacksmith_south} @self
+  - skill{s=blacksmith_west} @self
+  
+blacksmith_north:
+  Conditions:
+  - score{o=rotate;v=1} true
+  Skills:
+  - delay 1
+  - setrotation{relative=false;yaw=0;pitch=0} @Self
+  
+blacksmith_east:
+  Conditions:
+  - score{o=rotate;v=2} true
+  Skills:
+  - delay 1
+  - setrotation{relative=false;yaw=-90;pitch=0} @Self
+  
+blacksmith_south:
+  Conditions:
+  - score{o=rotate;v=3} true
+  Skills:
+  - delay 1
+  - setrotation{relative=false;yaw=180;pitch=0} @Self
+  
+blacksmith_west:
+  Conditions:
+  - score{o=rotate;v=4} true
+  Skills:
+  - delay 1
+  - setrotation{relative=false;yaw=90;pitch=0} @Self
+  
+blacksmithblockcheck:
+  Cooldown: 1
+  TargetConditions:
+  - blocktype{type=air} false
+  Skills:
+  - dropitem{i=<caster.name>} @self
+  - remove @self
+  
+blacksmithbarriercheck:
+  Cooldown: 1
+  TargetConditions:
+  - blocktype{type=barrier} false
+  Skills:
+  - dropitem{i=<caster.name>} @self
+  - remove @self
+  
+blacksmithREMOVE:
+  Cooldown: 1
+  Skills:
+  - setblock{m=AIR;md=0} @selflocation
+
+#### CRUCIBLE ####
+
+blacksmithCRUCIBLEGRAB:
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - giveitem{i=<caster.name>} @trigger
+  - remove @self
+
+blacksmithCRUCIBLEGIVE:
+  Cooldown: 1
+  Skills:
+  - skill{s=blacksmithCRUCIBLEiron} @self
+  - skill{s=blacksmithCRUCIBLEsteel} @self
+  - skill{s=blacksmithCRUCIBLEcopper} @self
+  - skill{s=blacksmithCRUCIBLEbronze} @self
+  - skill{s=blacksmithCRUCIBLEemerald} @self
+  - skill{s=blacksmithCRUCIBLEemerite} @self
+  - skill{s=blacksmithCRUCIBLElapis} @self
+  - skill{s=blacksmithCRUCIBLElazulium} @self
+  
+  
+## IRON ##
+blacksmithCRUCIBLEiron:
+  TriggerConditions:
+  - holding{m=raw_iron} true
+  Skills:
+  - consumeslot{} @trigger
+  - summon{t=blacksmith_crucible_iron} @self
+  - remove @self
+  
+## steel ##
+blacksmithCRUCIBLEsteel:
+  Conditions:
+  - mythicmobtype{t=blacksmith_crucible_iron} true
+  TriggerConditions:
+  - holding{m=coal} true
+  Skills:
+  - consumeslot{} @trigger
+  - summon{t=blacksmith_crucible_steel} @self
+  - remove @self
+  
+## copper ##
+blacksmithCRUCIBLEcopper:
+  TriggerConditions:
+  - holding{m=raw_copper} true
+  Skills:
+  - consumeslot{} @trigger
+  - summon{t=blacksmith_crucible_copper} @self
+  - remove @self
+  
+## bronze ##
+blacksmithCRUCIBLEbronze:
+  Conditions:
+  - mythicmobtype{t=blacksmith_crucible_copper} true
+  TriggerConditions:
+  - holding{m=coal} true
+  Skills:
+  - consumeslot{} @trigger
+  - summon{t=blacksmith_crucible_bronze} @self
+  - remove @self
+  
+## emerald ##
+blacksmithCRUCIBLEemerald:
+  TriggerConditions:
+  - holding{m=emerald} true
+  Skills:
+  - consumeslot{} @trigger
+  - summon{t=blacksmith_crucible_emerald} @self
+  - remove @self
+  
+## emerite ##
+blacksmithCRUCIBLEemerite:
+  Conditions:
+  - mythicmobtype{t=blacksmith_crucible_emerald} true
+  TriggerConditions:
+  - holding{m=coal} true
+  Skills:
+  - consumeslot{} @trigger
+  - summon{t=blacksmith_crucible_emerite} @self
+  - remove @self
+  
+## lapis ##
+blacksmithCRUCIBLElapis:
+  TriggerConditions:
+  - holding{m=lapis_lazuli} true
+  Skills:
+  - consumeslot{} @trigger
+  - summon{t=blacksmith_crucible_lapis} @self
+  - remove @self
+  
+## lazulium ##
+blacksmithCRUCIBLElazulium:
+  Conditions:
+  - mythicmobtype{t=blacksmith_crucible_lapis} true
+  TriggerConditions:
+  - holding{m=coal} true
+  Skills:
+  - consumeslot{} @trigger
+  - summon{t=blacksmith_crucible_lazulium} @self
+  - remove @self
+
+
+
+
+
+blacksmithCRUCIBLESPAWN:
+  Skills:
+  - skill{s=blacksmithTUTORIALcrucible_ore} @pir{r=3}
+  - skill{s=blacksmithCRUCIBLESPAWNiron} @self
+  - skill{s=blacksmithCRUCIBLESPAWNiron_MOLTEN} @self
+  - skill{s=blacksmithCRUCIBLESPAWNsteel} @self
+  - skill{s=blacksmithCRUCIBLESPAWNsteel_MOLTEN} @self
+  - skill{s=blacksmithCRUCIBLESPAWNcopper} @self
+  - skill{s=blacksmithCRUCIBLESPAWNbronze} @self
+  - skill{s=blacksmithCRUCIBLESPAWNbronze_MOLTEN} @self
+  - skill{s=blacksmithCRUCIBLESPAWNemerald} @self
+  - skill{s=blacksmithCRUCIBLESPAWNemerite} @self
+  - skill{s=blacksmithCRUCIBLESPAWNemerite_MOLTEN} @self
+  - skill{s=blacksmithCRUCIBLESPAWNlapis} @self
+  - skill{s=blacksmithCRUCIBLESPAWNlazulium} @self
+  - skill{s=blacksmithCRUCIBLESPAWNlazulium_MOLTEN} @self
+  
+  
+## IRON ##
+blacksmithCRUCIBLESPAWNiron:
+  Conditions:
+  - mythicmobtype{t=blacksmith_crucible_iron} true
+  Skills:
+  - delay 1
+  - skill{s=blacksmithTUTORIALcrucible_forge} @pir{r=3}
+  - changepart{m=blacksmith_crucible;pid=base;nm=blacksmith_parts;npid=iron} @self
+  
+blacksmithCRUCIBLESPAWNiron_MOLTEN:
+  Conditions:
+  - mythicmobtype{t=blacksmith_crucible_iron_molten} true
+  Skills:
+  - delay 1
+  - changepart{m=blacksmith_crucible;pid=base;nm=blacksmith_parts;npid=molten} @self
+  
+## steel ##
+blacksmithCRUCIBLESPAWNsteel:
+  Conditions:
+  - mythicmobtype{t=blacksmith_crucible_steel} true
+  Skills:
+  - delay 1
+  - skill{s=blacksmithTUTORIALcrucible_forge} @pir{r=3}
+  - changepart{m=blacksmith_crucible;pid=base;nm=blacksmith_parts;npid=steel} @self
+  
+blacksmithCRUCIBLESPAWNsteel_MOLTEN:
+  Conditions:
+  - mythicmobtype{t=blacksmith_crucible_steel_molten} true
+  Skills:
+  - delay 1
+  - changepart{m=blacksmith_crucible;pid=base;nm=blacksmith_parts;npid=molten} @self
+  
+## copper ##
+blacksmithCRUCIBLESPAWNcopper:
+  Conditions:
+  - mythicmobtype{t=blacksmith_crucible_copper} true
+  Skills:
+  - delay 1
+  - skill{s=blacksmithTUTORIALcrucible_forge} @pir{r=3}
+  - changepart{m=blacksmith_crucible;pid=base;nm=blacksmith_parts;npid=copper} @self
+  
+## bronze ##
+blacksmithCRUCIBLESPAWNbronze:
+  Conditions:
+  - mythicmobtype{t=blacksmith_crucible_bronze} true
+  Skills:
+  - delay 1
+  - skill{s=blacksmithTUTORIALcrucible_forge} @pir{r=3}
+  - changepart{m=blacksmith_crucible;pid=base;nm=blacksmith_parts;npid=bronze} @self
+  
+blacksmithCRUCIBLESPAWNbronze_MOLTEN:
+  Conditions:
+  - mythicmobtype{t=blacksmith_crucible_bronze_molten} true
+  Skills:
+  - delay 1
+  - changepart{m=blacksmith_crucible;pid=base;nm=blacksmith_parts;npid=molten} @self
+  
+## emerald ##
+blacksmithCRUCIBLESPAWNemerald:
+  Conditions:
+  - mythicmobtype{t=blacksmith_crucible_emerald} true
+  Skills:
+  - delay 1
+  - skill{s=blacksmithTUTORIALcrucible_forge} @pir{r=3}
+  - changepart{m=blacksmith_crucible;pid=base;nm=blacksmith_parts;npid=emerald} @self
+  
+## emerite ##
+blacksmithCRUCIBLESPAWNemerite:
+  Conditions:
+  - mythicmobtype{t=blacksmith_crucible_emerite} true
+  Skills:
+  - delay 1
+  - skill{s=blacksmithTUTORIALcrucible_forge} @pir{r=3}
+  - changepart{m=blacksmith_crucible;pid=base;nm=blacksmith_parts;npid=emerite} @self
+  
+blacksmithCRUCIBLESPAWNemerite_MOLTEN:
+  Conditions:
+  - mythicmobtype{t=blacksmith_crucible_emerite_molten} true
+  Skills:
+  - delay 1
+  - changepart{m=blacksmith_crucible;pid=base;nm=blacksmith_parts;npid=molten} @self
+  
+## lapis ##
+blacksmithCRUCIBLESPAWNlapis:
+  Conditions:
+  - mythicmobtype{t=blacksmith_crucible_lapis} true
+  Skills:
+  - delay 1
+  - skill{s=blacksmithTUTORIALcrucible_forge} @pir{r=3}
+  - changepart{m=blacksmith_crucible;pid=base;nm=blacksmith_parts;npid=lapis_lazuli} @self
+  
+## lazulium ##
+blacksmithCRUCIBLESPAWNlazulium:
+  Conditions:
+  - mythicmobtype{t=blacksmith_crucible_lazulium} true
+  Skills:
+  - delay 1
+  - skill{s=blacksmithTUTORIALcrucible_forge} @pir{r=3}
+  - changepart{m=blacksmith_crucible;pid=base;nm=blacksmith_parts;npid=lazulium} @self
+  
+blacksmithCRUCIBLESPAWNlazulium_MOLTEN:
+  Conditions:
+  - mythicmobtype{t=blacksmith_crucible_lazulium_molten} true
+  Skills:
+  - delay 1
+  - changepart{m=blacksmith_crucible;pid=base;nm=blacksmith_parts;npid=molten} @self
+
+#### FORGE ####
+
+blacksmithDOOR:
+  Skills:
+  - skill{s=blacksmithOPEN} @self
+  - skill{s=blacksmithCLOSE} @self
+  
+blacksmithOPEN:
+  Conditions:
+  - playerwithin{d=4} true
+  - score{o=OPEN;v=1} false
+  Skills:
+  - settargetscore{o=OPEN;v=1} @self
+  - state{s=open} @self
+  - delay 15
+  - defaultstate{m=blacksmith_forge;t=idle;s=open_idle} @self
+  
+blacksmithCLOSE:
+  Conditions:
+  - playerwithin{d=4} false
+  - score{o=OPEN;v=1} true
+  Skills:
+  - settargetscore{o=OPEN;v=0} @self
+  - state{s=close} @self
+  - delay 15
+  - defaultstate{m=blacksmith_forge;t=idle;s=idle} @self
+  
+blacksmithINPUT:
+  Cooldown: 1
+  Conditions:
+  - offgcd true
+  Skills:
+  - skill{s=blacksmithINPUTiron} @trigger
+  - skill{s=blacksmithINPUTiron_ingot} @trigger
+  - skill{s=blacksmithINPUTsteel} @trigger
+  - skill{s=blacksmithINPUTsteel_ingot} @trigger
+  - skill{s=blacksmithINPUTbronze} @trigger
+  - skill{s=blacksmithINPUTbronze_ingot} @trigger
+  - skill{s=blacksmithINPUTemerite} @trigger
+  - skill{s=blacksmithINPUTemerite_ingot} @trigger
+  - skill{s=blacksmithINPUTlazulium} @trigger
+  - skill{s=blacksmithINPUTlazulium_ingot} @trigger
+
+
+
+
+
+## IRON ##
+  
+blacksmithINPUTiron:
+  TriggerConditions:
+  - holding{m=blacksmith_crucible_iron} true
+  Skills:
+  - gcd{ticks=60}
+  - consumeslot{} @trigger
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_parts;npid=iron} @self
+  - delay 60
+  - sound{s=block.fire.extinguish} @self
+  - skill{s=blacksmithTUTORIALforge_mold} @pir{r=3}
+  - giveitem{i=blacksmith_crucible_iron_molten} @trigger
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_forge;npid=crucible} @self
+  
+blacksmithINPUTiron_ingot:
+  TriggerConditions:
+  - holding{m=iron_ingot} true
+  Skills:
+  - gcd{ticks=60}
+  - consumeslot{} @trigger
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_parts;npid=forge_iron} @self
+  - effect:particles{particle=flame;amount=15;hS=.1;vS=.1;speed=.1;y=.5} @self
+  - delay 40
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_parts;npid=forge_molten} @self
+  - delay 20
+  - sound{s=block.fire.extinguish} @self
+  - effect:particles{particle=large_smoke;amount=5;hS=.1;vS=.1;speed=.1;y=.5} @self
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_forge;npid=crucible} @self
+  - skill{s=blacksmithTUTORIALforge_anvil} @pir{r=3}
+  - giveitem{i=blacksmith_iron_ingot_hot} @trigger
+  - delay 120
+  - skill{s=blacksmithINPUTiron_ingot_cool} @trigger
+  
+blacksmithINPUTiron_ingot_cool:
+  TriggerConditions:
+  - hasitem{i=blacksmith_iron_ingot_hot} true
+  Skills:
+  - sound{s=block.fire.extinguish} @self
+  - skill{s=blacksmithTUTORIALingot_cooled} @pir{r=3}
+  - effect:particles{particle=cloud;amount=5;hS=.25;vS=.25;speed=0;y=1} @trigger
+  - takeitem{i=blacksmith_iron_ingot_hot;a=1} @trigger
+  - giveitem{i=iron_ingot} @trigger
+  
+## steel ##
+  
+blacksmithINPUTsteel:
+  TriggerConditions:
+  - holding{m=blacksmith_crucible_steel} true
+  Skills:
+  - gcd{ticks=60}
+  - consumeslot{} @trigger
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_parts;npid=steel} @self
+  - delay 60
+  - sound{s=block.fire.extinguish} @self
+  - skill{s=blacksmithTUTORIALforge_mold} @pir{r=3}
+  - giveitem{i=blacksmith_crucible_steel_molten} @trigger
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_forge;npid=crucible} @self
+  
+blacksmithINPUTsteel_ingot:
+  TriggerConditions:
+  - holding{m=blacksmith_steel_ingot} true
+  Skills:
+  - gcd{ticks=60}
+  - consumeslot{} @trigger
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_parts;npid=forge_steel} @self
+  - effect:particles{particle=flame;amount=15;hS=.1;vS=.1;speed=.1;y=.5} @self
+  - delay 40
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_parts;npid=forge_molten} @self
+  - delay 20
+  - sound{s=block.fire.extinguish} @self
+  - effect:particles{particle=large_smoke;amount=5;hS=.1;vS=.1;speed=.1;y=.5} @self
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_forge;npid=crucible} @self
+  - skill{s=blacksmithTUTORIALforge_anvil} @pir{r=3}
+  - giveitem{i=blacksmith_steel_ingot_hot} @trigger
+  - delay 120
+  - skill{s=blacksmithINPUTsteel_ingot_cool} @trigger
+  
+blacksmithINPUTsteel_ingot_cool:
+  TriggerConditions:
+  - hasitem{i=blacksmith_steel_ingot_hot} true
+  Skills:
+  - sound{s=block.fire.extinguish} @self
+  - skill{s=blacksmithTUTORIALingot_cooled} @pir{r=3}
+  - effect:particles{particle=cloud;amount=5;hS=.25;vS=.25;speed=0;y=1} @trigger
+  - takeitem{i=blacksmith_steel_ingot_hot;a=1} @trigger
+  - giveitem{i=blacksmith_steel_ingot} @trigger
+  
+## bronze ##
+  
+blacksmithINPUTbronze:
+  TriggerConditions:
+  - holding{m=blacksmith_crucible_bronze} true
+  Skills:
+  - gcd{ticks=60}
+  - consumeslot{} @trigger
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_parts;npid=bronze} @self
+  - delay 60
+  - sound{s=block.fire.extinguish} @self
+  - skill{s=blacksmithTUTORIALforge_mold} @pir{r=3}
+  - giveitem{i=blacksmith_crucible_bronze_molten} @trigger
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_forge;npid=crucible} @self
+  
+blacksmithINPUTbronze_ingot:
+  TriggerConditions:
+  - holding{m=blacksmith_bronze_ingot} true
+  Skills:
+  - gcd{ticks=60}
+  - consumeslot{} @trigger
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_parts;npid=forge_bronze} @self
+  - effect:particles{particle=flame;amount=15;hS=.1;vS=.1;speed=.1;y=.5} @self
+  - delay 40
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_parts;npid=forge_molten} @self
+  - delay 20
+  - sound{s=block.fire.extinguish} @self
+  - effect:particles{particle=large_smoke;amount=5;hS=.1;vS=.1;speed=.1;y=.5} @self
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_forge;npid=crucible} @self
+  - skill{s=blacksmithTUTORIALforge_anvil} @pir{r=3}
+  - giveitem{i=blacksmith_bronze_ingot_hot} @trigger
+  - delay 120
+  - skill{s=blacksmithINPUTbronze_ingot_cool} @trigger
+  
+blacksmithINPUTbronze_ingot_cool:
+  TriggerConditions:
+  - hasitem{i=blacksmith_bronze_ingot_hot} true
+  Skills:
+  - sound{s=block.fire.extinguish} @self
+  - skill{s=blacksmithTUTORIALingot_cooled} @pir{r=3}
+  - effect:particles{particle=cloud;amount=5;hS=.25;vS=.25;speed=0;y=1} @trigger
+  - takeitem{i=blacksmith_bronze_ingot_hot;a=1} @trigger
+  - giveitem{i=blacksmith_bronze_ingot} @trigger
+  
+## emerite ##
+  
+blacksmithINPUTemerite:
+  TriggerConditions:
+  - holding{m=blacksmith_crucible_emerite} true
+  Skills:
+  - gcd{ticks=60}
+  - consumeslot{} @trigger
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_parts;npid=emerite} @self
+  - delay 60
+  - sound{s=block.fire.extinguish} @self
+  - skill{s=blacksmithTUTORIALforge_mold} @pir{r=3}
+  - giveitem{i=blacksmith_crucible_emerite_molten} @trigger
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_forge;npid=crucible} @self
+  
+blacksmithINPUTemerite_ingot:
+  TriggerConditions:
+  - holding{m=blacksmith_emerite_ingot} true
+  Skills:
+  - gcd{ticks=60}
+  - consumeslot{} @trigger
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_parts;npid=forge_emerite} @self
+  - effect:particles{particle=flame;amount=15;hS=.1;vS=.1;speed=.1;y=.5} @self
+  - delay 40
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_parts;npid=forge_molten} @self
+  - delay 20
+  - sound{s=block.fire.extinguish} @self
+  - effect:particles{particle=large_smoke;amount=5;hS=.1;vS=.1;speed=.1;y=.5} @self
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_forge;npid=crucible} @self
+  - skill{s=blacksmithTUTORIALforge_anvil} @pir{r=3}
+  - giveitem{i=blacksmith_emerite_ingot_hot} @trigger
+  - delay 120
+  - skill{s=blacksmithINPUTemerite_ingot_cool} @trigger
+  
+blacksmithINPUTemerite_ingot_cool:
+  TriggerConditions:
+  - hasitem{i=blacksmith_emerite_ingot_hot} true
+  Skills:
+  - sound{s=block.fire.extinguish} @self
+  - skill{s=blacksmithTUTORIALingot_cooled} @pir{r=3}
+  - effect:particles{particle=cloud;amount=5;hS=.25;vS=.25;speed=0;y=1} @trigger
+  - takeitem{i=blacksmith_emerite_ingot_hot;a=1} @trigger
+  - giveitem{i=blacksmith_emerite_ingot} @trigger
+  
+## lazulium ##
+  
+blacksmithINPUTlazulium:
+  TriggerConditions:
+  - holding{m=blacksmith_crucible_lazulium} true
+  Skills:
+  - gcd{ticks=60}
+  - consumeslot{} @trigger
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_parts;npid=lazulium} @self
+  - delay 60
+  - sound{s=block.fire.extinguish} @self
+  - skill{s=blacksmithTUTORIALforge_mold} @pir{r=3}
+  - giveitem{i=blacksmith_crucible_lazulium_molten} @trigger
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_forge;npid=crucible} @self
+  
+blacksmithINPUTlazulium_ingot:
+  TriggerConditions:
+  - holding{m=blacksmith_lazulium_ingot} true
+  Skills:
+  - gcd{ticks=60}
+  - consumeslot{} @trigger
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_parts;npid=forge_lazulium} @self
+  - effect:particles{particle=flame;amount=15;hS=.1;vS=.1;speed=.1;y=.5} @self
+  - delay 40
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_parts;npid=forge_molten} @self
+  - delay 20
+  - sound{s=block.fire.extinguish} @self
+  - effect:particles{particle=large_smoke;amount=5;hS=.1;vS=.1;speed=.1;y=.5} @self
+  - changepart{m=blacksmith_forge;pid=crucible;nm=blacksmith_forge;npid=crucible} @self
+  - skill{s=blacksmithTUTORIALforge_anvil} @pir{r=3}
+  - giveitem{i=blacksmith_lazulium_ingot_hot} @trigger
+  - delay 120
+  - skill{s=blacksmithINPUTlazulium_ingot_cool} @trigger
+  
+blacksmithINPUTlazulium_ingot_cool:
+  TriggerConditions:
+  - hasitem{i=blacksmith_lazulium_ingot_hot} true
+  Skills:
+  - sound{s=block.fire.extinguish} @self
+  - skill{s=blacksmithTUTORIALingot_cooled} @pir{r=3}
+  - effect:particles{particle=cloud;amount=5;hS=.25;vS=.25;speed=0;y=1} @trigger
+  - takeitem{i=blacksmith_lazulium_ingot_hot;a=1} @trigger
+  - giveitem{i=blacksmith_lazulium_ingot} @trigger
+
+  
+  
+#### INGOT MOLD ####
+
+
+blacksmithINGOTinput:
+  Cooldown: 1
+  Skills:
+  - skill{s=blacksmithINGOTiron} @trigger
+  - skill{s=blacksmithINGOTsteel} @trigger
+  - skill{s=blacksmithINGOTbronze} @trigger
+  - skill{s=blacksmithINGOTemerite} @trigger
+  - skill{s=blacksmithINGOTlazulium} @trigger
+  - CancelEvent
+
+
+
+
+
+## IRON ##
+  
+blacksmithINGOTiron:
+  TriggerConditions:
+  - holding{m=blacksmith_crucible_iron_molten} true
+  Skills:
+  - consumeslot{} @trigger
+  - gcd{ticks=80}
+  - settargetscore{o=iron;v=1} @self
+  - delay 1
+  - giveitem{i=blacksmith_crucible_empty} @trigger
+  - changepart{m=blacksmith_ingotmold;pid=base;nm=blacksmith_parts;npid=ingot_molten} @self
+  - delay 60
+  - effect:particles{particle=cloud;amount=5;hS=.1;vS=.1;speed=0} @self
+  - changepart{m=blacksmith_ingotmold;pid=base;nm=blacksmith_parts;npid=ingot_iron} @self
+  - delay 20
+  - sound{s=entity.item.pickup} @self
+  - skill{s=blacksmithTUTORIALmold_forge} @pir{r=3}
+  - settargetscore{o=iron;v=0} @self
+  - changepart{m=blacksmith_ingotmold;pid=base;nm=blacksmith_ingotmold;npid=base} @self
+  - dropitem{i=iron_ingot} @self
+
+## steel ##
+  
+blacksmithINGOTsteel:
+  TriggerConditions:
+  - holding{m=blacksmith_crucible_steel_molten} true
+  Skills:
+  - gcd{ticks=80}
+  - settargetscore{o=steel;v=1} @self
+  - consumeslot{} @trigger
+  - delay 1
+  - giveitem{i=blacksmith_crucible_empty} @trigger
+  - changepart{m=blacksmith_ingotmold;pid=base;nm=blacksmith_parts;npid=ingot_molten} @self
+  - delay 60
+  - effect:particles{particle=cloud;amount=5;hS=.1;vS=.1;speed=0} @self
+  - changepart{m=blacksmith_ingotmold;pid=base;nm=blacksmith_parts;npid=ingot_steel} @self
+  - delay 20
+  - sound{s=entity.item.pickup} @self
+  - skill{s=blacksmithTUTORIALmold_forge} @pir{r=3}
+  - settargetscore{o=steel;v=0} @self
+  - changepart{m=blacksmith_ingotmold;pid=base;nm=blacksmith_ingotmold;npid=base} @self
+  - dropitem{i=blacksmith_steel_ingot} @self
+
+## bronze ##
+  
+blacksmithINGOTbronze:
+  TriggerConditions:
+  - holding{m=blacksmith_crucible_bronze_molten} true
+  Skills:
+  - gcd{ticks=80}
+  - settargetscore{o=bronze;v=1} @self
+  - consumeslot{} @trigger
+  - delay 1
+  - giveitem{i=blacksmith_crucible_empty} @trigger
+  - changepart{m=blacksmith_ingotmold;pid=base;nm=blacksmith_parts;npid=ingot_molten} @self
+  - delay 60
+  - effect:particles{particle=cloud;amount=5;hS=.1;vS=.1;speed=0} @self
+  - changepart{m=blacksmith_ingotmold;pid=base;nm=blacksmith_parts;npid=ingot_bronze} @self
+  - delay 20
+  - sound{s=entity.item.pickup} @self
+  - skill{s=blacksmithTUTORIALmold_forge} @pir{r=3}
+  - settargetscore{o=bronze;v=0} @self
+  - changepart{m=blacksmith_ingotmold;pid=base;nm=blacksmith_ingotmold;npid=base} @self
+  - dropitem{i=blacksmith_bronze_ingot} @self
+
+## emerite ##
+  
+blacksmithINGOTemerite:
+  TriggerConditions:
+  - holding{m=blacksmith_crucible_emerite_molten} true
+  Skills:
+  - gcd{ticks=80}
+  - settargetscore{o=emerite;v=1} @self
+  - consumeslot{} @trigger
+  - delay 1
+  - giveitem{i=blacksmith_crucible_empty} @trigger
+  - changepart{m=blacksmith_ingotmold;pid=base;nm=blacksmith_parts;npid=ingot_molten} @self
+  - delay 60
+  - effect:particles{particle=cloud;amount=5;hS=.1;vS=.1;speed=0} @self
+  - changepart{m=blacksmith_ingotmold;pid=base;nm=blacksmith_parts;npid=ingot_emerite} @self
+  - delay 20
+  - sound{s=entity.item.pickup} @self
+  - skill{s=blacksmithTUTORIALmold_forge} @pir{r=3}
+  - settargetscore{o=emerite;v=0} @self
+  - changepart{m=blacksmith_ingotmold;pid=base;nm=blacksmith_ingotmold;npid=base} @self
+  - dropitem{i=blacksmith_emerite_ingot} @self
+
+## lazulium ##
+  
+blacksmithINGOTlazulium:
+  TriggerConditions:
+  - holding{m=blacksmith_crucible_lazulium_molten} true
+  Skills:
+  - gcd{ticks=80}
+  - settargetscore{o=lazulium;v=1} @self
+  - consumeslot{} @trigger
+  - delay 1
+  - giveitem{i=blacksmith_crucible_empty} @trigger
+  - changepart{m=blacksmith_ingotmold;pid=base;nm=blacksmith_parts;npid=ingot_molten} @self
+  - delay 60
+  - effect:particles{particle=cloud;amount=5;hS=.1;vS=.1;speed=0} @self
+  - changepart{m=blacksmith_ingotmold;pid=base;nm=blacksmith_parts;npid=ingot_lazulium} @self
+  - delay 20
+  - sound{s=entity.item.pickup} @self
+  - skill{s=blacksmithTUTORIALmold_forge} @pir{r=3}
+  - settargetscore{o=lazulium;v=0} @self
+  - changepart{m=blacksmith_ingotmold;pid=base;nm=blacksmith_ingotmold;npid=base} @self
+  - dropitem{i=blacksmith_lazulium_ingot} @self
+  
+  
+  
+  
+  
+#### ANVIL ####
+
+
+
+blacksmithANVILgive:
+  Cooldown: 1
+  Skills:
+  - skill{s=blacksmithANVILgive_iron} @trigger
+  - skill{s=blacksmithANVILgive_steel} @trigger
+  - skill{s=blacksmithANVILgive_bronze} @trigger
+  - skill{s=blacksmithANVILgive_emerite} @trigger
+  - skill{s=blacksmithANVILgive_lazulium} @trigger
+
+
+
+
+
+## IRON ##
+  
+blacksmithANVILgive_iron:
+  TriggerConditions:
+  - holding{m=blacksmith_iron_ingot_hot} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_hammer} @pir{r=3}
+  - consumeslot{} @trigger
+  - settargetscore{o=iron;v=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=ingot} @self
+  - delay 240
+  - skill{s=blacksmithANVIL_iron_cool} @self
+  
+blacksmithANVIL_iron_cool:
+  Conditions:
+  - score{o=iron;v=>0} true
+  Skills:
+  - sound{s=block.fire.extinguish} @self
+  - settargetscore{o=iron;v=0} @self
+  - skill{s=blacksmithTUTORIALingot_cooled} @pir{r=3}
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - dropitem{i=iron_ingot} @selflocation{y=1}
+  
+## steel ##
+  
+blacksmithANVILgive_steel:
+  TriggerConditions:
+  - holding{m=blacksmith_steel_ingot_hot} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_hammer} @pir{r=3}
+  - consumeslot{} @trigger
+  - settargetscore{o=steel;v=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=ingot} @self
+  - delay 240
+  - skill{s=blacksmithANVIL_steel_cool} @self
+  
+blacksmithANVIL_steel_cool:
+  Conditions:
+  - score{o=steel;v=>0} true
+  Skills:
+  - sound{s=block.fire.extinguish} @self
+  - settargetscore{o=steel;v=0} @self
+  - skill{s=blacksmithTUTORIALingot_cooled} @pir{r=3}
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - dropitem{i=blacksmith_steel_ingot} @selflocation{y=1}
+  
+## bronze ##
+  
+blacksmithANVILgive_bronze:
+  TriggerConditions:
+  - holding{m=blacksmith_bronze_ingot_hot} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_hammer} @pir{r=3}
+  - consumeslot{} @trigger
+  - settargetscore{o=bronze;v=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=ingot} @self
+  - delay 240
+  - skill{s=blacksmithANVIL_bronze_cool} @self
+  
+blacksmithANVIL_bronze_cool:
+  Conditions:
+  - score{o=bronze;v=>0} true
+  Skills:
+  - sound{s=block.fire.extinguish} @self
+  - settargetscore{o=bronze;v=0} @self
+  - skill{s=blacksmithTUTORIALingot_cooled} @pir{r=3}
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - dropitem{i=blacksmith_bronze_ingot} @selflocation{y=1}
+  
+## emerite ##
+  
+blacksmithANVILgive_emerite:
+  TriggerConditions:
+  - holding{m=blacksmith_emerite_ingot_hot} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_hammer} @pir{r=3}
+  - consumeslot{} @trigger
+  - settargetscore{o=emerite;v=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=ingot} @self
+  - delay 240
+  - skill{s=blacksmithANVIL_emerite_cool} @self
+  
+blacksmithANVIL_emerite_cool:
+  Conditions:
+  - score{o=emerite;v=>0} true
+  Skills:
+  - sound{s=block.fire.extinguish} @self
+  - settargetscore{o=emerite;v=0} @self
+  - skill{s=blacksmithTUTORIALingot_cooled} @pir{r=3}
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - dropitem{i=blacksmith_emerite_ingot} @selflocation{y=1}
+  
+## lazulium ##
+  
+blacksmithANVILgive_lazulium:
+  TriggerConditions:
+  - holding{m=blacksmith_lazulium_ingot_hot} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_hammer} @pir{r=3}
+  - consumeslot{} @trigger
+  - settargetscore{o=lazulium;v=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=ingot} @self
+  - delay 240
+  - skill{s=blacksmithANVIL_lazulium_cool} @self
+  
+blacksmithANVIL_lazulium_cool:
+  Conditions:
+  - score{o=lazulium;v=>0} true
+  Skills:
+  - sound{s=block.fire.extinguish} @self
+  - settargetscore{o=lazulium;v=0} @self
+  - skill{s=blacksmithTUTORIALingot_cooled} @pir{r=3}
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - dropitem{i=blacksmith_lazulium_ingot} @selflocation{y=1}
+  
+  
+  
+  
+  
+blacksmithANVILhit:
+  Skills:
+  - skill{s=blacksmithANVILhit_iron_sword} @trigger
+  - skill{s=blacksmithANVILhit_iron_hoe} @trigger
+  - skill{s=blacksmithANVILhit_iron_axe} @trigger
+  - skill{s=blacksmithANVILhit_iron_shovel} @trigger
+  - skill{s=blacksmithANVILhit_iron_pickaxe} @trigger
+  - skill{s=blacksmithANVILhit_steel_sword} @trigger
+  - skill{s=blacksmithANVILhit_steel_hoe} @trigger
+  - skill{s=blacksmithANVILhit_steel_axe} @trigger
+  - skill{s=blacksmithANVILhit_steel_shovel} @trigger
+  - skill{s=blacksmithANVILhit_steel_pickaxe} @trigger
+  - skill{s=blacksmithANVILhit_bronze_sword} @trigger
+  - skill{s=blacksmithANVILhit_bronze_hoe} @trigger
+  - skill{s=blacksmithANVILhit_bronze_axe} @trigger
+  - skill{s=blacksmithANVILhit_bronze_shovel} @trigger
+  - skill{s=blacksmithANVILhit_bronze_pickaxe} @trigger
+  - skill{s=blacksmithANVILhit_emerite_sword} @trigger
+  - skill{s=blacksmithANVILhit_emerite_hoe} @trigger
+  - skill{s=blacksmithANVILhit_emerite_axe} @trigger
+  - skill{s=blacksmithANVILhit_emerite_shovel} @trigger
+  - skill{s=blacksmithANVILhit_emerite_pickaxe} @trigger
+  - skill{s=blacksmithANVILhit_lazulium_sword} @trigger
+  - skill{s=blacksmithANVILhit_lazulium_hoe} @trigger
+  - skill{s=blacksmithANVILhit_lazulium_axe} @trigger
+  - skill{s=blacksmithANVILhit_lazulium_shovel} @trigger
+  - skill{s=blacksmithANVILhit_lazulium_pickaxe} @trigger
+
+
+
+
+
+## IRON ##
+
+blacksmithANVILhit_iron_sword:
+  Conditions:
+  - score{o=iron;v=1} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.anvil.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="검";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=sword} @self
+  - delay 10
+  - settargetscore{o=iron;v=2} @self
+
+blacksmithANVILhit_iron_hoe:
+  Conditions:
+  - score{o=iron;v=2} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.anvil.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="괭이";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=hoe} @self
+  - delay 10
+  - settargetscore{o=iron;v=3} @self
+
+blacksmithANVILhit_iron_axe:
+  Conditions:
+  - score{o=iron;v=3} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.anvil.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="도끼";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=axe} @self
+  - delay 10
+  - settargetscore{o=iron;v=4} @self
+
+blacksmithANVILhit_iron_shovel:
+  Conditions:
+  - score{o=iron;v=4} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.anvil.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="삽";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=shovel} @self
+  - delay 10
+  - settargetscore{o=iron;v=5} @self
+
+blacksmithANVILhit_iron_pickaxe:
+  Conditions:
+  - score{o=iron;v=5} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.anvil.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="곡괭이";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=pickaxe} @self
+  - delay 10
+  - settargetscore{o=iron;v=6} @self
+
+## steel ##
+
+blacksmithANVILhit_steel_sword:
+  Conditions:
+  - score{o=steel;v=1} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.anvil.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="검";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=sword} @self
+  - delay 10
+  - settargetscore{o=steel;v=2} @self
+
+blacksmithANVILhit_steel_hoe:
+  Conditions:
+  - score{o=steel;v=2} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.anvil.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="괭이";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=hoe} @self
+  - delay 10
+  - settargetscore{o=steel;v=3} @self
+
+blacksmithANVILhit_steel_axe:
+  Conditions:
+  - score{o=steel;v=3} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.anvil.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="도끼";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=axe} @self
+  - delay 10
+  - settargetscore{o=steel;v=4} @self
+
+blacksmithANVILhit_steel_shovel:
+  Conditions:
+  - score{o=steel;v=4} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.anvil.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="삽";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=shovel} @self
+  - delay 10
+  - settargetscore{o=steel;v=5} @self
+
+blacksmithANVILhit_steel_pickaxe:
+  Conditions:
+  - score{o=steel;v=5} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.anvil.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="곡괭이";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=pickaxe} @self
+  - delay 10
+  - settargetscore{o=steel;v=6} @self
+
+## bronze ##
+
+blacksmithANVILhit_bronze_sword:
+  Conditions:
+  - score{o=bronze;v=1} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.anvil.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="검";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=sword} @self
+  - delay 10
+  - settargetscore{o=bronze;v=2} @self
+
+blacksmithANVILhit_bronze_hoe:
+  Conditions:
+  - score{o=bronze;v=2} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.anvil.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="괭이";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=hoe} @self
+  - delay 10
+  - settargetscore{o=bronze;v=3} @self
+
+blacksmithANVILhit_bronze_axe:
+  Conditions:
+  - score{o=bronze;v=3} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.metal.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="도끼";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=axe} @self
+  - delay 10
+  - settargetscore{o=bronze;v=4} @self
+
+blacksmithANVILhit_bronze_shovel:
+  Conditions:
+  - score{o=bronze;v=4} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.metal.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="삽";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=shovel} @self
+  - delay 10
+  - settargetscore{o=bronze;v=5} @self
+
+blacksmithANVILhit_bronze_pickaxe:
+  Conditions:
+  - score{o=bronze;v=5} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.metal.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="곡괭이";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=pickaxe} @self
+  - delay 10
+  - settargetscore{o=bronze;v=6} @self
+
+## emerite ##
+
+blacksmithANVILhit_emerite_sword:
+  Conditions:
+  - score{o=emerite;v=1} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.metal.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="검";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=sword} @self
+  - delay 10
+  - settargetscore{o=emerite;v=2} @self
+
+blacksmithANVILhit_emerite_hoe:
+  Conditions:
+  - score{o=emerite;v=2} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.metal.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="괭이";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=hoe} @self
+  - delay 10
+  - settargetscore{o=emerite;v=3} @self
+
+blacksmithANVILhit_emerite_axe:
+  Conditions:
+  - score{o=emerite;v=3} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.metal.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="도끼";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=axe} @self
+  - delay 10
+  - settargetscore{o=emerite;v=4} @self
+
+blacksmithANVILhit_emerite_shovel:
+  Conditions:
+  - score{o=emerite;v=4} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.metal.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="삽";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=shovel} @self
+  - delay 10
+  - settargetscore{o=emerite;v=5} @self
+
+blacksmithANVILhit_emerite_pickaxe:
+  Conditions:
+  - score{o=emerite;v=5} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.metal.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="곡괭이";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=pickaxe} @self
+  - delay 10
+  - settargetscore{o=emerite;v=6} @self
+
+## lazulium ##
+
+blacksmithANVILhit_lazulium_sword:
+  Conditions:
+  - score{o=lazulium;v=1} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.metal.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="검";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=sword} @self
+  - delay 10
+  - settargetscore{o=lazulium;v=2} @self
+
+blacksmithANVILhit_lazulium_hoe:
+  Conditions:
+  - score{o=lazulium;v=2} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.metal.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="괭이";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=hoe} @self
+  - delay 10
+  - settargetscore{o=lazulium;v=3} @self
+
+blacksmithANVILhit_lazulium_axe:
+  Conditions:
+  - score{o=lazulium;v=3} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.metal.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="도끼";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=axe} @self
+  - delay 10
+  - settargetscore{o=lazulium;v=4} @self
+
+blacksmithANVILhit_lazulium_shovel:
+  Conditions:
+  - score{o=lazulium;v=4} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.metal.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="삽";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=shovel} @self
+  - delay 10
+  - settargetscore{o=lazulium;v=5} @self
+
+blacksmithANVILhit_lazulium_pickaxe:
+  Conditions:
+  - score{o=lazulium;v=5} true
+  TriggerConditions:
+  - holding{m=blacksmith_hammer} true
+  Skills:
+  - sound{s=block.metal.hit} @self
+  - speak{offset=0.5f;lineprefix="&f";message="곡괭이";duration=40;chat=false} @self
+  - skill{s=blacksmithTUTORIALanvil_hammer2} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_parts;npid=pickaxe} @self
+  - delay 10
+  - settargetscore{o=lazulium;v=6} @self
+
+
+
+
+
+blacksmithANVILtake:
+  Skills:
+  - skill{s=blacksmithANVILtake_ironsword} @trigger
+  - skill{s=blacksmithANVILtake_ironhoe} @trigger
+  - skill{s=blacksmithANVILtake_ironaxe} @trigger
+  - skill{s=blacksmithANVILtake_ironshovel} @trigger
+  - skill{s=blacksmithANVILtake_ironpickaxe} @trigger
+  - skill{s=blacksmithANVILtake_steelsword} @trigger
+  - skill{s=blacksmithANVILtake_steelhoe} @trigger
+  - skill{s=blacksmithANVILtake_steelaxe} @trigger
+  - skill{s=blacksmithANVILtake_steelshovel} @trigger
+  - skill{s=blacksmithANVILtake_steelpickaxe} @trigger
+  - skill{s=blacksmithANVILtake_bronzesword} @trigger
+  - skill{s=blacksmithANVILtake_bronzehoe} @trigger
+  - skill{s=blacksmithANVILtake_bronzeaxe} @trigger
+  - skill{s=blacksmithANVILtake_bronzeshovel} @trigger
+  - skill{s=blacksmithANVILtake_bronzepickaxe} @trigger
+  - skill{s=blacksmithANVILtake_emeritesword} @trigger
+  - skill{s=blacksmithANVILtake_emeritehoe} @trigger
+  - skill{s=blacksmithANVILtake_emeriteaxe} @trigger
+  - skill{s=blacksmithANVILtake_emeriteshovel} @trigger
+  - skill{s=blacksmithANVILtake_emeritepickaxe} @trigger
+  - skill{s=blacksmithANVILtake_lazuliumsword} @trigger
+  - skill{s=blacksmithANVILtake_lazuliumhoe} @trigger
+  - skill{s=blacksmithANVILtake_lazuliumaxe} @trigger
+  - skill{s=blacksmithANVILtake_lazuliumshovel} @trigger
+  - skill{s=blacksmithANVILtake_lazuliumpickaxe} @trigger
+  
+  
+  
+  
+## IRON ##
+  
+blacksmithANVILtake_ironsword:
+  Conditions:
+  - score{o=iron;v=2} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=iron;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_iron_sword_hot} @trigger
+
+  
+blacksmithANVILtake_ironhoe:
+  Conditions:
+  - score{o=iron;v=3} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=iron;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_iron_hoe_hot} @trigger
+
+  
+blacksmithANVILtake_ironaxe:
+  Conditions:
+  - score{o=iron;v=4} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=iron;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_iron_axe_hot} @trigger
+
+  
+blacksmithANVILtake_ironshovel:
+  Conditions:
+  - score{o=iron;v=5} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=iron;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_iron_shovel_hot} @trigger
+
+  
+blacksmithANVILtake_ironpickaxe:
+  Conditions:
+  - score{o=iron;v=6} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=iron;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_iron_pickaxe_hot} @trigger
+  
+  
+## steel ##
+  
+blacksmithANVILtake_steelsword:
+  Conditions:
+  - score{o=steel;v=2} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=steel;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_steel_sword_hot} @trigger
+
+  
+blacksmithANVILtake_steelhoe:
+  Conditions:
+  - score{o=steel;v=3} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=steel;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_steel_hoe_hot} @trigger
+
+  
+blacksmithANVILtake_steelaxe:
+  Conditions:
+  - score{o=steel;v=4} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=steel;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_steel_axe_hot} @trigger
+
+  
+blacksmithANVILtake_steelshovel:
+  Conditions:
+  - score{o=steel;v=5} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=steel;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_steel_shovel_hot} @trigger
+
+  
+blacksmithANVILtake_steelpickaxe:
+  Conditions:
+  - score{o=steel;v=6} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=steel;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_steel_pickaxe_hot} @trigger
+  
+  
+## bronze ##
+  
+blacksmithANVILtake_bronzesword:
+  Conditions:
+  - score{o=bronze;v=2} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=bronze;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_bronze_sword_hot} @trigger
+
+  
+blacksmithANVILtake_bronzehoe:
+  Conditions:
+  - score{o=bronze;v=3} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=bronze;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_bronze_hoe_hot} @trigger
+
+  
+blacksmithANVILtake_bronzeaxe:
+  Conditions:
+  - score{o=bronze;v=4} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=bronze;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_bronze_axe_hot} @trigger
+
+  
+blacksmithANVILtake_bronzeshovel:
+  Conditions:
+  - score{o=bronze;v=5} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=bronze;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_bronze_shovel_hot} @trigger
+
+  
+blacksmithANVILtake_bronzepickaxe:
+  Conditions:
+  - score{o=bronze;v=6} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=bronze;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_bronze_pickaxe_hot} @trigger
+  
+  
+## emerite ##
+  
+blacksmithANVILtake_emeritesword:
+  Conditions:
+  - score{o=emerite;v=2} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=emerite;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_emerite_sword_hot} @trigger
+
+  
+blacksmithANVILtake_emeritehoe:
+  Conditions:
+  - score{o=emerite;v=3} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=emerite;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_emerite_hoe_hot} @trigger
+
+  
+blacksmithANVILtake_emeriteaxe:
+  Conditions:
+  - score{o=emerite;v=4} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=emerite;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_emerite_axe_hot} @trigger
+
+  
+blacksmithANVILtake_emeriteshovel:
+  Conditions:
+  - score{o=emerite;v=5} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=emerite;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_emerite_shovel_hot} @trigger
+
+  
+blacksmithANVILtake_emeritepickaxe:
+  Conditions:
+  - score{o=emerite;v=6} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=emerite;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_emerite_pickaxe_hot} @trigger
+  
+  
+## lazulium ##
+  
+blacksmithANVILtake_lazuliumsword:
+  Conditions:
+  - score{o=lazulium;v=2} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=lazulium;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_lazulium_sword_hot} @trigger
+
+  
+blacksmithANVILtake_lazuliumhoe:
+  Conditions:
+  - score{o=lazulium;v=3} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=lazulium;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_lazulium_hoe_hot} @trigger
+
+  
+blacksmithANVILtake_lazuliumaxe:
+  Conditions:
+  - score{o=lazulium;v=4} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=lazulium;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_lazulium_axe_hot} @trigger
+
+  
+blacksmithANVILtake_lazuliumshovel:
+  Conditions:
+  - score{o=lazulium;v=5} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=lazulium;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_lazulium_shovel_hot} @trigger
+
+  
+blacksmithANVILtake_lazuliumpickaxe:
+  Conditions:
+  - score{o=lazulium;v=6} true
+  TriggerConditions:
+  - holding{m=air} true
+  Skills:
+  - skill{s=blacksmithTUTORIALanvil_quencher} @pir{r=3}
+  - settargetscore{o=lazulium;v=0} @self
+  - changepart{m=blacksmith_anvil;pid=ingot;nm=blacksmith_anvil;npid=ingot} @self
+  - giveitem{i=blacksmith_lazulium_pickaxe_hot} @trigger
+
+  
+  
+#### QUENCHER ####
+
+blacksmithQUENCHERgive:
+  Cooldown: 1
+  Conditions:
+  - offgcd true
+  Skills:
+  - skill{s=blacksmithQUENCHERgive_ironsword} @trigger
+  - skill{s=blacksmithQUENCHERgive_ironhoe} @trigger
+  - skill{s=blacksmithQUENCHERgive_ironaxe} @trigger
+  - skill{s=blacksmithQUENCHERgive_ironshovel} @trigger
+  - skill{s=blacksmithQUENCHERgive_ironpickaxe} @trigger
+  - skill{s=blacksmithQUENCHERgive_steelsword} @trigger
+  - skill{s=blacksmithQUENCHERgive_steelhoe} @trigger
+  - skill{s=blacksmithQUENCHERgive_steelaxe} @trigger
+  - skill{s=blacksmithQUENCHERgive_steelshovel} @trigger
+  - skill{s=blacksmithQUENCHERgive_steelpickaxe} @trigger
+  - skill{s=blacksmithQUENCHERgive_bronzesword} @trigger
+  - skill{s=blacksmithQUENCHERgive_bronzehoe} @trigger
+  - skill{s=blacksmithQUENCHERgive_bronzeaxe} @trigger
+  - skill{s=blacksmithQUENCHERgive_bronzeshovel} @trigger
+  - skill{s=blacksmithQUENCHERgive_bronzepickaxe} @trigger
+  - skill{s=blacksmithQUENCHERgive_emeritesword} @trigger
+  - skill{s=blacksmithQUENCHERgive_emeritehoe} @trigger
+  - skill{s=blacksmithQUENCHERgive_emeriteaxe} @trigger
+  - skill{s=blacksmithQUENCHERgive_emeriteshovel} @trigger
+  - skill{s=blacksmithQUENCHERgive_emeritepickaxe} @trigger
+  - skill{s=blacksmithQUENCHERgive_lazuliumsword} @trigger
+  - skill{s=blacksmithQUENCHERgive_lazuliumhoe} @trigger
+  - skill{s=blacksmithQUENCHERgive_lazuliumaxe} @trigger
+  - skill{s=blacksmithQUENCHERgive_lazuliumshovel} @trigger
+  - skill{s=blacksmithQUENCHERgive_lazuliumpickaxe} @trigger
+  
+  
+  
+## IRON ##
+  
+blacksmithQUENCHERgive_ironsword:
+  TriggerConditions:
+  - holding{m=blacksmith_iron_sword_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=iron;v=1} @self
+  
+blacksmithQUENCHERgive_ironhoe:
+  TriggerConditions:
+  - holding{m=blacksmith_iron_hoe_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=iron;v=2} @self
+  
+blacksmithQUENCHERgive_ironaxe:
+  TriggerConditions:
+  - holding{m=blacksmith_iron_axe_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=iron;v=3} @self
+  
+blacksmithQUENCHERgive_ironshovel:
+  TriggerConditions:
+  - holding{m=blacksmith_iron_shovel_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=iron;v=4} @self
+  
+blacksmithQUENCHERgive_ironpickaxe:
+  TriggerConditions:
+  - holding{m=blacksmith_iron_pickaxe_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=iron;v=5} @self
+  
+## steel ##
+  
+blacksmithQUENCHERgive_steelsword:
+  TriggerConditions:
+  - holding{m=blacksmith_steel_sword_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=steel;v=1} @self
+  
+blacksmithQUENCHERgive_steelhoe:
+  TriggerConditions:
+  - holding{m=blacksmith_steel_hoe_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=steel;v=2} @self
+  
+blacksmithQUENCHERgive_steelaxe:
+  TriggerConditions:
+  - holding{m=blacksmith_steel_axe_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=steel;v=3} @self
+  
+blacksmithQUENCHERgive_steelshovel:
+  TriggerConditions:
+  - holding{m=blacksmith_steel_shovel_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=steel;v=4} @self
+  
+blacksmithQUENCHERgive_steelpickaxe:
+  TriggerConditions:
+  - holding{m=blacksmith_steel_pickaxe_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=steel;v=5} @self
+  
+## bronze ##
+  
+blacksmithQUENCHERgive_bronzesword:
+  TriggerConditions:
+  - holding{m=blacksmith_bronze_sword_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=bronze;v=1} @self
+  
+blacksmithQUENCHERgive_bronzehoe:
+  TriggerConditions:
+  - holding{m=blacksmith_bronze_hoe_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=bronze;v=2} @self
+  
+blacksmithQUENCHERgive_bronzeaxe:
+  TriggerConditions:
+  - holding{m=blacksmith_bronze_axe_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=bronze;v=3} @self
+  
+blacksmithQUENCHERgive_bronzeshovel:
+  TriggerConditions:
+  - holding{m=blacksmith_bronze_shovel_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=bronze;v=4} @self
+  
+blacksmithQUENCHERgive_bronzepickaxe:
+  TriggerConditions:
+  - holding{m=blacksmith_bronze_pickaxe_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=bronze;v=5} @self
+  
+## emerite ##
+  
+blacksmithQUENCHERgive_emeritesword:
+  TriggerConditions:
+  - holding{m=blacksmith_emerite_sword_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=emerite;v=1} @self
+  
+blacksmithQUENCHERgive_emeritehoe:
+  TriggerConditions:
+  - holding{m=blacksmith_emerite_hoe_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=emerite;v=2} @self
+  
+blacksmithQUENCHERgive_emeriteaxe:
+  TriggerConditions:
+  - holding{m=blacksmith_emerite_axe_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=emerite;v=3} @self
+  
+blacksmithQUENCHERgive_emeriteshovel:
+  TriggerConditions:
+  - holding{m=blacksmith_emerite_shovel_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=emerite;v=4} @self
+  
+blacksmithQUENCHERgive_emeritepickaxe:
+  TriggerConditions:
+  - holding{m=blacksmith_emerite_pickaxe_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=emerite;v=5} @self
+  
+## lazulium ##
+  
+blacksmithQUENCHERgive_lazuliumsword:
+  TriggerConditions:
+  - holding{m=blacksmith_lazulium_sword_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=lazulium;v=1} @self
+  
+blacksmithQUENCHERgive_lazuliumhoe:
+  TriggerConditions:
+  - holding{m=blacksmith_lazulium_hoe_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=lazulium;v=2} @self
+  
+blacksmithQUENCHERgive_lazuliumaxe:
+  TriggerConditions:
+  - holding{m=blacksmith_lazulium_axe_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=lazulium;v=3} @self
+  
+blacksmithQUENCHERgive_lazuliumshovel:
+  TriggerConditions:
+  - holding{m=blacksmith_lazulium_shovel_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=lazulium;v=4} @self
+  
+blacksmithQUENCHERgive_lazuliumpickaxe:
+  TriggerConditions:
+  - holding{m=blacksmith_lazulium_pickaxe_hot} true
+  Skills:
+  - gcd{ticks=60} @self
+  - sound{s=block.fire.extinguish} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - effect:particles{particle=large_smoke;amount=1;hS=0;vS=0;speed=0.1;d=true;dir=0,1,0;repeat=12;repeatInterval=5} @selflocation{y=1}
+  - delay 60
+  - skill{s=blacksmithTUTORIALquencher_stick} @pir{r=3}
+  - effect:particles{particle=crit;amount=5;hS=.25;vS=.25;speed=0;y=1} @self
+  - settargetscore{o=lazulium;v=5} @self
+  
+  
+  
+  
+blacksmithQUENCHERtake:
+  Cooldown: 1
+  Skills:
+  - skill{s=blacksmithQUENCHERtake_ironsword} @trigger
+  - skill{s=blacksmithQUENCHERtake_ironhoe} @trigger
+  - skill{s=blacksmithQUENCHERtake_ironaxe} @trigger
+  - skill{s=blacksmithQUENCHERtake_ironshovel} @trigger
+  - skill{s=blacksmithQUENCHERtake_ironpickaxe} @trigger
+  - skill{s=blacksmithQUENCHERtake_steelsword} @trigger
+  - skill{s=blacksmithQUENCHERtake_steelhoe} @trigger
+  - skill{s=blacksmithQUENCHERtake_steelaxe} @trigger
+  - skill{s=blacksmithQUENCHERtake_steelshovel} @trigger
+  - skill{s=blacksmithQUENCHERtake_steelpickaxe} @trigger
+  - skill{s=blacksmithQUENCHERtake_bronzesword} @trigger
+  - skill{s=blacksmithQUENCHERtake_bronzehoe} @trigger
+  - skill{s=blacksmithQUENCHERtake_bronzeaxe} @trigger
+  - skill{s=blacksmithQUENCHERtake_bronzeshovel} @trigger
+  - skill{s=blacksmithQUENCHERtake_bronzepickaxe} @trigger
+  - skill{s=blacksmithQUENCHERtake_emeritesword} @trigger
+  - skill{s=blacksmithQUENCHERtake_emeritehoe} @trigger
+  - skill{s=blacksmithQUENCHERtake_emeriteaxe} @trigger
+  - skill{s=blacksmithQUENCHERtake_emeriteshovel} @trigger
+  - skill{s=blacksmithQUENCHERtake_emeritepickaxe} @trigger
+  - skill{s=blacksmithQUENCHERtake_lazuliumsword} @trigger
+  - skill{s=blacksmithQUENCHERtake_lazuliumhoe} @trigger
+  - skill{s=blacksmithQUENCHERtake_lazuliumaxe} @trigger
+  - skill{s=blacksmithQUENCHERtake_lazuliumshovel} @trigger
+  - skill{s=blacksmithQUENCHERtake_lazuliumpickaxe} @trigger
+  
+  
+## IRON ##
+  
+blacksmithQUENCHERtake_ironsword:
+  Conditions:
+  - score{o=iron;v=1} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=iron_sword} @trigger
+  - settargetscore{o=iron;v=0} @self
+  
+blacksmithQUENCHERtake_ironhoe:
+  Conditions:
+  - score{o=iron;v=2} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=iron_hoe} @trigger
+  - settargetscore{o=iron;v=0} @self
+  
+blacksmithQUENCHERtake_ironaxe:
+  Conditions:
+  - score{o=iron;v=3} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=iron_axe} @trigger
+  - settargetscore{o=iron;v=0} @self
+  
+blacksmithQUENCHERtake_ironshovel:
+  Conditions:
+  - score{o=iron;v=4} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=iron_shovel} @trigger
+  - settargetscore{o=iron;v=0} @self
+  
+blacksmithQUENCHERtake_ironpickaxe:
+  Conditions:
+  - score{o=iron;v=5} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=iron_pickaxe} @trigger
+  - settargetscore{o=iron;v=0} @self
+  
+  
+## steel ##
+  
+blacksmithQUENCHERtake_steelsword:
+  Conditions:
+  - score{o=steel;v=1} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_steel_sword} @trigger
+  - settargetscore{o=steel;v=0} @self
+  
+blacksmithQUENCHERtake_steelhoe:
+  Conditions:
+  - score{o=steel;v=2} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_steel_hoe} @trigger
+  - settargetscore{o=steel;v=0} @self
+  
+blacksmithQUENCHERtake_steelaxe:
+  Conditions:
+  - score{o=steel;v=3} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_steel_axe} @trigger
+  - settargetscore{o=steel;v=0} @self
+  
+blacksmithQUENCHERtake_steelshovel:
+  Conditions:
+  - score{o=steel;v=4} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_steel_shovel} @trigger
+  - settargetscore{o=steel;v=0} @self
+  
+blacksmithQUENCHERtake_steelpickaxe:
+  Conditions:
+  - score{o=steel;v=5} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_steel_pickaxe} @trigger
+  - settargetscore{o=steel;v=0} @self
+  
+  
+## bronze ##
+  
+blacksmithQUENCHERtake_bronzesword:
+  Conditions:
+  - score{o=bronze;v=1} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_bronze_sword} @trigger
+  - settargetscore{o=bronze;v=0} @self
+  
+blacksmithQUENCHERtake_bronzehoe:
+  Conditions:
+  - score{o=bronze;v=2} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_bronze_hoe} @trigger
+  - settargetscore{o=bronze;v=0} @self
+  
+blacksmithQUENCHERtake_bronzeaxe:
+  Conditions:
+  - score{o=bronze;v=3} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_bronze_axe} @trigger
+  - settargetscore{o=bronze;v=0} @self
+  
+blacksmithQUENCHERtake_bronzeshovel:
+  Conditions:
+  - score{o=bronze;v=4} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_bronze_shovel} @trigger
+  - settargetscore{o=bronze;v=0} @self
+  
+blacksmithQUENCHERtake_bronzepickaxe:
+  Conditions:
+  - score{o=bronze;v=5} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_bronze_pickaxe} @trigger
+  - settargetscore{o=bronze;v=0} @self
+  
+  
+## emerite ##
+  
+blacksmithQUENCHERtake_emeritesword:
+  Conditions:
+  - score{o=emerite;v=1} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_emerite_sword} @trigger
+  - settargetscore{o=emerite;v=0} @self
+  
+blacksmithQUENCHERtake_emeritehoe:
+  Conditions:
+  - score{o=emerite;v=2} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_emerite_hoe} @trigger
+  - settargetscore{o=emerite;v=0} @self
+  
+blacksmithQUENCHERtake_emeriteaxe:
+  Conditions:
+  - score{o=emerite;v=3} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_emerite_axe} @trigger
+  - settargetscore{o=emerite;v=0} @self
+  
+blacksmithQUENCHERtake_emeriteshovel:
+  Conditions:
+  - score{o=emerite;v=4} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_emerite_shovel} @trigger
+  - settargetscore{o=emerite;v=0} @self
+  
+blacksmithQUENCHERtake_emeritepickaxe:
+  Conditions:
+  - score{o=emerite;v=5} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_emerite_pickaxe} @trigger
+  - settargetscore{o=emerite;v=0} @self
+  
+  
+## lazulium ##
+  
+blacksmithQUENCHERtake_lazuliumsword:
+  Conditions:
+  - score{o=lazulium;v=1} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_lazulium_sword} @trigger
+  - settargetscore{o=lazulium;v=0} @self
+  
+blacksmithQUENCHERtake_lazuliumhoe:
+  Conditions:
+  - score{o=lazulium;v=2} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_lazulium_hoe} @trigger
+  - settargetscore{o=lazulium;v=0} @self
+  
+blacksmithQUENCHERtake_lazuliumaxe:
+  Conditions:
+  - score{o=lazulium;v=3} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_lazulium_axe} @trigger
+  - settargetscore{o=lazulium;v=0} @self
+  
+blacksmithQUENCHERtake_lazuliumshovel:
+  Conditions:
+  - score{o=lazulium;v=4} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_lazulium_shovel} @trigger
+  - settargetscore{o=lazulium;v=0} @self
+  
+blacksmithQUENCHERtake_lazuliumpickaxe:
+  Conditions:
+  - score{o=lazulium;v=5} true
+  TriggerConditions:
+  - holding{m=stick} true
+  Skills:
+  - settargetscore{o=blacksmith_tutorial;v=1} @trigger
+  - sound{s=entity.fishing_bobber.retrieve} @self
+  - consumeslot{} @trigger
+  - effect:particles{particle=block;material=black_concrete;amount=25;hS=.1;vS=.25;speed=0.1;y=1} @self
+  - giveitem{i=blacksmith_lazulium_pickaxe} @trigger
+  - settargetscore{o=lazulium;v=0} @self
+  

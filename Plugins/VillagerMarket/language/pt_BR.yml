@@ -1,0 +1,663 @@
+#----------------------- General -----------------------#
+
+#Time localization
+time:
+  seconds: 초
+  minutes: 분
+  minute: 분
+  hours: 시
+  hour: 시
+  days: 일
+  day: 일
+  never: 평생
+  indefinitely: 무기한
+  less_than_a_minute: 일분 미만
+
+#Quantity localization
+quantity:
+  free: 무료
+  infinite: 무제한
+  unlimited: 제한없음
+
+#Villager status (Used for PAPI placeholders)
+status:
+  available: '&a구매 가능'
+  bought: '&c구매됌'
+  no_owner: '&7소유자 없음'
+
+#Villager name settings
+villager:
+  name_admin: '&c서버 상점'
+  name_available: '&a구매 가능'
+  name_taken: '&b%player%의 상점'
+
+
+#----------------------- Messages -----------------------#
+
+messages:
+  invalid_command_usage: '&c해당 커맨드는 유효하지 않습니다. 이 커맨드를 사용해주세요. &e/vm help'
+  reloaded: '&a플러그인 리로딩중...'
+  cancelled: '&c작업이 취소되었습니다.'
+  not_number: '&c숫자를 다시 입력하셔야 합니다!'
+  use_dot: '&c소수점을 표현하고 싶은거면 쉼표가 아니라 온점으로 작성하여주세요.'
+  not_valid_range: '&c한번에 구매 가능한 개수는 1에서 64까지 입니다.'
+  amount_successful: '&a구매 가능 개수가 성공적으로 설정되었습니다.'
+  price_successful: '&a금액이 성공적으로 설정되었습니다.'
+  negative_price: '&c금액은 음수가 될 수 없습니다.'
+  add_successful: '&a아이템이 성공적으로 추가되었습니다.'
+  type_price: '&b채팅창에 해당 품목의 금액을 입력하여 엔터키를 눌러주세요.'
+  type_amount: '&b채팅창에 해당 품목을 얼만큼 판매/구매할 것인지 입력하여 엔터키를 눌러주세요.'
+  #Placeholder: %cancel% (see cancel option above)
+  type_cancel: '&b취소하시려면 &c%cancel% &b를 채팅창에 입력하여 엔터키를 눌러주세요.'
+  sold_shop: '&b상점이 판매되었습니다. 다시 구매하러 갈 수 있을 것 같군요...'
+  not_enough_money: '&c이 물건을 사기엔 돈이 부족합니다.'
+  not_enough_stock: '&c이 물건을 사기엔 재고가 부족합니다.'
+  remove_villager: '&c지우고 싶은 &b주민 상점 &c을 우클릭을 하여 지우세요...'
+  no_villager_shop: '&이건 주민 상점이 아닙니다.'
+  villager_removed: '&c성공적으로 지워졌습니다!'
+  blacklisted: '&c이 아이템은 거래 금지 품목입니다!'
+  owner_not_enough_money: '&c이 상점을 가진 사람은 이 아이템을 구매하기엔 돈이 매우 부족해보이는군요.'
+  not_enough_in_inventory: '&c인벤토리칸이 부족한 것 같습니다.'
+  #Placeholders: %player%, %amount%, %item%, %price%
+  bought_item_as_owner: '&b%player%&7가 당신에게 &a%price%&7의 금액으로 &b%amount%개의 %item%&7을
+    팔았습니다.'
+  #Placeholders: %player%, %amount%, %material%, %price%
+  sold_item_as_owner: '&b%player%&7가 당신에게 &a%price%&7의 금액으로 &b%amount%개의 %item%&7을 사갔습니다.'
+  change_name: '&b원하시는 이름을 채팅창에 입력하여 엔터키를 눌러주세요.'
+  change_name_set: '&a성공적으로 &r%name%&a으로 변경되었습니다.'
+  must_be_menulore: '&c다시 상품을 구매/판매 하시려면 &e&메뉴 설명&c 를 토글하여 주세요!'
+  cannot_buy_from_yourself: '&c본인이 올린 상품은 구매가 불가능합니다.'
+  cannot_sell_to_yourself: '&c본인이 올린 상품은 판매가 불가능합니다.'
+  tax: '&a%tax% &7만큼 세금으로 지불되었습니다.'
+  expired: '&c상점이 기간 만료되었습니다! &e/vm expiredstorage&7을 통해 해당 상점의 재고 품목들을 챙겨가주세요.'
+  move_villager: '&7이동하길 원하는 &b주민 상점 &7을 우클릭하여 지정하세요.'
+  move_villager_to: '&7블럭 위치를 우클릭하여 해당 &b주민 상점&7을 배치하세요.'
+  max_rent_time: '&c해당 상점의 렌트 기간이 최대치로 이미 임대가 되어 있는 상태입니다.'
+  search_result: '&7주변에 &b%amount%만큼의 &7주민 상점이 발견되었습니다.'
+  search_shop_info: '&7>> %name% &7의 위치는 다음과 같습니다 : &c%location%'
+  get_stats: '&7우클릭을 통해 해당 &b주민 상점 &7의 통계를 읽어보세요.'
+  not_owner: '&c당신은 이 상점의 주인이 아닙니다.'
+  type_limit_player: '&b어느정도 최대 구매 갯수를 제한하고 싶으신지 채팅창에 입력하여 주세요. (&c0 &b을 입력하여 제한을 풀
+    수 있습니다.)...'
+  type_limit_admin: '&b어느정도 해당 아이템에 대해서 판매/구매를 제한하고 싶으신지 채팅창에 입력하여 주세요. (&c0 &b을 입력하여
+    제한을 풀 수 있습니다.)...'
+  reached_sell_limit: '&c이 품목을 더 판매할 수 없습니다.'
+  reached_buy_limit: '&c이 품목을 더 구매할 수 없습니다.'
+  reached_command_limit: '&c이 명령어를 더 구매할 수 없습니다.'
+  money_left: '&a돈이 %amount%만큼 남았습니다.'
+  money_currently: '&a지금 돈이 %amount%만큼 남았군요.'
+  type_command: '&b명령어를 ''/''없이 입력하여주세요. (%player% 를 통해 플레이어를 지정할 수 있습니다.)...'
+  finish_process: '&c상점에 아이템을 추가하는 과정을 먼저 완료해주세요. (''cancel''을 입력해 취소할 수 있습니다.)'
+  collected_money: '&b돈을 &a%amount%만큼 징수합니다.'
+  not_playershop: '&c이건 플레이어용 주민 상점이 아닙니다.'
+  add_trusted: '&7원하는 &b주민 상점 &7을 클릭하여 &7신뢰 대상의 유저 &a가 모든걸 사용할 수 있게 합니다.'
+  remove_trusted: '&7원하는 &b주민 상점 &7을 클릭하여 &7신뢰 대상의 유저 &a가 모든걸 사용할 수 없게 합니다.'
+  trusted_added: '&a해당 플레이어가 추가되었습니다.'
+  trusted_removed: '&c해당 플레이어가 제거되었습니다!'
+  region_no_access: '&c당신은 이 지역에 대한 권한이 없습니다.'
+  no_permission_adminshop: '&c당신은 관리자 전용 상점을 이용할 권한이 없습니다.'
+  no_permission_playershop: '&c당신은 플레이어 전용 상점을 이용할 권한이 없습니다.'
+  no_permission_change_name: '&c당신은 이름을 변경할 권한이 없습니다.'
+  no_permission_command: '&c당신은 이 명령어를 사용할 권한이 없습니다.'
+  no_permission_buy_shop: '&c당신은 이 상점에서 구매할 권한이 없습니다.'
+  no_permission_use_item: '&c당신은 이 아이템을 사용할 권한이 없습니다.'
+  no_permission_citizens: '&c당신은 이 상점을 NPC로 변경할 권한이 없습니다.'
+  max_shops: '&c이미 &e%current%&c(보유)/&e%max%&c(최대) 갯수만큼의 상점을 보유하고 있습니다.'
+  get_id: '&7UUID를 얻고 싶은 &b주민 상점 &7을 클릭하여 ID를 확인하세요.'
+  #Placeholders: %id%
+  id: '&7엔티티 UUID: &b%id%'
+  type_skin: '&b원하시는 스킨의 이름을 채팅창에 입력하여 주세요...'
+  skin_set: '&a스킨이 성공적으로 변경되었습니다.'
+  no_expired_storage: '&c당신에게는 ''만료된 상점 재고''가 없습니다.'
+  type_limit_cooldown: '&b제한 쿨타임을 채팅에 입력해주세요. (2m(분), 3h(시), 4d(일) 단어 한개만. 130m라 하면
+    쿨타임이 130분입니다.) 아니면 ''never''를 입력하여 제한이 없도록 하셔도 됩니다.'
+  limit_cooldown_set: '&a거래 제한 쿨타임이 &e%time%으로 설정되었습니다.'
+  limits_cleared: '&c제한을 초기화합니다.'
+  name_blacklisted: '&c당신은 이 상점 이름을 사용하실 수 없습니다.'
+  max_item_price: '&c판매 가격이 너무나도 높습니다. 낮은 가격으로 다시 제시하여주십시오.'
+  shopfront_cooldown: '&c다시 판매/구매할 때까지 기다려주세요.'
+  max_name_length: '&c이 이름은 너무 길어요. 글자수 제한은 %limit%개까지 입니다.'
+  clone_shop: '&7우클릭을 하셔서 복제하고 싶은 &b주민 상점 &7을 지정하세요.'
+  shop_cloned: '&a주민 상점이 성공적으로 지정되었습니다. &e/vm move&a 명령어를 통해 배치하세요.'
+  set_size: '&7사이즈를 설정하고 싶은 &b주민 상점 &7을 우클릭하세요.'
+  size_set: '&a사이즈를 &e%size%&a만큼 설정했습니다.'
+  #Placeholders: %amount%, %item%, %price%, %shop%
+  bought_item_as_customer: '&7&r%shop%&7에서 &b%amount%개의 %item%&7을 &a%price%&7의 가격에 구매하였습니다.'
+  #Placeholders: %amount%, %item%, %price%, %shop%
+  sold_item_as_customer: '&7&r%shop%&7에서 &b%amount%개의 %item%&7을 &a%price%&7의 가격에 판매하였습니다.'
+  type_discount: '&b얼만큼 할인할 것인지 (0%-100%) 채팅창에 입력해주세요..'
+  type_time: '&b언제까지 할인할 것인지 (1m(분), 2h(시), 1d(일) 단어 한개만. 130m라 하면 쿨타임이 130분입니다.) 채팅창에
+    입력해주세요...'
+  not_valid_time: '&c시간을 설정하실 땐 꼭 숫자로 시작하여, 영단어 h(시), d(일), m(분)으로 끝나야 합니다.'
+  #Placeholders: %shop_name%, %discount%, %item%
+  discount_announcement: '&e%shop_name% &a은 이제부터 &e%item%&a에 대해서 &e%discount%% &a만큼
+    할인합니다.'
+  toggle_require_permission: '&7당신이 권한 요구 사항을 토글하고 싶은 &b주민 상점&7을 우클릭하세요.'
+  require_permission_enabled: '&a권한 요구 사항이 실행되었습니다! 권한 이름: &e%permission%'
+  require_permission_disabled: '&c권한 요구 사항이 비활성화 되었습니다!'
+
+stats_message:
+- '&b주민 상점 통계:'
+- '&7>> 아이템 판매 횟수: &a%items_sold%'
+- '&7>> 아이템 구매 횟수: &a%items_bought%'
+- '&7>> 돈을 얼만큼 벌었는가: &a%money_earned%'
+- '&7>> 돈을 얼만큼 사용했는가: &a%money_spent%'
+
+
+#--------------------- Menu items settings ---------------------#
+
+items:
+  back:
+    name: '&c&l나가기'
+    material: ARROW
+  filler:
+    name: ''
+    material: GRAY_STAINED_GLASS_PANE
+  next:
+    name: '&e앞으로'
+    material: FEATHER
+    lore:
+    - '&7다음 페이지'
+  previous:
+    name: '&e뒤로'
+    material: FEATHER
+    lore:
+    - '&7전 페이지'
+
+#----------------------- Menu settings -----------------------#
+
+menus:
+  #-------------------- Buy Shop --------------------#
+  buy_shop:
+    title: '&8구매 가능한 상점'
+    items:
+      shop_size:
+        #Placeholders: %amount%
+        name: '&a%amount%&7 상점 칸'
+        material: CHEST
+        lore:
+        - ''
+      storage_size:
+        #Placeholders: %amount%
+        name: '&a%amount%&7 창고 칸'
+        material: WRITABLE_BOOK
+        lore:
+        - ''
+      buy_shop:
+        material: EMERALD
+        name: '&a이 상점을 구매해보세요!'
+        lore:
+        - '&7이 상점을 클릭하여 단 돈'
+        - ' &a%price%&7에 모시겠습니다!'
+        - '&7그러면 이 상점은'
+        - '&7&b%time%&7기간동안 당신거에요!'
+  
+  #-------------------- Edit Shop --------------------#
+  edit_shop:
+    title: '&8상점 설정'
+    items:
+      #Edit items for sale item
+      edit_shopfront:
+        material: WRITABLE_BOOK
+        name: '&b상점 품목 설정'
+        lore:
+        - '&7당신이 상점에서 판매하고 있는'
+        - '&7아이템을 클릭해 설정해보세요'
+      #Preview shop item
+      preview_shop:
+        material: BOOK
+        name: '&e상점 미리보기'
+        lore:
+        - '&7클릭해서 상점이 어떻게'
+        - '&7보이나 확인하세요.'
+      #Edit storage item
+      edit_storage:
+        material: CHEST
+        name: '&c창고 설정'
+        lore:
+        - '&7클릭하여 상점 창고칸을 설정합니다.'
+      #Edit villager item
+      edit_villager:
+        material: VILLAGER_SPAWN_EGG
+        name: '&e주민 설정'
+        lore:
+        - '&7클릭하여 주민 직업을'
+        - '&7변경합니다.'
+      #Change villager name item
+      change_name:
+        material: NAME_TAG
+        name: '&e주민 이름 변경'
+        lore:
+        - '&7클릭하여 주민 이름을 변경합니다.'
+      #Sell shop item
+      sell_shop:
+        material: FEATHER
+        name: '&c상점 매각/판매'
+        lore:
+        - '&7클릭하여 해당 상점을'
+        - '&7판매/매각 합니다.'
+      #Collect money (this needs to be enabled in general settings)
+      collect_money:
+        material: GOLD_INGOT
+        name: '&a돈 회수하기'
+        #Placeholders: %worth%
+        lore:
+        - '&7클릭해서 &a%worth%$만큼 회수합니다'
+      #Add more time item
+      increase_time:
+        material: EMERALD
+        name: '&a대여기간 연장'
+        #Placeholders: %expire%, %time%, %price%
+        lore:
+        - '&7 상점 대여 잔여시간 : &e%expire%'
+        - ''
+        - '&7클릭하여 대여시간을 연장하세요'
+        - '&7한번 눌러서 &b%time%&7시간 만큼 &a%price%&7가격에 모십니다.'
+      #Enable trade notifications item
+      enable_trade_notifications:
+        material: RED_TERRACOTTA
+        name: '&e거래 알람&7: &c비활성화'
+        lore:
+        - '&7클릭하여 거래 알림을 활성화하세요.'
+      #Disable trade notifications item
+      disable_trade_notifications:
+        material: LIME_TERRACOTTA
+        name: '&e거래 알람&7: &a활성화'
+        lore:
+        - '&7클릭하여 거래 알림을 비활성화하세요.'
+  
+  #-------------------- Shopfront --------------------#
+  shopfront:
+    title: '&7%shop%'
+    #Placeholders: %item_name%, %mode%
+    item_name: '&f%item_name% %mode%'
+    detail_suffix: '&8(Detalhes)'
+    #Cooldown between selling/buying items (milliseconds)
+    cooldown: 500
+    items:
+      toggle_details:
+        name: '&e토글 세부설정'
+        material: BOOK
+        lore:
+        - '&7>>  좌클릭을 통해서'
+        - '&7 &e아이템 설명을 킬지'
+        - '&7e &e메뉴 설명을 킬지&7'
+        - 정하세요.
+        - '&7>> 우클릭을 통해 &7되돌아갑니다.'
+    modes:
+      buy: '&8[&a구매&8]'
+      sell: '&8[&a판매&8]'
+      buy_and_sell: '&8[&a구매&7/&a판매&8]'
+      command: '&8[&e명령어&8]'
+      trade: '&8[&e거래&8]'
+    discount_lore:
+    - ''
+    - '&7할인&f: &e%discount%%'
+    - '&7할인 기간&f: &e%time%'
+    player_shop:
+      #Placeholders: %amount%, %price%, %stock%, %mode%
+      trade_lore:
+      - '&7상점&f: %mode%'
+      - ''
+      - '&7거래량&f: &e%amount%'
+      - '&7가격&f: &a%price%'
+      - '&7&b%available% &7만큼 거래가능'
+      - ''
+      - '&7>> 클릭하여 거래'
+      #Placeholders: %amount%, %price%, %stock%, %mode%
+      buy_lore:
+      - '&7상점&f: %mode%'
+      - ''
+      - '&7거래량&f: &e%amount%'
+      - '&7가격&f: &a%price%'
+      - '&7가격/판매량&f: &a%price_per_unit%'
+      - '&7&b%stock% &7만큼 구매가능'
+      - ''
+      - '&7>> 클릭하여 구매'
+      #Placeholders: %amount%, %price%, %available%, %mode%
+      sell_lore:
+      - '&7상점&f: %mode%'
+      - ''
+      - '&7거래량&f: &e%amount%'
+      - '&7가격&f: &a%price%'
+      - '&7&b%available% &7만큼 판매가능'
+      - ''
+      - '&7>> 클릭하여 판매'
+      #Placeholders: %amount%, %price%, %available%, %mode%
+      buy_and_sell_lore:
+      - '&7상점&f: %mode%'
+      - ''
+      - '&7거래량&f: &e%amount%'
+      - '&7구매 가격 de compra&f: &a%buy_price%'
+      - '&7판매 가격&f: &a%sell_price%'
+      - '&7&b%stock% &7만큼 구매 가능'
+      - '&7&b%available% &7만큼 판매 가능'
+      - ''
+      - '&7>> 좌클릭으로 구매'
+      - '&7>> 우클릭으로 판매'
+    admin_shop:
+      buy_and_sell_lore:
+      - '&7상점&f: %mode%'
+      - ''
+      - '&7거래량&f: &e%amount%'
+      - '&7구매 가격&f: &a%buy_price%'
+      - '&7판매 가격&f: &a%sell_price%'
+      - '%limit_lore%'
+      - ''
+      - '&7>> 좌클릭으로 구매'
+      - '&7>> 우클릭으로 판매'
+      trade_lore:
+      - '&7상점&f: %mode%'
+      - ''
+      - '&7거래량&f: &e%amount%'
+      - '&7가격&f: &a%price%'
+      - '%limit_lore%'
+      - ''
+      - '&7>> 클릭하여 거래'
+      sell_lore:
+      - '&7상점&f: %mode%'
+      - ''
+      - '&7거래량&f: &e%amount%'
+      - '&7가격&f: &a%price%'
+      - '%limit_lore%'
+      - ''
+      - '&7>>클릭하여 판매'
+      buy_lore:
+      - '&7상점&f: %mode%'
+      - ''
+      - '&7거래량&f: &e%amount%'
+      - '&7가격&f: &a%price%'
+      - '%limit_lore%'
+      - ''
+      - '&7>> 클릭하여 구매'
+      command_lore:
+      - '&7상점&f: %mode%'
+      - ''
+      - '&7거래량&f: &e%amount%'
+      - '&7가격&f: &a%price%'
+      - '%limit_lore%'
+      - ''
+      - '&7>> 클릭하여 커맨드 구매'
+      buy_limit_lore:
+      - ''
+      - '&7거래량: (&e%bought%&7/&e%limit%&7)'
+      - '&7다시 초기화까지: &e%reset%'
+      sell_limit_lore:
+      - ''
+      - '&7거래량: (&e%bought%&7/&e%limit%&7)'
+      - '&7다시 초기화까지: &e%reset%'
+      buy_and_sell_limit_lore:
+      - ''
+      - '&7거래량: (&e%bought%&7/&e%limit%&7)'
+      - '&7다시 초기화까지: &e%reset%'
+  
+  #------------------ Edit Shopfront ------------------#
+  edit_shopfront:
+    title: '&8아이템을 추가하여 판매하세요.'
+    #Placeholders: %item_name%, %mode%
+    item_name: '&f%item_name% %mode%'
+    modes:
+      buy: '&8[&a판매&8]'
+      sell: '&8[&a구매&8]'
+      buy_and_sell: '&8[&a판매&7/&a구매&8]'
+      command: '&8[&e커맨드&8]'
+      trade: '&8[&e거래&8]'
+    player_shop:
+      trade_lore:
+      - '&7상점&f: %mode%'
+      - ''
+      - '&7거래량&f: &e%amount%'
+      - '&7가격&f: &a%price%'
+      - '&7&b%available% &7만큼 거래가능'
+      - ''
+      - '&7>> 클릭해서 설정.'
+      #Placeholders: %amount%, %price%, %stock%
+      sell_lore:
+      - '&7상점&f: %mode%'
+      - ''
+      - '&7거래량&f: &e%amount%'
+      - '&7가격&f: &a%price%'
+      - '&7&b%stock% &7만큼 판매가능'
+      - ''
+      - '&7>> 클릭해서 설정'
+      #Placeholders: %amount%, %price%, %available%
+      buy_lore:
+      - '&7상점&f: %mode%'
+      - ''
+      - '&7거래량&f: &e%amount%'
+      - '&7가격&f: &a%price%'
+      - '&7&c%available% &7만큼 구매가능'
+      - ''
+      - '&7>>클릭해서 설정'
+      buy_and_sell_lore:
+      - '&7상점&f: %mode%'
+      - ''
+      - '&7거래량&f: &e%amount%'
+      - '&7구매 가격&f: &a%buy_price%'
+      - '&7판매 가격&f: &a%sell_price%'
+      - '&7&c%available% &7만큼 구매가능!'
+      - '&7&b%stock% &7만큼 판매가능!'
+      - ''
+      - '&7>> 클릭해서 설정'
+    admin_shop:
+      standard_lore:
+      - '&7상점&f: %mode%'
+      - ''
+      - '&7거래량&f: &e%amount%'
+      - '&7가격&f: &a%price%'
+      - '&7구매 제한 &f: &a%limit%'
+      - ''
+      - '&7>> 클릭해서 설정'
+  
+  #--------------------- Storage ---------------------#
+  storage:
+    title: '&8상점 창고'
+  
+  #------------------ Edit Villager ------------------#
+  edit_villager:
+    title: '&8주민 설정'
+    #This requires citizens to be on the server
+    citizens_item:
+      material: PLAYER_HEAD
+      name: '&e대신 스킨 설정하기'
+      lore:
+      - '&7이 상점을 위해 플레이어 스킨을 설정해주세요.'
+    items:
+      armorer:
+        material: IRON_CHESTPLATE
+        name: '&7갑옷대장장이'
+      butcher:
+        material: PORKCHOP
+        name: '&c도축업자'
+      cartographer:
+        material: MAP
+        name: '&b지도제작자'
+      cleric:
+        material: POTION
+        name: '&d성직자'
+      farmer:
+        material: WHEAT
+        name: '&e농사꾼'
+      fisherman:
+        material: COD
+        name: '&b낚시꾼'
+      fletcher:
+        material: FLETCHING_TABLE
+        name: '&e화살제조인'
+      leatherworker:
+        material: LEATHER
+        name: '&c가죽세공업자'
+      librarian:
+        material: BOOK
+        name: '&6사서'
+      mason:
+        material: BRICK
+        name: '&c석공'
+      nitwit:
+        material: PAPER
+        name: '&f멍청이'
+      shepherd:
+        material: WHITE_WOOL
+        name: '&f양치기'
+      toolsmith:
+        material: IRON_AXE
+        name: '&7도구대장장이'
+      weaponsmith:
+        material: IRON_SWORD
+        name: '&7무기대장장이'
+      none:
+        material: VILLAGER_SPAWN_EGG
+        name: '&c직업 없음'
+      #Legacy versions
+      blacksmith:
+        material: ANVIL
+        name: '&7대장장이'
+      priest:
+        material: POTION
+        name: '&d성직자'
+      normal:
+        material: VILLAGER_SPAWN_EGG
+        name: '&c기본'
+  
+  #-------------------- Sell Shop --------------------#
+  sell_shop:
+    title: '&8진짜 확실하게 팔건가요?'
+    items:
+      no_cancel:
+        material: RED_TERRACOTTA
+        name: '&c아뇨. 취소할게요.'
+      #If the Shop is reusable (created by command)
+      yes_sell:
+        material: LIME_TERRACOTTA
+        name: '&a네. 팔게요'
+        #Placeholders: %amount%
+        lore:
+        - '&7 (&a%amount%&7)'
+        - '&7 &a50% 가량의 돈을'
+        - '&7 상점을 판매하면서 얻을 것입니다.'
+        - ''
+      #If the Shop isn't reusable (created using a spawn egg)
+      yes_remove:
+        material: LIME_TERRACOTTA
+        name: '&a네 상점을 지워버릴게요.'
+        lore:
+        - '&7 해당 상점을 &c지우고'
+        - '&7 주민 상점 생성알을'
+        - '&7 새로 드릴게요!'
+  
+  #-------------------- Edit Item --------------------#
+  edit_item:
+    title: '&8아이템 수정'
+    limit_cycle:
+      player: '&eJogador&7 | Servidor'
+      server: '&7Jogador |&e Servidor'
+    mode_cycle:
+      player_shop:
+        item_trade: '&e판매 &7(아이템끼리 거래)'
+        sell: '&e 판매 &7| 구매 | 판매 & 구매'
+        buy: '&7 판매 | &e 구매 &7| 판매 & 구매'
+        buy_and_sell: '&7 판매 | 구매 | &e판매 & 구매'
+      admin_shop:
+        item_trade: '&e판매 &7(아이템끼리 교환)'
+        sell: '&e판매 &7| 구매 | 판매 & 구매 | 커맨드'
+        buy: '&7판매 | &e구매 &7| 판매 & 구매 | 커맨드'
+        command: '&7판매 | 구매 | 판매 & 구매 | &e커맨드'
+        buy_and_sell: '&7판매 | 구매 | &e판매 & 구매 &7| 커맨드'
+    
+    items:
+      mode:
+        material: OAK_SIGN
+        name: '&e모드&7: %mode%'
+        #%cycle% is replaced with cycle values above
+        lore:
+        - '&7 다른모드로 전환하려면 클릭:'
+        - '%cycle%'
+      amount:
+        material: CHEST
+        name: '&e거래량&7: &r%amount%'
+        lore:
+        - '&7클릭해서 설정.'
+      price:
+        material: GOLD_INGOT
+        name: '&ePriço&7: &r%price%'
+        lore:
+        - '&7클릭해서 가격을 설정.'
+        - ''
+        - '&7>> 클릭해서 돈 대신에 받을'
+        - '&7 아이템을 설정.'
+        buy_and_sell_lore:
+        - '&7>> 좌클릭을 해서 구매 가격을 설정.'
+        - '&7>> 우클릭을 해서 판매 가격을 설정.'
+        - ''
+        - '&7>> 클릭해서 돈 대신에 받을'
+        - '&7 아이템을 설정.'
+      delete:
+        material: BARRIER
+        name: '&c지우기'
+        lore:
+        - '&7클릭해서 아이템을 &c삭제.'
+      command:
+        material: COMMAND_BLOCK
+        name: '&e커맨드'
+        lore:
+        - '&7 최근에 실행한 명령어:'
+        - '&7- &e%command%&7'
+        - ''
+        - '&7>> 좌클릭을 해서 추가.'
+        - '&7>> 우클릭을 해서 리셋.'
+      buy_limit:
+        material: FEATHER
+        name: '&eLimite de compra&7: %limit%'
+        lore:
+        - '&7>> Clique para editar'
+      player_limit:
+        material: PLAYER_HEAD
+        name: '&e구매 제한&7: &f%limit%'
+        lore:
+        - '&7>> 우클릭을 해서 전환.:'
+        - '%cycle%'
+        - ''
+        - '&7>> 좌클릭을 해서 설정.'
+      limit_cooldown:
+        material: CLOCK
+        name: '&e쿨타임&7: &f%cooldown%'
+        lore:
+        - '&7다음 제한 리셋까지: &e%next%'
+        - ''
+        - '&7>> 좌클릭해서 쿨타임을 설정.'
+        - '&7>> 우클릭해서 제한을 &c초기화.'
+      discount:
+        material: EMERALD
+        name: '&e할인&7: &f%discount%%'
+        lore:
+        - '&7끝날 때까지: &e%discount_end%'
+        - ''
+        - '&7>> 클릭해서 설정'
+  confirm_action:
+    title: '&8확실합니까?'
+    items:
+      accept:
+        material: GREEN_TERRACOTTA
+        name: '&a네, 물론이죠'
+      cancel:
+        material: RED_TERRACOTTA
+        name: '&c아뇨, 취소하겠습니다.'
+  
+  
+  #-------------------- Expired Storage --------------------#
+  expired_storage:
+    title: '&8분실물 창고'
+
+#----------------- Villager Shop Item settings -----------------#
+
+shop_item:
+  material: VILLAGER_SPAWN_EGG
+  name: '&b&l주민 상점을 생성하세요!'
+  #Placeholders: %shop_size%, %storage_size%
+  lore:
+  - '&7이 상점을 &a설치&7하여'
+  - '&7당신만의 아주 멋진'
+  - '&a상점&7을 만드세요!'
+  - ''
+  - '&7>> &a상점 칸 크기&7: &c%shop_size%'
+  - '&7>> &a창고 칸 크기&7: &c%storage_size%'

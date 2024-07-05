@@ -1,0 +1,68 @@
+corn_seeds:
+  displayname: <white>옥수수 씨앗
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/crops/corn/corn_seeds
+    custom_model_data: 1017
+corn:
+  displayname: <white>옥수수
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/corn/corn
+    custom_model_data: 1006
+corn_silver_star:
+  displayname: <white>옥수수 ★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/corn/corn_silver_star
+    custom_model_data: 1007
+corn_golden_star:
+  displayname: <white>옥수수 <gold>★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/corn/corn_golden_star
+    custom_model_data: 1008
+corn_stage_1:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 24
+      model: item/crops/corn/stage_1
+  Pack:
+    generate_model: false
+    model: item/crops/corn/stage_1
+    custom_model_data: 1018
+corn_stage_2:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 25
+      model: item/crops/corn/stage_2
+  Pack:
+    generate_model: false
+    model: item/crops/corn/stage_2
+    custom_model_data: 1019
+corn_stage_3:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 26
+      model: item/crops/corn/stage_3
+  Pack:
+    generate_model: false
+    model: item/crops/corn/stage_3
+    custom_model_data: 1020
+corn_stage_4:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 27
+      model: item/crops/corn/stage_4
+  Pack:
+    generate_model: false
+    model: item/crops/corn/stage_4
+    custom_model_data: 1021

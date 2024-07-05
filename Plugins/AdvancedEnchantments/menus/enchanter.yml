@@ -1,0 +1,170 @@
+# Configuration for Enchanter
+#  Change commands how to access it in top of config.yml
+
+# set to "none" to disable
+open-sound: "ENDERDRAGON_WINGS"
+# In what worlds enchanter is disabled
+disabled-in-worlds:
+  - "bad_world"
+messages:
+  sound: ENTITY_PLAYER_LEVELUP
+right-click-to-view-enchants: true
+go-back-item:
+  enabled: true
+  item:
+    type: NETHER_STAR
+    id: 0
+    custom-model-data: 0
+  name: "&c&lGo Back"
+  lore: [ ]
+# Should enchanter stay open after item is bought?
+keep-open: true
+# Enchanter inventory size
+# 9-18-27-36-45-54
+#
+# Placeholders:
+#  %group-enchant-count% - number of enchants in the group
+#  %price% - price
+#  %left% - remaining needed exp until player can purchase item
+# Economy:
+# exp, money, level, souls (works with items that are held when opening inventory), diamonds, gold (gold ingots), emeralds
+inventory:
+  size: 18
+  name: "&7Server Enchanter"
+  settings:
+    # Which level books should enchanter give?
+    # "ALL" - gives all levels
+    # <number> - Gives specific level of enchant
+    enchanterBookLevel: "ALL"
+  items:
+    0-18:
+      item:
+        type: STAINED_GLASS_PANE
+        id: 7
+        custom-model-data: 0
+        force-glow: false
+      name: " "
+      lore: [ ]
+    2:
+      item:
+        type: STAINED_GLASS_PANE
+        id: 0
+        custom-model-data: 0
+        force-glow: false
+      enchant-group: SIMPLE
+      price: exp:352
+      sound: BLOCK_ANVIL_LAND
+      name: "&f&l심플 등급 인챈트 &7(우클릭)"
+      lore:
+        - "&7우클릭을 해서 랜덤으로"
+        - "&f심플 &7등급의 인챈트북을 얻어보세요."
+        - ""
+        - "&b&l구매하는데 &f레벨 15&l의 경험치가 소모됩니다. &7(%left% 만큼 경험치가 더 필요합니다.)"
+    3:
+      item:
+        type: STAINED_GLASS_PANE
+        id: 5
+        custom-model-data: 0
+        force-glow: false
+      enchant-group: UNIQUE
+      sound: BLOCK_ANVIL_LAND
+      price: exp:550
+      name: "&a&l유니크 등급 인챈트 &7(우클릭)"
+      lore:
+        - "&7우클릭을 해서 랜덤으로"
+        - "&a유니크 &7등급의 인챈트북을 얻어보세요."
+        - ""
+        - "&b&l구매하는데 &f레벨 20&l의 경험치가 소모됩니다. &7(%left% 만큼 경험치가 더 필요합니다.)"
+    4:
+      item:
+        type: STAINED_GLASS_PANE
+        id: 3
+        custom-model-data: 0
+        force-glow: false
+      enchant-group: ELITE
+      price: exp:910
+      sound: BLOCK_ANVIL_LAND
+      name: "&b&l엘리트 등급 인챈트 &7(우클릭)"
+      lore:
+        - "&7우클릭을 해서 랜덤으로"
+        - "&b엘리트 &7등급의 인챈트북을 얻어보세요."
+        - ""
+        - "&b&l구매하는데 &f레벨 25&l의 경험치가 소모됩니다. &7(%left% 만큼 경험치가 더 필요합니다.)"
+    5:
+      item:
+        type: STAINED_GLASS_PANE
+        id: 4
+        custom-model-data: 0
+        force-glow: false
+      enchant-group: ULTIMATE
+      price: exp:1507
+      sound: BLOCK_ANVIL_LAND
+      name: "&e&l궁극 등급 인챈트 &7(우클릭)"
+      lore:
+        - "&7우클릭을 해서 랜덤으로"
+        - "&b궁극 &7등급의 인챈트북을 얻어보세요."
+        - ""
+        - "&b&l구매하는데 &f레벨 30&l의 경험치가 소모됩니다. &7(%left% 만큼 경험치가 더 필요합니다.)"
+    6:
+      item:
+        type: STAINED_GLASS_PANE
+        id: 1
+        custom-model-data: 0
+        force-glow: false
+      enchant-group: LEGENDARY
+      price: exp:2920
+      sound: BLOCK_ANVIL_LAND
+      name: "&6&l전설 등급 인챈트 &7(우클릭)"
+      lore:
+        - "&7우클릭을 해서 랜덤으로"
+        - "&6전설 &7등급의 인챈트북을 얻어보세요."
+        - ""
+        - "&b&l구매하는데 &f레벨 40&l의 경험치가 소모됩니다. &7(%left% 만큼 경험치가 더 필요합니다.)"
+    13:
+      item:
+        type: STAINED_GLASS_PANE
+        id: 6
+        custom-model-data: 0
+        force-glow: false
+      enchant-group: FABLED
+      price: exp:5345
+      sound: BLOCK_ANVIL_LAND
+      name: "&d&lfable 등급 인챈트 &7(우클릭)"
+      lore:
+        - "&7우클릭을 해서 랜덤으로"
+        - "&dfable &7등급의 인챈트북을 얻어보세요."
+        - ""
+        - "&b&l구매하는데 &f레벨 50&l의 경험치가 소모됩니다. &7(%left% 만큼 경험치가 더 필요합니다.)"
+    9:
+      item:
+        type: STAINED_GLASS_PANE
+        id: 7
+        custom-model-data: 0
+        force-glow: false
+      name: " "
+      lore: [ ]
+    17:
+      item:
+        type: STAINED_GLASS_PANE
+        id: 7
+        custom-model-data: 0
+        force-glow: false
+      name: " "
+      lore: [ ]
+
+# Confirmation inventory for enchanter payments
+# Confirm or deny the transaction, acts like 2-step confirmation
+confirmation-inventory:
+  enabled: true
+  name: "&a확인 메뉴"
+  accept:
+    material: STAINED_GLASS_PANE
+    damage: 5
+    name: "&a수락"
+    lore:
+      - "&7클릭해서 %price% 만큼의 %paymentType%를 지불합니다."
+  cancel:
+    material: STAINED_GLASS_PANE
+    damage: 14
+    name: "&c취소"
+    lore: [ ]

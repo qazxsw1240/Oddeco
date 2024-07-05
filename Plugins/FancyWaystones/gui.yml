@@ -1,0 +1,31 @@
+Configuration Version: "1.0.10"
+
+Category:
+  Warpstone:
+    Default: favorite
+  Waystone:
+    Default: favorite
+  Waypoint:
+    # Possible Values: {personal}, {waystone}, {death}, or server category name/id
+    Default: "{personal}"
+
+Animations:
+  Transitions:
+    Slide:
+      Cover 2:
+        meta:
+          display-name: '&7  '
+        type: MAGENTA_STAINED_GLASS_PANE
+      Cover 1:
+        meta:
+          display-name: '&7  '
+        type: PURPLE_STAINED_GLASS_PANE
+    Dissolve:
+      Cover 2:
+        meta:
+          display-name: '&7  '
+        type: MAGENTA_STAINED_GLASS_PANE
+      Cover 1:
+        meta:
+          display-name: '&7  '
+        type: PURPLE_STAINED_GLASS_PANE

@@ -1,0 +1,234 @@
+version: 3.11.0
+# A bunch of different and modifiable messages
+#   used in the "/md" commands.
+general:
+  found-item-broadcast: "&F%receiver%&가 %item%을 찾았습니다!"
+  prevented-netherite-upgrade: "&6이 아이템은 네더라이트로 강화가 불가능합니다."
+command:
+  only-players: "&C오직 플레이어만 이 명령어를 실행할 수 있습니다."
+  no-access: "&C실행시킬 수 있는 권한이 없습니다."
+  reload-config: "&AMythicDrops config 리로드됨."
+  reload-plugin: "&A리로드 성공."
+  save-config: "&AMythicDrops configs 저장됨."
+  tier-does-not-exist: "&C그런 티어는 존재하지 않습니다."
+  custom-item-does-not-exist: "&C그 커스텀 아이템은 존재하지 않습니다."
+  player-does-not-exist: "&C그 플레이어는 지금 접속중이 아닙니다."
+  world-does-not-exist: "&C그런 월드는 없습니다."
+  socket-gem-does-not-exist: "&C그 룬은 존재하지 않습니다."
+  item-group-does-not-exist: "&C그 아이템 그룹은 존재하지 않습니다."
+  unknown-player: "알려지지 않은 플레이어입니다."
+  custom-item-list: "&C커스텀 아이템 리스트: &F%customitems%"
+  tier-list: "&7티어 리스트: &F%tiers%"
+  debug: "&7디버그 출력 모드."
+  help: "&7/%command% &F- &7%help%"
+  custom-create:
+    success: "&AID가 &F%name%&A인 커스텀 아이템을 생성합니다.."
+    failure: "&C커스텀 아이템을 생성할 수 없습니다."
+    requires-item: "&C손에 든게 없어서 커스텀 아이템을 생성할 수 없습니다."
+    requires-item-meta: "&C이름, 설명, 인챈트 설정이 되어있지 않아 커스텀 아이템을 생성할 수 없습니다."
+    requires-display-name: "&C이름이 없어 커스텀 아이템을 생성할 수 없습니다."
+  drop-custom:
+    success: "&F%amount%&A개의 커스텀 아이템을 떨어뜨렸습니다."
+    failure: "&F%amount%&A개의 커스텀 아이템을 떨어뜨리지 못했습니다."
+  drop-extender:
+    success: "&F%amount%&A개의 &3룬 소켓 확장자&를 떨궜습니다."
+    failure: "&F%amount%&C개의 &3룬 소켓 확장자&C를 떨구지 못했습니다."
+  drop-gem:
+    success: "&F%amount%&A개의 &6보석 룬(s)&A을 떨궜습니다."
+    failure: "&C%amount%&C개의 &6보석 룬(s)&C을 떨굴 수 없습니다."
+  drop-random:
+    success: "&F%amount%&A개의 플러그인 고유 아이템을 떨궜습니다."
+    failure: "&C%amount%&C개의 플러그인 고유 아이템을 떨굴 수 없습니다."
+  drop-tome:
+    success: "&AYou dropped &F%amount%&A &5Identity Tome(s)&A."
+    failure: "&CYou were unable to drop &F%amount%&C &5Identity Tome(s)&C."
+  drop-unidentified:
+    success: "&AYou dropped &F%amount%&A &DUnidentified Item(s)&A."
+    failure: "&CYou were unable to drop &F%amount%&C &DUnidentified Item(s)&C."
+  give-custom:
+    sender-success: "&F%receiver%&A was given &F%amount%&A custom MythicDrops item(s)."
+    sender-failure: "&F%receiver%&C was unable to be given &F%amount%&C custom MythicDrops item(s)."
+    receiver-success: "&AYou have received &F%amount%&A MythicDrops item(s)!"
+    receiver-failure: "&CYou were unable to be given &F%amount%&C custom MythicDrops item(s)."
+  give-extender:
+    sender-success: "&F%receiver%&A was given &F%amount%&A &3Socket Extender(s)&A."
+    sender-failure: "&F%receiver%&C was unable to be given &F%amount%&C &3Socket Extender(s)&C."
+    receiver-success: "&AYou have received &F%amount%&A &3Socket Extender(s)&A!"
+    receiver-failure: "&CYou were unable to be given &F%amount%&C &3Socket Extender(s)&C."
+  give-gem:
+    sender-success: "&F%receiver%&A was given &F%amount%&A &6Socket Gem(s)&A."
+    sender-failure: "&F%receiver%&C was unable to be given &F%amount%&C &6Socket Gem(s)&C."
+    receiver-success: "&AYou have received &F%amount%&A &6Socket Gem(s)&A!"
+    receiver-failure: "&CYou were unable to be given &F%amount%&C &6Socket Gem(s)&C."
+  give-random:
+    sender-success: "&F%receiver%&A was given &F%amount%&A MythicDrops item(s)."
+    sender-failure: "&F%receiver%&C was unable to be given &F%amount%&C MythicDrops item(s)."
+    receiver-success: "&AYou were given &F%amount%&A MythicDrops item(s)."
+    receiver-failure: "&CYou were unable to be given &F%amount%&C MythicDrops item(s)."
+  give-tome:
+    sender-success: "&F%receiver%&A was given &F%amount%&A &5Identity Tome(s)&A."
+    sender-failure: "&F%receiver%&C was unable to be given &F%amount%&C &5Identity Tome(s)&C."
+    receiver-success: "&AYou have received &F%amount%&A &5Identity Tome(s)&A!"
+    receiver-failure: "&CYou were unable to be given &F%amount%&C &5Identity Tome(s)&C."
+  give-unidentified:
+    sender-success: "&F%receiver%&A was given &F%amount%&A &DUnidentified Item(s)&A."
+    sender-failure: "&F%receiver%&C was unable to be given &F%amount%&C &DUnidentified Item(s)&C."
+    receiver-success: "&AYou have received &F%amount%&A &DUnidentified Item(s)&A!"
+    receiver-failure: "&CYou were unable to be given &F%amount%&C &DUnidentified Item(s)&C."
+  item-groups:
+    list: "&6Item Groups: &F%itemgroups%"
+    materials-list: "&6Item Group (&F%itemgroup%&6) materials: &F%materials%"
+    priority: "&6Item Group (&F%itemgroup%&6) priority: &F%priority%"
+  socket-gems:
+    list: "&6Socket Gems: &F%socketgems%"
+    commands: "&6Socket Gem (&F%socketgem%&6) commands: &F%commands%"
+    effects: "&6Socket Gem (&F%socketgem%&6) effects: &F%effects%"
+    enchantments: "&6Socket Gem (&F%socketgem%&6) enchantments: &F%enchantments%"
+  modify:
+    failure: "&6[MythicDrops] &CCannot modify this item!"
+    name: "&6[MythicDrops] &ASuccessfully modified the name of the item in your hand!"
+    lore:
+      add: "&6[MythicDrops] &ASuccessfully added lore to the item in your hand!"
+      remove: "&6[MythicDrops] &ASuccessfully removed lore from the item in your hand!"
+      insert: "&6[MythicDrops] &ASuccessfully inserted lore on the item in your hand!"
+      set: "&6[MythicDrops] &ASuccessfully set lore on the item in your hand!"
+    enchantment:
+      add: "&6[MythicDrops] &ASuccessfully added an enchantment to the item in your hand!"
+      remove: "&6[MythicDrops] &ASuccessfully removed an enchantment from the item in your hand!"
+  spawn-custom:
+    success: "&6[MythicDrops] &AYou have received &F%amount%&A custom MythicDrops item(s)."
+    failure: "&6[MythicDrops] &CYou were unable to be given &F%amount%&C custom MythicDrops item(s)."
+  spawn-extender:
+    success: "&6[MythicDrops] &AYou have received &F%amount%&A &3Socket Extender(s)&A."
+    failure: "&6[MythicDrops] &CYou were unable to be given &F%amount%&C &3Socket Extender(s)&C."
+  spawn-gem:
+    success: "&6[MythicDrops] &AYou have received &F%amount%&A &6Socket Gem(s)&A."
+    failure: "&6[MythicDrops] &CYou were unable to be given &F%amount%&C &6Socket Gem(s)&C."
+  spawn-random:
+    success: "&6[MythicDrops] &AYou were given &F%amount%&A MythicDrops item(s)."
+    failure: "&6[MythicDrops] &CYou were unable to be given &F%amount%&C MythicDrops item(s)."
+  spawn-tome:
+    success: "&6[MythicDrops] &AYou have received &F%amount%&A &5Identity Tome(s)&A."
+    failure: "&6[MythicDrops] &CYou were unable to be given &F%amount%&C &5Identity Tome(s)&C."
+  spawn-unidentified:
+    success: "&6[MythicDrops] &AYou have received &F%amount%&A &DUnidentified Item(s)&A."
+    failure: "&6[MythicDrops] &CYou were unable to be given &F%amount%&C &DUnidentified Item(s)&C."
+  socket-gem-combiner-add:
+    success: "&6[MythicDrops] &AYou successfully added a socket gem combiner!"
+    failure: "&6[MythicDrops] &CYou failed to add a socket gem combiner!"
+  socket-gem-combiner-remove:
+    success: "&6[MythicDrops] &AYou successfully removed a &4Socket Gem Combiner&A!"
+    failure: "&6[MythicDrops] &CYou failed to remove a socket gem combiner!"
+  socket-gem-combiner-open: "&A룬 압축기 GUI를 &F%player%&A에게 보여줍니다."
+socketing:
+  success: "&A아이템에 성공적으로 보석 룬을 새겼습니다!"
+  not-in-item-group: "&C그 보석 룬은 해당 종류의 아이템에 넣을 수 없습니다."
+  no-open-sockets: "&C그 아이템은 더이상 비어있는 룬 소켓이 없습니다."
+  prevented-crafting: "&6보석 룬&C과 &3룬 소켓 확장자&C는 제작될 수 없습니다!"
+  combiner-must-be-gem: "&C오직 압축기에는 &6보석 룬 &C만 집어넣을 수 있습니다."
+  combiner-claim-output: "&C보석룬을 더 넣기 전에 이미 압축된 보석룬을 꺼내주세요."
+  added-socket: "&A성공적으로 아이템에 룬 소켓을 추가하였습니다!"
+  no-socket-extender-slots: "&C이 아이템은 열려있는 룬 소켓 슬롯이 없습니다."
+  maximum-socket-extender-slots: "&C이 아이템은 최대치로 룬 소켓을 심었습니다."
+identification:
+  success: "&A성공적으로 아이템을 감정하였습니다!"
+  failure: "&C이 아이템을 감정할 수 없습니다!"
+  not-unidentified-item: "&C이미 감정된 장비를 다시 감정할 수 없습니다!"
+repairing:
+  cannot-use: "&C그 아이템은 수리될 수 없습니다!"
+  do-not-have: "&C그 아이템을 수리하기에는 재료가 부족합니다."
+  success: "&A그 아이템을 성공적으로 수리하였습니다!"
+  instructions: "&A모루 위에 이 아이템을 다시 올려서 수리하세요!"
+# Various display names that are used for
+#   different itemNameFormat variables
+display-names:
+  IRON_SHOVEL: 철 삽
+  IRON_PICKAXE: 철 곡괭이
+  IRON_AXE: 철 도끼
+  BOW: 활
+  IRON_SWORD: 철 검
+  WOODEN_SWORD: 나무 검
+  WOODEN_SHOVEL: 나무 삽
+  WOODEN_PICKAXE: 나무 곡괭이
+  WOODEN_AXE: 나무 도끼
+  STONE_SWORD: 돌 검
+  STONE_SHOVEL: 돌 삽
+  STONE_PICKAXE: 돌 곡괭이
+  STONE_AXE: 돌 도끼
+  DIAMOND_SWORD: 다이아몬드 검
+  DIAMOND_SHOVEL: 다이아몬드 삽
+  DIAMOND_PICKAXE: 다이아몬드 곡괭이
+  DIAMOND_AXE: 다이아몬드 도끼
+  GOLDEN_SWORD: 금 검
+  GOLDEN_SHOVEL: 금 삽
+  GOLDEN_PICKAXE: 금 곡괭이
+  GOLDEN_AXE: 금 도끼
+  WOODEN_HOE: 나무 낫
+  STONE_HOE: 돌 낫
+  IRON_HOE: 철 낫
+  DIAMOND_HOE: 다이아몬드 낫
+  GOLDEN_HOE: 금 낫
+  LEATHER_HELMET: 가죽 모자
+  LEATHER_CHESTPLATE: 가죽 갑옷
+  LEATHER_LEGGINGS: 가죽 레깅스
+  LEATHER_BOOTS: 가죽 부츠
+  CHAINMAIL_HELMET: 사슬 모자
+  CHAINMAIL_CHESTPLATE: 사슬 갑옷
+  CHAINMAIL_LEGGINGS: 사슬 레깅스
+  CHAINMAIL_BOOTS: 사슬 부츠
+  IRON_HELMET: 철 헬멧
+  IRON_CHESTPLATE: 철 갑옷
+  IRON_LEGGINGS: 철 레깅스
+  IRON_BOOTS: 철 부츠
+  DIAMOND_HELMET: 다이아몬드 헬멧
+  DIAMOND_CHESTPLATE: 다이아몬드 갑옷
+  DIAMOND_LEGGINGS: 다이아몬드 레깅스
+  DIAMOND_BOOTS: 다이아몬드 부츠
+  GOLDEN_HELMET: 금 헬멧
+  GOLDEN_CHESTPLATE: 금 갑옷
+  GOLDEN_LEGGINGS: 금 레깅스
+  GOLDEN_BOOTS: 금 부츠
+  FISHING_ROD: 낚시대
+  SHEARS: 가위
+  BOOK: 책
+  ELYTRA: 겉날개
+  TRIDENT: 삼지창
+  CROSSBOW: 석궁
+  ARROW: 화살
+  TIPPED_ARROW: 뭔가 묻은 화살
+  SPECTRAL_ARROW: 발광 화살
+  SHIELD: 방패
+  Ordinary: 기본의
+  DURABILITY: 튼튼한
+  PROTECTION_ENVIRONMENTAL: 안전한
+  LOOT_BONUS_BLOCKS: 행운의
+  PROTECTION_FIRE: 화염 방지의
+  DIG_SPEED: 광부의
+  PROTECTION_FALL: 가벼운
+  SILK_TOUCH: 조심스러운
+  PROTECTION_EXPLOSIONS: 방탄의
+  PROTECTION_PROJECTILE: 회피의
+  OXYGEN: 인어의
+  WATER_WORKER: 아틀란티스인의
+  THORNS: 따가운
+  ARROW_INFINITE: 장전된
+  DAMAGE_UNDEAD: 성스러운
+  ARROW_FIRE: 화염의
+  DAMAGE_ALL: 날카로운
+  ARROW_KNOCKBACK: 화살 넉백의
+  KNOCKBACK: 무거운
+  ARROW_DAMAGE: 갈고 닦은
+  DAMAGE_ARTHROPODS: 분쇄자의
+  LOOT_BONUS_MOBS: 갈무리의
+  FIRE_ASPECT: 불타는
+  CREEPER: 크리퍼
+  ZOMBIE: 좀비
+  NETHERITE_AXE : 네더라이트 도끼
+  NETHERITE_BOOTS : 네더라이트 부츠
+  NETHERITE_CHESTPLATE : 네더라이트 갑옷
+  NETHERITE_HELMET : 네더라이트 헬멧
+  NETHERITE_HOE : 네더라이트 낫
+  NETHERITE_LEGGINGS : 네더라이트 레깅스
+  NETHERITE_PICKAXE : 네더라이트 곡괭이
+  NETHERITE_SHOVEL : 네더라이트 삽
+  NETHERITE_SWORD : 네더라이트 검

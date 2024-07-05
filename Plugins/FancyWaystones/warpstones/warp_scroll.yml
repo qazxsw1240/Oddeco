@@ -1,0 +1,16 @@
+Item:
+  type: PAPER
+  meta:
+    display-name: '&d&l순간이동 마법서'
+    lore:
+      - '&7이 마법서를 사용하여 마법석 위치로 이동합니다'
+      - '&e* 일회용 *'
+      - '&e* 10초 쿨타임*'
+Warm Up Effect: wuExample
+Post Teleport Effect: ptExample
+Use Condition:
+  Criteria: ALWAYS
+Behavior:
+  Charge Players: true
+  One Time Item: true
+  Cooldown: 10s

@@ -1,0 +1,55 @@
+cooking_pot:
+  Type: SILVERFISH
+  Display: 'Cooking Pot'
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear  
+  DamageModifiers:
+  - DROWNING 0
+  - VOID 0
+  - LIGHTNING 0
+  - SUICIDE 0
+  - STARVATION 0
+  - POISON 0
+  - MAGIC 0
+  - DRAGON_BREATH 0
+  - WITHER 0
+  - FALLING_BLOCK 0
+  - THORNS 0
+  - MELTING 0
+  - FIRE_TICK 0
+  - FIRE 0
+  - HOT_FLOOR 0
+  - SUFFOCATION 0
+  - PROJECTILE 0
+  - CONTACT 0
+  Options:
+    Collidable: true
+    NoAI: true
+    Invincible: true
+    Silent: true
+    PreventOtherDrops: true
+    Persistent: true
+    Despawn: false
+    PreventBlockInfection: true
+    KnockbackResistance: 1
+  Skills:
+  - setstance{stance=cold} @self ~onSpawn
+  - model{mid=cooking_pot;n=false;d=false;i=false} @self ~onSpawn
+  - skill{s=cookingpotPROXIMITY} @self ~onSpawn
+  - skill{s=cookingpotINVISIBILITY} @self ~onTimer:1
+  - skill{s=cookingpotFX} @self ~onTimer:10
+  - skill{s=cookingpotREMOVE} @self ~onDamaged
+  
+cookingpot_splash:
+  Type: ARMOR_STAND
+  Disguise: PUFFERFISH setInvisible
+  Display: 'Cooking Pot Splash'
+  Options:
+    Marker: true
+    Invisible: true
+  Skills:
+  - model{mid=cooking_pot_splash;n=false;d=false} @self ~onSpawn
+  - skill{s=cookingpotsplashLIFE} @self ~onSpawn
+  

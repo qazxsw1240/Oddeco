@@ -1,0 +1,259 @@
+items:
+  basic_item:
+    consume: true # If the item should be consumed when used
+    event-cancel: true # If the event should be cancelled when used (e.g. right-clicking a block)
+    # permission: "somepermission.for.item" # The permission required to use the item
+    item:
+      amount: 1 # The amount of the item
+      type: RED_BED
+      name: '&cSimple Test Item'
+      lore:
+      - ''
+      - '&7Click me to leave'
+      enchanted: true
+    commands:
+      # forceOp: false # If the player should be opped when the command is executed
+      byplayer:
+      - say Hello from CommandItems!
+      byconsole:
+      - give %player% diamond 1
+  #
+  #
+  #
+  #
+  minerpermission:
+    consume: true
+    event-cancel: true
+    item:
+      type: FLOWER_BANNER_PATTERN
+      amount: 1
+      name: '&c광부 기본 전직서'
+      lore:
+      - ''
+      - '&7우클릭하여 전직할 권한을 획득합니다.'
+      enchanted: true
+    commands:
+      byplayer:
+      - say Make sure to change this in the config!
+      byconsole:
+      - say Make sure to change this in the config!
+      forceOp: false
+    cooldown: 0
+  #
+  #
+  #
+  #
+  shopupgrade2:
+    consume: true
+    event-cancel: true
+    item:
+      type: PAPER
+      amount: 1
+      name: §a§l상점칸 2차 확장 업그레이드
+      lore:
+      - §7사용하면 상점칸이 확장된다
+      enchanted: false
+    commands:
+      byplayer:
+      - vm setsize shopfront 2
+      byconsole:
+      - null
+      forceOp: false
+    cooldown: 0
+  shopupgrade3:
+    consume: true
+    event-cancel: true
+    item:
+      type: PAPER
+      amount: 1
+      name: §a§l상점칸 3차 확장 업그레이드
+      lore:
+      - §7사용하면 상점칸이 확장된다
+      enchanted: false
+    commands:
+      byplayer:
+      - vm setsize shopfront 3
+      byconsole:
+      - null
+      forceOp: false
+    cooldown: 0
+  shopupgrade4:
+    consume: true
+    event-cancel: true
+    item:
+      type: PAPER
+      amount: 1
+      name: §a§l상점칸 4차 확장 업그레이드
+      lore:
+      - §7사용하면 상점칸이 확장된다
+      enchanted: false
+    commands:
+      byplayer:
+      - vm setsize shopfront 4
+      byconsole:
+      - null
+      forceOp: false
+    cooldown: 0
+  shopupgrade5:
+    consume: true
+    event-cancel: true
+    item:
+      type: PAPER
+      amount: 1
+      name: §a§l상점칸 5차 확장 업그레이드
+      lore:
+      - §7사용하면 상점칸이 확장된다
+      enchanted: false
+    commands:
+      byplayer:
+      - vm setsize shopfront 5
+      byconsole:
+      - null
+      forceOp: false
+    cooldown: 0
+  shopupgrade6:
+    consume: true
+    event-cancel: true
+    item:
+      type: PAPER
+      amount: 1
+      name: §a§l상점칸 6차 확장 업그레이드
+      lore:
+      - §7사용하면 상점칸이 확장된다
+      enchanted: false
+    commands:
+      byplayer:
+      - vm setsize shopfront 6
+      byconsole:
+      - null
+      forceOp: false
+    cooldown: 0
+  storageupgrade2:
+    consume: true
+    event-cancel: true
+    item:
+      type: PAPER
+      amount: 1
+      name: §a§l재고칸 2차 확장 업그레이드
+      lore:
+      - §7사용하면 재고칸이 확장된다
+      enchanted: false
+    commands:
+      byplayer:
+      - vm setsize storage 2
+      byconsole:
+      - null
+      forceOp: false
+    cooldown: 0
+  storageupgrade3:
+    consume: true
+    event-cancel: true
+    item:
+      type: PAPER
+      amount: 1
+      name: §a§l재고칸 3차 확장 업그레이드
+      lore:
+      - §7사용하면 재고칸이 확장된다
+      enchanted: true
+    commands:
+      byplayer:
+      - vm setsize storage 3
+      byconsole:
+      - null
+      forceOp: false
+    cooldown: 0
+  storageupgrade4:
+    consume: true
+    event-cancel: true
+    item:
+      type: PAPER
+      amount: 1
+      name: §a§l재고칸 4차 확장 업그레이드
+      lore:
+      - §7사용하면 재고칸이 확장된다
+      enchanted: false
+    commands:
+      byplayer:
+      - vm setsize storage 4
+      byconsole:
+      - null
+      forceOp: false
+    cooldown: 0
+  storageupgrade5:
+    consume: true
+    event-cancel: true
+    item:
+      type: PAPER
+      amount: 1
+      name: §a§l재고칸 5차 확장 업그레이드
+      lore:
+      - §7사용하면 재고칸이 확장된다
+      enchanted: false
+    commands:
+      byplayer:
+      - vm setsize storage 5
+      byconsole:
+      - null
+      forceOp: false
+    cooldown: 0
+  storageupgrade6:
+    consume: true
+    event-cancel: true
+    item:
+      type: PAPER
+      amount: 1
+      name: §a§l재고칸 6차 확장 업그레이드
+      lore:
+      - §7사용하면 재고칸이 확장된다
+      enchanted: false
+    commands:
+      byplayer:
+      - vm setsize storage 6
+      byconsole:
+      - null
+      forceOp: false
+    cooldown: 0
+  #
+  #
+  #
+  #
+  #
+  fishscale:
+    consume: false
+    event-cancel: true
+    item:
+      type: CLOCK
+      amount: 1
+      name: §9§l무게 측정 도구
+      lore:
+      - §7물고기의 무게를 측정하는데 쓰는 도구다.
+      enchanted: true
+    commands:
+      byplayer:
+      - fish scales
+      byconsole:
+      - null
+      forceOp: false
+    cooldown: 0
+#
+#
+#
+#
+#
+  test:
+    consume: true
+    event-cancel: true
+    item:
+      type: PAPER
+      amount: 1
+      enchanted: false
+      name: §9§l테스트
+    commands:
+      byplayer:
+      - money give %worldguard_region_owner% 1000
+      byconsole:
+      - money give %worldguard_region_owner% 1000
+      forceOp: false
+    cooldown: 0
+
+

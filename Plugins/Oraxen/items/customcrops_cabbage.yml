@@ -1,0 +1,84 @@
+cabbage_seeds:
+  displayname: <white>양배추 씨앗
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/crops/cabbage/cabbage_seeds
+    custom_model_data: 1006
+cabbage:
+  displayname: <white>양배추
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/cabbage/cabbage
+    custom_model_data: 1000
+cabbage_silver_star:
+  displayname: <white>양배추 ★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/cabbage/cabbage_silver_star
+    custom_model_data: 1001
+cabbage_golden_star:
+  displayname: <white>양배추 <gold>★
+  material: APPLE
+  Pack:
+    generate_model: false
+    model: item/crops/cabbage/cabbage_golden_star
+    custom_model_data: 1002
+cabbage_stage_1:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 42
+      model: item/crops/cabbage/stage_1
+  Pack:
+    generate_model: false
+    model: item/crops/cabbage/stage_1
+    custom_model_data: 1007
+cabbage_stage_2:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 43
+      model: item/crops/cabbage/stage_2
+  Pack:
+    generate_model: false
+    model: item/crops/cabbage/stage_2
+    custom_model_data: 1008
+cabbage_stage_3:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 44
+      model: item/crops/cabbage/stage_3
+  Pack:
+    generate_model: false
+    model: item/crops/cabbage/stage_3
+    custom_model_data: 1009
+cabbage_stage_4:
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 45
+      model: item/crops/cabbage/stage_4
+  Pack:
+    generate_model: false
+    model: item/crops/cabbage/stage_4
+    custom_model_data: 1010
+gigantic_cabbage:
+  displayname: <gold>과성장 양배추
+  material: SUGAR
+  Mechanics:
+    stringblock:
+      custom_variation: 46
+      model: item/crops/cabbage/gigantic_cabbage
+      drop:
+        silktouch: false
+        loots:
+        - oraxen_item: gigantic_cabbage
+          probability: 1.0
+  Pack:
+    generate_model: false
+    model: item/crops/cabbage/gigantic_cabbage
+    custom_model_data: 1011

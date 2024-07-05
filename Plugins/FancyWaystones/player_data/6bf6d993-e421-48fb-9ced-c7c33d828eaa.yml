@@ -1,0 +1,94 @@
+language: en_us
+deathTime: 1710606164182
+lastWaystoneCategory: private
+lastWarpstoneCategory: public
+lastWaypointCategory: '{waystone}'
+favoriteWaystones:
+- a69f5a0b-dae2-4d1a-ae46-64142eb87ee4
+warpstone_cooldowns:
+  warp_scroll: 1710528728775
+waypoints:
+  waystone:a69f5a0b-dae2-4d1a-ae46-64142eb87ee4:
+    server: d83dd353-6ecd-4256-a51b-d17695fd8a40
+    worldId: ec0987cf-935b-46c8-b5de-7a34a8078a15
+    x: -61.0
+    y: 64.0
+    z: 272.0
+    worldName: world
+    name: 테스트
+    color: GRAY
+    dateCreated: 1710473853294
+    visible: true
+    category: waystone
+    lastVisible: 0
+  waystone:6b61bdc0-1184-4e32-82da-11ddee7432bf:
+    server: d83dd353-6ecd-4256-a51b-d17695fd8a40
+    worldId: ec0987cf-935b-46c8-b5de-7a34a8078a15
+    x: -148.0
+    y: 168.0
+    z: 388.0
+    worldName: world
+    name: My Waystone
+    color: GRAY
+    dateCreated: 1710507767474
+    visible: true
+    category: waystone
+    lastVisible: 0
+  waystone:e2712a5d-a3a5-47ee-b3f6-deef477bce52:
+    server: d83dd353-6ecd-4256-a51b-d17695fd8a40
+    worldId: ec0987cf-935b-46c8-b5de-7a34a8078a15
+    x: -28.0
+    y: 63.0
+    z: 332.0
+    worldName: world
+    name: My Waystone
+    color: GRAY
+    dateCreated: 1710526797422
+    visible: true
+    category: waystone
+    lastVisible: 0
+  fa5fe5e0-f933-4175-a870-3d9e0aeb40ea:
+    server: d83dd353-6ecd-4256-a51b-d17695fd8a40
+    worldId: ec0987cf-935b-46c8-b5de-7a34a8078a15
+    x: -64.84881128917631
+    y: 70.0
+    z: 278.47753107625294
+    worldName: world
+    name: Death
+    color: GRAY
+    dateCreated: 1710606164182
+    visible: true
+    category: death
+    lastVisible: 0
+  9007af62-5403-4042-89c1-2985e81f4a99:
+    server: d83dd353-6ecd-4256-a51b-d17695fd8a40
+    worldId: ec0987cf-935b-46c8-b5de-7a34a8078a15
+    x: -62.971507287577836
+    y: 64.0
+    z: 271.643357573779
+    worldName: world
+    name: Waypoint
+    color: YELLOW
+    dateCreated: 1710798353469
+    visible: true
+    lastVisible: 0
+  center_world:
+    server: d83dd353-6ecd-4256-a51b-d17695fd8a40
+    worldId: ec0987cf-935b-46c8-b5de-7a34a8078a15
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    worldName: world
+    name: Center of the World
+    color: WHITE
+    dateCreated: 1710797051929
+    visible: true
+    category: server
+    lastVisible: 0
+deathLocation:
+  server: d83dd353-6ecd-4256-a51b-d17695fd8a40
+  worldUID: ec0987cf-935b-46c8-b5de-7a34a8078a15
+  x: -64.84881128917631
+  y: 70.0
+  z: 278.47753107625294
+  deathTime: 1710606164182

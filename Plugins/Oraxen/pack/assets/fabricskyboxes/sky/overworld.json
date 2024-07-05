@@ -1,0 +1,20 @@
+{
+    "schemaVersion": 2,
+    "type": "overworld",
+    "conditions": {
+        "worlds": ["overworld"]
+    },
+    "decorations": {
+        "showSun": false,
+        "showMoon": false,
+        "showStars": false
+    },
+    "properties": {
+		"priority": -9999,
+		"fade": {
+			"alwaysOn": true
+			},
+        "skySunTint": false,
+        "shouldRotate": false
+    }
+}

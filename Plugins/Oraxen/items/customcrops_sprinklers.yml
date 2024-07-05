@@ -1,0 +1,105 @@
+sprinkler_1:
+  material: SUGAR
+  Mechanics:
+    furniture:
+      type: ITEM_FRAME
+      limited_placing:
+        roof: false
+        floor: true
+        wall: false
+        type: DENY
+        block_types: []
+        block_tags: []
+        oraxen_blocks: []
+      barrier: false
+      block_sounds:
+        place_sound: block.bone_block.place
+        break_sound: block.bone_block.break
+      drop:
+        silktouch: false
+        loots:
+        - oraxen_item: sprinkler_1_item
+          probability: 1.0
+  Pack:
+    generate_model: false
+    model: item/sprinklers/sprinkler_1
+    custom_model_data: 1094
+sprinkler_1_item:
+  displayname: <white>기초 스프링쿨러
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/sprinklers/sprinkler_1_item
+    custom_model_data: 1095
+sprinkler_2:
+  material: SUGAR
+  Mechanics:
+    furniture:
+      type: ITEM_FRAME
+      limited_placing:
+        roof: false
+        floor: true
+        wall: false
+        type: DENY
+        block_types: []
+        block_tags: []
+        oraxen_blocks: []
+      barrier: false
+      block_sounds:
+        place_sound: block.bone_block.place
+        break_sound: block.bone_block.break
+      drop:
+        silktouch: false
+        loots:
+        - oraxen_item: sprinkler_2_item
+          probability: 1.0
+  Pack:
+    generate_model: false
+    model: item/sprinklers/sprinkler_2
+    custom_model_data: 1096
+sprinkler_2_item:
+  displayname: <white>고급 스프링쿨러
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/sprinklers/sprinkler_2_item
+    custom_model_data: 1097
+sprinkler_3:
+  material: SUGAR
+  Mechanics:
+    furniture:
+      type: ITEM_FRAME
+      limited_placing:
+        roof: false
+        floor: true
+        wall: false
+        type: DENY
+        block_types: []
+        block_tags: []
+        oraxen_blocks: []
+      barrier: false
+      block_sounds:
+        place_sound: block.bone_block.place
+        break_sound: block.bone_block.break
+      drop:
+        silktouch: false
+        loots:
+        - oraxen_item: sprinkler_3_item
+          probability: 1.0
+  Pack:
+    generate_model: false
+    model: item/sprinklers/sprinkler_3
+    custom_model_data: 1098
+sprinkler_3_item:
+  displayname: <white>현대 스프링쿨러
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/sprinklers/sprinkler_3_item
+    custom_model_data: 1099
+water_effect:
+  material: SUGAR
+  Pack:
+    generate_model: false
+    model: item/sprinklers/water_effect
+    custom_model_data: 1100

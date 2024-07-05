@@ -1,0 +1,178 @@
+milks:
+  Type: milk_entity
+  Display:
+    Name: Milks
+    Icon:
+      Material: MILK_BUCKET
+  Objects:
+  - mushroom_cow
+  - cow
+  - goat
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 1.0
+      Max: 3.0
+  Job_XP:
+    Chance: 100.0
+    Min: 4.5
+    Max: 6.75
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+crops:
+  Type: block_break
+  Display:
+    Name: Crops
+    Icon:
+      Material: WHEAT
+  Objects:
+  - potatoes
+  - beetroots
+  - pitcher_crop
+  - torchflower_crop
+  - carrots
+  - wheat
+  - melon
+  - pumpkin
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 1.0
+      Max: 3.0
+  Job_XP:
+    Chance: 100.0
+    Min: 4.5
+    Max: 6.75
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+berries:
+  Type: block_harvest
+  Display:
+    Name: Berries
+    Icon:
+      Material: SWEET_BERRIES
+  Objects:
+  - glow_berries
+  - sweet_berries
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 1.0
+      Max: 3.0
+  Job_XP:
+    Chance: 100.0
+    Min: 4.5
+    Max: 6.75
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+flowers:
+  Type: block_break
+  Display:
+    Name: Flowers
+    Icon:
+      Material: POPPY
+  Objects:
+  - wither_rose
+  - pitcher_plant
+  - poppy
+  - cherry_leaves
+  - allium
+  - pink_tulip
+  - mangrove_propagule
+  - sunflower
+  - dandelion
+  - red_tulip
+  - flowering_azalea
+  - lilac
+  - rose_bush
+  - torchflower
+  - pink_petals
+  - flowering_azalea_leaves
+  - white_tulip
+  - azure_bluet
+  - cornflower
+  - lily_of_the_valley
+  - blue_orchid
+  - peony
+  - oxeye_daisy
+  - orange_tulip
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 0.4
+      Max: 1.2
+  Job_XP:
+    Chance: 25.0
+    Min: 1.0
+    Max: 2.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+breed_animals:
+  Type: breed_entity
+  Display:
+    Name: Breed Animals
+    Icon:
+      Material: PIG_SPAWN_EGG
+  Objects:
+  - mushroom_cow
+  - chicken
+  - panda
+  - bee
+  - turtle
+  - wolf
+  - donkey
+  - cow
+  - goat
+  - pig
+  - horse
+  - llama
+  - mule
+  - cat
+  - rabbit
+  - sheep
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 7.5
+      Max: 15.0
+  Job_XP:
+    Chance: 75.0
+    Min: 4.05
+    Max: 6.75
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100

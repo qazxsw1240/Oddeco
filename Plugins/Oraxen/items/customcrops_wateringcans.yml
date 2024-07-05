@@ -1,0 +1,28 @@
+watering_can_1:
+  displayname: <white>구리 물뿌리개
+  material: GOLDEN_HORSE_ARMOR
+  Pack:
+    generate_model: false
+    model: item/wateringcans/watering_can_1
+    custom_model_data: 1000
+watering_can_2:
+  displayname: <white>철 물뿌리개
+  material: GOLDEN_HORSE_ARMOR
+  Pack:
+    generate_model: false
+    model: item/wateringcans/watering_can_2
+    custom_model_data: 1001
+watering_can_3:
+  displayname: <white>금 물뿌리개
+  material: GOLDEN_HORSE_ARMOR
+  Pack:
+    generate_model: false
+    model: item/wateringcans/watering_can_3
+    custom_model_data: 1002
+watering_can_4:
+  displayname: <white>현대 물뿌리개
+  material: GOLDEN_HORSE_ARMOR
+  Pack:
+    generate_model: false
+    model: item/wateringcans/watering_can_4
+    custom_model_data: 1003

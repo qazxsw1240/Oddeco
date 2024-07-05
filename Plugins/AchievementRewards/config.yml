@@ -1,0 +1,537 @@
+# Language
+Language: "English"
+#
+SupportedLanguages:
+  - English
+  - French
+  - German
+  - Italiano
+  - Spanish
+#
+license: "put-here-license"
+#
+rewards:
+  story/mine_stone:
+    Name: "&aStone Age"
+    Enabled: true
+    Command: []
+    Points: 5
+  story/upgrade_tools:
+    Name: "&aGetting an Upgrade"
+    Enabled: true
+    Command: []
+    Points: 5
+  story/smelt_iron:
+    Name: "&aAcquire Hardware"
+    Enabled: true
+    Command: []
+    Points: 5
+  story/obtain_armor:
+    Name: "&aSuit Up"
+    Enabled: true
+    Command: []
+    Points: 5
+  story/lava_bucket:
+    Name: "&aHot Stuff"
+    Enabled: true
+    Command: []
+    Points: 5
+  story/iron_tools:
+    Name: "&aIsn't It Iron Pick"
+    Enabled: true
+    Command: []
+    Points: 10
+  story/deflect_arrow:
+    Name: "&aNot Today, Thank You"
+    Enabled: true
+    Command: []
+    Points: 10
+  story/form_obsidian:
+    Name: "&aIce Bucket Challenge"
+    Enabled: true
+    Command: []
+    Points: 10
+  story/mine_diamond:
+    Name: "&aDiamonds!"
+    Enabled: true
+    Command: []
+    Points: 10
+  story/enter_the_nether:
+    Name: "&aWe Need to Go Deeper"
+    Enabled: true
+    Command: []
+    Points: 10
+  story/shiny_gear:
+    Name: "&aCover Me with Diamonds"
+    Enabled: true
+    Command: []
+    Points: 5
+  story/enchant_item:
+    Name: "&aEnchanter"
+    Enabled: true
+    Command: []
+    Points: 15
+  story/cure_zombie_villager:
+    Name: "&aZombie Doctor"
+    Enabled: true
+    Command: []
+    Points: 15
+  story/follow_ender_eye:
+    Name: "&aEye Spy"
+    Enabled: true
+    Command: []
+    Points: 15
+  story/enter_the_end:
+    Name: "&aThe End?"
+    Enabled: true
+    Command: []
+    Points: 15
+  nether/return_to_sender:
+    Name: "&aReturn to Sender"
+    Enabled: true
+    Command: []
+    Points: 15
+  nether/find_bastion:
+    Name: "&aThose Were the Days"
+    Enabled: true
+    Command: []
+    Points: 20
+  nether/obtain_ancient_debris:
+    Name: "&aHidden in the Depths"
+    Enabled: true
+    Command: []
+    Points: 20
+  nether/fast_travel:
+    Name: "&aSubspace Bubble"
+    Enabled: true
+    Command: []
+    Points: 20
+  nether/find_fortress:
+    Name: "&aA Terrible Fortress"
+    Enabled: true
+    Command: []
+    Points: 20
+  nether/obtain_crying_obsidian:
+    Name: "&aWho is Cutting Onions?"
+    Enabled: true
+    Command: []
+    Points: 20
+  nether/distract_piglin:
+    Name: "&aOh Shiny"
+    Enabled: true
+    Command: []
+    Points: 25
+  nether/ride_strider:
+    Name: "&aThis Boat Has Legs"
+    Enabled: true
+    Command: []
+    Points: 5
+  nether/uneasy_alliance:
+    Name: "&aUneasy Alliance"
+    Enabled: true
+    Command: []
+    Points: 25
+  nether/loot_bastion:
+    Name: "&aWar Pigs"
+    Enabled: true
+    Command: []
+    Points: 25
+  nether/use_lodestone:
+    Name: "&aCountry Lode, Take Me Home"
+    Enabled: true
+    Command: []
+    Points: 25
+  nether/netherite_armor:
+    Name: "&aCover Me in Debris"
+    Enabled: true
+    Command: []
+    Points: 25
+  nether/get_wither_skull:
+    Name: "&aSpooky Scary Skeleton"
+    Enabled: true
+    Command: []
+    Points: 25
+  nether/obtain_blaze_rod:
+    Name: "&aInto Fire"
+    Enabled: true
+    Command: []
+    Points: 30
+  nether/charge_respawn_anchor:
+    Name: "&aNot Quite 'Nine' Lives"
+    Enabled: true
+    Command: []
+    Points: 30
+  nether/ride_strider_in_overworld_lava:
+    Name: "&aFeels Like Home"
+    Enabled: true
+    Command: []
+    Points: 30
+  nether/explore_nether:
+    Name: "&aHot Tourist Destinations"
+    Enabled: true
+    Command: []
+    Points: 30
+  nether/summon_wither:
+    Name: "&aWithering Heights"
+    Enabled: true
+    Command: []
+    Points: 30
+  nether/brew_potion:
+    Name: "&aLocal Brewery"
+    Enabled: true
+    Command: []
+    Points: 35
+  nether/create_beacon:
+    Name: "&aBring Home the Beacon"
+    Enabled: true
+    Command: []
+    Points: 35
+  nether/all_potions:
+    Name: "&aA Furious Cocktail"
+    Enabled: true
+    Command: []
+    Points: 35
+  nether/create_full_beacon:
+    Name: "&aBeaconator"
+    Enabled: true
+    Command: []
+    Points: 35
+  nether/all_effects:
+    Name: "&aHow Did We Get Here?"
+    Enabled: true
+    Command: []
+    Points: 35
+  end/kill_dragon:
+    Name: "&aFree the End"
+    Enabled: true
+    Command: []
+    Points: 40
+  end/dragon_egg:
+    Name: "&aThe Next Generation"
+    Enabled: true
+    Command: []
+    Points: 40
+  end/enter_end_gateway:
+    Name: "&aRemote Getaway"
+    Enabled: true
+    Command: []
+    Points: 40
+  end/respawn_dragon:
+    Name: "&aThe End... Again..."
+    Enabled: true
+    Command: []
+    Points: 40
+  end/dragon_breath:
+    Name: "&aYou Need a Mint"
+    Enabled: true
+    Command: []
+    Points: 40
+  end/find_end_city:
+    Name: "&aThe City at the End of the Game"
+    Enabled: true
+    Command: []
+    Points: 45
+  end/elytra:
+    Name: "&aSky's the Limit"
+    Enabled: true
+    Command: []
+    Points: 45
+  end/levitate:
+    Name: "&aGreat View From Up Here"
+    Enabled: true
+    Command: []
+    Points: 45
+  adventure/voluntary_exile:
+    Name: "&aVoluntary Exile"
+    Enabled: true
+    Command: []
+    Points: 45
+  adventure/spyglass_at_parrot:
+    Name: "&aIs It a Bird?"
+    Enabled: true
+    Command: []
+    Points: 45
+  adventure/kill_a_mob:
+    Name: "&aMonster Hunter"
+    Enabled: true
+    Command: []
+    Points: 50
+  adventure/read_power_of_chiseled_bookshelf:
+    Name: "&aThe Power of Books"
+    Enabled: true
+    Command: []
+    Points: 50
+  adventure/trade:
+    Name: "&aWhat a Deal!"
+    Enabled: true
+    Command: []
+    Points: 50
+  adventure/trim_with_any_armor_pattern:
+    Name: "&aCrafting a New Look"
+    Enabled: true
+    Command: []
+    Points: 50
+  adventure/honey_block_slide:
+    Name: "&aSticky Situation"
+    Command: []
+    Points: 50
+  adventure/ol_betsy:
+    Name: "&aOl' Betsy"
+    Enabled: true
+    Command: []
+    Points: 55
+  adventure/lightning_rod_with_villager_no_fire:
+    Name: "&aSurge Protector"
+    Enabled: true
+    Command: []
+    Points: 55
+  adventure/fall_from_world_height:
+    Name: "&aCaves & Cliffs"
+    Enabled: true
+    Command: []
+    Points: 55
+  adventure/salvage_sherd:
+    Name: "&aRespecting the Remnants"
+    Enabled: true
+    Command: []
+    Points: 55
+  adventure/avoid_vibration:
+    Name: "&aSneak 100"
+    Enabled: true
+    Command: []
+    Points: 55
+  adventure/sleep_in_bed:
+    Name: "&aSweet Dreams"
+    Enabled: true
+    Command: []
+    Points: 60
+  adventure/hero_of_the_village:
+    Name: "&aHero of the Village"
+    Enabled: true
+    Command: []
+    Points: 60
+  adventure/spyglass_at_ghast:
+    Name: "&aIs It a Balloon?"
+    Enabled: true
+    Command: []
+    Points: 60
+  adventure/throw_trident:
+    Name: "&aA Throwaway Joke"
+    Enabled: true
+    Command: []
+    Points: 60
+  adventure/kill_mob_near_sculk_catalyst:
+    Name: "&aIt Spreads"
+    Enabled: true
+    Command: []
+    Points: 60
+  adventure/shoot_arrow:
+    Name: "&aTake Aim"
+    Enabled: true
+    Command: []
+    Points: 65
+  adventure/kill_all_mobs:
+    Name: "&aMonsters Hunted"
+    Enabled: true
+    Command: []
+    Points: 65
+  adventure/totem_of_undying:
+    Name: "&aPostmortal"
+    Enabled: true
+    Command: []
+    Points: 65
+  adventure/summon_iron_golem:
+    Name: "&aHired Help"
+    Enabled: true
+    Command: []
+    Points: 65
+  adventure/trade_at_world_height:
+    Name: "&aStar Trader"
+    Enabled: true
+    Command: []
+    Points: 65
+  adventure/trim_with_all_exclusive_armor_patterns:
+    Name: "&aSmithing with Style"
+    Enabled: true
+    Command: []
+    Points: 70
+  adventure/two_birds_one_arrow:
+    Name: "&aTwo Birds, One Arrow"
+    Enabled: true
+    Command: []
+    Points: 70
+  adventure/whos_the_pillager_now:
+    Name: "&aWho's the Pillager Now?"
+    Enabled: true
+    Command: []
+    Points: 70
+  adventure/arbalistic:
+    Name: "&aArbalistic"
+    Enabled: true
+    Command: []
+    Points: 70
+  adventure/craft_decorated_pot_using_only_sheds:
+    Name: "&aCareful Restoration"
+    Enabled: true
+    Command: []
+    Points: 70
+  adventure/adventuring_time:
+    Name: "&aAdventuring Time"
+    Enabled: true
+    Command: []
+    Points: 75
+  adventure/play_jukebox_in_meadows:
+    Name: "&aSound of Music"
+    Enabled: true
+    Command: []
+    Points: 75
+  adventure/walk_on_powder_snow_with_leather_boots:
+    Name: "&aLight as a Rabbit"
+    Enabled: true
+    Command: []
+    Points: 75
+  adventure/spyglass_at_dragon:
+    Name: "&aIs It a Plane?"
+    Enabled: true
+    Command: []
+    Points: 75
+  adventure/very_very_frightening:
+    Name: "&aVery Very Frightening"
+    Enabled: true
+    Command: []
+    Points: 75
+  adventure/sniper_duel:
+    Name: "&aSniper Duel"
+    Enabled: true
+    Command: []
+    Points: 80
+  adventure/bullseye:
+    Name: "&aBullseye"
+    Enabled: true
+    Command: []
+    Points: 80
+  husbandry/safely_harvest_honey:
+    Name: "&aBee Our Guest"
+    Enabled: true
+    Command: []
+    Points: 80
+  husbandry/breed_an_animal:
+    Name: "&aThe Parrots and the Bats"
+    Enabled: true
+    Command: []
+    Points: 80
+  husbandry/allay_deliver_item_to_player:
+    Name: "&aYou've Got a Friend in Me"
+    Enabled: true
+    Command: []
+    Points: 80
+  husbandry/ride_a_boat_with_a_goat:
+    Name: "&aWhatever Floats Your Goat!"
+    Enabled: true
+    Command: []
+    Points: 85
+  husbandry/tame_an_animal:
+    Name: "&aBest Friends Forever"
+    Enabled: true
+    Command: []
+    Points: 85
+  husbandry/make_a_sign_glow:
+    Name: "&aGlow and Behold!"
+    Enabled: true
+    Command: []
+    Points: 85
+  husbandry/fishy_business:
+    Name: "&aFishy Business"
+    Enabled: true
+    Command: []
+    Points: 85
+  husbandry/silk_touch_nest:
+    Name: "&aTotal Beelocation"
+    Enabled: true
+    Command: []
+    Points: 85
+  husbandry/tadpole_in_a_bucket:
+    Name: "&aBukkit Bukkit"
+    Enabled: true
+    Command: []
+    Points: 90
+  husbandry/obtain_sniffer_egg:
+    Name: "&aSmells Interesting"
+    Enabled: true
+    Command: []
+    Points: 90
+  husbandry/plant_seed:
+    Name: "&aA Seedy Place"
+    Enabled: true
+    Command: []
+    Points: 90
+  husbandry/wax_on:
+    Name: "&aWax On"
+    Enabled: true
+    Command: []
+    Points: 90
+  husbandry/bred_all_animals:
+    Name: "&aTwo by Two"
+    Enabled: true
+    Command: []
+    Points: 90
+  husbandry/allay_deliver_cake_to_note_block:
+    Name: "&aBirthday Song"
+    Enabled: true
+    Command: []
+    Points: 95
+  husbandry/complete_catalogue:
+    Name: "&aA Complete Catalogue"
+    Enabled: true
+    Command: []
+    Points: 95
+  husbandry/tactical_fishing:
+    Name: "&aTactical Fishing"
+    Enabled: true
+    Command: []
+    Points: 95
+  husbandry/leash_all_frog_variants:
+    Name: "&aWhen the Squad Hops into Town"
+    Enabled: true
+    Command: []
+    Points: 95
+  husbandry/feed_snifflet:
+    Name: "&aLittle Sniffs"
+    Enabled: true
+    Command: []
+    Points: 95
+  husbandry/balanced_diet:
+    Name: "&aA Balanced Diet"
+    Enabled: true
+    Command: []
+    Points: 100
+  husbandry/obtain_netherite_hoe:
+    Name: "&aSerious Dedication"
+    Enabled: true
+    Command: []
+    Points: 100
+  husbandry/wax_off:
+    Name: "&aWax Off"
+    Enabled: true
+    Command: []
+    Points: 100
+  husbandry/axolotl_in_a_bucket:
+    Name: "&aThe Cutest Predator"
+    Enabled: true
+    Command: []
+    Points: 100
+  husbandry/froglights:
+    Name: "&aWith Our Powers Combined!"
+    Enabled: true
+    Command: []
+    Points: 100
+  husbandry/plant_any_sniffer_seed:
+    Name: "&aPlanting the Past"
+    Enabled: true
+    Command: []
+    Points: 150
+  husbandry/kill_axolotl_target:
+    Name: "&aThe Healing Power of Friendship!"
+    Enabled: true
+    Command: []
+    Points: 150

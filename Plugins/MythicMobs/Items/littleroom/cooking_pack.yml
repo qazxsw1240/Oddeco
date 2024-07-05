@@ -1,0 +1,264 @@
+
+#########################################################
+## Developed by Little Room, patreon.com/littleroomdev ##
+#########################################################
+
+
+cooking_pot:
+  Id: PIG_SPAWN_EGG
+  Display: '&f요리솥'
+  Model: 1
+  NBT:
+    MYTHIC_EGG: cooking_pot
+
+failed_food:
+  Id: cooked_beef
+  Display: '&f부먹펩시민트초코파인애플피자지코'
+  Model: 1
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6뭔가 꺼려지는 황천의 음식이다...'
+  
+glazed_ham:
+  Id: cooked_beef
+  Display: '&f글레이즈드 햄'
+  Model: 2
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6구운 햄에 기름기가 흐른다'
+  
+beef_kebab:
+  Id: cooked_beef
+  Display: '&f소고기 케밥'
+  Model: 3
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6케밥! 맛있겠다'
+  
+chicken_kebab:
+  Id: cooked_beef
+  Display: '&f치킨 케밥'
+  Model: 4
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6쫄깃한 닭고기와 양상추의 아삭함이 잘 어우러진다.'
+  
+fruit_salad:
+  Id: cooked_beef
+  Display: '&f과일 샐러드'
+  Model: 5
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6달달한 과일들이 어우러져있다.'
+  
+cod_sushi:
+  Id: cooked_beef
+  Display: '&f생선 초밥'
+  Model: 6
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6생선 살이 부드러우면서 탱글하다.'
+  
+salmon_sushi:
+  Id: cooked_beef
+  Display: '&f연어 초밥'
+  Model: 7
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6연어살이 살살 녹는다'
+  
+apple_turnover:
+  Id: cooked_beef
+  Display: '&f사과 달파이'
+  Model: 8
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6가볍게 들고 다닐 수 있다!'
+  
+porkchop_applesauce:
+  Id: cooked_beef
+  Display: '&f사과 소스를 곁들인 삼겹살'
+  Model: 9
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6달고 짠 맛의 표본인거 같다!'
+  
+candy_apple:
+  Id: cooked_beef
+  Display: '&f사과 탕후루'
+  Model: 10
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6동그랗고 빨간 것에 윤기가 흐른다!'
+  
+brownie:
+  Id: cooked_beef
+  Display: '&f브라우니'
+  Model: 11
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6초콜렛 즙이 새어나온다!'
+  
+cod_sandwich:
+  Id: cooked_beef
+  Display: '&f생선살 샌드위치'
+  Model: 12
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6확실히 생선이 들어있구만!'
+  
+salmon_sandwich:
+  Id: cooked_beef
+  Display: '&f연어 샌드위치'
+  Model: 13
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6연어 향이 일품이다.'
+  
+beef_sandwich:
+  Id: cooked_beef
+  Display: '&f햄버거'
+  Model: 14
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6육즙이 줄줄 흐른다. 막 만들어서 그런가?'
+  
+chicken_sandwich:
+  Id: cooked_beef
+  Display: '&f치킨 샌드위치'
+  Model: 15
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6닭고기는 언제나 진리지'
+  
+egg_basket:
+  Id: cooked_beef
+  Display: '&f달걀 바구니'
+  Model: 16
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6온천 위에 띄워놓고 먹으면 향이 밴다.'
+  
+ham_sandwich:
+  Id: cooked_beef
+  Display: '&f햄 샌드위치'
+  Model: 17
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6햄이 껴있으니 확실히 밸런스가 맞다!'
+  
+donut:
+  Id: cooked_beef
+  Display: '&f도넛'
+  Model: 18
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6쫄깃한게 정신 놓고 먹을 수 있겠구만!'
+  
+pancakes:
+  Id: cooked_beef
+  Display: '&f팬케이크'
+  Model: 19
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6여러 개 쌓여있는 팬케이크에 버터와 메이플 시럽을 올려보자'
+  
+chocolate_bar:
+  Id: cooked_beef
+  Display: '&f초콜렛'
+  Model: 20
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6카카오 함유량 높은 음식이다.'
+  
+chocolate_milk:
+  Id: milk_bucket
+  Display: '&f초콜렛 우유'
+  Model: 1
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6달달한 초콜렛과 부드러운 우유!'
+  
+fish_chips:
+  Id: cooked_beef
+  Display: '&f피쉬 앤 칩스'
+  Model: 21
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6영국의 대표 음식!'
+  
+milk_steak:
+  Id: cooked_beef
+  Display: '&f크림 스테이크'
+  Model: 22
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6오래 끓인 크림 스튜를 얹었다.'
+  
+steak_eggs:
+  Id: cooked_beef
+  Display: '&f스테이크와 달걀'
+  Model: 23
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6전통적으로 유명한 조합이다.'
+  
+lollipop:
+  Id: cooked_beef
+  Display: '&f롤리팝'
+  Model: 24
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6진짜 커다랗다!'
+  
+cotton_candy:
+  Id: cooked_beef
+  Display: '&f솜사탕'
+  Model: 25
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6맛있는 솜사탕은 즐거운 기분을 선사해준다!'
+  
+bacon_eggs:
+  Id: cooked_beef
+  Display: '&f베이컨과 달걀'
+  Model: 26
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6분위기 있는 아침밥 주문하신분?'
+  
+berry_milk:
+  Id: milk_bucket
+  Display: '&f베리 스무디'
+  Model: 2
+  Hide:
+  - ATTRIBUTES
+  Lore:
+  - '&6베리 알겡이가 씹히면서 톡 쏘는 달달함이 일품이다.'

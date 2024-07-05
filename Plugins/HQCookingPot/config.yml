@@ -1,0 +1,47 @@
+config-version: '4'
+
+# 요리솥 사용 권한
+permission: cookingpot.use
+
+# 몇 틱 뒤에 완료되는 지
+finish-tick: 80
+
+# 재료를 넣을 수 있는 시간 간격 (틱 단위)
+ingredient-period: 25
+
+message:
+  fire: '&c솥을 사용하려면 불을 붙여주세요!'
+  permission: '&c솥을 사용할 권한이 없습니다.'
+  cooking: '&a요리 중...'
+  fail: '&c요리에 실패하였습니다...'
+  success: '&a%food%이(가) 완성됐습니다!'
+  first-discover: '&a%player%님이 %food%을(를) 최초로 발견하였습니다!'
+
+sound:
+  # 순서) "이름, 볼륨, 피치"
+  fire:
+  - minecraft:block.anvil.land, 0.5, 1.0
+  permission:
+  - minecraft:block.anvil.land, 0.5, 2.0
+  splash: # splash만 아래 중 하나를 랜덤으로 재생시킵니다.
+    - littleroom_cookingpot:littleroom.cookingpot.ingredient1, 1.0, 1.0
+    - littleroom_cookingpot:littleroom.cookingpot.ingredient2, 1.0, 1.0
+    - littleroom_cookingpot:littleroom.cookingpot.ingredient3, 1.0, 1.0
+  fail:
+  - littleroom_cookingpot:littleroom.cookingpot.fail, 1.0, 1.0
+  success:
+  - littleroom_cookingpot:littleroom.cookingpot.done, 1.0, 1.0
+  first-discover:
+  - minecraft:ui.toast.challenge_complete, 1, 1
+
+skill:
+  activate: cookingpotACTIVATE
+  put: cookingpotPUT
+  cooking: cookingpotCOOKING
+  fail: cookingpotFAILEFFECT
+  success: cookingpotSUCCESSEFFECT
+
+change:
+  # ex) 우유 양동이를 재료로 넣었으면 양동이를 다시 받음
+  MILK_BUCKET: BUCKET
+auto-save-period: 12000

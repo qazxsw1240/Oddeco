@@ -1,0 +1,32 @@
+migrated_littleroom_blacksmith:steel_pickaxe:
+  material: DIAMOND_PICKAXE
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_blacksmith:steel_pickaxe
+    custom_model_data: 1
+migrated_littleroom_blacksmith:bronze_pickaxe:
+  material: DIAMOND_PICKAXE
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_blacksmith:bronze_pickaxe
+    custom_model_data: 2
+migrated_littleroom_blacksmith:lazulium_pickaxe:
+  material: DIAMOND_PICKAXE
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_blacksmith:lazulium_pickaxe
+    custom_model_data: 3
+migrated_littleroom_blacksmith:emerite_pickaxe:
+  material: DIAMOND_PICKAXE
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_blacksmith:emerite_pickaxe
+    custom_model_data: 4

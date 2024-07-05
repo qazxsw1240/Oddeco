@@ -1,0 +1,36 @@
+cheque:
+  # %money%를 이름에 적었으면 DISPLAY, 로어에 적었으면 LORE
+  # 수표를 발행할 때 불필요한 파싱을 방지하기 위한 설정입니다.
+  parse: DISPLAY
+  # 재료
+  material: PAPER
+  # 내구도
+  durability: 0
+  # 이름
+  display-name: "&e[수표] &f%money%원"
+  # 로어
+  lore:
+    - "&7우클릭 시 수표를 사용합니다."
+  # 파괴되지 않음
+  unbreakable: false
+  # 아이템 플래그
+  # [1.12.2] ItemFlag: https://helpch.at/docs/1.12.2/index.html?org/bukkit/inventory/ItemFlag.html
+  item-flags: []
+  # 커스텀 모델 데이터 (1.14 이상부터 지원)
+  custom-model-data: 0
+
+message:
+  # 금액 입력 안했을 때
+  input-money: "&c발행할 금액을 입력해주세요."
+  # 금액을 숫자가 아닌걸 입력했을 때
+  input-long: "&c숫자만 입력할 수 있습니다."
+  # 금액을 0 이하를 입력했을 때
+  input-positive-long: "&c양의 정수만 입력할 수 있습니다."
+  # 돈 부족할 때
+  lack-money: "&c보유 중인 돈이 부족합니다."
+  # 인벤토리 꽉 찼을 때
+  inventory-full: "&c인벤토리에 공간이 없습니다."
+  # 수표 발행했을 때
+  issue-cheque: "&a%money%원 수표를 발행하였습니다."
+  # 수표 사용했을 때
+  use-cheque: "&a%money%원 수표를 사용했습니다."

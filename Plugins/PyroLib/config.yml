@@ -1,0 +1,22 @@
+#========================================================================================================
+#__________                      .____    ._____.    
+#\______   \___.__._______  ____ |    |   |__\_ |__  
+# |     ___<   |  |\_  __ \/  _ \|    |   |  || __ \ 
+# |    |    \___  | |  | \(  <_> )    |___|  || \_\ \
+# |____|    / ____| |__|   \____/|_______ \__||___  /
+#           \/                           \/       \/ 
+#=======================================================================================================
+#                             Created by: PyroTempus
+#                             Config Version: v1.2.6
+#                This is a library. This plugin has no functionality.
+#========================================================================================================
+
+# There is currently no configuration options available.
+
+# Temp feature that blocks certain commands from being executed if another command is executed.
+# This works by adding a 5 second cooldown after ANY command. The below commands cannot be run until 5 seconds have
+# passed from the previous command.
+#
+# Checks for the phrases: "/fish", "/pyrofish", "/mine", "/pyromine", "/farm", "/pyrofarm"
+# Used due to a known exploit - most likely introduced with 1.20.2
+CommandTimeout: true

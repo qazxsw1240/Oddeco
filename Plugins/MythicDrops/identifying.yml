@@ -1,0 +1,31 @@
+version: 5.1.0
+options:
+  unidentified-items-respect-tier-drops: true
+  click-type-to-identify: RIGHT
+items:
+  identity-tome:
+    name: "&5감정 주문서"
+    lore:
+      - "&d미확인 아이템&7에 주문서를 든 채로"
+      - "&7우클릭 하여 그 아이템을 "
+      - "&7감정해보세요!"
+    material: ENCHANTED_BOOK
+  unidentified-item:
+    name: "&d감정되지 않은 미확인 아이템"
+    # You can use the following variables in the lore of an unidentified item:
+    # %droppedby% - composed of `dropped-by-prefix`, then the mob type, then `dropped-by-suffix`
+    # %allowabletiers% - composed of `allowable-tiers-prefix`, then allowable tiers separated by
+    #                    `allowable-tiers-separator`, then `allowable-tiers-suffix`
+    # %tier% - composed of `tier-prefix`, then the tier name, then `tier-suffix`
+    lore:
+      - "&5감정 주문서&7를 사용해서"
+      - "&7이 아이템을 감정하세요!"
+      - ""
+      - "%droppedby%"
+    allowable-tiers-prefix: "&7티어: (&F"
+    allowable-tiers-separator: "&7, &F"
+    allowable-tiers-suffix: "&7)"
+    dropped-by-prefix: "&7드랍됌 : &F"
+    dropped-by-suffix: ""
+    tier-prefix: "&7티어: &F"
+    tier-suffix: ""

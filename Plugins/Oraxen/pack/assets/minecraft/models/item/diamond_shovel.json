@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/ink_sac"
+  },
+    "overrides": [
+		{"predicate": {"custom_model_data":1}, "model": "littleroom_blacksmith:steel_shovel"},
+		{"predicate": {"custom_model_data":2}, "model": "littleroom_blacksmith:bronze_shovel"},
+		{"predicate": {"custom_model_data":3}, "model": "littleroom_blacksmith:lazulium_shovel"},
+		{"predicate": {"custom_model_data":4}, "model": "littleroom_blacksmith:emerite_shovel"}
+        ]
+}

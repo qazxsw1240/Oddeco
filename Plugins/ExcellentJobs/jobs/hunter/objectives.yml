@@ -1,0 +1,208 @@
+raiders:
+  Type: kill_entity
+  Display:
+    Name: Raiders
+    Icon:
+      Material: CROSSBOW
+  Objects:
+  - pillager
+  - vindicator
+  - illusioner
+  - ravager
+  - evoker
+  - witch
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 4.25
+      Max: 8.5
+  Job_XP:
+    Chance: 100.0
+    Min: 6.5
+    Max: 9.75
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+skeletons:
+  Type: kill_entity
+  Display:
+    Name: Skeletons
+    Icon:
+      Material: BONE
+  Objects:
+  - skeleton
+  - stray
+  - wither_skeleton
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 3.75
+      Max: 7.5
+  Job_XP:
+    Chance: 100.0
+    Min: 4.5
+    Max: 6.75
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+zombies:
+  Type: kill_entity
+  Display:
+    Name: Zombies
+    Icon:
+      Material: ZOMBIE_HEAD
+  Objects:
+  - zombie_horse
+  - husk
+  - zombified_piglin
+  - zombie
+  - giant
+  - zombie_villager
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 3.25
+      Max: 6.5
+  Job_XP:
+    Chance: 100.0
+    Min: 4.5
+    Max: 6.75
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+hostile:
+  Type: kill_entity
+  Display:
+    Name: Hostile
+    Icon:
+      Material: SKELETON_SKULL
+  Objects:
+  - zoglin
+  - vex
+  - piglin_brute
+  - magma_cube
+  - pig
+  - slime
+  - phantom
+  - blaze
+  - hoglin
+  - endermite
+  - cave_spider
+  - silverfish
+  - drowned
+  - ghast
+  - spider
+  - creeper
+  - enderman
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 3.75
+      Max: 7.5
+  Job_XP:
+    Chance: 75.0
+    Min: 4.5
+    Max: 7.5
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+animals:
+  Type: kill_entity
+  Display:
+    Name: Animals
+    Icon:
+      Material: CARROT
+  Objects:
+  - mushroom_cow
+  - chicken
+  - panda
+  - bee
+  - turtle
+  - wolf
+  - trader_llama
+  - donkey
+  - cow
+  - goat
+  - ocelot
+  - fox
+  - pig
+  - polar_bear
+  - horse
+  - llama
+  - mule
+  - bat
+  - cat
+  - rabbit
+  - parrot
+  - sheep
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 2.7
+      Max: 5.4
+  Job_XP:
+    Chance: 75.0
+    Min: 4.05
+    Max: 6.75
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100
+fishes:
+  Type: kill_entity
+  Display:
+    Name: Fishes
+    Icon:
+      Material: COD
+  Objects:
+  - pufferfish
+  - salmon
+  - cod
+  - squid
+  Payment:
+    money:
+      Chance: 100.0
+      Min: 0.75
+      Max: 2.25
+  Job_XP:
+    Chance: 75.0
+    Min: 3.0
+    Max: 5.0
+  Unlock_Level: 1
+  SpecialOrder:
+    Allowed: true
+    Objects_Amount:
+      Min: 1
+      Max: 3
+    Objects_Count:
+      Min: 1
+      Max: 100

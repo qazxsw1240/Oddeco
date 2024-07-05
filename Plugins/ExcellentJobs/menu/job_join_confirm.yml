@@ -1,0 +1,55 @@
+Settings:
+  # GUI title.
+  Title: <black>Join %job_name% Job?</black>
+  # GUI size. Must be multiply of 9.
+  # Useful for 'CHEST' Inventory Type only.
+  Size: 9
+  # GUI type.
+  # https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/event/inventory/InventoryType.html
+  Inventory_Type: CHEST
+  # Sets GUI auto-refresh interval (in seconds). Set this to 0 to disable.
+  Auto_Refresh: 0
+# ==================== GUI CONTENT ====================
+# You can freely edit items in this section as you wish (add, remove, modify items).
+# The following values are available as button Types:
+# ACCEPT
+# CLOSE
+# RETURN
+# ==================== ITEM OPTIONS ====================
+# > Item: Item to display. Please check: https://github.com/nulli0n/nightcore-spigot/wiki/ItemStack-Options
+# > Priority: Button priority. Better values will override other item(s) in the same slot(s).
+# > Slots: Button slots. From [0] to [Size - 1]. Split them with a comma.
+# > Click_Commands: Execute custom commands on click. PlaceholderAPI available here.
+#     Available click types: LEFT, RIGHT, SHIFT_LEFT, SHIFT_RIGHT, DROP_KEY, SWAP_KEY, NUMBER_1, NUMBER_2, NUMBER_3, NUMBER_4, NUMBER_5, NUMBER_6, NUMBER_7, NUMBER_8, NUMBER_9
+#     Click_Commands:
+#       LEFT:
+#       - say Hello
+#       - give %player_name% diamond 1
+# ==================================================
+Content:
+  confirm:
+    Priority: 100
+    Item:
+      Material: PLAYER_HEAD
+      SkinURL: a79a5c95ee17abfef45c8dc224189964944d560f19a44f19f8a46aef3fee4756
+      Name: <light_green><b>Confirm</b></light_green>
+    Slots: '8'
+    Type: accept
+  cancel:
+    Priority: 100
+    Item:
+      Material: PLAYER_HEAD
+      SkinURL: 27548362a24c0fa8453e4d93e68c5969ddbde57bf6666c0319c1ed1e84d89065
+      Name: <light_red><b>Cancel</b></light_red>
+    Slots: '0'
+    Type: return
+  job_name:
+    Priority: 100
+    Item:
+      Material: PLAYER_HEAD
+      SkinURL: 7b41996fd20ca21d79adfc0e12057b2f2ceadf7b3cf5bb5f8a92fe3460161acd
+      Name: <light_yellow><b>%job_name%</b></light_yellow>
+      Lore:
+      - <light_gray>%job_description%</light_gray>
+    Slots: '4'
+    Type: default

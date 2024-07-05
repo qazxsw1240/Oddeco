@@ -1,0 +1,101 @@
+Settings:
+  # GUI title.
+  Title: '<black>Job Settings: <blue>%job_name%</blue></black>'
+  # GUI size. Must be multiply of 9.
+  # Useful for 'CHEST' Inventory Type only.
+  Size: 36
+  # GUI type.
+  # https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/event/inventory/InventoryType.html
+  Inventory_Type: CHEST
+  # Sets GUI auto-refresh interval (in seconds). Set this to 0 to disable.
+  Auto_Refresh: 0
+Format:
+  SpecialOrder:
+    Available:
+    - <dark_gray>You don't have Special Orders.</dark_gray>
+    - ''
+    - <light_gray><light_yellow>Special Orders</light_yellow> are set of random job objectives</light_gray>
+    - <light_gray>with <light_yellow>unqiue rewards</light_yellow> for completion in</light_gray>
+    - <light_gray>specified timeframe.</light_gray>
+    - ''
+    - '<light_yellow><b>Cost: </b><light_red>%currency%</light_red></light_yellow>'
+    - ''
+    - <light_yellow>[▶] <light_gray>Click to </light_gray>get order<light_gray>.</light_gray></light_yellow>
+    Cooldown:
+    - <dark_gray>A new order is still preparing.</dark_gray>
+    - ''
+    - <light_gray>You've already completed a Special Order recently.</light_gray>
+    - ''
+    - '<light_yellow><b>Cooldown: </b><light_red>%time%</light_red></light_yellow>'
+    Active:
+    - <dark_gray>You have a Special Order.</dark_gray>
+    - ''
+    - <light_yellow><b>Objectives:</b></light_yellow>
+    - '<light_yellow>▪ <light_gray>%name%: </light_gray>%current%<light_gray>/</light_gray>%max%</light_yellow>'
+    - ''
+    - <light_yellow><b>Rewards:</b></light_yellow>
+    - <light_yellow>▪ <light_gray>%reward%</light_gray></light_yellow>
+    - ''
+    - '<light_yellow>▪ <light_gray>Timeleft: </light_gray>%time%</light_yellow>'
+# ==================== GUI CONTENT ====================
+# You can freely edit items in this section as you wish (add, remove, modify items).
+# The following values are available as button Types:
+# CLOSE
+# LEAVE_JOB
+# OBJECTIVES
+# RETURN
+# SPECIAL_ORDER
+# ==================== ITEM OPTIONS ====================
+# > Item: Item to display. Please check: https://github.com/nulli0n/nightcore-spigot/wiki/ItemStack-Options
+# > Priority: Button priority. Better values will override other item(s) in the same slot(s).
+# > Slots: Button slots. From [0] to [Size - 1]. Split them with a comma.
+# > Click_Commands: Execute custom commands on click. PlaceholderAPI available here.
+#     Available click types: LEFT, RIGHT, SHIFT_LEFT, SHIFT_RIGHT, DROP_KEY, SWAP_KEY, NUMBER_1, NUMBER_2, NUMBER_3, NUMBER_4, NUMBER_5, NUMBER_6, NUMBER_7, NUMBER_8, NUMBER_9
+#     Click_Commands:
+#       LEFT:
+#       - say Hello
+#       - give %player_name% diamond 1
+# ==================================================
+Content:
+  _back:
+    Priority: 10
+    Item:
+      Material: PLAYER_HEAD
+      SkinURL: be9ae7a4be65fcbaee65181389a2f7d47e2e326db59ea3eb789a92c85ea46
+      Name: '#D4D9D8↓ Back'
+    Slots: '31'
+    Type: return
+  objectives:
+    Priority: 10
+    Item:
+      Material: BOOK
+      Name: <light_yellow><b>Objectives</b></light_yellow>
+      Lore:
+      - <light_gray>Click to browse job objectives!</light_gray>
+    Slots: '10'
+    Type: objectives
+  special_order:
+    Priority: 10
+    Item:
+      Material: PLAYER_HEAD
+      SkinURL: 900d28ff7b543dd088d004b1b1f95b38d444ea0461ff5ae3c68d76c0c16e2527
+      Name: <light_yellow><b>Special Order</b></light_yellow>
+      Lore:
+      - '%order%'
+    Slots: '13'
+    Type: special_order
+  leave_job:
+    Priority: 10
+    Item:
+      Material: PLAYER_HEAD
+      SkinURL: 3ed1aba73f639f4bc42bd48196c715197be2712c3b962c97ebf9e9ed8efa025
+      Name: <light_red><b>Leave Job</b></light_red>
+      Lore:
+      - <dark_gray>Leaving so soon?</dark_gray>
+      - ' '
+      - '<light_gray>Please, note: all job progress will</light_gray>'
+      - <light_gray>be lost <light_red>forever</light_red>!</light_gray>
+      - ' '
+      - <light_red>[▶] <light_gray>Click to <light_red>leave</light_red><light_gray>.</light_gray></light_gray></light_red>
+    Slots: '16'
+    Type: leave_job

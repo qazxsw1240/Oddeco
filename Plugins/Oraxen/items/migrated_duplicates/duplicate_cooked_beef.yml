@@ -1,0 +1,208 @@
+migrated_littleroom_cookingpot:failure_food:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:failure_food
+    custom_model_data: 1
+migrated_littleroom_cookingpot:glazed_ham:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:glazed_ham
+    custom_model_data: 2
+migrated_littleroom_cookingpot:beef_kebab:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:beef_kebab
+    custom_model_data: 3
+migrated_littleroom_cookingpot:chicken_kebab:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:chicken_kebab
+    custom_model_data: 4
+migrated_littleroom_cookingpot:fruit_salad:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:fruit_salad
+    custom_model_data: 5
+migrated_littleroom_cookingpot:cod_sushi:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:cod_sushi
+    custom_model_data: 6
+migrated_littleroom_cookingpot:salmon_sushi:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:salmon_sushi
+    custom_model_data: 7
+migrated_littleroom_cookingpot:apple_turnover:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:apple_turnover
+    custom_model_data: 8
+migrated_littleroom_cookingpot:porkchops_applesauce:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:porkchops_applesauce
+    custom_model_data: 9
+migrated_littleroom_cookingpot:candy_apple:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:candy_apple
+    custom_model_data: 10
+migrated_littleroom_cookingpot:brownie:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:brownie
+    custom_model_data: 11
+migrated_littleroom_cookingpot:cod_sandwich:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:cod_sandwich
+    custom_model_data: 12
+migrated_littleroom_cookingpot:salmon_sandwich:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:salmon_sandwich
+    custom_model_data: 13
+migrated_littleroom_cookingpot:beef_sandwich:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:beef_sandwich
+    custom_model_data: 14
+migrated_littleroom_cookingpot:chicken_sandwich:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:chicken_sandwich
+    custom_model_data: 15
+migrated_littleroom_cookingpot:egg_basket:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:egg_basket
+    custom_model_data: 16
+migrated_littleroom_cookingpot:ham_sandwich:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:ham_sandwich
+    custom_model_data: 17
+migrated_littleroom_cookingpot:donut:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:donut
+    custom_model_data: 18
+migrated_littleroom_cookingpot:pancakes:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:pancakes
+    custom_model_data: 19
+migrated_littleroom_cookingpot:chocolate_bar:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:chocolate_bar
+    custom_model_data: 20
+migrated_littleroom_cookingpot:fish_chips:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:fish_chips
+    custom_model_data: 21
+migrated_littleroom_cookingpot:milk_steak:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:milk_steak
+    custom_model_data: 22
+migrated_littleroom_cookingpot:steak_eggs:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:steak_eggs
+    custom_model_data: 23
+migrated_littleroom_cookingpot:lollipop:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:lollipop
+    custom_model_data: 24
+migrated_littleroom_cookingpot:cotton_candy:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:cotton_candy
+    custom_model_data: 25
+migrated_littleroom_cookingpot:bacon_eggs:
+  material: COOKED_BEEF
+  excludeFromInventory: true
+  excludeFromCommands: true
+  Pack:
+    generate_model: false
+    model: littleroom_cookingpot:bacon_eggs
+    custom_model_data: 26
