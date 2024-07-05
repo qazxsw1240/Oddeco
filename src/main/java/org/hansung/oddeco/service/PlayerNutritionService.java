@@ -2,16 +2,23 @@ package org.hansung.oddeco.service;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.NamespacedKey;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockDropItemEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.metadata.MetadataValue;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
@@ -27,6 +34,7 @@ import org.hansung.oddeco.service.nutrition.PlayerNutritionUpdateEvent;
 
 import java.sql.*;
 import java.time.Duration;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
@@ -37,6 +45,7 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
     private static final Duration DEFAULT_EXHAUSTION_DELAY = Duration.ofSeconds(10);
     private static final int DEFAULT_EXHAUSTION_DECREMENT = 1;
 
+    private final Plugin plugin;
     private final NutritionFactRepository nutritionFactRepository;
     private final PlayerNutritionRepository playerNutritionRepository;
     private final Connection connection;
@@ -55,6 +64,7 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
             PlayerNutritionRepository playerNutritionRepository,
             Connection connection,
             FormattedLogger logger) {
+        this.plugin = plugin;
         this.nutritionFactRepository = nutritionFactRepository;
         this.playerNutritionRepository = playerNutritionRepository;
         this.connection = connection;
@@ -149,6 +159,39 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
         this.logger.info("crafted %s", item.getType().name());
         if (container.has(this.nutritionKey)) {
             item.setItemMeta(resultItem.getItemMeta());
+        }
+    }
+
+    @EventHandler
+    public void onBlockPlace(BlockPlaceEvent event) {
+        ItemStack item = event.getItemInHand();
+        Block targetBlock = event.getBlock();
+        PersistentDataContainer container = item
+                .getItemMeta()
+                .getPersistentDataContainer();
+        if (container.has(this.nutritionKey)) {
+            targetBlock.setMetadata("edible", new FixedMetadataValue(this.plugin, item.getItemMeta()));
+            this.logger.info("Successfully attached item meta to block");
+        }
+    }
+
+    @EventHandler
+    public void onBlockDropItem(BlockDropItemEvent event) {
+        Block block = event.getBlock();
+        List<Item> items = event.getItems();
+        List<MetadataValue> metadata = block.getMetadata("edible");
+        if (metadata.isEmpty()) {
+            return;
+        }
+        MetadataValue metadataValue = metadata.getFirst();
+        if (!(metadataValue.value() instanceof ItemMeta itemMeta)) {
+            return;
+        }
+        for (Item item : items) {
+            ItemStack itemStack = item.getItemStack();
+            itemStack.setItemMeta(itemMeta);
+            item.setItemStack(itemStack);
+            this.logger.info("Successfully attached item meta to the item");
         }
     }
 
