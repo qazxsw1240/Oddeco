@@ -2,7 +2,6 @@ package org.hansung.oddeco.core.entity.nutrition;
 
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 import java.util.Set;
 
 class NutritionFactsImpl implements NutritionFacts {
