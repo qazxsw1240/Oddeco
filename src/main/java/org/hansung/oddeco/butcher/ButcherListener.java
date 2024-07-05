@@ -2,34 +2,21 @@ package org.hansung.oddeco.butcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonElement;
-import net.kyori.adventure.text.Component;
-import org.bukkit.*;
-import org.bukkit.block.Block;
-import org.bukkit.block.Chest;
-import org.bukkit.block.data.BlockData;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.loot.LootTable;
-import org.bukkit.material.MaterialData;
-import org.bukkit.metadata.MetadataValue;
-import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.hansung.oddeco.core.json.JsonUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.Unmodifiable;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
@@ -40,14 +27,11 @@ public class ButcherListener implements Listener {
 
     private final JavaPlugin plugin;
     private final Probability probability;
-    private final ConcurrentMap<LivingEntity, Butcher> butchers = new ConcurrentHashMap<>();
-    private final ArrayList<Recipe> recipes = new ArrayList<>();
+    private final ConcurrentMap<Player, Butcher> butchers = new ConcurrentHashMap<>();
 
     public ButcherListener(JavaPlugin plugin) {
         Probability probability1;
         this.plugin = plugin;
-
-        plugin.getLogger().info("Butcher Listener Registed.");
 
         // 갓=태명님이 짜주신 /resources 폴더의 파일 읽는 개쩌는 코드 (뭔지 모름)
         try (InputStream in = getClass().getResourceAsStream("/ButcherProbability.json");
@@ -65,7 +49,6 @@ public class ButcherListener implements Listener {
         setMeatPieceRecipe();
         ConcurrentMap<Character, Object> data = new ConcurrentHashMap<>();
         data.put('1', Material.GOLD_INGOT);
-        data.put('2', Material.GLOWSTONE_DUST);
         data.put('M', Material.RED_DYE);
 
         JsonElement jsonElement = JsonUtil.of("/butcher_recipes.json");
@@ -73,18 +56,14 @@ public class ButcherListener implements Listener {
         repository.getKeys().forEach(meat -> createRecipe(meat.getIdentityText(), meat.getItem(), repository.get(meat).get(), data));
     }
 
-    // 최적화 필요
     public void createRecipe(String key, ItemStack item, String[] values, ConcurrentMap<Character, Object> ingredient) {
         NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
         ShapedRecipe recipe = new ShapedRecipe(namespacedKey, item);
         recipe.shape(values[0], values[1], values[2]); // ㅖ?
         ingredient.forEach((key1, value) -> {
-            for (String string : recipe.getShape()) {
-                if (!string.contains(key1.toString())) continue;
-                if (value instanceof Material) recipe.setIngredient(key1, (Material)value);
-                else if (value instanceof ItemStack) recipe.setIngredient(key1, (ItemStack)value);
-                else throw new RuntimeException("레시피 아이템이 잘못됨");
-            }
+            if (value instanceof Material) recipe.setIngredient(key1, (Material)value);
+            else if (value instanceof ItemStack) recipe.setIngredient(key1, (ItemStack)value);
+            else throw new RuntimeException("레시피 아이템이 잘못됨");
         });
         plugin.getServer().addRecipe(recipe);
     }
@@ -150,17 +129,7 @@ public class ButcherListener implements Listener {
             recipe.shape("   ", " A ", "   ");
             recipe.setIngredient('A', material);
             plugin.getServer().addRecipe(recipe);
-            recipes.add(recipe);
             i++;
-        }
-    }
-
-    @EventHandler
-    public void onCraftItem(CraftItemEvent event) {
-        for (LivingEntity player : event.getViewers()) {
-            if (recipes.contains(event.getRecipe()) && !butchers.containsKey(player)) {
-                event.setCancelled(true);
-            }
         }
     }
 }
