@@ -1,0 +1,58 @@
+{
+  "data": [{
+    "level": 1,
+    "probabilities": {
+      "normal": 100,
+      "rare": 0,
+      "epic": 0
+    }
+  },
+  {
+    "level": 2,
+    "probabilities": {
+      "normal": 80,
+      "rare": 20,
+      "epic": 0
+    }
+  },
+  {
+    "level": 3,
+    "probabilities": {
+      "normal": 60,
+      "rare": 40,
+      "epic": 0
+    }
+  },
+  {
+    "level": 4,
+    "probabilities": {
+      "normal": 50,
+      "rare": 45,
+      "epic": 5
+    }
+  },
+  {
+    "level": 5,
+    "probabilities": {
+      "normal": 40,
+      "rare": 35,
+      "epic": 25
+    }
+  },
+  {
+    "level": 6,
+    "probabilities": {
+      "normal": 35,
+      "rare": 30,
+      "epic": 35
+    }
+  },
+  {
+    "level": 7,
+    "probabilities": {
+      "normal": 20,
+      "rare": 30,
+      "epic": 50
+    }
+  }]
+}
