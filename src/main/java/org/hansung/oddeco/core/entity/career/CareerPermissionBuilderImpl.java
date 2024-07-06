@@ -54,6 +54,6 @@ class CareerPermissionBuilderImpl implements CareerPermissionBuilder {
         if (this.description == null) {
             throw new IllegalStateException("description not set");
         }
-        return null;
+        return new CareerPermissionImpl(this.career, this.id, this.name, this.description);
     }
 }
