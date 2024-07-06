@@ -16,8 +16,10 @@ import org.hansung.oddeco.core.json.JsonUtil;
 import org.hansung.oddeco.core.util.entity.ItemStackBuilder;
 import org.hansung.oddeco.core.util.logging.FormattedLogger;
 import org.hansung.oddeco.core.util.logging.PluginLoggerFactory;
+import org.hansung.oddeco.repository.CareerCoinsRepository;
 import org.hansung.oddeco.repository.NutritionFactRepository;
 import org.hansung.oddeco.repository.PlayerNutritionRepository;
+import org.hansung.oddeco.service.PlayerCareerService;
 import org.hansung.oddeco.service.PlayerNutritionService;
 
 import java.sql.Connection;
@@ -74,11 +76,15 @@ public final class Oddeco extends JavaPlugin {
         Connection connection = this.connection.get();
 
         PlayerNutritionService playerNutritionService = new PlayerNutritionService(this, this.nutritionFactRepository, new PlayerNutritionRepository(connection), connection, this.logger);
+        PlayerCareerService playerCareerService = new PlayerCareerService(this, new CareerCoinsRepository(connection), connection, this.logger);
         NamespacedKey nutritionKey = playerNutritionService.getNutritionKey();
 
         getServer()
                 .getPluginManager()
                 .registerEvents(playerNutritionService, this);
+        getServer()
+                .getPluginManager()
+                .registerEvents(playerCareerService, this);
 
         ItemStack mudCookie = ItemStackBuilder
                 .of(Material.COOKIE, 16)
