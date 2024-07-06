@@ -20,4 +20,9 @@ class CareerCoinsImpl implements CareerCoins {
     public void setCoins(int coins) {
         this.coins = coins;
     }
+
+    @Override
+    public String toString() {
+        return String.format("CareerCoins(amount=%d)", this.coins);
+    }
 }
