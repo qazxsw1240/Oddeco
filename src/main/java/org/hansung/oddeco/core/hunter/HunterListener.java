@@ -3,17 +3,20 @@ package org.hansung.oddeco.core.hunter;
 import com.google.gson.JsonObject;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Monster;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.hansung.oddeco.core.json.JsonUtil;
 import org.hansung.oddeco.core.util.logging.FormattedLogger;
 
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -46,7 +49,7 @@ public class HunterListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerJoin(PlayerJoinEvent event) {
-        hunters.put(event.getPlayer(), new Hunter(1));
+        hunters.put(event.getPlayer(), new Hunter(7));
     }
 
     @EventHandler
@@ -57,11 +60,17 @@ public class HunterListener implements Listener {
             Hunter hunter = hunters.get(player);
             player.heal(1);
             // 아이템 드랍율 증가
-            if (hunter.getLevel() >= 5) {
-
-            } else if (hunter.getLevel() >= 2) {
-
-            }
+            if (hunter.getLevel() < 2 || !(event instanceof Monster)) return;
+            List<ItemStack> drops = event.getDrops();
+            drops.forEach(item -> {
+                if (hunter.getLevel() >= 5) {
+                    item.setAmount(item.getAmount() * 2);
+                } else if (hunter.getLevel() >= 2) {
+                    item.setAmount((int)Math.ceil(item.getAmount() * 1.2));
+                }
+            });
+            event.getDrops().clear();
+            event.getDrops().addAll(drops);
         }
     }
 }
