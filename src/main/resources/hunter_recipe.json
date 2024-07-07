@@ -1,0 +1,65 @@
+{
+  "zombie_spawn_egg": {
+    "recipe": ["010", "121", "010"],
+    "ingredient": {
+      "0": "glowstone_dust",
+      "1": "rotten_flesh",
+      "2": "zombie_head"
+    },
+    "count": 1
+  },
+  "skeleton_spawn_egg": {
+    "recipe": ["010", "121", "010"],
+    "ingredient": {
+      "0": "glowstone_dust",
+      "1": "bone",
+      "2": "skeleton_skull"
+    },
+    "count": 1
+  },
+  "blaze_spawn_egg": {
+    "recipe": ["010", "121", "010"],
+    "ingredient": {
+      "0": "glowstone_dust",
+      "1": "blaze_powder",
+      "2": "piglin_head"
+    },
+    "count": 1
+  },
+  "wither_skeleton_spawn_egg": {
+    "recipe": ["010", "121", "010"],
+    "ingredient": {
+      "0": "glowstone_dust",
+      "1": "bone",
+      "2": "wither_skeleton_skull"
+    },
+    "count": 1
+  },
+  "shulker_spawn_egg": {
+    "recipe": ["010", "121", "010"],
+    "ingredient": {
+      "0": "chorus_flower",
+      "1": "shulker_shell",
+      "2": "dragon_head"
+    },
+    "count": 1
+  },
+  "enderman_spawn_egg": {
+    "recipe": ["010", "121", "010"],
+    "ingredient": {
+      "0": "chorus_flower",
+      "1": "ender_pearl",
+      "2": "ender_eye"
+    },
+    "count": 1
+  },
+  "spawner": {
+    "recipe": ["010", "121", "010"],
+    "ingredient": {
+      "0": "netherite_ingot",
+      "1": "blaze_rod",
+      "2": "nether_star"
+    },
+    "count": 1
+  }
+}
