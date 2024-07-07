@@ -104,7 +104,7 @@ public final class Oddeco extends JavaPlugin {
         getServer()
                 .getPluginManager()
                 .registerEvents(playerNutritionService, this);
-        getServer().getPluginManager().registerEvents(new HunterListener(this), this);
+        getServer().getPluginManager().registerEvents(new HunterListener(this, logger), this);
 
         getServer()
                 .getPluginManager()
