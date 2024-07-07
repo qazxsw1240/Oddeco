@@ -60,17 +60,14 @@ public class HunterListener implements Listener {
             Hunter hunter = hunters.get(player);
             player.heal(1);
             // 아이템 드랍율 증가
-            if (hunter.getLevel() < 2 || !(event instanceof Monster)) return;
-            List<ItemStack> drops = event.getDrops();
-            drops.forEach(item -> {
+            if (hunter.getLevel() < 2 || !(event.getEntity() instanceof Monster)) return;
+            event.getDrops().forEach(item -> {
                 if (hunter.getLevel() >= 5) {
                     item.setAmount(item.getAmount() * 2);
                 } else if (hunter.getLevel() >= 2) {
                     item.setAmount((int)Math.ceil(item.getAmount() * 1.2));
                 }
             });
-            event.getDrops().clear();
-            event.getDrops().addAll(drops);
         }
     }
 }
