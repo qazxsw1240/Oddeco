@@ -1,6 +1,7 @@
 package org.hansung.oddeco.core.hunter;
 
 import com.google.gson.JsonObject;
+import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Monster;
@@ -9,15 +10,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.hansung.oddeco.core.json.JsonUtil;
 import org.hansung.oddeco.core.util.logging.FormattedLogger;
 
-import java.util.List;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -37,7 +36,8 @@ public class HunterListener implements Listener {
         JsonObject object = JsonUtil.of("/hunter_recipe.json").getAsJsonObject();
         HunterRepository repository = new HunterRepository(object);
         repository.getAll().forEach(entry -> {
-            NamespacedKey namespacedKey = entry.getResult().getKey();
+            NamespacedKey namespacedKey = (entry.getResult() == Material.WOODEN_SWORD) ?
+                    new NamespacedKey("hunter_sword", "hunter_sword") : entry.getResult().getKey();
             ShapedRecipe recipe = new ShapedRecipe(namespacedKey, entry.getItem());
             recipe.shape(entry.getShape());
             entry.getIngredients().forEach((key, value) -> recipe.setIngredient(key, value));
@@ -49,7 +49,7 @@ public class HunterListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerJoin(PlayerJoinEvent event) {
-        hunters.put(event.getPlayer(), new Hunter(7));
+        hunters.put(event.getPlayer(), new Hunter(3));
     }
 
     @EventHandler
@@ -68,6 +68,15 @@ public class HunterListener implements Listener {
                     item.setAmount((int)Math.ceil(item.getAmount() * 1.2));
                 }
             });
+        }
+    }
+
+    @EventHandler
+    public void onCraftItem(CraftItemEvent event) {
+        for (LivingEntity player : event.getViewers()) {
+            if (!hunters.containsKey(player)) {
+                event.setCancelled(true);
+            }
         }
     }
 }

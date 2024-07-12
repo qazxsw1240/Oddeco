@@ -1,14 +1,20 @@
 package org.hansung.oddeco.core.hunter;
 
+import com.google.common.collect.Multimap;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.Damageable;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.hansung.oddeco.core.ReadonlyRepository;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -42,6 +48,16 @@ public class HunterRepository implements ReadonlyRepository<HunterRecipe, ItemSt
 
             // create item
             ItemStack item = new ItemStack(recipe.getResult(), recipe.getAmount());
+            // 한방검 제작 레시피
+            if (entry.getKey().equals("hunter_wooden_sword")) {
+                Damageable damage = (Damageable) item.getItemMeta();
+                Attribute attribute = Attribute.GENERIC_ATTACK_DAMAGE;
+                AttributeModifier modifier = new AttributeModifier(UUID.nameUUIDFromBytes(new byte[]{(byte) 860454301, (byte) -84261649, (byte) -1183576394, (byte) 888873874}),
+                        "generic.attack_damage", 12, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+                damage.addAttributeModifier(attribute, modifier);
+                damage.setDamage(59);
+                item.setItemMeta(damage);
+            }
             recipe.setItem(item);
             hunterRecipes.put(item, recipe);
         });
