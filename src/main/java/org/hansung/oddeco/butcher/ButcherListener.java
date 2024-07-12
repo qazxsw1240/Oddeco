@@ -15,6 +15,7 @@ import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.loot.LootTable;
 import org.bukkit.material.MaterialData;
@@ -39,7 +40,8 @@ public class ButcherListener implements Listener {
 
     private final JavaPlugin plugin;
     private final Probability probability;
-    private final ConcurrentMap<Player, Butcher> butchers = new ConcurrentHashMap<>();
+    private final ConcurrentMap<LivingEntity, Butcher> butchers = new ConcurrentHashMap<>();
+    private final ArrayList<Recipe> recipes = new ArrayList<>();
 
     public ButcherListener(JavaPlugin plugin) {
         Probability probability1;
@@ -148,6 +150,7 @@ public class ButcherListener implements Listener {
             recipe.shape("   ", " A ", "   ");
             recipe.setIngredient('A', material);
             plugin.getServer().addRecipe(recipe);
+            recipes.add(recipe);
             i++;
         }
     }
@@ -155,7 +158,7 @@ public class ButcherListener implements Listener {
     @EventHandler
     public void onCraftItem(CraftItemEvent event) {
         for (LivingEntity player : event.getViewers()) {
-            if (!butchers.containsKey(player)) {
+            if (recipes.contains(event.getRecipe()) && !butchers.containsKey(player)) {
                 event.setCancelled(true);
             }
         }
