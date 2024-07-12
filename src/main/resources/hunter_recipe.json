@@ -53,12 +53,12 @@
     },
     "count": 1
   },
-  "spawner": {
-    "recipe": ["010", "121", "010"],
+  "hunter_wooden_sword": {
+    "recipe": [" 0 ", " 1 ", " 2 "],
     "ingredient": {
-      "0": "netherite_ingot",
-      "1": "blaze_rod",
-      "2": "nether_star"
+      "0": "stripped_oak_log",
+      "1": "iron_ingot",
+      "2": "stick"
     },
     "count": 1
   }
