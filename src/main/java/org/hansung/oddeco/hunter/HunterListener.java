@@ -12,11 +12,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.hansung.oddeco.core.json.JsonUtil;
 import org.hansung.oddeco.core.util.logging.FormattedLogger;
 
+import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -24,13 +26,14 @@ public class HunterListener implements Listener {
     private final JavaPlugin plugin;
     private final FormattedLogger logger;
     private final ConcurrentMap<LivingEntity, Hunter> hunters;
-
+    private final ArrayList<Recipe> recipes;
 
     public HunterListener(JavaPlugin plugin, FormattedLogger logger) {
         // init variables
         this.plugin = plugin;
         this.logger = logger;
         this.hunters = new ConcurrentHashMap<>();
+        this.recipes = new ArrayList<>();
 
         // init recipes
         JsonObject object = JsonUtil.of("/hunter_recipe.json").getAsJsonObject();
@@ -41,6 +44,7 @@ public class HunterListener implements Listener {
             ShapedRecipe recipe = new ShapedRecipe(namespacedKey, entry.getItem());
             recipe.shape(entry.getShape());
             entry.getIngredients().forEach((key, value) -> recipe.setIngredient(key, value));
+            recipes.add(recipe);
             plugin.getServer().addRecipe(recipe);
         });
 
@@ -74,7 +78,7 @@ public class HunterListener implements Listener {
     @EventHandler
     public void onCraftItem(CraftItemEvent event) {
         for (LivingEntity player : event.getViewers()) {
-            if (!hunters.containsKey(player)) {
+            if (recipes.contains(event.getRecipe()) && !hunters.containsKey(player)) {
                 event.setCancelled(true);
             }
         }
