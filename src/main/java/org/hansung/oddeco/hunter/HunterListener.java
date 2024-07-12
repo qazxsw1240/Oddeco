@@ -1,4 +1,4 @@
-package org.hansung.oddeco.core.hunter;
+package org.hansung.oddeco.hunter;
 
 import com.google.gson.JsonObject;
 import org.bukkit.Material;

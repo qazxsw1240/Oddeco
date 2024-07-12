@@ -1,4 +1,4 @@
-package org.hansung.oddeco.core.hunter;
+package org.hansung.oddeco.hunter;
 
 import org.bukkit.Material;
 
