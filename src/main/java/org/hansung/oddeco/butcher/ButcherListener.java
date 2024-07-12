@@ -11,6 +11,7 @@ import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -148,6 +149,15 @@ public class ButcherListener implements Listener {
             recipe.setIngredient('A', material);
             plugin.getServer().addRecipe(recipe);
             i++;
+        }
+    }
+
+    @EventHandler
+    public void onCraftItem(CraftItemEvent event) {
+        for (LivingEntity player : event.getViewers()) {
+            if (!butchers.containsKey(player)) {
+                event.setCancelled(true);
+            }
         }
     }
 }
