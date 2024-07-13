@@ -6,6 +6,14 @@ import org.hansung.oddeco.core.entity.player.PlayerNutritionState;
 import java.time.LocalTime;
 
 public interface PlayerNutritionFactReward {
+    public static PlayerNutritionFactReward create(
+            Player player,
+            PlayerNutritionState nutritionState,
+            LocalTime lastRewardTime,
+            NutritionFacts nutritionFactDecrement) {
+        return new PlayerNutritionFactRewardImpl(player, nutritionState, lastRewardTime, nutritionFactDecrement);
+    }
+
     public abstract Player getPlayer();
 
     public abstract PlayerNutritionState getState();
