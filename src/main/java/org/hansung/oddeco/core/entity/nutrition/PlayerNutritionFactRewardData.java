@@ -1,5 +1,6 @@
 package org.hansung.oddeco.core.entity.nutrition;
 
+import java.time.Duration;
 import java.util.UUID;
 
 public interface PlayerNutritionFactRewardData {
@@ -8,4 +9,6 @@ public interface PlayerNutritionFactRewardData {
     public abstract int getNutritionDecrement();
 
     public abstract int getReward();
+
+    public abstract Duration getDelay();
 }
