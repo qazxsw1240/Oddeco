@@ -3,6 +3,7 @@ package org.hansung.oddeco.core.entity.nutrition;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.stream.Stream;
 
 class NutritionFactsImpl implements NutritionFacts {
     private final int[] nutritionFacts;
@@ -17,11 +18,10 @@ class NutritionFactsImpl implements NutritionFacts {
     }
 
     public NutritionFactsImpl(NutritionFacts nutritionFacts) {
+        this();
         if (nutritionFacts instanceof NutritionFactsImpl impl) {
-            this.nutritionFacts = impl.nutritionFacts.clone();
+            System.arraycopy(impl.nutritionFacts, 0, this.nutritionFacts, 0, impl.nutritionFacts.length);
         } else {
-            Nutrition[] values = Nutrition.values();
-            this.nutritionFacts = new int[values.length];
             for (Info info : nutritionFacts) {
                 Nutrition nutrition = info.getNutrition();
                 this.nutritionFacts[nutrition.ordinal()] = info.getAmount();
@@ -58,6 +58,15 @@ class NutritionFactsImpl implements NutritionFacts {
         int newFat = this.nutritionFacts[2] - nutritionFacts.getNutrition(Nutrition.FAT);
         int newVitamin = this.nutritionFacts[3] - nutritionFacts.getNutrition(Nutrition.VITAMIN);
         return new NutritionFactsImpl(newCarbohydrate, newProtein, newFat, newVitamin);
+    }
+
+    @Override
+    public Stream<Info> stream() {
+        Stream.Builder<Info> builder = Stream.builder();
+        for (Info info : this) {
+            builder.add(info);
+        }
+        return builder.build();
     }
 
     @Override

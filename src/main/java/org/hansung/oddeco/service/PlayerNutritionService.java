@@ -1,10 +1,11 @@
 package org.hansung.oddeco.service;
 
+import io.papermc.paper.event.player.PlayerTradeEvent;
 import net.kyori.adventure.text.Component;
 import org.bukkit.NamespacedKey;
-import org.bukkit.block.Block;
-import org.bukkit.entity.Item;
+import org.bukkit.entity.AbstractVillager;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -23,9 +24,11 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 import org.hansung.oddeco.core.entity.nutrition.NutritionFacts;
+import org.hansung.oddeco.core.entity.nutrition.PlayerNutritionFactRewardData;
 import org.hansung.oddeco.core.entity.player.PlayerNutritionState;
 import org.hansung.oddeco.core.util.logging.FormattedLogger;
 import org.hansung.oddeco.repository.NutritionFactRepository;
+import org.hansung.oddeco.repository.PlayerNutritionFactRewardDataRepository;
 import org.hansung.oddeco.repository.PlayerNutritionRepository;
 import org.hansung.oddeco.service.nutrition.PlayerNutritionStateListener;
 import org.hansung.oddeco.service.nutrition.PlayerNutritionStateListenerManager;
@@ -34,7 +37,7 @@ import org.hansung.oddeco.service.nutrition.PlayerNutritionUpdateEvent;
 
 import java.sql.*;
 import java.time.Duration;
-import java.util.List;
+import java.time.LocalTime;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
@@ -48,10 +51,12 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
     private final Plugin plugin;
     private final NutritionFactRepository nutritionFactRepository;
     private final PlayerNutritionRepository playerNutritionRepository;
+    private final PlayerNutritionFactRewardDataRepository playerNutritionFactRewardDataRepository;
     private final Connection connection;
     private final FormattedLogger logger;
     private final NamespacedKey nutritionKey;
     private final ConcurrentMap<UUID, ScheduledExecutorService> executorServiceMap;
+    private final ConcurrentMap<UUID, LocalTime> playerNutritionFactRewardTimestamps;
     private final Set<PlayerNutritionStateListener> listeners;
 
     private Duration exhaustionDelay;
@@ -62,15 +67,19 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
             Plugin plugin,
             NutritionFactRepository nutritionFactRepository,
             PlayerNutritionRepository playerNutritionRepository,
+            PlayerNutritionFactRewardDataRepository playerNutritionFactRewardDataRepository,
             Connection connection,
             FormattedLogger logger) {
         this.plugin = plugin;
         this.nutritionFactRepository = nutritionFactRepository;
         this.playerNutritionRepository = playerNutritionRepository;
+        this.playerNutritionFactRewardDataRepository = playerNutritionFactRewardDataRepository;
         this.connection = connection;
         this.logger = logger;
         this.nutritionKey = new NamespacedKey(plugin, "nutrition");
+
         this.executorServiceMap = new ConcurrentSkipListMap<>();
+        this.playerNutritionFactRewardTimestamps = new ConcurrentSkipListMap<>();
         this.listeners = new CopyOnWriteArraySet<>();
 
         this.exhaustionDelay = DEFAULT_EXHAUSTION_DELAY;
@@ -84,6 +93,26 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
                     .get(player)
                     .orElseThrow();
             player.sendMessage(Component.text("now your nutrition status is " + nutritionState));
+        });
+        addListener((PlayerNutritionStateUpdateListener) event -> {
+            Player player = event.getPlayer();
+            PlayerNutritionFactRewardData data = this.playerNutritionFactRewardDataRepository
+                    .get(player)
+                    .orElseThrow();
+            int decrement = data.getNutritionDecrement();
+            NutritionFacts nutritionFacts = event.getUpdatedNutritionFactAmounts();
+            if (nutritionFacts
+                    .stream()
+                    .allMatch(info -> info.getAmount() > 0)) {
+                return;
+            }
+            if (nutritionFacts
+                    .stream()
+                    .allMatch(info -> info.getAmount() + decrement == 0)) {
+                player.sendMessage(Component.text("Successfully consumed " + decrement + " of each nutrition fact"));
+            } else {
+                player.sendMessage(Component.text("You have not enough nutrition decrement for this fact"));
+            }
         });
     }
 
@@ -112,12 +141,50 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
         this.decrementNutritionFacts = calculateDecrementNutritionFacts();
     }
 
+    public void setPlayerExhaustionDelay(Player player, Duration delay) {
+        PlayerNutritionFactRewardData data = this.playerNutritionFactRewardDataRepository
+                .get(player)
+                .orElseThrow();
+        Duration previousDelay = data.getDelay();
+        data.setDelay(delay);
+        this.playerNutritionFactRewardDataRepository.update(data);
+        updateNutritionConsumptionScheduler(player, previousDelay, delay);
+    }
+
+    public void setPlayerExhaustionDecrement(Player player, int decrement) {
+        PlayerNutritionFactRewardData data = this.playerNutritionFactRewardDataRepository
+                .get(player)
+                .orElseThrow();
+        data.setNutritionDecrement(decrement);
+        this.playerNutritionFactRewardDataRepository.update(data);
+    }
+
+    // +----------------------------------------------------------------+
+    // | !! Trade event test code                                       |
+    // | Players can trade items only with nitwit villagers.            |
+    // +----------------------------------------------------------------+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onPlayerTrade(PlayerTradeEvent event) {
+        AbstractVillager abstractVillager = event.getVillager();
+        if (abstractVillager instanceof Villager villager) {
+            Villager.Profession profession = villager.getProfession();
+            NamespacedKey key = profession.getKey();
+            if (!key.getKey().equals("nitwit")) {
+                event.setCancelled(true);
+            }
+        }
+    }
+
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        LocalTime lastRewardTime = LocalTime.now();
         UUID uuid = player.getUniqueId();
         if (!this.playerNutritionRepository.contains(player)) {
             this.playerNutritionRepository.create(player);
+        }
+        if (!this.playerNutritionFactRewardDataRepository.contains(player)) {
+            this.playerNutritionFactRewardDataRepository.create(player);
         }
         this.playerNutritionRepository
                 .get(player)
@@ -125,14 +192,22 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
                     this.logger.info("Player %s successfully retrieved nutrition info", player.getName());
                     this.logger.info("%s", nutrition);
                 });
-        if (this.executorServiceMap.containsKey(uuid)) {
-            ScheduledExecutorService executorService = this.executorServiceMap.get(uuid);
-            executorService.shutdown();
-        }
-        ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-        this.executorServiceMap.put(uuid, executorService);
-        long delay = this.exhaustionDelay.toMillis();
-        executorService.scheduleAtFixedRate(() -> updateNutritionFacts(player, this.decrementNutritionFacts), delay, delay, TimeUnit.MILLISECONDS);
+        this.playerNutritionFactRewardDataRepository
+                .get(player)
+                .ifPresent(data -> {
+                    this.logger.info("Player %s successfully retrieved nutrition reward data", player.getName());
+                    this.logger.info("%s", data);
+                    initializePlayerNutritionFactReward(data);
+                    this.playerNutritionFactRewardTimestamps.put(uuid, lastRewardTime);
+                    if (this.executorServiceMap.containsKey(uuid)) {
+                        ScheduledExecutorService executorService = this.executorServiceMap.get(uuid);
+                        executorService.shutdown();
+                    }
+                    ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+                    this.executorServiceMap.put(uuid, executorService);
+                    long delay = data.getDelay().toMillis();
+                    executorService.scheduleAtFixedRate(updatePlayerNutritionFacts(player), delay, delay, TimeUnit.MILLISECONDS);
+                });
     }
 
     @EventHandler
@@ -143,7 +218,11 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
             ScheduledExecutorService executorService = this.executorServiceMap.remove(uuid);
             executorService.shutdown();
         }
+        this.playerNutritionFactRewardTimestamps.remove(uuid);
     }
+
+    // TODO: implement player nutrition reward repository && attach to PlayerNutritionService
+    // TODO: implement advancement reward repository && create DB
 
     @EventHandler
     public void onPlayerCraftItem(CraftItemEvent event) {
@@ -228,6 +307,53 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
         this.listeners.clear();
     }
 
+    private void updateNutritionConsumptionScheduler(Player player, Duration previousDelay, Duration newDelay) {
+        UUID uuid = player.getUniqueId();
+        ScheduledExecutorService executorService = this.executorServiceMap.get(uuid);
+        if (previousDelay.equals(newDelay)) {
+            return;
+        }
+        LocalTime currentTime = LocalTime.now();
+        LocalTime lastRewardTime = this.playerNutritionFactRewardTimestamps.get(uuid);
+        Duration elapsedDuration = Duration.between(lastRewardTime, currentTime);
+        executorService.shutdownNow();
+        ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        if (elapsedDuration.compareTo(newDelay) >= 0) {
+            updatePlayerNutritionFacts(player).run();
+        }
+        long initialDelayMillis = elapsedDuration
+                .minus(newDelay)
+                .abs()
+                .toMillis();
+        long delayMillis = elapsedDuration.toMillis();
+        scheduledExecutorService.scheduleAtFixedRate(updatePlayerNutritionFacts(player), initialDelayMillis, delayMillis, TimeUnit.MILLISECONDS);
+        this.executorServiceMap.put(uuid, scheduledExecutorService);
+    }
+
+    private Runnable updatePlayerNutritionFacts(Player player) {
+        return () -> {
+            PlayerNutritionFactRewardData data = this.playerNutritionFactRewardDataRepository
+                    .get(player)
+                    .orElseThrow();
+            int decrement = data.getNutritionDecrement();
+            updateNutritionFacts(player, calculateDecrementNutritionFacts(decrement));
+        };
+    }
+
+    private void initializePlayerNutritionFactReward(PlayerNutritionFactRewardData data) {
+        if (data.getNutritionDecrement() == 0) {
+            data.setNutritionDecrement(this.decrement);
+        }
+        if (data.getReward() == 0) {
+            data.setReward(1);
+        }
+        if (data.getDelay().isZero()) {
+            data.setDelay(this.exhaustionDelay);
+        }
+        this.playerNutritionFactRewardDataRepository.update(data);
+        this.logger.info("Successfully update Player's nutrition fact data %s", data);
+    }
+
     private void initializeSqlTable() {
         try {
             DatabaseMetaData databaseMetaData = this.connection.getMetaData();
@@ -259,11 +385,16 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
         }
     }
 
+    private NutritionFacts calculateDecrementNutritionFacts(int decrement) {
+        return NutritionFacts.of(-decrement, -decrement, -decrement, -decrement);
+    }
+
     private NutritionFacts calculateDecrementNutritionFacts() {
         return NutritionFacts.of(-this.decrement, -this.decrement, -this.decrement, -this.decrement);
     }
 
     private void updateNutritionFacts(Player player, NutritionFacts nutritionFacts) {
+        LocalTime lastRewardTime = LocalTime.now();
         PlayerNutritionState playerNutritionState = this.playerNutritionRepository
                 .get(player)
                 .orElseThrow();
@@ -277,6 +408,7 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
         PlayerNutritionUpdateEvent event = PlayerNutritionUpdateEvent.of(player, increment);
         getListeners(PlayerNutritionStateUpdateListener.class)
                 .forEach(listener -> listener.onPlayerNutritionStateUpdate(event));
+        this.playerNutritionFactRewardTimestamps.put(player.getUniqueId(), lastRewardTime);
     }
 
     private <L extends PlayerNutritionStateListener> Set<L> getListeners(Class<L> listenerType) {

@@ -1,5 +1,7 @@
 package org.hansung.oddeco.core.entity.nutrition;
 
+import java.util.stream.Stream;
+
 public interface NutritionFacts extends Iterable<NutritionFacts.Info> {
     public static NutritionFacts of() {
         return new NutritionFactsImpl();
@@ -22,6 +24,8 @@ public interface NutritionFacts extends Iterable<NutritionFacts.Info> {
     public abstract NutritionFacts addNutritionFacts(NutritionFacts nutritionFacts);
 
     public abstract NutritionFacts subtractNutritionFacts(NutritionFacts nutritionFacts);
+
+    public abstract Stream<Info> stream();
 
     public static interface Info {
         public static Info of(Nutrition nutrition, int amount) {

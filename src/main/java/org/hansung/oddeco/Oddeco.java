@@ -17,12 +17,14 @@ import org.hansung.oddeco.core.util.entity.ItemStackBuilder;
 import org.hansung.oddeco.core.util.logging.FormattedLogger;
 import org.hansung.oddeco.core.util.logging.PluginLoggerFactory;
 import org.hansung.oddeco.repository.NutritionFactRepository;
+import org.hansung.oddeco.repository.PlayerNutritionFactRewardDataRepository;
 import org.hansung.oddeco.repository.PlayerNutritionRepository;
 import org.hansung.oddeco.service.PlayerNutritionService;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.Duration;
 import java.util.concurrent.atomic.AtomicReference;
 
 @Plugin
@@ -73,7 +75,17 @@ public final class Oddeco extends JavaPlugin {
         this.logger.info("Enabled Plugin [%s]", getName());
         Connection connection = this.connection.get();
 
-        PlayerNutritionService playerNutritionService = new PlayerNutritionService(this, this.nutritionFactRepository, new PlayerNutritionRepository(connection), connection, this.logger);
+        PlayerNutritionService playerNutritionService = new PlayerNutritionService(
+                this,
+                this.nutritionFactRepository,
+                new PlayerNutritionRepository(connection),
+                new PlayerNutritionFactRewardDataRepository(connection),
+                connection,
+                this.logger);
+
+        playerNutritionService.setExhaustionDecrement(3);
+        playerNutritionService.setExhaustionDelay(Duration.ofSeconds(10));
+
         NamespacedKey nutritionKey = playerNutritionService.getNutritionKey();
 
         getServer()
@@ -111,7 +123,7 @@ public final class Oddeco extends JavaPlugin {
                     foodComponent.setSaturation(0);
                     meta.setFood(foodComponent);
                 })
-                .setMetaContainerBuilder(container -> container.set(nutritionKey, PersistentDataType.STRING, "mud_cookie"))
+                .setMetaContainerBuilder(container -> container.set(nutritionKey, PersistentDataType.STRING, "dirt_cookie"))
                 .build();
 
         ShapedRecipe mudCookieRecipe = new ShapedRecipe(new NamespacedKey(this, "MudCookie"), mudCookie)
