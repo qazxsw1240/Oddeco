@@ -5,9 +5,9 @@ import java.util.UUID;
 
 class PlayerNutritionFactRewardDataImpl implements PlayerNutritionFactRewardData {
     private final UUID uuid;
-    private final int nutritionDecrement;
-    private final int reward;
-    private final Duration delay;
+    private volatile int nutritionDecrement;
+    private volatile int reward;
+    private volatile Duration delay;
 
     public PlayerNutritionFactRewardDataImpl(
             UUID uuid,
@@ -31,12 +31,27 @@ class PlayerNutritionFactRewardDataImpl implements PlayerNutritionFactRewardData
     }
 
     @Override
+    public void setNutritionDecrement(int nutritionDecrement) {
+        this.nutritionDecrement = nutritionDecrement;
+    }
+
+    @Override
     public int getReward() {
         return this.reward;
     }
 
     @Override
+    public void setReward(int reward) {
+        this.reward = reward;
+    }
+
+    @Override
     public Duration getDelay() {
         return this.delay;
+    }
+
+    @Override
+    public void setDelay(Duration delay) {
+        this.delay = delay;
     }
 }

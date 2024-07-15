@@ -8,7 +8,13 @@ public interface PlayerNutritionFactRewardData {
 
     public abstract int getNutritionDecrement();
 
+    public abstract void setNutritionDecrement(int nutritionDecrement);
+
     public abstract int getReward();
 
+    public abstract void setReward(int reward);
+
     public abstract Duration getDelay();
+
+    public abstract void setDelay(Duration delay);
 }
