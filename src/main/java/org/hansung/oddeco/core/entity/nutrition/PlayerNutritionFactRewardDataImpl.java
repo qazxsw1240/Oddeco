@@ -54,4 +54,14 @@ class PlayerNutritionFactRewardDataImpl implements PlayerNutritionFactRewardData
     public void setDelay(Duration delay) {
         this.delay = delay;
     }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "PlayerNutritionFactRewardData(uuid=%s, nutritionDecrement=%s, reward=%s, delay=%s)",
+                this.uuid,
+                this.nutritionDecrement,
+                this.reward,
+                this.delay);
+    }
 }
