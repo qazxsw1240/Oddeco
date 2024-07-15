@@ -1,0 +1,442 @@
+[
+  {
+    "key": "story/root",
+    "reward": 2
+  },
+  {
+    "key": "story/mine_stone",
+    "reward": 2
+  },
+  {
+    "key": "story/upgrade_tools",
+    "reward": 2
+  },
+  {
+    "key": "story/smelt_iron",
+    "reward": 2
+  },
+  {
+    "key": "story/obtain_armor",
+    "reward": 2
+  },
+  {
+    "key": "story/lava_bucket",
+    "reward": 2
+  },
+  {
+    "key": "story/iron_tools",
+    "reward": 2
+  },
+  {
+    "key": "story/deflect_arrow",
+    "reward": 2
+  },
+  {
+    "key": "story/form_obsidian",
+    "reward": 2
+  },
+  {
+    "key": "story/mine_diamond",
+    "reward": 2
+  },
+  {
+    "key": "story/enter_the_nether",
+    "reward": 2
+  },
+  {
+    "key": "story/shiny_gear",
+    "reward": 2
+  },
+  {
+    "key": "story/enchant_item",
+    "reward": 2
+  },
+  {
+    "key": "story/cure_zombie_villager",
+    "reward": 15
+  },
+  {
+    "key": "story/follow_ender_eye",
+    "reward": 2
+  },
+  {
+    "key": "story/enter_the_end",
+    "reward": 2
+  },
+  {
+    "key": "nether/root",
+    "reward": 2
+  },
+  {
+    "key": "nether/return_to_sender",
+    "reward": 20
+  },
+  {
+    "key": "nether/find_bastion",
+    "reward": 2
+  },
+  {
+    "key": "nether/obtain_ancient_debris",
+    "reward": 2
+  },
+  {
+    "key": "nether/fast_travel",
+    "reward": 20
+  },
+  {
+    "key": "nether/find_fortress",
+    "reward": 2
+  },
+  {
+    "key": "nether/obtain_crying_obsidian",
+    "reward": 2
+  },
+  {
+    "key": "nether/distract_piglin",
+    "reward": 2
+  },
+  {
+    "key": "nether/ride_strider",
+    "reward": 2
+  },
+  {
+    "key": "nether/uneasy_alliance",
+    "reward": 20
+  },
+  {
+    "key": "nether/loot_bastion",
+    "reward": 2
+  },
+  {
+    "key": "nether/use_lodestone",
+    "reward": 2
+  },
+  {
+    "key": "nether/netherite_armor",
+    "reward": 20
+  },
+  {
+    "key": "nether/get_wither_skull",
+    "reward": 2
+  },
+  {
+    "key": "nether/obtain_blaze_rod",
+    "reward": 2
+  },
+  {
+    "key": "nether/charge_respawn_anchor",
+    "reward": 2
+  },
+  {
+    "key": "nether/ride_strider_in_overworld_lava",
+    "reward": 2
+  },
+  {
+    "key": "nether/explore_nether",
+    "reward": 20
+  },
+  {
+    "key": "nether/summon_wither",
+    "reward": 2
+  },
+  {
+    "key": "nether/brew_potion",
+    "reward": 2
+  },
+  {
+    "key": "nether/create_beacon",
+    "reward": 2
+  },
+  {
+    "key": "nether/all_potions",
+    "reward": 20
+  },
+  {
+    "key": "nether/create_full_beacon",
+    "reward": 15
+  },
+  {
+    "key": "nether/all_effects",
+    "reward": 20
+  },
+  {
+    "key": "end/root",
+    "reward": 2
+  },
+  {
+    "key": "end/kill_dragon",
+    "reward": 2
+  },
+  {
+    "key": "end/dragon_egg",
+    "reward": 15
+  },
+  {
+    "key": "end/enter_end_gateway",
+    "reward": 2
+  },
+  {
+    "key": "end/respawn_dragon",
+    "reward": 15
+  },
+  {
+    "key": "end/dragon_breath",
+    "reward": 15
+  },
+  {
+    "key": "end/find_end_city",
+    "reward": 2
+  },
+  {
+    "key": "end/elytra",
+    "reward": 15
+  },
+  {
+    "key": "end/levitate",
+    "reward": 20
+  },
+  {
+    "key": "adventure/root",
+    "reward": 2
+  },
+  {
+    "key": "adventure/voluntary_exile",
+    "reward": 2
+  },
+  {
+    "key": "adventure/spyglass_at_parrot",
+    "reward": 2
+  },
+  {
+    "key": "adventure/kill_a_mob",
+    "reward": 2
+  },
+  {
+    "key": "adventure/read_power_of_chiseled_bookshelf",
+    "reward": 2
+  },
+  {
+    "key": "adventure/trade",
+    "reward": 2
+  },
+  {
+    "key": "adventure/trim_with_any_armor_pattern",
+    "reward": 2
+  },
+  {
+    "key": "adventure/honey_block_slide",
+    "reward": 2
+  },
+  {
+    "key": "adventure/ol_betsy",
+    "reward": 2
+  },
+  {
+    "key": "adventure/lightning_rod_with_villager_no_fire",
+    "reward": 2
+  },
+  {
+    "key": "adventure/fall_from_world_height",
+    "reward": 2
+  },
+  {
+    "key": "adventure/salvage_sherd",
+    "reward": 2
+  },
+  {
+    "key": "adventure/avoid_vibration",
+    "reward": 2
+  },
+  {
+    "key": "adventure/sleep_in_bed",
+    "reward": 2
+  },
+  {
+    "key": "adventure/hero_of_the_village",
+    "reward": 20
+  },
+  {
+    "key": "adventure/spyglass_at_ghast",
+    "reward": 2
+  },
+  {
+    "key": "adventure/throw_trident",
+    "reward": 2
+  },
+  {
+    "key": "adventure/kill_mob_near_sculk_catalyst",
+    "reward": 20
+  },
+  {
+    "key": "adventure/shoot_arrow",
+    "reward": 2
+  },
+  {
+    "key": "adventure/kill_all_mobs",
+    "reward": 20
+  },
+  {
+    "key": "adventure/totem_of_undying",
+    "reward": 15
+  },
+  {
+    "key": "adventure/summon_iron_golem",
+    "reward": 15
+  },
+  {
+    "key": "adventure/trade_at_world_height",
+    "reward": 2
+  },
+  {
+    "key": "adventure/trim_with_all_exclusive_armor_patterns",
+    "reward": 20
+  },
+  {
+    "key": "adventure/two_birds_one_arrow",
+    "reward": 20
+  },
+  {
+    "key": "adventure/whos_the_pillager_now",
+    "reward": 2
+  },
+  {
+    "key": "adventure/arbalistic",
+    "reward": 20
+  },
+  {
+    "key": "adventure/craft_decorated_pot_using_only_sherds",
+    "reward": 2
+  },
+  {
+    "key": "adventure/adventuring_time",
+    "reward": 20
+  },
+  {
+    "key": "adventure/play_jukebox_in_meadows",
+    "reward": 2
+  },
+  {
+    "key": "adventure/walk_on_powder_snow_with_leather_boots",
+    "reward": 2
+  },
+  {
+    "key": "adventure/spyglass_at_dragon",
+    "reward": 2
+  },
+  {
+    "key": "adventure/very_very_frightening",
+    "reward": 2
+  },
+  {
+    "key": "adventure/sniper_duel",
+    "reward": 20
+  },
+  {
+    "key": "adventure/bullseye",
+    "reward": 20
+  },
+  {
+    "key": "husbandry/root",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/safely_harvest_honey",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/breed_an_animal",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/allay_deliver_item_to_player",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/ride_a_boat_with_a_goat",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/tame_an_animal",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/make_a_sign_glow",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/fishy_business",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/silk_touch_nest",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/tadpole_in_a_bucket",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/obtain_sniffer_egg",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/plant_seed",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/wax_on",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/bred_all_animals",
+    "reward": 20
+  },
+  {
+    "key": "husbandry/allay_deliver_cake_to_note_block",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/complete_catalogue",
+    "reward": 20
+  },
+  {
+    "key": "husbandry/tactical_fishing",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/leash_all_frog_variants",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/feed_snifflet",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/balanced_diet",
+    "reward": 20
+  },
+  {
+    "key": "husbandry/obtain_netherite_hoe",
+    "reward": 20
+  },
+  {
+    "key": "husbandry/wax_off",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/axolotl_in_a_bucket",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/froglights",
+    "reward": 20
+  },
+  {
+    "key": "husbandry/plant_any_sniffer_seed",
+    "reward": 2
+  },
+  {
+    "key": "husbandry/kill_axolotl_target",
+    "reward": 2
+  }
+]

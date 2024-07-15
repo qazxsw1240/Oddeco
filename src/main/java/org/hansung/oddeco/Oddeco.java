@@ -1,5 +1,6 @@
 package org.hansung.oddeco;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.Style;
@@ -16,9 +17,11 @@ import org.hansung.oddeco.core.json.JsonUtil;
 import org.hansung.oddeco.core.util.entity.ItemStackBuilder;
 import org.hansung.oddeco.core.util.logging.FormattedLogger;
 import org.hansung.oddeco.core.util.logging.PluginLoggerFactory;
+import org.hansung.oddeco.repository.AdvancementRewardRepository;
 import org.hansung.oddeco.repository.NutritionFactRepository;
 import org.hansung.oddeco.repository.PlayerNutritionFactRewardDataRepository;
 import org.hansung.oddeco.repository.PlayerNutritionRepository;
+import org.hansung.oddeco.service.PlayerAdvancementRewardService;
 import org.hansung.oddeco.service.PlayerNutritionService;
 
 import java.sql.Connection;
@@ -35,6 +38,7 @@ public final class Oddeco extends JavaPlugin {
     private final AtomicReference<Connection> connection;
 
     private final NutritionFactRepository nutritionFactRepository;
+    private final AdvancementRewardRepository advancementRewardRepository;
 
     public Oddeco() throws ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
@@ -45,8 +49,12 @@ public final class Oddeco extends JavaPlugin {
                 .of("/nutrition_fact_data.json")
                 .getAsJsonObject();
 
-        this.nutritionFactRepository = new NutritionFactRepository(object);
+        JsonArray array = JsonUtil
+                .of("/advancement_reward_data.json")
+                .getAsJsonArray();
 
+        this.nutritionFactRepository = new NutritionFactRepository(object);
+        this.advancementRewardRepository = new AdvancementRewardRepository(array);
     }
 
     @Override
@@ -86,11 +94,19 @@ public final class Oddeco extends JavaPlugin {
         playerNutritionService.setExhaustionDecrement(3);
         playerNutritionService.setExhaustionDelay(Duration.ofSeconds(10));
 
+        PlayerAdvancementRewardService playerAdvancementRewardService = new PlayerAdvancementRewardService(
+                this.advancementRewardRepository,
+                this.logger);
+
         NamespacedKey nutritionKey = playerNutritionService.getNutritionKey();
 
         getServer()
                 .getPluginManager()
                 .registerEvents(playerNutritionService, this);
+
+        getServer()
+                .getPluginManager()
+                .registerEvents(playerAdvancementRewardService, this);
 
         ItemStack mudCookie = ItemStackBuilder
                 .of(Material.COOKIE, 16)
