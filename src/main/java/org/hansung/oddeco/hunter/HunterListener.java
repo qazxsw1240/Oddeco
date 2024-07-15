@@ -94,7 +94,8 @@ public class HunterListener implements Listener {
     @EventHandler
     public void onCraftItem(CraftItemEvent event) {
         for (LivingEntity player : event.getViewers()) {
-            if (recipes.contains(event.getRecipe()) && !hunters.containsKey(player)) {
+            if ((recipes.contains(event.getRecipe()) && !hunters.containsKey(player)) ||
+                hunters.get(player).getLevel() < 4) {
                 event.setCancelled(true);
             }
         }
