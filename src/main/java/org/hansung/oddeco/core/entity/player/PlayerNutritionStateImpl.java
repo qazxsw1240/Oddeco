@@ -47,7 +47,11 @@ class PlayerNutritionStateImpl implements PlayerNutritionState {
 
     @Override
     public NutritionFacts asNutritionFacts() {
-        return NutritionFacts.of();
+        return NutritionFacts.of(
+                this.nutritionStates[0],
+                this.nutritionStates[1],
+                this.nutritionStates[2],
+                this.nutritionStates[3]);
     }
 
     @Override
