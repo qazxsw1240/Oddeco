@@ -72,7 +72,7 @@ public final class Oddeco extends JavaPlugin {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        this.logger.info("Enabled Plugin [Oddeco]");
+        this.logger.info("Enabled Plugin [%s]", getName());
         Connection connection = this.connection.get();
 
         PlayerNutritionService playerNutritionService = new PlayerNutritionService(
