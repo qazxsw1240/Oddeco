@@ -35,11 +35,15 @@ public class HunterIngredients {
         items.put("netherite_ingot", Material.NETHERITE_INGOT);
         items.put("blaze_rod", Material.BLAZE_ROD);
         items.put("nether_star", Material.NETHER_STAR);
-
+        // 한방검
         items.put("hunter_wooden_sword", Material.WOODEN_SWORD);
         items.put("stripped_oak_log", Material.STRIPPED_OAK_LOG);
         items.put("iron_ingot", Material.IRON_INGOT);
         items.put("stick", Material.STICK);
+        // 화살 지급 도구
+        items.put("hunter_arrow_supply_box", Material.CHEST);
+        items.put("spectral_arrow", Material.SPECTRAL_ARROW);
+        items.put("arrow", Material.ARROW);
     }
 
     public Material getItem(String string) {

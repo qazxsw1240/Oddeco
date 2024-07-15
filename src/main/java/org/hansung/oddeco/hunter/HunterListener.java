@@ -15,6 +15,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitScheduler;
 import org.hansung.oddeco.core.json.JsonUtil;
 import org.hansung.oddeco.core.util.logging.FormattedLogger;
 
@@ -39,14 +40,29 @@ public class HunterListener implements Listener {
         JsonObject object = JsonUtil.of("/hunter_recipe.json").getAsJsonObject();
         HunterRepository repository = new HunterRepository(object);
         repository.getAll().forEach(entry -> {
-            NamespacedKey namespacedKey = (entry.getResult() == Material.WOODEN_SWORD) ?
-                    new NamespacedKey("hunter_sword", "hunter_sword") : entry.getResult().getKey();
+            NamespacedKey namespacedKey;
+            if (entry.getResult() == Material.WOODEN_SWORD) {
+                namespacedKey = new NamespacedKey("hunter_sword", "hunter_sword");
+            } else if (entry.getResult() == Material.CHEST) {
+                namespacedKey = new NamespacedKey("hunter_chest", "hunter_chest");
+            } else {
+                namespacedKey = entry.getResult().getKey();
+            }
             ShapedRecipe recipe = new ShapedRecipe(namespacedKey, entry.getItem());
             recipe.shape(entry.getShape());
             entry.getIngredients().forEach((key, value) -> recipe.setIngredient(key, value));
             recipes.add(recipe);
             plugin.getServer().addRecipe(recipe);
         });
+
+        // chest updater
+        BukkitScheduler scheduler = plugin.getServer().getScheduler();
+        scheduler.scheduleSyncRepeatingTask(plugin, new Runnable() {
+            @Override
+            public void run() {
+                HunterChest.updateChest();
+            }
+        }, 0L, 10L);
 
         logger.info("HunterListener Registed.");
     }

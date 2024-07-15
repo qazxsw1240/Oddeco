@@ -3,11 +3,13 @@ package org.hansung.oddeco.hunter;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import net.kyori.adventure.text.Component;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.hansung.oddeco.core.ReadonlyRepository;
 
 import java.util.*;
@@ -53,6 +55,10 @@ public class HunterRepository implements ReadonlyRepository<HunterRecipe, ItemSt
                 damage.addAttributeModifier(attribute, modifier);
                 damage.setDamage(59);
                 item.setItemMeta(damage);
+            } else if (entry.getKey().equals("hunter_arrow_supply_box")) {
+                ItemMeta meta = item.getItemMeta();
+                meta.displayName(Component.text("화살 지급 도구"));
+                item.setItemMeta(meta);
             }
             recipe.setItem(item);
             hunterRecipes.put(item, recipe);

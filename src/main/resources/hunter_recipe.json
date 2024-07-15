@@ -61,5 +61,14 @@
       "2": "stick"
     },
     "count": 1
+  },
+  "hunter_arrow_supply_box": {
+    "recipe": [" 0 ", "121", " 0 "],
+    "ingredient": {
+      "0": "spectral_arrow",
+      "1": "arrow",
+      "2": "stick"
+    },
+    "count": 1
   }
 }
