@@ -12,6 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,7 +28,7 @@ public class HunterListener implements Listener {
     private final JavaPlugin plugin;
     private final FormattedLogger logger;
     private final ConcurrentMap<LivingEntity, Hunter> hunters;
-    private final ArrayList<Recipe> recipes;
+    private final ArrayList<ItemStack> recipes;
 
     public HunterListener(JavaPlugin plugin, FormattedLogger logger) {
         // init variables
@@ -51,7 +52,7 @@ public class HunterListener implements Listener {
             ShapedRecipe recipe = new ShapedRecipe(namespacedKey, entry.getItem());
             recipe.shape(entry.getShape());
             entry.getIngredients().forEach((key, value) -> recipe.setIngredient(key, value));
-            recipes.add(recipe);
+            recipes.add(recipe.getResult());
             plugin.getServer().addRecipe(recipe);
         });
 
@@ -69,7 +70,7 @@ public class HunterListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerJoin(PlayerJoinEvent event) {
-        // hunters.put(event.getPlayer(), new Hunter(3));
+        hunters.put(event.getPlayer(), new Hunter(1));
     }
 
     @EventHandler
@@ -91,13 +92,13 @@ public class HunterListener implements Listener {
         }
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onCraftItem(CraftItemEvent event) {
         for (LivingEntity player : event.getViewers()) {
-            if (recipes.contains(event.getRecipe()) && !hunters.containsKey(player)) {
-                event.setCancelled(true);
-            } else if (hunters.get(player).getLevel() < 4) {
-                event.setCancelled(true);
+            if (recipes.contains(event.getRecipe().getResult())) {
+                if (!hunters.containsKey(player) || hunters.get(player).getLevel() < 3) {
+                    event.setCancelled(true);
+                }
             }
         }
     }
