@@ -1,10 +1,8 @@
 package org.hansung.oddeco.hunter;
 
 import com.google.gson.JsonObject;
-import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.block.Chest;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Monster;
 import org.bukkit.entity.Player;
@@ -13,10 +11,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
-import org.bukkit.event.inventory.InventoryOpenEvent;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
@@ -24,7 +21,6 @@ import org.hansung.oddeco.core.json.JsonUtil;
 import org.hansung.oddeco.core.util.logging.FormattedLogger;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -60,12 +56,21 @@ public class HunterListener implements Listener {
             plugin.getServer().addRecipe(recipe);
         });
 
+        // chest updater
+        BukkitScheduler scheduler = plugin.getServer().getScheduler();
+        scheduler.scheduleSyncRepeatingTask(plugin, new Runnable() {
+            @Override
+            public void run() {
+                HunterChest.updateChest();
+            }
+        }, 0L, 10L);
+
         logger.info("HunterListener Registed.");
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerJoin(PlayerJoinEvent event) {
-        hunters.put(event.getPlayer(), new Hunter(7));
+        hunters.put(event.getPlayer(), new Hunter(1));
     }
 
     @EventHandler
@@ -95,16 +100,6 @@ public class HunterListener implements Listener {
                     event.setCancelled(true);
                 }
             }
-        }
-    }
-
-    @EventHandler
-    public void onInventoryOpen(InventoryOpenEvent event) {
-        if (event.getInventory().getType() != InventoryType.CHEST) return;
-        if (Objects.equals(((Chest) event.getInventory()
-                .getHolder()).customName(), Component.text("화살 지급 도구"))) {
-            if (event.getInventory().contains(Material.ARROW, 1)) return;
-            event.getInventory().addItem(new ItemStack(Material.ARROW, 10));
         }
     }
 }
