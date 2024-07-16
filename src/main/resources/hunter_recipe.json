@@ -1,0 +1,74 @@
+{
+  "zombie_spawn_egg": {
+    "recipe": ["010", "121", "010"],
+    "ingredient": {
+      "0": "glowstone_dust",
+      "1": "rotten_flesh",
+      "2": "zombie_head"
+    },
+    "count": 1
+  },
+  "skeleton_spawn_egg": {
+    "recipe": ["010", "121", "010"],
+    "ingredient": {
+      "0": "glowstone_dust",
+      "1": "bone",
+      "2": "skeleton_skull"
+    },
+    "count": 1
+  },
+  "blaze_spawn_egg": {
+    "recipe": ["010", "121", "010"],
+    "ingredient": {
+      "0": "glowstone_dust",
+      "1": "blaze_powder",
+      "2": "piglin_head"
+    },
+    "count": 1
+  },
+  "wither_skeleton_spawn_egg": {
+    "recipe": ["010", "121", "010"],
+    "ingredient": {
+      "0": "glowstone_dust",
+      "1": "bone",
+      "2": "wither_skeleton_skull"
+    },
+    "count": 1
+  },
+  "shulker_spawn_egg": {
+    "recipe": ["010", "121", "010"],
+    "ingredient": {
+      "0": "chorus_flower",
+      "1": "shulker_shell",
+      "2": "dragon_head"
+    },
+    "count": 1
+  },
+  "enderman_spawn_egg": {
+    "recipe": ["010", "121", "010"],
+    "ingredient": {
+      "0": "chorus_flower",
+      "1": "ender_pearl",
+      "2": "ender_eye"
+    },
+    "count": 1
+  },
+  "hunter_wooden_sword": {
+    "recipe": [" 0 ", " 1 ", " 2 "],
+    "ingredient": {
+      "0": "stripped_oak_log",
+      "1": "iron_ingot",
+      "2": "stick"
+    },
+    "count": 1
+  },
+  "hunter_arrow_supply_box": {
+    "recipe": [" 0 ", "121", " 0 "],
+    "ingredient": {
+      "0": "spectral_arrow",
+      "1": "arrow",
+      "2": "stick"
+    },
+    "count": 1
+  }
+}

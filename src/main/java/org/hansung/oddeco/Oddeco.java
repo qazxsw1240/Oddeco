@@ -13,6 +13,7 @@ import org.bukkit.inventory.meta.components.FoodComponent;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.hansung.oddeco.core.Plugin;
+import org.hansung.oddeco.hunter.HunterListener;
 import org.hansung.oddeco.core.json.JsonUtil;
 import org.hansung.oddeco.core.util.entity.ItemStackBuilder;
 import org.hansung.oddeco.core.util.logging.FormattedLogger;
@@ -103,6 +104,7 @@ public final class Oddeco extends JavaPlugin {
         getServer()
                 .getPluginManager()
                 .registerEvents(playerNutritionService, this);
+        getServer().getPluginManager().registerEvents(new HunterListener(this, logger), this);
 
         getServer()
                 .getPluginManager()
