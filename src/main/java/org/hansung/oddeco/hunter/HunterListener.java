@@ -69,7 +69,7 @@ public class HunterListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerJoin(PlayerJoinEvent event) {
-        hunters.put(event.getPlayer(), new Hunter(3));
+        // hunters.put(event.getPlayer(), new Hunter(3));
     }
 
     @EventHandler
@@ -94,8 +94,9 @@ public class HunterListener implements Listener {
     @EventHandler
     public void onCraftItem(CraftItemEvent event) {
         for (LivingEntity player : event.getViewers()) {
-            if ((recipes.contains(event.getRecipe()) && !hunters.containsKey(player)) ||
-                hunters.get(player).getLevel() < 4) {
+            if (recipes.contains(event.getRecipe()) && !hunters.containsKey(player)) {
+                event.setCancelled(true);
+            } else if (hunters.get(player).getLevel() < 4) {
                 event.setCancelled(true);
             }
         }
