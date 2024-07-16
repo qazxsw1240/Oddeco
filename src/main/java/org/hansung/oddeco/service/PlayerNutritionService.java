@@ -405,6 +405,17 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
         for (NutritionFacts.Info info : nutritionFacts) {
             int amount = playerNutritionState.getAmount(info.getNutrition());
             playerNutritionState.setAmount(info.getNutrition(), trimRange(amount + info.getAmount()));
+            System.out.println("Find nutrition facts: " + playerNutritionState);
+        }
+        if (isAcquire) {
+            player.sendMessage("Now your nutrition state is " + playerNutritionState);
+            // PlayerNutritionAcquireEvent event = PlayerNutritionAcquireEvent.of(player, playerNutrition);
+            // getListener(PlayerNutritionAcquireListener.class)
+            //         .forEach(listener -> listener.onNutritionAcquire(event));
+        } else {
+            // PlayerNutritionConsumeEvent event = PlayerNutritionConsumeEvent.of(player, playerNutrition);
+            // getListener(PlayerNutritionConsumeListener.class)
+            //         .forEach(listener -> listener.onNutritionConsume(event));
         }
         NutritionFacts nextNutritionFacts = NutritionFacts.of(playerNutritionState.asNutritionFacts());
         NutritionFacts increment = nextNutritionFacts.subtractNutritionFacts(previousNutritionFacts);
