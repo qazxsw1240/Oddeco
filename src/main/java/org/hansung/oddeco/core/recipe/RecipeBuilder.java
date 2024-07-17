@@ -31,24 +31,24 @@ public class RecipeBuilder {
     }
 
     // add all line's shape to recipe
-    public void setShapes(String[] shape) {
+    public void setShape(String[] shape) {
         this.shape = shape;
     }
 
     // add one line's shape to recipe
-    public void addShape(int line, String shape) {
+    public void setShape(int line, String shape) {
         if (line >= this.shape.length)
             throw new RuntimeException(String.format("line 값은 0부터 2 사이의 값을 가지지만, %d로 지정되었습니다.", line));
         this.shape[line] = shape;
     }
 
     // set all ingredients to recipe
-    public void setIngredients(Map<Character, Material> ingredients) {
+    public void setIngredient(Map<Character, Material> ingredients) {
         this.ingredients.putAll(ingredients);
     }
 
     // add one ingredient to recipe
-    public void addIngredient(Character key, Material value) {
+    public void setIngredient(Character key, Material value) {
         this.ingredients.put(key, value);
     }
 
