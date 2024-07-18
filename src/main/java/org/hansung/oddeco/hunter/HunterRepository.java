@@ -58,6 +58,7 @@ public class HunterRepository implements ReadonlyRepository<HunterRecipe, ItemSt
             } else if (entry.getKey().equals("hunter_arrow_supply_box")) {
                 ItemMeta meta = item.getItemMeta();
                 meta.displayName(Component.text("화살 지급 도구"));
+                meta.itemName(Component.text("화살 지급 도구"));
                 item.setItemMeta(meta);
             }
             recipe.setItem(item);
