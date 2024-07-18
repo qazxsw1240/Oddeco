@@ -4,29 +4,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonElement;
 import net.kyori.adventure.text.Component;
 import org.bukkit.*;
-import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
-import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.loot.LootTable;
-import org.bukkit.material.MaterialData;
-import org.bukkit.metadata.MetadataValue;
-import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.hansung.oddeco.core.json.JsonUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.Unmodifiable;
 
 import java.io.*;
 import java.util.*;
@@ -34,7 +23,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
-// 배서현 씨의 재밌넥 참여를 온 힘을 다해 축하드립니다!!!
 public class ButcherListener implements Listener {
     private Random random = new Random();
 
@@ -49,8 +37,8 @@ public class ButcherListener implements Listener {
 
         plugin.getLogger().info("Butcher Listener Registed.");
 
-        // 갓=태명님이 짜주신 /resources 폴더의 파일 읽는 개쩌는 코드 (뭔지 모름)
-        try (InputStream in = getClass().getResourceAsStream("/ButcherProbability.json");
+        // /resources 폴더 파일 읽기 (수정 필요)
+        try (InputStream in = getClass().getResourceAsStream("/butcher_probability.json");
              BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
             String content = reader.lines().collect(Collectors.joining());
             // plugin.getLogger().info(String.format("content find: %s", content));
@@ -61,7 +49,7 @@ public class ButcherListener implements Listener {
         }
         probability = probability1;
 
-        // 레시피 추가를 위한 뭐시깽이
+        // add meat recipe
         setMeatPieceRecipe();
         ConcurrentMap<Character, Object> data = new ConcurrentHashMap<>();
         data.put('1', Material.GOLD_INGOT);
@@ -96,22 +84,19 @@ public class ButcherListener implements Listener {
 
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
-        // 일단 이 녀석이 Butcher 인지 확인해야 하는데 이건 플레이어 관련 클래스를 제작한 태명님 몫일 겁니다... 아마도
+        Player player = event.getEntity().getKiller(); // check who killed mob
+        if (player == null || !butchers.containsKey(player)) return; // check what player is butcher
 
-        // Butcher인 경우 아래 코드 실행
         if (event.getEntity() instanceof Mob) {
-            ButcherMeat meat; // 이것이 고기다! 절망편
-            int rank; // 고기의 질이 아주 좋구만...
-            boolean isAnimal = false; // 동물을 죽였어!!! 동물학대야 이거!!! 당신을 동물학대로 싱고합니다...
+            ButcherMeat meat; // meat object
+            int rank; // meat's rank
+            boolean isAnimal = false; // if Player kill animal
 
-            // 먼저 이 녀석의 랭크를 지정 합니다.
-            Random random = new Random(System.currentTimeMillis()); // 랜덤값 생성을 위한 랜덤값 변수 생성
-            Player player = event.getEntity().getKiller(); // 몹을 죽인 사람을 확인해용
+            // set rank of meat
+            Random random = new Random(System.currentTimeMillis()); // random value generator
 
-            if (player == null || !butchers.containsKey(player)) return; // 만약 이 사람이 도축업자가 아니면 그냥 끝내용
-
-            Butcher butcher = butchers.get(player); // 도축업자면 그 샊이를 멱살잡고 델고와용
-            int pick = random.nextInt(100); // 그리고 랜덤값을 확인해용
+            Butcher butcher = butchers.get(player); // get butcher from killer's player object
+            int pick = random.nextInt(100); // generate random number
             Probability.ProbabilityField.Probabilities probabilities = probability.data.get(butcher.getLevel() - 1).probabilities;
             if (pick < probabilities.normal)
                 rank = 0; // 지방 1
@@ -121,7 +106,7 @@ public class ButcherListener implements Listener {
                 rank = 2; // 지방 3
 
             // 랭크 지정이 끝 났으면 이 녀석이 뭔지 확인해 고기를 생성.
-            // 동물을 죽였다면 원래 드랍할걸 제거하고 아니면 그냥 같이 사랑에 드롭드롭
+            // 동물을 죽였을 경우 생성된 고기로 대체, 아닐 경우 생성된 고기와 같이 드랍.
             if (event.getEntity() instanceof Animals) {
                 meat = new ButcherMeat(butcher, rank, event.getEntity());
                 event.getDrops().clear();
