@@ -17,6 +17,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.hansung.oddeco.butcher.ButcherListener;
 import org.hansung.oddeco.core.Plugin;
+import org.hansung.oddeco.core.entity.career.CareerCoinsData;
 import org.hansung.oddeco.core.entity.nutrition.PlayerNutritionFactRewardData;
 import org.hansung.oddeco.core.entity.player.PlayerNutritionStateData;
 import org.hansung.oddeco.core.json.JsonUtil;
@@ -24,11 +25,9 @@ import org.hansung.oddeco.core.util.entity.ItemStackBuilder;
 import org.hansung.oddeco.core.util.logging.FormattedLogger;
 import org.hansung.oddeco.core.util.logging.PluginLoggerFactory;
 import org.hansung.oddeco.hunter.HunterListener;
-import org.hansung.oddeco.repository.AdvancementRewardRepository;
-import org.hansung.oddeco.repository.NutritionFactRepository;
-import org.hansung.oddeco.repository.PlayerNutritionFactRewardDataRepository;
-import org.hansung.oddeco.repository.PlayerNutritionRepository;
+import org.hansung.oddeco.repository.*;
 import org.hansung.oddeco.service.PlayerAdvancementRewardService;
+import org.hansung.oddeco.service.PlayerCareerService;
 import org.hansung.oddeco.service.PlayerNutritionService;
 
 import java.time.Duration;
@@ -39,7 +38,8 @@ public final class Oddeco extends JavaPlugin {
 
     private static final Class<?>[] ENTITIES = new Class[]{
             PlayerNutritionStateData.class,
-            PlayerNutritionFactRewardData.class
+            PlayerNutritionFactRewardData.class,
+            CareerCoinsData.class,
     };
 
     private final FormattedLogger logger;
@@ -96,11 +96,24 @@ public final class Oddeco extends JavaPlugin {
 
         NamespacedKey nutritionKey = playerNutritionService.getNutritionKey();
 
+        PlayerCareerService playerCareerService = new PlayerCareerService(
+                this,
+                new CareerCoinsRepository(this.entityManager),
+                this.advancementRewardRepository,
+                this.logger);
+
         getServer()
                 .getPluginManager()
                 .registerEvents(playerNutritionService, this);
-        getServer().getPluginManager().registerEvents(new ButcherListener(this), this);
-        getServer().getPluginManager().registerEvents(new HunterListener(this, logger), this);
+        getServer()
+                .getPluginManager()
+                .registerEvents(playerCareerService, this);
+        getServer()
+                .getPluginManager()
+                .registerEvents(new ButcherListener(this), this);
+        getServer()
+                .getPluginManager()
+                .registerEvents(new HunterListener(this, this.logger), this);
 
         getServer()
                 .getPluginManager()
