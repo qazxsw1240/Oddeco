@@ -1,7 +1,9 @@
 package org.hansung.oddeco.repository;
 
+import jakarta.persistence.EntityManager;
 import org.bukkit.entity.Player;
 import org.hansung.oddeco.core.CrudRepository;
+import org.hansung.oddeco.core.entity.career.CareerCoinsData;
 import org.hansung.oddeco.core.entity.career.CareerCoins;
 import org.hansung.oddeco.core.sql.AbstractStatementExecutor;
 import org.hansung.oddeco.core.sql.ResultMapper;
@@ -17,9 +19,11 @@ public class CareerCoinsRepository
         extends AbstractStatementExecutor
         implements CrudRepository<CareerCoins, Player> {
     private final ConcurrentMap<UUID, CareerCoins> coins;
+    private final EntityManager entityManager;
 
-    public CareerCoinsRepository(Connection connection) {
+    public CareerCoinsRepository(Connection connection, EntityManager entityManager) {
         super(connection);
+        this.entityManager = entityManager;
         this.coins = new ConcurrentSkipListMap<>();
     }
 
@@ -37,13 +41,7 @@ public class CareerCoinsRepository
 
     @Override
     public boolean contains(Player player) {
-        UUID uuid = player.getUniqueId();
-        if (this.coins.containsKey(uuid)) {
-            return true;
-        }
-        return executeSingleQuery(createCareerCoinsFindQuery(uuid), set -> set.getString(1))
-                .filter(value -> value.equals(player.getUniqueId().toString()))
-                .isPresent();
+        return get(player).isPresent();
     }
 
     @Override
@@ -52,11 +50,12 @@ public class CareerCoinsRepository
         if (this.coins.containsKey(uuid)) {
             return Optional.of(this.coins.get(uuid));
         }
-        return executeSingleQuery(createCareerCoinsFindQuery(uuid), createCareerCoins())
+        return Optional
+                .ofNullable(this.entityManager.find(CareerCoinsData.class, uuid.toString()))
                 .map(coins -> {
-                    CareerCoins wrapper = new ConnectionWrapper(this.connection, player, coins);
+                    CareerCoins wrapper = new ConnectionWrapper(this.entityManager, coins);
                     this.coins.put(uuid, wrapper);
-                    return coins;
+                    return wrapper;
                 });
     }
 
@@ -68,9 +67,9 @@ public class CareerCoinsRepository
     @Override
     public CareerCoins create(Player player) {
         UUID uuid = player.getUniqueId();
-        CareerCoins coins = CareerCoins.of();
-        execute(createCareerCoinsCreateQuery(player, coins));
-        CareerCoins wrapper = new ConnectionWrapper(this.connection, player, coins);
+        CareerCoinsData data = new CareerCoinsData(uuid.toString(), 0);
+        this.entityManager.persist(data);
+        CareerCoins wrapper = new ConnectionWrapper(this.entityManager, data);
         this.coins.put(uuid, wrapper);
         return wrapper;
     }
@@ -97,37 +96,31 @@ public class CareerCoinsRepository
         };
     }
 
-    private static class ConnectionWrapper
-            extends AbstractStatementExecutor
-            implements CareerCoins {
-        private final Player player;
-        private final CareerCoins careerCoins;
+    private static class ConnectionWrapper implements CareerCoins {
+        private final EntityManager entityManager;
+        private final CareerCoinsData data;
 
-        public ConnectionWrapper(
-                Connection connection,
-                Player player,
-                CareerCoins careerCoins) {
-            super(connection);
-            this.player = player;
-            this.careerCoins = careerCoins;
+        public ConnectionWrapper(EntityManager entityManager, CareerCoinsData data) {
+            this.entityManager = entityManager;
+            this.data = data;
         }
 
         @Override
         public int getCoins() {
-            return this.careerCoins.getCoins();
+            return this.data.getCoins();
         }
 
         @Override
         public void setCoins(int coins) {
-            this.careerCoins.setCoins(coins);
-            UUID uuid = this.player.getUniqueId();
-            String sql = String.format("UPDATE player_career_coins SET amount=%d WHERE uuid='%s'", coins, uuid);
-            execute(sql);
+            this.entityManager.getTransaction().begin();
+            this.data.setCoins(coins);
+            this.entityManager.merge(this.data);
+            this.entityManager.getTransaction().commit();
         }
 
         @Override
         public String toString() {
-            return this.careerCoins.toString();
+            return this.data.toString();
         }
     }
 }
