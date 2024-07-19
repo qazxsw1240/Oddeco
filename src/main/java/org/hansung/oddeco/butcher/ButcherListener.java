@@ -4,16 +4,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonElement;
 import net.kyori.adventure.text.Component;
 import org.bukkit.*;
-import org.bukkit.block.Chest;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.hansung.oddeco.core.json.JsonUtil;
 
@@ -59,6 +60,19 @@ public class ButcherListener implements Listener {
         JsonElement jsonElement = JsonUtil.of("/butcher_recipes.json");
         ButcherRepository repository = new ButcherRepository(jsonElement.getAsJsonObject());
         repository.getKeys().forEach(meat -> createRecipe(meat.getIdentityText(), meat.getItem(), repository.get(meat).get(), data));
+
+        // 덫
+        ItemStack item = new ItemStack(Material.COBWEB);
+        ItemMeta meta = item.getItemMeta();
+        meta.displayName(Component.text("덫"));
+        item.setItemMeta(meta);
+
+        NamespacedKey key = new NamespacedKey(plugin, "butcher_trap");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" 1 ", "121", " 1 ");
+        recipe.setIngredient('1', Material.COBWEB);
+        recipe.setIngredient('2', Material.TRAPPED_CHEST);
+        plugin.getServer().addRecipe(recipe);
     }
 
     // 최적화 필요
@@ -137,6 +151,14 @@ public class ButcherListener implements Listener {
             plugin.getServer().addRecipe(recipe);
             recipes.add(recipe);
             i++;
+        }
+    }
+
+    @EventHandler
+    public void onPlayerInteract(PlayerInteractEvent event) {
+        if (!event.hasBlock() || !event.getAction().isRightClick()) return;
+        if (Objects.requireNonNull(event.getClickedBlock()).getType() == Material.COBWEB) {
+
         }
     }
 
