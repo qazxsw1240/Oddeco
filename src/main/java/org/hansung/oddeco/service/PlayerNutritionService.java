@@ -37,7 +37,6 @@ import org.hansung.oddeco.service.nutrition.PlayerNutritionStateListenerManager;
 import org.hansung.oddeco.service.nutrition.PlayerNutritionStateUpdateListener;
 import org.hansung.oddeco.service.nutrition.PlayerNutritionUpdateEvent;
 
-import java.sql.*;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.List;
@@ -55,7 +54,6 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
     private final NutritionFactRepository nutritionFactRepository;
     private final PlayerNutritionRepository playerNutritionRepository;
     private final PlayerNutritionFactRewardDataRepository playerNutritionFactRewardDataRepository;
-    private final Connection connection;
     private final FormattedLogger logger;
     private final NamespacedKey nutritionKey;
     private final ConcurrentMap<UUID, ScheduledExecutorService> executorServiceMap;
@@ -64,20 +62,17 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
 
     private Duration exhaustionDelay;
     private int decrement;
-    private NutritionFacts decrementNutritionFacts;
 
     public PlayerNutritionService(
             Plugin plugin,
             NutritionFactRepository nutritionFactRepository,
             PlayerNutritionRepository playerNutritionRepository,
             PlayerNutritionFactRewardDataRepository playerNutritionFactRewardDataRepository,
-            Connection connection,
             FormattedLogger logger) {
         this.plugin = plugin;
         this.nutritionFactRepository = nutritionFactRepository;
         this.playerNutritionRepository = playerNutritionRepository;
         this.playerNutritionFactRewardDataRepository = playerNutritionFactRewardDataRepository;
-        this.connection = connection;
         this.logger = logger;
         this.nutritionKey = new NamespacedKey(plugin, "nutrition");
 
@@ -87,9 +82,7 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
 
         this.exhaustionDelay = DEFAULT_EXHAUSTION_DELAY;
         this.decrement = DEFAULT_EXHAUSTION_DECREMENT;
-        this.decrementNutritionFacts = calculateDecrementNutritionFacts();
 
-        initializeSqlTable();
         addListener((PlayerNutritionStateUpdateListener) event -> {
             Player player = event.getPlayer();
             PlayerNutritionState nutritionState = this.playerNutritionRepository
@@ -97,6 +90,7 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
                     .orElseThrow();
             player.sendMessage(Component.text("now your nutrition status is " + nutritionState));
         });
+
         addListener((PlayerNutritionStateUpdateListener) event -> {
             Player player = event.getPlayer();
             PlayerNutritionFactRewardData data = this.playerNutritionFactRewardDataRepository
@@ -141,7 +135,6 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
 
     public void setExhaustionDecrement(int decrement) {
         this.decrement = decrement;
-        this.decrementNutritionFacts = calculateDecrementNutritionFacts();
     }
 
     public void setPlayerExhaustionDelay(Player player, Duration delay) {
@@ -357,37 +350,6 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
         this.logger.info("Successfully update Player's nutrition fact data %s", data);
     }
 
-    private void initializeSqlTable() {
-        try {
-            DatabaseMetaData databaseMetaData = this.connection.getMetaData();
-            ResultSet resultSet = databaseMetaData.getTables(null, null, "player_nutrition", new String[]{"TABLE"});
-            try (resultSet) {
-                if (!resultSet.next()) {
-                    try (Statement statement = this.connection.createStatement()) {
-                        statement.execute("""
-                                           create table player_nutrition (
-                                              uuid         varchar not null constraint player_nutrition_pk primary key,
-                                              carbohydrate integer not null,
-                                              protein      integer not null,
-                                              fat          integer not null,
-                                              vitamin      integer not null
-                                          )
-                                          """);
-                        statement.execute("""
-                                          create unique index player_nutrition_uuid_uindex
-                                             on player_nutrition (uuid)
-                                          """);
-                        this.logger.info("Successfully create table 'player_nutrition'");
-                    }
-                } else {
-                    this.logger.info("found existing table 'player_nutrition'");
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     private NutritionFacts calculateDecrementNutritionFacts(int decrement) {
         return NutritionFacts.of(-decrement, -decrement, -decrement, -decrement);
     }
@@ -405,7 +367,6 @@ public class PlayerNutritionService implements Listener, PlayerNutritionStateLis
         for (NutritionFacts.Info info : nutritionFacts) {
             int amount = playerNutritionState.getAmount(info.getNutrition());
             playerNutritionState.setAmount(info.getNutrition(), trimRange(amount + info.getAmount()));
-            System.out.println("Find nutrition facts: " + playerNutritionState);
         }
         NutritionFacts nextNutritionFacts = NutritionFacts.of(playerNutritionState.asNutritionFacts());
         NutritionFacts increment = nextNutritionFacts.subtractNutritionFacts(previousNutritionFacts);
