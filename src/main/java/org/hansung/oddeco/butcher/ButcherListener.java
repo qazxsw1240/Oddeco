@@ -7,6 +7,7 @@ import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -15,6 +16,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.hansung.oddeco.core.json.JsonUtil;
 
@@ -155,10 +157,21 @@ public class ButcherListener implements Listener {
     }
 
     @EventHandler
+    public void onBlockPlace(BlockPlaceEvent event) {
+        ItemStack item = event.getItemInHand();
+        if (Objects.equals(item.getItemMeta().displayName(), Component.text("덫"))) {
+            event.getBlock().setMetadata("custom_value", new FixedMetadataValue(plugin, "butcher_trap"));
+        }
+    }
+
+    @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (!event.hasBlock() || !event.getAction().isRightClick()) return;
-        if (Objects.requireNonNull(event.getClickedBlock()).getType() == Material.COBWEB) {
-
+        if (Objects.requireNonNull(event.getClickedBlock()).getType() != Material.COBWEB) return;
+        if (!event.getClickedBlock().getMetadata("custom_value").isEmpty()) {
+            plugin.getLogger().info("이것은 덫입니다.");
+        } else {
+            plugin.getLogger().info("이것은 덫이 아닙니다.");
         }
     }
 
