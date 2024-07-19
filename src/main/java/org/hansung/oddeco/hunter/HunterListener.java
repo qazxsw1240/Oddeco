@@ -70,6 +70,8 @@ public class HunterListener implements Listener {
 
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
+        if (event.getEntity().getKiller() == null) return;
+
         LivingEntity entity = event.getEntity();
         Player player = entity.getKiller();
         if (hunters.containsKey(player)) {
