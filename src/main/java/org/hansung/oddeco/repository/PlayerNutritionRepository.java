@@ -1,55 +1,31 @@
 package org.hansung.oddeco.repository;
 
+import jakarta.persistence.EntityManager;
 import org.bukkit.entity.Player;
 import org.hansung.oddeco.core.CrudRepository;
 import org.hansung.oddeco.core.entity.nutrition.Nutrition;
 import org.hansung.oddeco.core.entity.nutrition.NutritionFacts;
 import org.hansung.oddeco.core.entity.player.PlayerNutritionState;
-import org.hansung.oddeco.core.sql.AbstractStatementExecutor;
-import org.hansung.oddeco.core.sql.ResultMapper;
+import org.hansung.oddeco.core.entity.player.PlayerNutritionStateData;
 
-import java.sql.Connection;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 
-public class PlayerNutritionRepository
-        extends AbstractStatementExecutor
-        implements CrudRepository<PlayerNutritionState, Player> {
+public class PlayerNutritionRepository implements CrudRepository<PlayerNutritionState, Player> {
     private final ConcurrentMap<UUID, PlayerNutritionState> playerNutritionStates;
+    private final EntityManager entityManager;
 
-    public PlayerNutritionRepository(Connection connection) {
-        super(connection);
+    public PlayerNutritionRepository(EntityManager entityManager) {
+        this.entityManager = entityManager;
         this.playerNutritionStates = new ConcurrentSkipListMap<>();
-    }
-
-    private static String createNutritionStateFindQuery(UUID uuid) {
-        return String.format("SELECT * FROM player_nutrition WHERE uuid = '%s'", uuid);
-    }
-
-    private static String createNutritionStateCreateQuery(PlayerNutritionState state) {
-        UUID uuid = state.getPlayer().getUniqueId();
-        return String.format(
-                "INSERT INTO player_nutrition (uuid, carbohydrate, protein, fat, vitamin) VALUES ('%s', %d, %d, %d, %d)",
-                uuid,
-                state.getAmount(Nutrition.CARBOHYDRATE),
-                state.getAmount(Nutrition.PROTEIN),
-                state.getAmount(Nutrition.FAT),
-                state.getAmount(Nutrition.VITAMIN));
     }
 
     @Override
     public boolean contains(Player player) {
         UUID uuid = player.getUniqueId();
-        if (this.playerNutritionStates.containsKey(uuid)) {
-            return true;
-        }
-        return executeSingleQuery(createNutritionStateFindQuery(uuid), set -> set.getString(1))
-                .filter(value -> value.equals(player.getUniqueId().toString()))
-                .isPresent();
+        PlayerNutritionStateData data = this.entityManager.find(PlayerNutritionStateData.class, uuid.toString());
+        return data != null;
     }
 
     @Override
@@ -58,11 +34,12 @@ public class PlayerNutritionRepository
         if (this.playerNutritionStates.containsKey(uuid)) {
             return Optional.of(this.playerNutritionStates.get(uuid));
         }
-        return executeSingleQuery(createNutritionStateFindQuery(uuid), createNutritionState(player))
-                .map(state -> {
-                    PlayerNutritionState wrapper = new ConnectionWrapper(this.connection, state);
+        PlayerNutritionStateData data = this.entityManager.find(PlayerNutritionStateData.class, uuid.toString());
+        return Optional.ofNullable(data)
+                .map(stateData -> {
+                    PlayerNutritionState wrapper = new ConnectionWrapper(this.entityManager, player, stateData);
                     this.playerNutritionStates.put(uuid, wrapper);
-                    return state;
+                    return wrapper;
                 });
     }
 
@@ -74,9 +51,12 @@ public class PlayerNutritionRepository
     @Override
     public PlayerNutritionState create(Player player) {
         UUID uuid = player.getUniqueId();
-        PlayerNutritionState state = PlayerNutritionState.of(player);
-        execute(createNutritionStateCreateQuery(state));
-        ConnectionWrapper wrapper = new ConnectionWrapper(this.connection, state);
+        PlayerNutritionStateData data = this.entityManager.find(PlayerNutritionStateData.class, uuid.toString());
+        if (data == null) {
+            data = new PlayerNutritionStateData(uuid.toString(), 0, 0, 0, 0);
+            this.entityManager.persist(data);
+        }
+        ConnectionWrapper wrapper = new ConnectionWrapper(this.entityManager, player, data);
         this.playerNutritionStates.put(uuid, wrapper);
         return wrapper;
     }
@@ -96,61 +76,68 @@ public class PlayerNutritionRepository
         throw new UnsupportedOperationException();
     }
 
-    private ResultMapper<PlayerNutritionState> createNutritionState(Player player) {
-        return resultSet -> {
-            PlayerNutritionState state = PlayerNutritionState.of(player);
-            state.setAmount(Nutrition.CARBOHYDRATE, resultSet.getInt(2));
-            state.setAmount(Nutrition.PROTEIN, resultSet.getInt(3));
-            state.setAmount(Nutrition.FAT, resultSet.getInt(3));
-            state.setAmount(Nutrition.VITAMIN, resultSet.getInt(4));
-            return state;
-        };
-    }
-
     private static class ConnectionWrapper
-            extends AbstractStatementExecutor
             implements PlayerNutritionState {
-        private final PlayerNutritionState nutritionState;
+        private final EntityManager entityManager;
+        private final Player player;
+        private final PlayerNutritionStateData data;
 
-        public ConnectionWrapper(Connection connection, PlayerNutritionState nutritionState) {
-            super(connection);
-            this.nutritionState = nutritionState;
+        public ConnectionWrapper(EntityManager entityManager, Player player, PlayerNutritionStateData data) {
+            this.entityManager = entityManager;
+            this.player = player;
+            this.data = data;
         }
 
         @Override
         public Player getPlayer() {
-            return this.nutritionState.getPlayer();
+            return this.player;
         }
 
         @Override
         public int getAmount(Nutrition nutrition) {
-            return this.nutritionState.getAmount(nutrition);
+            return switch (nutrition) {
+                case CARBOHYDRATE -> this.data.getCarbohydrate();
+                case PROTEIN -> this.data.getProtein();
+                case FAT -> this.data.getFat();
+                case VITAMIN -> this.data.getVitamin();
+            };
         }
 
         @Override
         public void setAmount(Nutrition nutrition, int amount) {
-            this.nutritionState.setAmount(nutrition, amount);
-            UUID uuid = this.nutritionState.getPlayer().getUniqueId();
-            String sql = String.format("UPDATE player_nutrition SET %s=%d WHERE uuid='%s'", nutrition
-                    .name()
-                    .toLowerCase(), amount, uuid);
-            System.out.println("executed sql: " + sql);
-            execute(sql);
+            this.entityManager.getTransaction().begin();
+            switch (nutrition) {
+                case CARBOHYDRATE -> this.data.setCarbohydrate(amount);
+                case PROTEIN -> this.data.setProtein(amount);
+                case FAT -> this.data.setFat(amount);
+                case VITAMIN -> this.data.setVitamin(amount);
+            }
+            this.entityManager.flush();
+            this.entityManager.getTransaction().commit();
         }
 
         @Override
         public Map<Nutrition, Integer> getNutritionState() {
-            return this.nutritionState.getNutritionState();
+            Map<Nutrition, Integer> map = new EnumMap<>(Nutrition.class);
+            map.put(Nutrition.CARBOHYDRATE, this.data.getCarbohydrate());
+            map.put(Nutrition.PROTEIN, this.data.getProtein());
+            map.put(Nutrition.FAT, this.data.getFat());
+            map.put(Nutrition.VITAMIN, this.data.getVitamin());
+            return map;
         }
 
         @Override
         public NutritionFacts asNutritionFacts() {
-            return this.nutritionState.asNutritionFacts();
+            return NutritionFacts.of(
+                    this.data.getCarbohydrate(),
+                    this.data.getProtein(),
+                    this.data.getFat(),
+                    this.data.getVitamin());
         }
 
         @Override
         public String toString() {
-            return this.nutritionState.toString();
+            return this.data.toString();
         }
     }
 }
