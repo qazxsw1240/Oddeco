@@ -9,6 +9,6 @@ public interface PlayerNutritionFactRewardFactory {
             int nutritionDecrement,
             int reward,
             Duration delay) {
-        return new PlayerNutritionFactRewardDataImpl(uuid, nutritionDecrement, reward, delay);
+        return new PlayerNutritionFactRewardData(uuid.toString(), nutritionDecrement, reward, (int) delay.toSeconds());
     }
 }
