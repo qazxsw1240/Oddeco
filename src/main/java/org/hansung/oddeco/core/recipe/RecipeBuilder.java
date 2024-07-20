@@ -57,6 +57,7 @@ public class RecipeBuilder {
         this.item = item;
     }
 
+    // build recipe (to add server recipe)
     public ShapedRecipe build() {
         if (item == null) throw new NullPointerException("레시피로 제작할 아이템이 지정되지 않았습니다.");
         if (key == null) key = item.getType().getKey();
