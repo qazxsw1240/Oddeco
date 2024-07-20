@@ -1,0 +1,141 @@
+{
+  "butcher_trap": {
+    "recipe": [" 1 ", "121", " 1 "],
+    "ingredient": {
+      "1": "cobweb",
+      "2": "trapped_chest"
+    },
+    "count": 1
+  },
+  "meat_piece_vegan": {
+    "recipe": ["123", "454", "321"],
+    "ingredient": {
+      "1": "potato",
+      "2": "carrot",
+      "3": "melon_slice",
+      "4": "cocoa_beans",
+      "5": "wheat"
+    },
+    "count": 1
+  },
+  "chicken_0": {
+    "recipe": [" M ", " 1 ", "   "],
+    "ingredient": {
+      "M": "meat_piece",
+      "1": "special_core"
+    },
+    "count": 1
+  },
+  "chicken_1": {
+    "recipe": ["   ", " 1 ", " M "],
+    "ingredient": {
+      "M": "meat_piece",
+      "1": "special_core"
+    },
+    "count": 1
+  },
+  "chicken_2": {
+    "recipe": ["   ", "M1 ", "   "],
+    "ingredient": {
+      "M": "meat_piece",
+      "1": "special_core"
+    },
+    "count": 1
+  },
+  "porkchop_0": {
+    "recipe": ["M M", " 1 ", " M "],
+    "ingredient": {
+      "M": "meat_piece",
+      "1": "special_core"
+    },
+    "count": 1
+  },
+  "porkchop_1": {
+    "recipe": ["  M", "M1 ", "  M"],
+    "ingredient": {
+      "M": "meat_piece",
+      "1": "special_core"
+    },
+    "count": 1
+  },
+  "porkchop_2": {
+    "recipe": [" M ", " 1 ", "M M"],
+    "ingredient": {
+      "M": "meat_piece",
+      "1": "special_core"
+    },
+    "count": 1
+  },
+  "mutton_0": {
+    "recipe": ["  M", "1M ", "M  "],
+    "ingredient": {
+      "M": "meat_piece",
+      "1": "special_core"
+    },
+    "count": 1
+  },
+  "mutton_1": {
+    "recipe": ["M  ", " M1", "  M"],
+    "ingredient": {
+      "M": "meat_piece",
+      "1": "special_core"
+    },
+    "count": 1
+  },
+  "mutton_2": {
+    "recipe": [" M ", "1 M", "M  "],
+    "ingredient": {
+      "M": "meat_piece",
+      "1": "special_core"
+    },
+    "count": 1
+  },
+  "beef_0": {
+    "recipe": [" M ", "M1M", " M "],
+    "ingredient": {
+      "M": "meat_piece",
+      "1": "special_core"
+    },
+    "count": 1
+  },
+  "beef_1": {
+    "recipe": ["M M", " 1 ", "M M"],
+    "ingredient": {
+      "M": "meat_piece",
+      "1": "special_core"
+    },
+    "count": 1
+  },
+  "beef_2": {
+    "recipe": ["   ", "M1M", "M M"],
+    "ingredient": {
+      "M": "meat_piece",
+      "1": "special_core"
+    },
+    "count": 1
+  },
+  "rabbit_0": {
+    "recipe": [" M ", "M1 ", "   "],
+    "ingredient": {
+      "M": "meat_piece",
+      "1": "special_core"
+    },
+    "count": 1
+  },
+  "rabbit_1": {
+    "recipe": ["   ", "M1M", "   "],
+    "ingredient": {
+      "M": "meat_piece",
+      "1": "special_core"
+    },
+    "count": 1
+  },
+  "rabbit_2": {
+    "recipe": ["   ", " 1M", " M "],
+    "ingredient": {
+      "M": "meat_piece",
+      "1": "special_core"
+    },
+    "count": 1
+  }
+}
