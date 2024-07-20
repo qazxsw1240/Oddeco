@@ -53,8 +53,11 @@ public class ButcherRepository implements ReadonlyRepository<RecipeBuilder, Item
             element.getAsJsonObject().entrySet().forEach(data -> {
                 if (data.getKey().equals("recipe")) {
                     JsonArray array = data.getValue().getAsJsonArray();
-                    for (int i = 0; i < 3; i++)
-                        builder.setShape(i, array.get(i).getAsString());
+                    String[] value = new String[3];
+                    for (int i = 0; i < 3; i++) {
+                        value[i] = array.get(i).getAsString();
+                    }
+                    builder.setShape(value);
                 } else if (data.getKey().equals("ingredient")) {
                     data.getValue().getAsJsonObject().entrySet().forEach(ingredient -> {
                         builder.setIngredient(ingredient.getKey().charAt(0),
