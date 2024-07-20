@@ -46,14 +46,7 @@ public class RecipeBuilder {
 
     // add all line's shape to recipe
     public void setShape(String[] shape) {
-        this.shape = shape;
-    }
-
-    // add one line's shape to recipe
-    public void setShape(int line, String shape) {
-        if (line >= this.shape.length)
-            throw new RuntimeException(String.format("line 값은 0부터 2 사이의 값을 가지지만, %d로 지정되었습니다.", line));
-        this.shape[line] = shape;
+        recipe.shape(shape);
     }
 
     // set ingredient to recipe
@@ -73,8 +66,6 @@ public class RecipeBuilder {
 
     // build recipe (to add server recipe)
     public ShapedRecipe build() {
-        if (item == null) throw new NullPointerException("레시피로 제작할 아이템이 지정되지 않았습니다.");
-        recipe.shape(shape); // set recipe's shape
         return recipe;
     }
 }
