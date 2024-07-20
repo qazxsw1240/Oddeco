@@ -3,71 +3,83 @@ package org.hansung.oddeco.butcher;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.Damageable;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.hansung.oddeco.core.ReadonlyRepository;
+import org.hansung.oddeco.core.recipe.RecipeBuilder;
+import org.hansung.oddeco.hunter.HunterRecipe;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-public class ButcherRepository implements ReadonlyRepository<String[], Meat> {
-    private final ConcurrentMap<Meat, String[]> butcherRecipeMap;
-    private final ConcurrentMap<Integer, Material> materialMap;
+public class ButcherRepository implements ReadonlyRepository<RecipeBuilder, ItemStack> {
+    private final ConcurrentMap<ItemStack, RecipeBuilder> recipes;
+    private final ArrayList<String> meat_texts;
 
-    ButcherRepository(JsonObject object) {
-        // init variables
-        this.butcherRecipeMap = new ConcurrentHashMap<>();
-        this.materialMap = new ConcurrentHashMap<>();
-        setMaterialMap();
+    public ButcherRepository(JsonObject object) {
+        this.recipes = new ConcurrentHashMap<>();
+        this.meat_texts = new ArrayList<>();
+        meat_texts.add("chicken");
+        meat_texts.add("porkchop");
+        meat_texts.add("mutton");
+        meat_texts.add("beef");
+        meat_texts.add("rabbit");
 
-        // read data
+        int rank = 0;
+        ButcherIngredients ingredients = new ButcherIngredients();
         object.entrySet().forEach(entry -> {
-            // get meat
-            String name = entry.getKey();
-            int a = Integer.parseInt(name.substring(0, 1));
-            int b = Integer.parseInt(name.substring(1, 2));
-            int c = Integer.parseInt(name.substring(2, 3));
-
-            // get values
+            // get recipe from json file
+            RecipeBuilder builder;
+            ItemStack item;
+            if (meat_texts.contains(entry.getKey().split("_")[0])) {
+                Meat meat = new Meat(rank, ingredients
+                        .getIngredient(entry.getKey().split("_")[0])
+                        .getType(),
+                        Integer.parseInt(entry.getKey().split("_")[1]));
+                item = meat.getItem();
+                builder = new RecipeBuilder(String.format("%s_%d", entry.getKey(), rank), item);
+            } else {
+                item = ingredients.getIngredient(entry.getKey());
+                builder = new RecipeBuilder(entry.getKey(), item);
+            }
             JsonElement element = entry.getValue();
-            JsonArray array = element.getAsJsonArray();
-            String[] strings = new String[3];
-            strings[0] = array.get(0).getAsString();
-            strings[1] = array.get(1).getAsString();
-            strings[2] = array.get(2).getAsString();
-
-            // put to map
-            butcherRecipeMap.put(new Meat(a, materialMap.get(b), c), strings);
+            element.getAsJsonObject().entrySet().forEach(data -> {
+                if (data.getKey().equals("recipe")) {
+                    JsonArray array = data.getValue().getAsJsonArray();
+                    for (int i = 0; i < 3; i++)
+                        builder.setShape(i, array.get(i).getAsString());
+                } else if (data.getKey().equals("ingredient")) {
+                    data.getValue().getAsJsonObject().entrySet().forEach(ingredient -> {
+                        System.out.println(ingredient.getKey().charAt(0));
+                        builder.setIngredient(ingredient.getKey().charAt(0),
+                                ingredients.getIngredient(ingredient.getValue().getAsString()));
+                    });
+                } else if (data.getKey().equals("count")) {
+                    builder.setAmount(data.getValue().getAsInt());
+                }
+            });
         });
     }
 
-    private void setMaterialMap() {
-        materialMap.put(0, Material.CHICKEN);
-        materialMap.put(1, Material.PORKCHOP);
-        materialMap.put(2, Material.MUTTON);
-        materialMap.put(3, Material.BEEF);
-        materialMap.put(4, Material.RABBIT);
+    @Override
+    public boolean contains(ItemStack key) {
+        return this.recipes.containsKey(key);
     }
 
     @Override
-    public boolean contains(Meat key) {
-        return this.butcherRecipeMap.containsKey(key);
+    public Optional<RecipeBuilder> get(ItemStack key) {
+        return Optional.ofNullable(this.recipes.get(key));
     }
 
     @Override
-    public Optional<String[]> get(Meat key) {
-        return Optional.ofNullable(this.butcherRecipeMap.get(key));
-    }
-
-    public Set<Meat> getKeys() {
-        return this.butcherRecipeMap.keySet();
-    }
-
-    @Override
-    public Collection<String[]> getAll() {
-        return this.butcherRecipeMap.values();
+    public Collection<RecipeBuilder> getAll() {
+        return this.recipes.values();
     }
 }

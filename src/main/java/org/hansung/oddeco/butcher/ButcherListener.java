@@ -38,8 +38,6 @@ public class ButcherListener implements Listener {
         Probability probability1;
         this.plugin = plugin;
 
-        plugin.getLogger().info("Butcher Listener Registed.");
-
         // /resources 폴더 파일 읽기 (수정 필요)
         try (InputStream in = getClass().getResourceAsStream("/butcher_probability.json");
              BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
@@ -59,22 +57,11 @@ public class ButcherListener implements Listener {
         data.put('2', Material.GLOWSTONE_DUST);
         data.put('M', Material.RED_DYE);
 
-        JsonElement jsonElement = JsonUtil.of("/butcher_recipes.json");
+        JsonElement jsonElement = JsonUtil.of("/butcher_recipe.json");
         ButcherRepository repository = new ButcherRepository(jsonElement.getAsJsonObject());
-        repository.getKeys().forEach(meat -> createRecipe(meat.getIdentityText(), meat.getItem(), repository.get(meat).get(), data));
+        repository.getAll().forEach(entry -> plugin.getServer().addRecipe(entry.build()));
 
-        // 덫
-        ItemStack item = new ItemStack(Material.COBWEB);
-        ItemMeta meta = item.getItemMeta();
-        meta.displayName(Component.text("덫"));
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(plugin, "butcher_trap");
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-        recipe.shape(" 1 ", "121", " 1 ");
-        recipe.setIngredient('1', Material.COBWEB);
-        recipe.setIngredient('2', Material.TRAPPED_CHEST);
-        plugin.getServer().addRecipe(recipe);
+        plugin.getLogger().info("Butcher Listener Registed.");
     }
 
     // 최적화 필요
