@@ -67,6 +67,7 @@ public class ButcherRepository implements ReadonlyRepository<RecipeBuilder, Item
                     builder.setAmount(data.getValue().getAsInt());
                 }
             });
+            recipes.put(item, builder);
         });
     }
 
