@@ -27,8 +27,6 @@ public class ButcherIngredients {
         items.put("melon_slice", new ItemStack(Material.MELON_SLICE));
         items.put("cocoa_beans", new ItemStack(Material.COCOA_BEANS));
         items.put("wheat", new ItemStack(Material.WHEAT));
-
-        items.put("special_core", new ItemStack(Material.GOLD_INGOT));
     }
 
     @Nullable
