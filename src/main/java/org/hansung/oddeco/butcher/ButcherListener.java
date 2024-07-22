@@ -140,7 +140,7 @@ public class ButcherListener implements Listener {
     public void onBlockPlace(BlockPlaceEvent event) {
         ItemStack item = event.getItemInHand();
         if (Objects.equals(item.getItemMeta().displayName(), Component.text("덫"))) {
-            event.getBlock().setMetadata("butcher_trap", new FixedMetadataValue(plugin, "true"));
+            event.getBlock().setMetadata("butcher_trap", new FixedMetadataValue(plugin, new ButcherTrap()));
         }
     }
 
@@ -149,7 +149,7 @@ public class ButcherListener implements Listener {
         if (!event.hasBlock() || !event.getAction().isRightClick()) return;
         if (Objects.requireNonNull(event.getClickedBlock()).getType() != Material.COBWEB) return;
         if (!butchers.containsKey(event.getPlayer())) return;
-        if (!event.getClickedBlock().getMetadata("butcher_trap").isEmpty()) {
+        if (event.getClickedBlock().getMetadata("butcher_trap").getFirst() instanceof ButcherTrap) {
             Butcher butcher = butchers.get(event.getPlayer());
             ButcherMeat meat = new ButcherMeat(butcher, setRandomRank(butcher));
             event.getPlayer().getInventory().addItem(meat.getItem());
