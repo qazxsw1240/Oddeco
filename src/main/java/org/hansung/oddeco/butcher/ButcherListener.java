@@ -99,14 +99,7 @@ public class ButcherListener implements Listener {
             Random random = new Random(System.currentTimeMillis()); // random value generator
 
             Butcher butcher = butchers.get(player); // get butcher from killer's player object
-            int pick = random.nextInt(100); // generate random number
-            Probability.ProbabilityField.Probabilities probabilities = probability.data.get(butcher.getLevel() - 1).probabilities;
-            if (pick < probabilities.normal)
-                rank = 0; // 지방 1
-            else if (pick - probabilities.normal < probabilities.rare)
-                rank = 1; // 지방 2
-            else
-                rank = 2; // 지방 3
+            rank = setRandomRank(butcher);
 
             // 랭크 지정이 끝 났으면 이 녀석이 뭔지 확인해 고기를 생성.
             // 동물을 죽였을 경우 생성된 고기로 대체, 아닐 경우 생성된 고기와 같이 드랍.
@@ -147,7 +140,7 @@ public class ButcherListener implements Listener {
     public void onBlockPlace(BlockPlaceEvent event) {
         ItemStack item = event.getItemInHand();
         if (Objects.equals(item.getItemMeta().displayName(), Component.text("덫"))) {
-            event.getBlock().setMetadata("custom_value", new FixedMetadataValue(plugin, "butcher_trap"));
+            event.getBlock().setMetadata("butcher_trap", new FixedMetadataValue(plugin, "true"));
         }
     }
 
@@ -155,10 +148,12 @@ public class ButcherListener implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (!event.hasBlock() || !event.getAction().isRightClick()) return;
         if (Objects.requireNonNull(event.getClickedBlock()).getType() != Material.COBWEB) return;
-        if (!event.getClickedBlock().getMetadata("custom_value").isEmpty()) {
-            plugin.getLogger().info("이것은 덫입니다.");
-        } else {
-            plugin.getLogger().info("이것은 덫이 아닙니다.");
+        if (!butchers.containsKey(event.getPlayer())) return;
+        if (!event.getClickedBlock().getMetadata("butcher_trap").isEmpty()) {
+            Butcher butcher = butchers.get(event.getPlayer());
+            ButcherMeat meat = new ButcherMeat(butcher, setRandomRank(butcher));
+            event.getPlayer().getInventory().addItem(meat.getItem());
+            event.getPlayer().updateInventory();
         }
     }
 
@@ -169,5 +164,18 @@ public class ButcherListener implements Listener {
                 event.setCancelled(true);
             }
         }
+    }
+
+    private int setRandomRank(Butcher butcher) {
+        int rank = 0;
+        int pick = random.nextInt(100); // generate random number
+        Probability.ProbabilityField.Probabilities probabilities = probability.data.get(butcher.getLevel() - 1).probabilities;
+        if (pick < probabilities.normal)
+            rank = 0; // 지방 1
+        else if (pick - probabilities.normal < probabilities.rare)
+            rank = 1; // 지방 2
+        else
+            rank = 2; // 지방 3
+        return rank;
     }
 }
