@@ -4,19 +4,14 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class RecipeBuilder {
     private ShapedRecipe recipe;
     private NamespacedKey key;
     private final ItemStack item;
-    private String[] shape;
 
     protected RecipeBuilder(ItemStack item) {
-        this.shape = new String[3];
         this.item = item;
     }
 
@@ -62,6 +57,16 @@ public class RecipeBuilder {
     // set amount to recipe result
     public void setAmount(int amount) {
         item.setAmount(amount);
+    }
+
+    // get ItemMeta to recipe result
+    public ItemMeta getItemMeta() {
+        return item.getItemMeta();
+    }
+
+    // set ItemMeta to recipe result
+    public void setItemMeta(ItemMeta itemMeta) {
+        item.setItemMeta(itemMeta);
     }
 
     // build recipe (to add server recipe)
