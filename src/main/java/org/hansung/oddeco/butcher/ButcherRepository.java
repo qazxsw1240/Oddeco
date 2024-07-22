@@ -48,12 +48,11 @@ public class ButcherRepository implements ReadonlyRepository<RecipeBuilder, Item
                 ItemStack item;
                 item = ingredients.getIngredient(entry.getKey());
                 if (Objects.equals(entry.getKey(), "butcher_trap")) {
-                    ItemMeta itemMeta = item.getItemMeta();
-                    itemMeta.displayName(Component.text("덫"));
-                    item.setItemMeta(itemMeta);
+                    ButcherTrap butcherTrap = new ButcherTrap();
+                    butcherTrap.createItem();
+                    item.setItemMeta(butcherTrap.getItem().getItemMeta());
                 } else if (Objects.equals(entry.getKey(), "meat_piece_vegan")) {
-                    MeatPiece meatPiece = new MeatPiece();
-                    item.setItemMeta(meatPiece.getItem().getItemMeta());
+                    item.setItemMeta(new MeatPiece().getItem().getItemMeta());
                 }
                 builder = new RecipeBuilder(entry.getKey(), item);
                 parseData(entry.getValue(), builder, ingredients, -1);
