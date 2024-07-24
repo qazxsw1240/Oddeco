@@ -4,65 +4,73 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class RecipeBuilder {
+    private ShapedRecipe recipe;
     private NamespacedKey key;
-    private ItemStack item;
-    private String[] shape;
-    private final ConcurrentMap<Character, Material> ingredients;
+    private final ItemStack item;
 
-    public RecipeBuilder() {
-        this.shape = new String[3];
-        this.ingredients = new ConcurrentHashMap<>();
-    }
-
-    public RecipeBuilder(NamespacedKey key) {
-        this();
-        this.key = key;
-    }
-
-    public RecipeBuilder(ItemStack item, NamespacedKey key) {
-        this(key);
+    protected RecipeBuilder(ItemStack item) {
         this.item = item;
+    }
+
+    public RecipeBuilder(NamespacedKey key, ItemStack item) {
+        this(item);
+        this.key = key;
+        recipe = new ShapedRecipe(this.key, this.item);
+    }
+
+    public RecipeBuilder(NamespacedKey key, Material material) {
+        this(new ItemStack(material));
+        this.key = key;
+        this.recipe = new ShapedRecipe(this.key, this.item);
+    }
+
+    public RecipeBuilder(String namespacedKey, ItemStack item) {
+        this(item);
+        this.key = new NamespacedKey(namespacedKey, namespacedKey);
+        this.recipe = new ShapedRecipe(this.key, this.item);
+    }
+
+    public RecipeBuilder(String namespacedKey, Material material) {
+        this(new ItemStack(material));
+        this.key = new NamespacedKey(namespacedKey, namespacedKey);
+        this.recipe = new ShapedRecipe(this.key, this.item);
     }
 
     // add all line's shape to recipe
     public void setShape(String[] shape) {
-        this.shape = shape;
+        recipe.shape(shape);
     }
 
-    // add one line's shape to recipe
-    public void setShape(int line, String shape) {
-        if (line >= this.shape.length)
-            throw new RuntimeException(String.format("line 값은 0부터 2 사이의 값을 가지지만, %d로 지정되었습니다.", line));
-        this.shape[line] = shape;
-    }
-
-    // set all ingredients to recipe
-    public void setIngredient(Map<Character, Material> ingredients) {
-        this.ingredients.putAll(ingredients);
-    }
-
-    // add one ingredient to recipe
+    // set ingredient to recipe
     public void setIngredient(Character key, Material value) {
-        this.ingredients.put(key, value);
+        recipe.setIngredient(key, value);
     }
 
-    // set item of recipe result
-    public void setItem(ItemStack item) {
-        this.item = item;
+    // set ingredient to recipe
+    public void setIngredient(Character key, ItemStack value) {
+        recipe.setIngredient(key, value);
+    }
+
+    // set amount to recipe result
+    public void setAmount(int amount) {
+        item.setAmount(amount);
+    }
+
+    // get ItemMeta to recipe result
+    public ItemMeta getItemMeta() {
+        return item.getItemMeta();
+    }
+
+    // set ItemMeta to recipe result
+    public void setItemMeta(ItemMeta itemMeta) {
+        item.setItemMeta(itemMeta);
     }
 
     // build recipe (to add server recipe)
     public ShapedRecipe build() {
-        if (item == null) throw new NullPointerException("레시피로 제작할 아이템이 지정되지 않았습니다.");
-        if (key == null) key = item.getType().getKey();
-        ShapedRecipe recipe = new ShapedRecipe(key, item).shape(shape); // set recipe's shape
-        ingredients.forEach((key, value) -> recipe.setIngredient(key, value)); // set ingredients
         return recipe;
     }
 }
