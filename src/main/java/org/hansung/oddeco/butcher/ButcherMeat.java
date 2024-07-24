@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 public class ButcherMeat extends Meat {
-    private final Butcher butcher; // 플레이어의 레벨입니다.
+    private final Butcher butcher;
     private final LivingEntity entity;
 
     private final Random random = new Random();
